@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "IQKeyboardManager.h"
+#import "AppDelegate+Guide.h"
+#import "SVProgressHUD.h"
 
 @interface AppDelegate ()
 
@@ -16,8 +19,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [self setKeyBoard];
+    [self windowShow];
+    [SVProgressHUD setMinimumDismissTimeInterval:2];
     return YES;
+}
+
+-(void)setKeyBoard{
+    //  键盘事件
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = NO;
 }
 
 
