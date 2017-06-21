@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  BaseTarBar.h
 //  banmen
 //
-//  Created by FLYang on 2017/6/15.
+//  Created by dong on 2017/6/19.
 //  Copyright © 2017年 banmen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface BaseTarBar : UITabBar
 
 @end
-
