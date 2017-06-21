@@ -8,9 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9959F7C22A2F1793FD74BF /* Pods_banmen.framework */; };
+		D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */; };
+		D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */; };
 		D8B0711D1EF8F92D005CC051 /* THNImageToolNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B0711C1EF8F92D005CC051 /* THNImageToolNavigationController.m */; };
 		D8B071201EF8FB38005CC051 /* THNImageToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B0711F1EF8FB38005CC051 /* THNImageToolViewController.m */; };
 		D8B071231EF8FB80005CC051 /* THNLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B071221EF8FB80005CC051 /* THNLayoutViewController.m */; };
+		D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B369451EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m */; };
+		D8D378DD1EFA4C8500C89889 /* THNPhotoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */; };
+		D8D378E01EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D378DF1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m */; };
 		D8D9C2471EF278C5000688C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9C2461EF278C5000688C6 /* main.m */; };
 		D8D9C24A1EF278C5000688C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9C2491EF278C5000688C6 /* AppDelegate.m */; };
 		D8D9C24D1EF278C5000688C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9C24C1EF278C5000688C6 /* ViewController.m */; };
@@ -30,12 +35,19 @@
 		D8ED5D961EF906060046642C /* UILable+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = D860741F1EF9026A00AB6F53 /* UILable+Frame.m */; };
 		D8ED5D981EF906060046642C /* UIView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D86074141EF9026A00AB6F53 /* UIView+FSExtension.m */; };
 		D8ED5D9A1EF906060046642C /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = D860740C1EF9026A00AB6F53 /* UIView+Size.m */; };
+		D8ED5D9D1EF90CDD0046642C /* THNEditImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5D9C1EF90CDD0046642C /* THNEditImageViewController.m */; };
+		D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */; };
+		D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA31EFA13540046642C /* THNPhotoTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		093B00529CC62D5B0A9C39F7 /* Pods-banmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-banmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-banmen/Pods-banmen.debug.xcconfig"; sourceTree = "<group>"; };
 		239D47117F03E1BB587C0396 /* Pods-banmen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-banmen.release.xcconfig"; path = "Pods/Target Support Files/Pods-banmen/Pods-banmen.release.xcconfig"; sourceTree = "<group>"; };
 		CA9959F7C22A2F1793FD74BF /* Pods_banmen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_banmen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D83689E81EFA68DB005B0709 /* THNPhotoTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoTableViewModel.h; sourceTree = "<group>"; };
+		D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTableViewModel.m; sourceTree = "<group>"; };
+		D83689EB1EFA6900005B0709 /* THNPhotoCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoCellViewModel.h; sourceTree = "<group>"; };
+		D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoCellViewModel.m; sourceTree = "<group>"; };
 		D86074091EF9026A00AB6F53 /* UIImage+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
 		D860740A1EF9026A00AB6F53 /* UIBarButtonItem+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Helper.h"; sourceTree = "<group>"; };
 		D860740B1EF9026A00AB6F53 /* UIColor+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
@@ -71,6 +83,12 @@
 		D8B0711F1EF8FB38005CC051 /* THNImageToolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNImageToolViewController.m; sourceTree = "<group>"; };
 		D8B071211EF8FB80005CC051 /* THNLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNLayoutViewController.h; sourceTree = "<group>"; };
 		D8B071221EF8FB80005CC051 /* THNLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNLayoutViewController.m; sourceTree = "<group>"; };
+		D8B369441EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPhotoItemCollectionViewCell.h; sourceTree = "<group>"; };
+		D8B369451EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPhotoItemCollectionViewCell.m; sourceTree = "<group>"; };
+		D8D378DB1EFA4C8500C89889 /* THNPhotoListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPhotoListView.h; sourceTree = "<group>"; };
+		D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPhotoListView.m; sourceTree = "<group>"; };
+		D8D378DE1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPhotoAlbumTableViewCell.h; sourceTree = "<group>"; };
+		D8D378DF1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPhotoAlbumTableViewCell.m; sourceTree = "<group>"; };
 		D8D9C2421EF278C5000688C6 /* banmen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = banmen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8D9C2461EF278C5000688C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D8D9C2481EF278C5000688C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,6 +99,12 @@
 		D8D9C2511EF278C5000688C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8D9C2541EF278C5000688C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8D9C2561EF278C5000688C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8ED5D9B1EF90CDD0046642C /* THNEditImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNEditImageViewController.h; sourceTree = "<group>"; };
+		D8ED5D9C1EF90CDD0046642C /* THNEditImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNEditImageViewController.m; sourceTree = "<group>"; };
+		D8ED5D9F1EFA0DB80046642C /* THNAssetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNAssetItem.h; sourceTree = "<group>"; };
+		D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNAssetItem.m; sourceTree = "<group>"; };
+		D8ED5DA21EFA13540046642C /* THNPhotoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoTool.h; sourceTree = "<group>"; };
+		D8ED5DA31EFA13540046642C /* THNPhotoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,8 +223,9 @@
 			children = (
 				D8B0711A1EF8F8DD005CC051 /* Base */,
 				D8B071121EF8F415005CC051 /* Controller */,
-				D8B071131EF8F415005CC051 /* Other */,
+				D8ED5D9E1EFA0D660046642C /* Model */,
 				D8B071141EF8F415005CC051 /* View */,
+				D8B071131EF8F415005CC051 /* Other */,
 			);
 			path = ImageTool;
 			sourceTree = "<group>";
@@ -210,6 +235,8 @@
 			children = (
 				D8B071211EF8FB80005CC051 /* THNLayoutViewController.h */,
 				D8B071221EF8FB80005CC051 /* THNLayoutViewController.m */,
+				D8ED5D9B1EF90CDD0046642C /* THNEditImageViewController.h */,
+				D8ED5D9C1EF90CDD0046642C /* THNEditImageViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -217,6 +244,12 @@
 		D8B071131EF8F415005CC051 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				D8ED5DA21EFA13540046642C /* THNPhotoTool.h */,
+				D8ED5DA31EFA13540046642C /* THNPhotoTool.m */,
+				D83689E81EFA68DB005B0709 /* THNPhotoTableViewModel.h */,
+				D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */,
+				D83689EB1EFA6900005B0709 /* THNPhotoCellViewModel.h */,
+				D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -224,6 +257,12 @@
 		D8B071141EF8F415005CC051 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D8D378DB1EFA4C8500C89889 /* THNPhotoListView.h */,
+				D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */,
+				D8D378DE1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.h */,
+				D8D378DF1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m */,
+				D8B369441EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.h */,
+				D8B369451EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +322,15 @@
 				D8D9C2461EF278C5000688C6 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D8ED5D9E1EFA0D660046642C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D8ED5D9F1EFA0DB80046642C /* THNAssetItem.h */,
+				D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,10 +456,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */,
 				D8ED5D821EF906060046642C /* NSString+FBMD5.m in Sources */,
+				D8ED5D9D1EF90CDD0046642C /* THNEditImageViewController.m in Sources */,
 				D8ED5D841EF906060046642C /* NSString+Helper.m in Sources */,
 				D8ED5D861EF906060046642C /* NSString+JSON.m in Sources */,
 				D8ED5D881EF906060046642C /* NSString+TimeDate.m in Sources */,
+				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
 				D8ED5D8A1EF906060046642C /* NSTimer+Addition.m in Sources */,
 				D8ED5D8C1EF906060046642C /* UIBarButtonItem+Helper.m in Sources */,
 				D8ED5D8E1EF906060046642C /* UIColor+Extension.m in Sources */,
@@ -419,14 +470,19 @@
 				D8ED5D921EF906060046642C /* UIImage+QRCode.m in Sources */,
 				D8ED5D941EF906060046642C /* UIImageView+SDWedImage.m in Sources */,
 				D8ED5D961EF906060046642C /* UILable+Frame.m in Sources */,
+				D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */,
+				D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */,
 				D8ED5D981EF906060046642C /* UIView+FSExtension.m in Sources */,
 				D8ED5D9A1EF906060046642C /* UIView+Size.m in Sources */,
+				D8D378DD1EFA4C8500C89889 /* THNPhotoListView.m in Sources */,
 				D8B071201EF8FB38005CC051 /* THNImageToolViewController.m in Sources */,
 				D8B0711D1EF8F92D005CC051 /* THNImageToolNavigationController.m in Sources */,
 				D8D9C24D1EF278C5000688C6 /* ViewController.m in Sources */,
 				D8D9C24A1EF278C5000688C6 /* AppDelegate.m in Sources */,
+				D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */,
 				D8D9C2471EF278C5000688C6 /* main.m in Sources */,
 				D8B071231EF8FB80005CC051 /* THNLayoutViewController.m in Sources */,
+				D8D378E01EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

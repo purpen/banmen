@@ -10,6 +10,7 @@
 #define ColorMacro_h
 
 #define kColorMain            @"#8EC1FF"
+#define kColorNavView         @"#292A2A"
 #define kColorBackground      @"#292A2A"
 #define kColorPhotoAlbum      @"#2A2C31"
 #define kColorTool            @"#3E4044"
