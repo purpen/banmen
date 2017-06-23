@@ -7,7 +7,7 @@
 //
 
 #import "BaseTarBar.h"
-#import "Const.h"
+#import "OtherMacro.h"
 #import "UIColor+Extension.h"
 
 @implementation BaseTarBar
