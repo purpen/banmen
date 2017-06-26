@@ -7,31 +7,43 @@
 //
 
 #import "THNEditImageViewController.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "UIColor+Extension.h"
+#import "MainMacro.h"
 
-@interface THNEditImageViewController ()
+#import "THNDoneImageViewController.h"
+
+@interface THNEditImageViewController () <
+    THNImageToolNavigationBarItemsDelegate
+>
 
 @end
 
 @implementation THNEditImageViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self thn_setNavViewUI];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - 设置Nav
+- (void)thn_setNavViewUI {
+    self.navTitle.text = @"编辑";
+    [self thn_addBarItemRightBarButton:@"保存" image:nil];
+    [self.navRightItem setTitleColor:[UIColor colorWithHexString:kColorMain] forState:(UIControlStateNormal)];
+    self.delegate = self;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)thn_rightBarItemSelected {
+    THNDoneImageViewController *doneController = [[THNDoneImageViewController alloc] init];
+    [self.navigationController pushViewController:doneController animated:YES];
 }
-*/
 
 @end

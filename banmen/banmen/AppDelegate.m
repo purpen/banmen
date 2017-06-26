@@ -7,9 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "IQKeyboardManager.h"
-#import "AppDelegate+Guide.h"
-#import "SVProgressHUD.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+
+static const NSTimeInterval MAX_DISMISSTIME = 2;
 
 @interface AppDelegate ()
 
@@ -19,21 +19,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [self setKeyBoard];
-    [self windowShow];
-    [SVProgressHUD setMinimumDismissTimeInterval:2];
+    
+    [self thn_initSVProgressHUDArgument];
+    
     return YES;
 }
 
--(void)setKeyBoard{
-    //  键盘事件
-    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
-    manager.enable = YES;
-    manager.shouldResignOnTouchOutside = YES;
-    manager.shouldToolbarUsesTextFieldTintColor = YES;
-    manager.enableAutoToolbar = NO;
+/**
+ 设置 SVProgressHUD 的相关参数
+ */
+- (void)thn_initSVProgressHUDArgument {
+    [SVProgressHUD setDefaultStyle:(SVProgressHUDStyleLight)];
+    [SVProgressHUD setMaximumDismissTimeInterval:MAX_DISMISSTIME];
+    [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
+    [SVProgressHUD setCornerRadius:10];
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -9,13 +9,17 @@
 #import "THNPhotoListView.h"
 #import "THNPhotoAlbumTableViewCell.h"
 #import "THNPhotoItemCollectionViewCell.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 static NSString *const PhotoAlbumTableCellId = @"THNPhotoAlbumTableViewCellId";
 static NSString *const PhotoItemCollectionCellId = @"THNPhotoItemCollectionViewCellId";
+static NSInteger const kMaxSelectPhotoItem = 9;
 
-@interface THNPhotoListView ()
+@interface THNPhotoListView () <THNOpenAlbumButtonClickDelegate> {
+    NSInteger _selectPhotoItem;
+}
 
-@property (nonatomic, strong) NSMutableArray *photoAlbumArray;
+@property (nonatomic, strong) NSMutableArray<THNPhotoAlbumList *> *photoAlbumArray;
 @property (nonatomic, strong) NSMutableArray *photoAssetArray;
 
 @end
@@ -26,6 +30,7 @@ static NSString *const PhotoItemCollectionCellId = @"THNPhotoItemCollectionViewC
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor colorWithHexString:kColorPhotoAlbum alpha:1];
+        _selectPhotoItem = 0;
         [self thn_setViewUI];
     }
     return self;
@@ -36,7 +41,9 @@ static NSString *const PhotoItemCollectionCellId = @"THNPhotoItemCollectionViewC
     
     [self addSubview:self.openAlbum];
     [_openAlbum mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(self).with.offset(0);
+        make.top.equalTo(self.mas_top).with.offset(0);
+        make.left.equalTo(self.mas_left).with.offset(15);
+        make.right.equalTo(self.mas_right).with.offset(-15);
         make.height.mas_equalTo(44);
     }];
     
@@ -58,24 +65,19 @@ static NSString *const PhotoItemCollectionCellId = @"THNPhotoItemCollectionViewC
 }
 
 #pragma mark - 展开相册列表的按钮
-- (UIButton *)openAlbum {
+- (THNOpenAlbumButton *)openAlbum {
     if (!_openAlbum) {
-        _openAlbum = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-        [_openAlbum setTitle:@"相机胶卷" forState:(UIControlStateNormal)];
-        [_openAlbum setTitleColor:[UIColor colorWithHexString:kColorMain] forState:(UIControlStateNormal)];
-        _openAlbum.titleLabel.font = [UIFont boldSystemFontOfSize:15];
-        _openAlbum.selected = NO;
-        [_openAlbum addTarget:self action:@selector(openOrClosePhotoAlbumTable:) forControlEvents:(UIControlEventTouchUpInside)];
+        _openAlbum = [[THNOpenAlbumButton alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        _openAlbum.delegate = self;
+        [_openAlbum thn_setButtonTitleText:@"相机胶卷" iconImage:@"icon_down_main"];
     }
     return _openAlbum;
 }
 
-- (void)openOrClosePhotoAlbumTable:(UIButton *)button {
+- (void)thn_albumButtonTouchUpInside:(UIButton *)button {
     if (button.selected) {
-        button.selected = NO;
         [self thn_showPhotoAlbumTableView:NO];
     } else {
-        button.selected = YES;
         [self thn_showPhotoAlbumTableView:YES];
     }
 }
@@ -120,8 +122,47 @@ static NSString *const PhotoItemCollectionCellId = @"THNPhotoItemCollectionViewC
     return 50;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.openAlbum thn_setButtonTitleText:self.photoAlbumArray[indexPath.row].title iconImage:@"icon_down_main"];
+    [self thn_showPhotoAlbumTableView:NO];
+    [self.openAlbum thn_rotateButtonIcon:NO];
+    [self thn_refreshThePhotoListData:self.photoAlbumArray[indexPath.row].assetCOllection];
+}
+
+#pragma mark - 重新获取指定相册内的所有照片
+- (void)thn_refreshThePhotoListData:(PHAssetCollection *)assetCollection {
+    //  获取选中相册内容
+    NSArray *selectedPhotoArray = [[THNPhotoTool sharePhotoTool] thn_getAssetOfAssetCollection:assetCollection ascending:NO];
+    
+    //  保持选中的照片还是选中状态
+    NSMutableArray *selectedArray = [NSMutableArray array];
+    NSMutableArray *selectedIdentifierArray = [NSMutableArray array];
+    for (THNAssetItem *item in self.photoAssetArray) {
+        if (item.selected) {
+            [selectedArray addObject:item];
+            [selectedIdentifierArray addObject:item.asset.localIdentifier];
+        }
+    }
+    
+    [self.photoAssetArray removeAllObjects];
+    
+    __block NSInteger index = 0;
+    [selectedPhotoArray enumerateObjectsUsingBlock:^(PHAsset *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (![selectedIdentifierArray containsObject:obj.localIdentifier]) {
+            THNAssetItem *item = [THNAssetItem AssetItemWithPHAsset:obj];
+            [self.photoAssetArray addObject:item];
+        } else {
+            [self.photoAssetArray addObject:selectedArray[index ++]];
+        }
+    }];
+    
+    [self.photoColleciton reloadData];
+}
+
 #pragma mark 展开／关闭相册列表
 - (void)thn_showPhotoAlbumTableView:(BOOL)show {
+    self.openAlbum.selected = show;
+    
     CGRect photoAlbumTableRect = self.photoAlbumTable.frame;
     CGRect openRect = CGRectMake(0, 44, SCREEN_WIDTH, self.bounds.size.height - 44);
     CGRect closeRect = CGRectMake(0, 44, SCREEN_WIDTH, 0);
@@ -135,10 +176,16 @@ static NSString *const PhotoItemCollectionCellId = @"THNPhotoItemCollectionViewC
     }];
 }
 
-#pragma mark 加载相册列表的数据
-- (void)thn_getPhotoAlbumListData:(NSMutableArray *)albumArray {
+#pragma mark - 加载相册列表的数据
+- (void)thn_getPhotoAlbumListData:(NSMutableArray<THNPhotoAlbumList *> *)albumArray {
     self.photoAlbumArray = albumArray;
     [self.photoAlbumTable reloadData];
+}
+
+#pragma mark - 加载相簿内所有的照片数据
+- (void)thn_getPhotoAssetInAlbumData:(NSMutableArray<THNAssetItem *> *)assetArray {
+    self.photoAssetArray = assetArray;
+    [self.photoColleciton reloadData];
 }
 
 #pragma mark - 所有的相片列表
@@ -154,6 +201,7 @@ static NSString *const PhotoItemCollectionCellId = @"THNPhotoItemCollectionViewC
         _photoColleciton.backgroundColor = [UIColor colorWithHexString:kColorPhotoAlbum];
         _photoColleciton.delegate = self;
         _photoColleciton.dataSource = self;
+        _photoColleciton.allowsMultipleSelection = YES;
         [_photoColleciton registerClass:[THNPhotoItemCollectionViewCell class] forCellWithReuseIdentifier:PhotoItemCollectionCellId];
     }
     return _photoColleciton;
@@ -172,10 +220,33 @@ static NSString *const PhotoItemCollectionCellId = @"THNPhotoItemCollectionViewC
     return cell;
 }
 
-#pragma mark 加载所有的照片
-- (void)thn_getPhotoAssetInAlbumData:(NSMutableArray *)assetArray {
-    self.photoAssetArray = assetArray;
-    [self.photoColleciton reloadData];
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (_selectPhotoItem == kMaxSelectPhotoItem) {
+        [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+        [SVProgressHUD showInfoWithStatus:@"最多选择 9 张照片"];
+        return;
+    }
+    [self thn_didSelectPhotoItem:self.photoAssetArray[indexPath.row]];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self thn_didDeselectPhotoItem:self.photoAssetArray[indexPath.row]];
+}
+
+#pragma mark - 选择了照片
+- (void)thn_didSelectPhotoItem:(THNAssetItem *)item {
+    _selectPhotoItem += 1;
+    if ([self.delegate respondsToSelector:@selector(thn_didSelectItemAtPhotoList:)]) {
+        [self.delegate thn_didSelectItemAtPhotoList:item];
+    }
+}
+
+#pragma mark - 取消选择照片
+- (void)thn_didDeselectPhotoItem:(THNAssetItem *)item {
+    _selectPhotoItem -= 1;
+    if ([self.delegate respondsToSelector:@selector(thn_didDeselectItemAtPhotoList:)]) {
+        [self.delegate thn_didDeselectItemAtPhotoList:item];
+    }
 }
 
 @end

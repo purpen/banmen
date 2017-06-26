@@ -14,18 +14,23 @@
 
 #import "THNAssetItem.h"
 #import "THNPhotoTool.h"
+#import "THNHintInfoView.h"
 #import "THNPhotoListView.h"
+#import "THNPreviewPuzzleView.h"
 
 @interface THNLayoutViewController () <
-    PHPhotoLibraryChangeObserver,
     UIImagePickerControllerDelegate,
-    THNImageToolNavigationBarItemsDelegate
+    THNImageToolNavigationBarItemsDelegate,
+    THNPhotoListViewDelegate
 >
 
 @property (nonatomic, strong) NSMutableArray<THNAssetItem *> *assets;
 @property (nonatomic, retain) NSMutableArray<THNPhotoAlbumList *> *photoAblumTitle;
+@property (nonatomic, strong) NSMutableArray<THNAssetItem *> *selectPhotoItemArray;
 @property (nonatomic, strong) THNPhotoAlbumList *selectedPhotoAblum;
 @property (nonatomic, strong) THNPhotoListView *photoListView;
+@property (nonatomic, strong) THNPreviewPuzzleView *previewPuzzleView;
+@property (nonatomic, strong) THNHintInfoView *hintInfoView;
 
 @end
 
@@ -40,6 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self thn_hiddenNavTitle:YES];
     [self thn_getPhotoAlbumPermissions];
 }
 
@@ -78,7 +84,6 @@
                 }];
             }
         }
-        
         self.assets = assets;
     });
     
@@ -91,39 +96,117 @@
 
 #pragma mark - 加载视图控件
 - (void)thn_setControllerViewUI {
+    //  默认提示视图
+    [self.view addSubview:self.hintInfoView];
+    [_hintInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 140));
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.view.mas_top).with.offset(64);
+    }];
+    
+    //  图片列表
     [self.view addSubview:self.photoListView];
     [self.photoListView thn_getPhotoAlbumListData:self.photoAblumTitle];
     [self.photoListView thn_getPhotoAssetInAlbumData:self.assets];
+    
+    //  拼图预览
+    [self.view addSubview:self.previewPuzzleView];
+    [_previewPuzzleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.right.left.equalTo(self.view).with.offset(0);
+        make.top.equalTo(self.view.mas_top).with.offset(64);
+        make.bottom.equalTo(_photoListView.mas_top).with.offset(-1);
+    }];
 }
 
 #pragma mark - 加载相册列表视图
 - (THNPhotoListView *)photoListView {
     if (!_photoListView) {
         _photoListView = [[THNPhotoListView alloc] initWithFrame:CGRectMake(0, 240, SCREEN_WIDTH, SCREEN_HEIGHT - 240)];
+        _photoListView.delegate = self;
     }
     return _photoListView;
 }
 
-#pragma mark - 相册发生变化后回调
-- (void)photoLibraryDidChange:(PHChange *)changeInstance {
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        
-    });
+/**
+ 选择了图片
+ */
+- (void)thn_didSelectItemAtPhotoList:(THNAssetItem *)item {
+    [self.selectPhotoItemArray addObject:item];
+    [self thn_LoadPuzzlePhotoData:self.selectPhotoItemArray];
 }
 
-#pragma mark - 注册通知监听相册变化
-- (void)initNot {
-    [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
+/**
+ 取消选择的图片
+ */
+- (void)thn_didDeselectItemAtPhotoList:(THNAssetItem *)item {
+    [self.selectPhotoItemArray removeObject:item];
+    [self thn_LoadPuzzlePhotoData:self.selectPhotoItemArray];
 }
 
-- (void)dealloc {
-    [[PHPhotoLibrary sharedPhotoLibrary] unregisterChangeObserver:self];
+#pragma mark - 加载拼图预览
+- (void)thn_LoadPuzzlePhotoData:(NSMutableArray *)photoData {
+    if (photoData.count == 0) {
+        [self thn_hiddenPreviewPuzzleView:YES];
+        [self thn_hiddenNavTitle:YES];
+    } else {
+        [self thn_hiddenPreviewPuzzleView:NO];
+        [self thn_hiddenNavTitle:NO];
+    }
+    [self.previewPuzzleView thn_setPreviewPuzzlePhotoData:photoData];
+}
+
+#pragma mark - 拼图预览视图
+- (THNPreviewPuzzleView *)previewPuzzleView {
+    if (!_previewPuzzleView) {
+        _previewPuzzleView = [[THNPreviewPuzzleView alloc] init];
+        _previewPuzzleView.supViewController = self.navigationController;
+        _previewPuzzleView.hidden = YES;
+    }
+    return _previewPuzzleView;
+}
+
+- (void)thn_hiddenPreviewPuzzleView:(BOOL)show {
+    [UIView animateWithDuration:.2 animations:^{
+        self.previewPuzzleView.hidden = show;
+        self.previewPuzzleView.alpha = show ? 0 : 1;
+    }];
+}
+
+#pragma mark - 默认界面提示视图
+- (THNHintInfoView *)hintInfoView {
+    if (!_hintInfoView) {
+        _hintInfoView = [[THNHintInfoView alloc] init];
+        [_hintInfoView thn_showHintInfoViewWithText:@"请挑选照片" fontOfSize:20 color:@"#777777"];
+    }
+    return _hintInfoView;
 }
 
 #pragma mark - 设置Nav
 - (void)thn_setNavViewUI {
     self.navTitle.text = @"选择布局";
     [self thn_addNavCloseButton];
+    [self thn_addBarItemRightBarButton:@"拼接" image:nil];
+    self.delegate = self;
+}
+
+- (void)thn_rightBarItemSelected {
+    [SVProgressHUD showSuccessWithStatus:@"切换拼接"];
+}
+
+- (void)thn_hiddenNavTitle:(BOOL)hidden {
+    [UIView animateWithDuration:.3 animations:^{
+        self.navTitle.alpha = hidden ? 0 : 1;
+        self.navRightItem.alpha = hidden ? 0 : 1;
+    }];
+}
+
+#pragma makr - NSMutableArray
+- (NSMutableArray<THNAssetItem *> *)selectPhotoItemArray {
+    if (!_selectPhotoItemArray) {
+        _selectPhotoItemArray = [NSMutableArray array];
+    }
+    return _selectPhotoItemArray;
 }
 
 @end

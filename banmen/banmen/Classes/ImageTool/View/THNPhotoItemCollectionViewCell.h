@@ -19,6 +19,11 @@
 @property (nonatomic, strong) UIImageView *photoImageView;
 
 /**
+ 选中的对号图标
+ */
+@property (nonatomic, strong) UIImageView *doneIcon;
+
+/**
  绑定图片资源的图像
 
  @param assetItem 图片资源

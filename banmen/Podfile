@@ -10,5 +10,4 @@ target "banmen" do
  pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
  pod 'MJExtension'
  pod 'TYAlertController'
- pod 'JKDBModel-JDBR', '~> 0.0.1'
 end
