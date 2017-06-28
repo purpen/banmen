@@ -9,17 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "THNAssetItem.h"
 
-@protocol THNPreviewPuzzleViewDelegate <NSObject>
-
-@optional
-- (void)thn_selectPreviewPuzzleItem;
-
-@end
-
-@interface THNPreviewPuzzleView : UIView <
-    UICollectionViewDelegate,
-    UICollectionViewDataSource
->
+@interface THNPreviewPuzzleView : UIView
 
 @property (nonatomic, strong) UINavigationController *supViewController;
 
@@ -33,11 +23,8 @@
 
  @param photoData 图片数据
  */
-- (void)thn_setPreviewPuzzlePhotoData:(NSMutableArray<THNAssetItem *> *)photoData;
-
-/**
- 预览拼图代理
- */
-@property (nonatomic, weak) id <THNPreviewPuzzleViewDelegate> delegate;
+- (void)thn_setPreviewPuzzlePhotoData:(NSMutableArray *)photoData;
 
 @end
+
+

@@ -24,7 +24,6 @@
 }
 
 - (IBAction)goPhoto:(UIButton *)sender {
-    NSLog(@"tiaozhuandaozhaopian");
     [self thn_initImageToolViewController];
 }
 

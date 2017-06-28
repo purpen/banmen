@@ -33,6 +33,8 @@
 		D8D9C2501EF278C5000688C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8D9C24E1EF278C5000688C6 /* Main.storyboard */; };
 		D8D9C2521EF278C5000688C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8D9C2511EF278C5000688C6 /* Assets.xcassets */; };
 		D8D9C2551EF278C5000688C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8D9C2531EF278C5000688C6 /* LaunchScreen.storyboard */; };
+		D8E121B91F03597B0016CF30 /* THNShowPuzzleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E121B81F03597B0016CF30 /* THNShowPuzzleView.m */; };
+		D8E121BC1F0379AD0016CF30 /* THNPuzzleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E121BB1F0379AD0016CF30 /* THNPuzzleCollectionViewCell.m */; };
 		D8ED5D821EF906060046642C /* NSString+FBMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = D86074111EF9026A00AB6F53 /* NSString+FBMD5.m */; };
 		D8ED5D841EF906060046642C /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = D86074151EF9026A00AB6F53 /* NSString+Helper.m */; };
 		D8ED5D861EF906060046642C /* NSString+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D86074211EF9026A00AB6F53 /* NSString+JSON.m */; };
@@ -49,6 +51,59 @@
 		D8ED5D9D1EF90CDD0046642C /* THNEditImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5D9C1EF90CDD0046642C /* THNEditImageViewController.m */; };
 		D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */; };
 		D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA31EFA13540046642C /* THNPhotoTool.m */; };
+		D8F6C3071F03AC8400914063 /* one_style_100.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2E01F03AC5800914063 /* one_style_100.plist */; };
+		D8F6C3081F03AC8400914063 /* one_style_101.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2E11F03AC5800914063 /* one_style_101.plist */; };
+		D8F6C3091F03AC8400914063 /* one_style_102.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2E21F03AC5800914063 /* one_style_102.plist */; };
+		D8F6C30A1F03AC8400914063 /* one_style_103.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2E31F03AC5800914063 /* one_style_103.plist */; };
+		D8F6C30B1F03AC8400914063 /* two_style_100.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2FC1F03AC5800914063 /* two_style_100.plist */; };
+		D8F6C30C1F03AC8400914063 /* two_style_101.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2FD1F03AC5800914063 /* two_style_101.plist */; };
+		D8F6C30D1F03AC8400914063 /* two_style_104.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2FE1F03AC5800914063 /* two_style_104.plist */; };
+		D8F6C30E1F03AC8400914063 /* three_style_102.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2D21F03AC5800914063 /* three_style_102.plist */; };
+		D8F6C30F1F03AC8400914063 /* three_style_103.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2D31F03AC5800914063 /* three_style_103.plist */; };
+		D8F6C3101F03AC8400914063 /* three_style_105.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2D41F03AC5800914063 /* three_style_105.plist */; };
+		D8F6C3111F03AC8400914063 /* three_style_106.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2D51F03AC5800914063 /* three_style_106.plist */; };
+		D8F6C3121F03AC8400914063 /* three_style_107.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2D61F03AC5800914063 /* three_style_107.plist */; };
+		D8F6C3131F03AC8400914063 /* three_style_108.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2D71F03AC5800914063 /* three_style_108.plist */; };
+		D8F6C3141F03AC8400914063 /* four_style_104.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2CA1F03AC5800914063 /* four_style_104.plist */; };
+		D8F6C3151F03AC8400914063 /* four_style_109.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2CB1F03AC5800914063 /* four_style_109.plist */; };
+		D8F6C3161F03AC8400914063 /* four_style_110.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2CC1F03AC5800914063 /* four_style_110.plist */; };
+		D8F6C3171F03AC8400914063 /* four_style_111.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2CD1F03AC5800914063 /* four_style_111.plist */; };
+		D8F6C3181F03AC8400914063 /* four_style_112.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2CE1F03AC5800914063 /* four_style_112.plist */; };
+		D8F6C3191F03AC8400914063 /* four_style_113.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2CF1F03AC5800914063 /* four_style_113.plist */; };
+		D8F6C31A1F03AC8400914063 /* four_style_114.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2D01F03AC5800914063 /* four_style_114.plist */; };
+		D8F6C31B1F03AC8400914063 /* five_style_115.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2EC1F03AC5800914063 /* five_style_115.plist */; };
+		D8F6C31C1F03AC8400914063 /* five_style_116.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2ED1F03AC5800914063 /* five_style_116.plist */; };
+		D8F6C31D1F03AC8400914063 /* five_style_117.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2EE1F03AC5800914063 /* five_style_117.plist */; };
+		D8F6C31E1F03AC8400914063 /* five_style_118.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2EF1F03AC5800914063 /* five_style_118.plist */; };
+		D8F6C31F1F03AC8400914063 /* five_style_119.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2F01F03AC5800914063 /* five_style_119.plist */; };
+		D8F6C3201F03AC8400914063 /* five_style_120.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2F11F03AC5800914063 /* five_style_120.plist */; };
+		D8F6C3211F03AC8400914063 /* five_style_121.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2F21F03AC5800914063 /* five_style_121.plist */; };
+		D8F6C3221F03AC8400914063 /* six_style_122.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2E51F03AC5800914063 /* six_style_122.plist */; };
+		D8F6C3231F03AC8400914063 /* six_style_123.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2E61F03AC5800914063 /* six_style_123.plist */; };
+		D8F6C3241F03AC8400914063 /* six_style_124.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2E71F03AC5800914063 /* six_style_124.plist */; };
+		D8F6C3251F03AC8400914063 /* six_style_125.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2E81F03AC5800914063 /* six_style_125.plist */; };
+		D8F6C3261F03AC8400914063 /* six_style_126.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2E91F03AC5800914063 /* six_style_126.plist */; };
+		D8F6C3271F03AC8400914063 /* six_style_127.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2EA1F03AC5800914063 /* six_style_127.plist */; };
+		D8F6C3281F03AC8400914063 /* seven_style_128.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C3001F03AC5800914063 /* seven_style_128.plist */; };
+		D8F6C3291F03AC8400914063 /* seven_style_129.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C3011F03AC5800914063 /* seven_style_129.plist */; };
+		D8F6C32A1F03AC8400914063 /* seven_style_130.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C3021F03AC5800914063 /* seven_style_130.plist */; };
+		D8F6C32B1F03AC8400914063 /* seven_style_131.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C3031F03AC5800914063 /* seven_style_131.plist */; };
+		D8F6C32C1F03AC8400914063 /* seven_style_132.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C3041F03AC5800914063 /* seven_style_132.plist */; };
+		D8F6C32D1F03AC8400914063 /* seven_style_133.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C3051F03AC5800914063 /* seven_style_133.plist */; };
+		D8F6C32E1F03AC8400914063 /* seven_style_134.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C3061F03AC5800914063 /* seven_style_134.plist */; };
+		D8F6C32F1F03AC8400914063 /* eight_style_135.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2D91F03AC5800914063 /* eight_style_135.plist */; };
+		D8F6C3301F03AC8400914063 /* eight_style_136.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2DA1F03AC5800914063 /* eight_style_136.plist */; };
+		D8F6C3311F03AC8400914063 /* eight_style_137.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2DB1F03AC5800914063 /* eight_style_137.plist */; };
+		D8F6C3321F03AC8400914063 /* eight_style_138.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2DC1F03AC5800914063 /* eight_style_138.plist */; };
+		D8F6C3331F03AC8400914063 /* eight_style_139.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2DD1F03AC5800914063 /* eight_style_139.plist */; };
+		D8F6C3341F03AC8400914063 /* eight_style_140.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2DE1F03AC5800914063 /* eight_style_140.plist */; };
+		D8F6C3351F03AC8400914063 /* nine_style_141.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2F41F03AC5800914063 /* nine_style_141.plist */; };
+		D8F6C3361F03AC8400914063 /* nine_style_142.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2F51F03AC5800914063 /* nine_style_142.plist */; };
+		D8F6C3371F03AC8400914063 /* nine_style_143.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2F61F03AC5800914063 /* nine_style_143.plist */; };
+		D8F6C3381F03AC8400914063 /* nine_style_144.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2F71F03AC5800914063 /* nine_style_144.plist */; };
+		D8F6C3391F03AC8400914063 /* nine_style_145.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2F81F03AC5800914063 /* nine_style_145.plist */; };
+		D8F6C33A1F03AC8400914063 /* nine_style_146.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2F91F03AC5800914063 /* nine_style_146.plist */; };
+		D8F6C33B1F03AC8400914063 /* nine_style_147.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8F6C2FA1F03AC5800914063 /* nine_style_147.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,12 +187,70 @@
 		D8D9C2511EF278C5000688C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8D9C2541EF278C5000688C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8D9C2561EF278C5000688C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8E121B71F03597B0016CF30 /* THNShowPuzzleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNShowPuzzleView.h; sourceTree = "<group>"; };
+		D8E121B81F03597B0016CF30 /* THNShowPuzzleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNShowPuzzleView.m; sourceTree = "<group>"; };
+		D8E121BA1F0379AD0016CF30 /* THNPuzzleCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPuzzleCollectionViewCell.h; sourceTree = "<group>"; };
+		D8E121BB1F0379AD0016CF30 /* THNPuzzleCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPuzzleCollectionViewCell.m; sourceTree = "<group>"; };
 		D8ED5D9B1EF90CDD0046642C /* THNEditImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNEditImageViewController.h; sourceTree = "<group>"; };
 		D8ED5D9C1EF90CDD0046642C /* THNEditImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNEditImageViewController.m; sourceTree = "<group>"; };
 		D8ED5D9F1EFA0DB80046642C /* THNAssetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNAssetItem.h; sourceTree = "<group>"; };
 		D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNAssetItem.m; sourceTree = "<group>"; };
 		D8ED5DA21EFA13540046642C /* THNPhotoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoTool.h; sourceTree = "<group>"; };
 		D8ED5DA31EFA13540046642C /* THNPhotoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTool.m; sourceTree = "<group>"; };
+		D8F6C2C81F0399F600914063 /* StyleMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleMacro.h; sourceTree = "<group>"; };
+		D8F6C2CA1F03AC5800914063 /* four_style_104.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = four_style_104.plist; sourceTree = "<group>"; };
+		D8F6C2CB1F03AC5800914063 /* four_style_109.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = four_style_109.plist; sourceTree = "<group>"; };
+		D8F6C2CC1F03AC5800914063 /* four_style_110.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = four_style_110.plist; sourceTree = "<group>"; };
+		D8F6C2CD1F03AC5800914063 /* four_style_111.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = four_style_111.plist; sourceTree = "<group>"; };
+		D8F6C2CE1F03AC5800914063 /* four_style_112.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = four_style_112.plist; sourceTree = "<group>"; };
+		D8F6C2CF1F03AC5800914063 /* four_style_113.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = four_style_113.plist; sourceTree = "<group>"; };
+		D8F6C2D01F03AC5800914063 /* four_style_114.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = four_style_114.plist; sourceTree = "<group>"; };
+		D8F6C2D21F03AC5800914063 /* three_style_102.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = three_style_102.plist; sourceTree = "<group>"; };
+		D8F6C2D31F03AC5800914063 /* three_style_103.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = three_style_103.plist; sourceTree = "<group>"; };
+		D8F6C2D41F03AC5800914063 /* three_style_105.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = three_style_105.plist; sourceTree = "<group>"; };
+		D8F6C2D51F03AC5800914063 /* three_style_106.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = three_style_106.plist; sourceTree = "<group>"; };
+		D8F6C2D61F03AC5800914063 /* three_style_107.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = three_style_107.plist; sourceTree = "<group>"; };
+		D8F6C2D71F03AC5800914063 /* three_style_108.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = three_style_108.plist; sourceTree = "<group>"; };
+		D8F6C2D91F03AC5800914063 /* eight_style_135.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = eight_style_135.plist; sourceTree = "<group>"; };
+		D8F6C2DA1F03AC5800914063 /* eight_style_136.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = eight_style_136.plist; sourceTree = "<group>"; };
+		D8F6C2DB1F03AC5800914063 /* eight_style_137.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = eight_style_137.plist; sourceTree = "<group>"; };
+		D8F6C2DC1F03AC5800914063 /* eight_style_138.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = eight_style_138.plist; sourceTree = "<group>"; };
+		D8F6C2DD1F03AC5800914063 /* eight_style_139.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = eight_style_139.plist; sourceTree = "<group>"; };
+		D8F6C2DE1F03AC5800914063 /* eight_style_140.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = eight_style_140.plist; sourceTree = "<group>"; };
+		D8F6C2E01F03AC5800914063 /* one_style_100.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = one_style_100.plist; sourceTree = "<group>"; };
+		D8F6C2E11F03AC5800914063 /* one_style_101.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = one_style_101.plist; sourceTree = "<group>"; };
+		D8F6C2E21F03AC5800914063 /* one_style_102.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = one_style_102.plist; sourceTree = "<group>"; };
+		D8F6C2E31F03AC5800914063 /* one_style_103.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = one_style_103.plist; sourceTree = "<group>"; };
+		D8F6C2E51F03AC5800914063 /* six_style_122.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = six_style_122.plist; sourceTree = "<group>"; };
+		D8F6C2E61F03AC5800914063 /* six_style_123.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = six_style_123.plist; sourceTree = "<group>"; };
+		D8F6C2E71F03AC5800914063 /* six_style_124.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = six_style_124.plist; sourceTree = "<group>"; };
+		D8F6C2E81F03AC5800914063 /* six_style_125.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = six_style_125.plist; sourceTree = "<group>"; };
+		D8F6C2E91F03AC5800914063 /* six_style_126.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = six_style_126.plist; sourceTree = "<group>"; };
+		D8F6C2EA1F03AC5800914063 /* six_style_127.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = six_style_127.plist; sourceTree = "<group>"; };
+		D8F6C2EC1F03AC5800914063 /* five_style_115.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = five_style_115.plist; sourceTree = "<group>"; };
+		D8F6C2ED1F03AC5800914063 /* five_style_116.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = five_style_116.plist; sourceTree = "<group>"; };
+		D8F6C2EE1F03AC5800914063 /* five_style_117.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = five_style_117.plist; sourceTree = "<group>"; };
+		D8F6C2EF1F03AC5800914063 /* five_style_118.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = five_style_118.plist; sourceTree = "<group>"; };
+		D8F6C2F01F03AC5800914063 /* five_style_119.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = five_style_119.plist; sourceTree = "<group>"; };
+		D8F6C2F11F03AC5800914063 /* five_style_120.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = five_style_120.plist; sourceTree = "<group>"; };
+		D8F6C2F21F03AC5800914063 /* five_style_121.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = five_style_121.plist; sourceTree = "<group>"; };
+		D8F6C2F41F03AC5800914063 /* nine_style_141.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = nine_style_141.plist; sourceTree = "<group>"; };
+		D8F6C2F51F03AC5800914063 /* nine_style_142.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = nine_style_142.plist; sourceTree = "<group>"; };
+		D8F6C2F61F03AC5800914063 /* nine_style_143.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = nine_style_143.plist; sourceTree = "<group>"; };
+		D8F6C2F71F03AC5800914063 /* nine_style_144.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = nine_style_144.plist; sourceTree = "<group>"; };
+		D8F6C2F81F03AC5800914063 /* nine_style_145.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = nine_style_145.plist; sourceTree = "<group>"; };
+		D8F6C2F91F03AC5800914063 /* nine_style_146.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = nine_style_146.plist; sourceTree = "<group>"; };
+		D8F6C2FA1F03AC5800914063 /* nine_style_147.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = nine_style_147.plist; sourceTree = "<group>"; };
+		D8F6C2FC1F03AC5800914063 /* two_style_100.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = two_style_100.plist; sourceTree = "<group>"; };
+		D8F6C2FD1F03AC5800914063 /* two_style_101.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = two_style_101.plist; sourceTree = "<group>"; };
+		D8F6C2FE1F03AC5800914063 /* two_style_104.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = two_style_104.plist; sourceTree = "<group>"; };
+		D8F6C3001F03AC5800914063 /* seven_style_128.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = seven_style_128.plist; sourceTree = "<group>"; };
+		D8F6C3011F03AC5800914063 /* seven_style_129.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = seven_style_129.plist; sourceTree = "<group>"; };
+		D8F6C3021F03AC5800914063 /* seven_style_130.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = seven_style_130.plist; sourceTree = "<group>"; };
+		D8F6C3031F03AC5800914063 /* seven_style_131.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = seven_style_131.plist; sourceTree = "<group>"; };
+		D8F6C3041F03AC5800914063 /* seven_style_132.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = seven_style_132.plist; sourceTree = "<group>"; };
+		D8F6C3051F03AC5800914063 /* seven_style_133.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = seven_style_133.plist; sourceTree = "<group>"; };
+		D8F6C3061F03AC5800914063 /* seven_style_134.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = seven_style_134.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,6 +510,7 @@
 				D8B071151EF8F43D005CC051 /* ColorMacro.h */,
 				D8B071161EF8F462005CC051 /* MainMacro.h */,
 				D8B071191EF8F493005CC051 /* OtherMacro.h */,
+				D8F6C2C81F0399F600914063 /* StyleMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -466,6 +580,7 @@
 		D8B071111EF8F415005CC051 /* ImageTool */ = {
 			isa = PBXGroup;
 			children = (
+				D8E121BD1F037D6C0016CF30 /* StylePlist */,
 				D8B0711A1EF8F8DD005CC051 /* Base */,
 				D8B071121EF8F415005CC051 /* Controller */,
 				D8ED5D9E1EFA0D660046642C /* Model */,
@@ -514,6 +629,10 @@
 				D840C6BE1EFB54A00021B83E /* THNOpenAlbumButton.m */,
 				D840C6C01EFB99320021B83E /* THNPreviewPuzzleView.h */,
 				D840C6C11EFB99320021B83E /* THNPreviewPuzzleView.m */,
+				D8E121BA1F0379AD0016CF30 /* THNPuzzleCollectionViewCell.h */,
+				D8E121BB1F0379AD0016CF30 /* THNPuzzleCollectionViewCell.m */,
+				D8E121B71F03597B0016CF30 /* THNShowPuzzleView.h */,
+				D8E121B81F03597B0016CF30 /* THNShowPuzzleView.m */,
 				D847DE3E1EFBDE95007E301E /* THNHintInfoView.h */,
 				D847DE3F1EFBDE95007E301E /* THNHintInfoView.m */,
 			);
@@ -579,6 +698,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D8E121BD1F037D6C0016CF30 /* StylePlist */ = {
+			isa = PBXGroup;
+			children = (
+				D8F6C2DF1F03AC5800914063 /* One */,
+				D8F6C2FB1F03AC5800914063 /* Two */,
+				D8F6C2D11F03AC5800914063 /* Three */,
+				D8F6C2C91F03AC5800914063 /* Four */,
+				D8F6C2EB1F03AC5800914063 /* Five */,
+				D8F6C2E41F03AC5800914063 /* Six */,
+				D8F6C2FF1F03AC5800914063 /* Seven */,
+				D8F6C2D81F03AC5800914063 /* Eight */,
+				D8F6C2F31F03AC5800914063 /* Nine */,
+			);
+			path = StylePlist;
+			sourceTree = "<group>";
+		};
 		D8ED5D9E1EFA0D660046642C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +721,122 @@
 				D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D8F6C2C91F03AC5800914063 /* Four */ = {
+			isa = PBXGroup;
+			children = (
+				D8F6C2CA1F03AC5800914063 /* four_style_104.plist */,
+				D8F6C2CB1F03AC5800914063 /* four_style_109.plist */,
+				D8F6C2CC1F03AC5800914063 /* four_style_110.plist */,
+				D8F6C2CD1F03AC5800914063 /* four_style_111.plist */,
+				D8F6C2CE1F03AC5800914063 /* four_style_112.plist */,
+				D8F6C2CF1F03AC5800914063 /* four_style_113.plist */,
+				D8F6C2D01F03AC5800914063 /* four_style_114.plist */,
+			);
+			path = Four;
+			sourceTree = "<group>";
+		};
+		D8F6C2D11F03AC5800914063 /* Three */ = {
+			isa = PBXGroup;
+			children = (
+				D8F6C2D21F03AC5800914063 /* three_style_102.plist */,
+				D8F6C2D31F03AC5800914063 /* three_style_103.plist */,
+				D8F6C2D41F03AC5800914063 /* three_style_105.plist */,
+				D8F6C2D51F03AC5800914063 /* three_style_106.plist */,
+				D8F6C2D61F03AC5800914063 /* three_style_107.plist */,
+				D8F6C2D71F03AC5800914063 /* three_style_108.plist */,
+			);
+			path = Three;
+			sourceTree = "<group>";
+		};
+		D8F6C2D81F03AC5800914063 /* Eight */ = {
+			isa = PBXGroup;
+			children = (
+				D8F6C2D91F03AC5800914063 /* eight_style_135.plist */,
+				D8F6C2DA1F03AC5800914063 /* eight_style_136.plist */,
+				D8F6C2DB1F03AC5800914063 /* eight_style_137.plist */,
+				D8F6C2DC1F03AC5800914063 /* eight_style_138.plist */,
+				D8F6C2DD1F03AC5800914063 /* eight_style_139.plist */,
+				D8F6C2DE1F03AC5800914063 /* eight_style_140.plist */,
+			);
+			path = Eight;
+			sourceTree = "<group>";
+		};
+		D8F6C2DF1F03AC5800914063 /* One */ = {
+			isa = PBXGroup;
+			children = (
+				D8F6C2E01F03AC5800914063 /* one_style_100.plist */,
+				D8F6C2E11F03AC5800914063 /* one_style_101.plist */,
+				D8F6C2E21F03AC5800914063 /* one_style_102.plist */,
+				D8F6C2E31F03AC5800914063 /* one_style_103.plist */,
+			);
+			path = One;
+			sourceTree = "<group>";
+		};
+		D8F6C2E41F03AC5800914063 /* Six */ = {
+			isa = PBXGroup;
+			children = (
+				D8F6C2E51F03AC5800914063 /* six_style_122.plist */,
+				D8F6C2E61F03AC5800914063 /* six_style_123.plist */,
+				D8F6C2E71F03AC5800914063 /* six_style_124.plist */,
+				D8F6C2E81F03AC5800914063 /* six_style_125.plist */,
+				D8F6C2E91F03AC5800914063 /* six_style_126.plist */,
+				D8F6C2EA1F03AC5800914063 /* six_style_127.plist */,
+			);
+			path = Six;
+			sourceTree = "<group>";
+		};
+		D8F6C2EB1F03AC5800914063 /* Five */ = {
+			isa = PBXGroup;
+			children = (
+				D8F6C2EC1F03AC5800914063 /* five_style_115.plist */,
+				D8F6C2ED1F03AC5800914063 /* five_style_116.plist */,
+				D8F6C2EE1F03AC5800914063 /* five_style_117.plist */,
+				D8F6C2EF1F03AC5800914063 /* five_style_118.plist */,
+				D8F6C2F01F03AC5800914063 /* five_style_119.plist */,
+				D8F6C2F11F03AC5800914063 /* five_style_120.plist */,
+				D8F6C2F21F03AC5800914063 /* five_style_121.plist */,
+			);
+			path = Five;
+			sourceTree = "<group>";
+		};
+		D8F6C2F31F03AC5800914063 /* Nine */ = {
+			isa = PBXGroup;
+			children = (
+				D8F6C2F41F03AC5800914063 /* nine_style_141.plist */,
+				D8F6C2F51F03AC5800914063 /* nine_style_142.plist */,
+				D8F6C2F61F03AC5800914063 /* nine_style_143.plist */,
+				D8F6C2F71F03AC5800914063 /* nine_style_144.plist */,
+				D8F6C2F81F03AC5800914063 /* nine_style_145.plist */,
+				D8F6C2F91F03AC5800914063 /* nine_style_146.plist */,
+				D8F6C2FA1F03AC5800914063 /* nine_style_147.plist */,
+			);
+			path = Nine;
+			sourceTree = "<group>";
+		};
+		D8F6C2FB1F03AC5800914063 /* Two */ = {
+			isa = PBXGroup;
+			children = (
+				D8F6C2FC1F03AC5800914063 /* two_style_100.plist */,
+				D8F6C2FD1F03AC5800914063 /* two_style_101.plist */,
+				D8F6C2FE1F03AC5800914063 /* two_style_104.plist */,
+			);
+			path = Two;
+			sourceTree = "<group>";
+		};
+		D8F6C2FF1F03AC5800914063 /* Seven */ = {
+			isa = PBXGroup;
+			children = (
+				D8F6C3001F03AC5800914063 /* seven_style_128.plist */,
+				D8F6C3011F03AC5800914063 /* seven_style_129.plist */,
+				D8F6C3021F03AC5800914063 /* seven_style_130.plist */,
+				D8F6C3031F03AC5800914063 /* seven_style_131.plist */,
+				D8F6C3041F03AC5800914063 /* seven_style_132.plist */,
+				D8F6C3051F03AC5800914063 /* seven_style_133.plist */,
+				D8F6C3061F03AC5800914063 /* seven_style_134.plist */,
+			);
+			path = Seven;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -650,6 +901,59 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F6C3071F03AC8400914063 /* one_style_100.plist in Resources */,
+				D8F6C3081F03AC8400914063 /* one_style_101.plist in Resources */,
+				D8F6C3091F03AC8400914063 /* one_style_102.plist in Resources */,
+				D8F6C30A1F03AC8400914063 /* one_style_103.plist in Resources */,
+				D8F6C30B1F03AC8400914063 /* two_style_100.plist in Resources */,
+				D8F6C30C1F03AC8400914063 /* two_style_101.plist in Resources */,
+				D8F6C30D1F03AC8400914063 /* two_style_104.plist in Resources */,
+				D8F6C30E1F03AC8400914063 /* three_style_102.plist in Resources */,
+				D8F6C30F1F03AC8400914063 /* three_style_103.plist in Resources */,
+				D8F6C3101F03AC8400914063 /* three_style_105.plist in Resources */,
+				D8F6C3111F03AC8400914063 /* three_style_106.plist in Resources */,
+				D8F6C3121F03AC8400914063 /* three_style_107.plist in Resources */,
+				D8F6C3131F03AC8400914063 /* three_style_108.plist in Resources */,
+				D8F6C3141F03AC8400914063 /* four_style_104.plist in Resources */,
+				D8F6C3151F03AC8400914063 /* four_style_109.plist in Resources */,
+				D8F6C3161F03AC8400914063 /* four_style_110.plist in Resources */,
+				D8F6C3171F03AC8400914063 /* four_style_111.plist in Resources */,
+				D8F6C3181F03AC8400914063 /* four_style_112.plist in Resources */,
+				D8F6C3191F03AC8400914063 /* four_style_113.plist in Resources */,
+				D8F6C31A1F03AC8400914063 /* four_style_114.plist in Resources */,
+				D8F6C31B1F03AC8400914063 /* five_style_115.plist in Resources */,
+				D8F6C31C1F03AC8400914063 /* five_style_116.plist in Resources */,
+				D8F6C31D1F03AC8400914063 /* five_style_117.plist in Resources */,
+				D8F6C31E1F03AC8400914063 /* five_style_118.plist in Resources */,
+				D8F6C31F1F03AC8400914063 /* five_style_119.plist in Resources */,
+				D8F6C3201F03AC8400914063 /* five_style_120.plist in Resources */,
+				D8F6C3211F03AC8400914063 /* five_style_121.plist in Resources */,
+				D8F6C3221F03AC8400914063 /* six_style_122.plist in Resources */,
+				D8F6C3231F03AC8400914063 /* six_style_123.plist in Resources */,
+				D8F6C3241F03AC8400914063 /* six_style_124.plist in Resources */,
+				D8F6C3251F03AC8400914063 /* six_style_125.plist in Resources */,
+				D8F6C3261F03AC8400914063 /* six_style_126.plist in Resources */,
+				D8F6C3271F03AC8400914063 /* six_style_127.plist in Resources */,
+				D8F6C3281F03AC8400914063 /* seven_style_128.plist in Resources */,
+				D8F6C3291F03AC8400914063 /* seven_style_129.plist in Resources */,
+				D8F6C32A1F03AC8400914063 /* seven_style_130.plist in Resources */,
+				D8F6C32B1F03AC8400914063 /* seven_style_131.plist in Resources */,
+				D8F6C32C1F03AC8400914063 /* seven_style_132.plist in Resources */,
+				D8F6C32D1F03AC8400914063 /* seven_style_133.plist in Resources */,
+				D8F6C32E1F03AC8400914063 /* seven_style_134.plist in Resources */,
+				D8F6C32F1F03AC8400914063 /* eight_style_135.plist in Resources */,
+				D8F6C3301F03AC8400914063 /* eight_style_136.plist in Resources */,
+				D8F6C3311F03AC8400914063 /* eight_style_137.plist in Resources */,
+				D8F6C3321F03AC8400914063 /* eight_style_138.plist in Resources */,
+				D8F6C3331F03AC8400914063 /* eight_style_139.plist in Resources */,
+				D8F6C3341F03AC8400914063 /* eight_style_140.plist in Resources */,
+				D8F6C3351F03AC8400914063 /* nine_style_141.plist in Resources */,
+				D8F6C3361F03AC8400914063 /* nine_style_142.plist in Resources */,
+				D8F6C3371F03AC8400914063 /* nine_style_143.plist in Resources */,
+				D8F6C3381F03AC8400914063 /* nine_style_144.plist in Resources */,
+				D8F6C3391F03AC8400914063 /* nine_style_145.plist in Resources */,
+				D8F6C33A1F03AC8400914063 /* nine_style_146.plist in Resources */,
+				D8F6C33B1F03AC8400914063 /* nine_style_147.plist in Resources */,
 				D8D9C2551EF278C5000688C6 /* LaunchScreen.storyboard in Resources */,
 				D8D9C2521EF278C5000688C6 /* Assets.xcassets in Resources */,
 				D8D9C2501EF278C5000688C6 /* Main.storyboard in Resources */,
@@ -722,10 +1026,12 @@
 				D8ED5D881EF906060046642C /* NSString+TimeDate.m in Sources */,
 				D847DE431EFCDEDC007E301E /* THNDoneImageViewController.m in Sources */,
 				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
+				D8E121BC1F0379AD0016CF30 /* THNPuzzleCollectionViewCell.m in Sources */,
 				D8ED5D8A1EF906060046642C /* NSTimer+Addition.m in Sources */,
 				D8ED5D8C1EF906060046642C /* UIBarButtonItem+Helper.m in Sources */,
 				D8ED5D8E1EF906060046642C /* UIColor+Extension.m in Sources */,
 				D8ED5D901EF906060046642C /* UIImage+Helper.m in Sources */,
+				D8E121B91F03597B0016CF30 /* THNShowPuzzleView.m in Sources */,
 				D8ED5D921EF906060046642C /* UIImage+QRCode.m in Sources */,
 				D8ED5D941EF906060046642C /* UIImageView+SDWedImage.m in Sources */,
 				D847DE6F1F00C1DA007E301E /* PostersViewController.m in Sources */,

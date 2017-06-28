@@ -11,12 +11,16 @@
 #import "UIColor+Extension.h"
 
 #import "THNEditImageViewController.h"
+#import "THNPuzzleCollectionViewCell.h"
 
-static NSString *const PreviewItemCollectionCellId = @"previewItemCollectionCellId";
+static NSString *const PreviewItemCollectionCellId = @"THNPuzzleCollectionViewCellId";
 
-@interface THNPreviewPuzzleView ()
+@interface THNPreviewPuzzleView () <
+    UICollectionViewDelegate,
+    UICollectionViewDataSource
+>
 
-@property (nonatomic, strong) NSMutableArray<THNAssetItem *> *photoArray;
+@property (nonatomic, strong) NSMutableArray *photoArray;
 
 @end
 
@@ -40,9 +44,8 @@ static NSString *const PreviewItemCollectionCellId = @"previewItemCollectionCell
 }
 
 #pragma mark - 绑定拼图数据
-- (void)thn_setPreviewPuzzlePhotoData:(NSMutableArray<THNAssetItem *> *)photoData {
+- (void)thn_setPreviewPuzzlePhotoData:(NSMutableArray *)photoData {
     self.photoArray = [NSMutableArray arrayWithArray:photoData];
-    NSLog(@"=============  拼图图片： %@", self.photoArray);
     [self.previewCollection reloadData];
 }
 
@@ -61,7 +64,7 @@ static NSString *const PreviewItemCollectionCellId = @"previewItemCollectionCell
         _previewCollection.delegate = self;
         _previewCollection.dataSource = self;
         _previewCollection.showsHorizontalScrollIndicator = NO;
-        [_previewCollection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:PreviewItemCollectionCellId];
+        [_previewCollection registerClass:[THNPuzzleCollectionViewCell class] forCellWithReuseIdentifier:PreviewItemCollectionCellId];
     }
     return _previewCollection;
 }
@@ -69,46 +72,38 @@ static NSString *const PreviewItemCollectionCellId = @"previewItemCollectionCell
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     switch (self.photoArray.count) {
         case 1:
-            return 3;
+            return 4;
             break;
         case 2:
-            return 6;
+            return 3;
             break;
         case 3:
-            return 2;
+            return 6;
             break;
         case 4:
             return 7;
             break;
         case 5:
-            return 8;
+            return 7;
             break;
         case 6:
-            return 10;
-            break;
-        case 7:
-            return 1;
-            break;
-        case 8:
-            return 5;
-            break;
-        case 9:
-            return 4;
+            return 6;
             break;
     }
     return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PreviewItemCollectionCellId
-                                                                           forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    THNPuzzleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PreviewItemCollectionCellId
+                                                                                  forIndexPath:indexPath];
+    
+    if (self.photoArray.count) {
+        [cell thn_setPreviewWithPhotoAssetArray:self.photoArray index:indexPath.row];
+    }
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"=============  选中了第 %zi 个拼图样式", indexPath.row);
-    
     THNEditImageViewController *editImageController = [[THNEditImageViewController alloc] init];
     [self.supViewController pushViewController:editImageController animated:YES];
 }

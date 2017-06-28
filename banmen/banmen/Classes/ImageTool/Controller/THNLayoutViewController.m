@@ -99,7 +99,7 @@
     });
 }
 
-#pragma mark - KVO监测选中照片的变化
+#pragma mark - KVO监测选中照片之后的变化
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"selectPhotoItemArray"]) {
         if ([self mutableArrayValueForKey:@"selectPhotoItemArray"].count != 0) {
@@ -109,7 +109,8 @@
             [self thn_hiddenPreviewPuzzleView:YES];
         }
         
-        [self.previewPuzzleView thn_setPreviewPuzzlePhotoData:[self mutableArrayValueForKey:@"selectPhotoItemArray"]];
+        NSMutableArray *itemArray = [self mutableArrayValueForKey:@"selectPhotoItemArray"];
+        [self.previewPuzzleView thn_setPreviewPuzzlePhotoData:itemArray];
     }
 }
 

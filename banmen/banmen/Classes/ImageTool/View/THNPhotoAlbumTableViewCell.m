@@ -30,10 +30,9 @@
 - (void)thn_getPhotoAsset:(PHAsset *)asset {
     PHImageManager *imageManager = [PHImageManager defaultManager];
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-    options.resizeMode = PHImageRequestOptionsResizeModeFast;
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
     
-    CGSize imageSize = CGSizeMake(asset.pixelWidth/20, asset.pixelHeight/20);
+    CGSize imageSize = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
     [imageManager requestImageForAsset:asset targetSize:imageSize contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         self.coverImageView.image = result;
     }];
