@@ -107,7 +107,7 @@ static NSString *const PreviewItemCollectionCellId = @"previewItemCollectionCell
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"=============  选中了第 %zi 个", indexPath.row);
+    NSLog(@"=============  选中了第 %zi 个拼图样式", indexPath.row);
     
     THNEditImageViewController *editImageController = [[THNEditImageViewController alloc] init];
     [self.supViewController pushViewController:editImageController animated:YES];

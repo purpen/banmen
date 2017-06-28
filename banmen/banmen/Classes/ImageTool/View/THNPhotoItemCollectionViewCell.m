@@ -21,6 +21,7 @@
 #pragma mark - 绑定图片数据
 - (void)thn_setPhotoAssetItemImageData:(THNAssetItem *)assetItem {
     [self thn_getPhotoAsset:assetItem.asset];
+    [self setSelected:assetItem.selected];
 }
 
 #pragma mark - 获取图片资源的图像
