@@ -53,6 +53,8 @@
 		F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F51F039FA6004915E3 /* CooperationInProductViewController.m */; };
 		F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F81F039FC2004915E3 /* SalesAndTrendsViewController.m */; };
 		F55DD7FC1F03B2B7004915E3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7FB1F03B2B7004915E3 /* BaseViewController.m */; };
+		F55DD8011F03C161004915E3 /* THNPuzzleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7FE1F03C161004915E3 /* THNPuzzleCollectionViewCell.m */; };
+		F55DD8021F03C161004915E3 /* THNShowPuzzleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD8001F03C161004915E3 /* THNShowPuzzleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +152,11 @@
 		F55DD7F81F039FC2004915E3 /* SalesAndTrendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalesAndTrendsViewController.m; sourceTree = "<group>"; };
 		F55DD7FA1F03B2B7004915E3 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		F55DD7FB1F03B2B7004915E3 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		F55DD7FD1F03C161004915E3 /* THNPuzzleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPuzzleCollectionViewCell.h; sourceTree = "<group>"; };
+		F55DD7FE1F03C161004915E3 /* THNPuzzleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPuzzleCollectionViewCell.m; sourceTree = "<group>"; };
+		F55DD7FF1F03C161004915E3 /* THNShowPuzzleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNShowPuzzleView.h; sourceTree = "<group>"; };
+		F55DD8001F03C161004915E3 /* THNShowPuzzleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNShowPuzzleView.m; sourceTree = "<group>"; };
+		F55DD8031F03C177004915E3 /* StyleMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +419,7 @@
 		D8B0710B1EF8F415005CC051 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
+				F55DD8031F03C177004915E3 /* StyleMacro.h */,
 				D8B071151EF8F43D005CC051 /* ColorMacro.h */,
 				D8B071161EF8F462005CC051 /* MainMacro.h */,
 				D8B071191EF8F493005CC051 /* OtherMacro.h */,
@@ -522,6 +530,10 @@
 		D8B071141EF8F415005CC051 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F55DD7FD1F03C161004915E3 /* THNPuzzleCollectionViewCell.h */,
+				F55DD7FE1F03C161004915E3 /* THNPuzzleCollectionViewCell.m */,
+				F55DD7FF1F03C161004915E3 /* THNShowPuzzleView.h */,
+				F55DD8001F03C161004915E3 /* THNShowPuzzleView.m */,
 				D8D378DB1EFA4C8500C89889 /* THNPhotoListView.h */,
 				D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */,
 				D8D378DE1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.h */,
@@ -749,9 +761,11 @@
 				D8ED5D841EF906060046642C /* NSString+Helper.m in Sources */,
 				D847DE401EFBDE95007E301E /* THNHintInfoView.m in Sources */,
 				D8ED5D861EF906060046642C /* NSString+JSON.m in Sources */,
+				F55DD8021F03C161004915E3 /* THNShowPuzzleView.m in Sources */,
 				D8ED5D881EF906060046642C /* NSString+TimeDate.m in Sources */,
 				D847DE431EFCDEDC007E301E /* THNDoneImageViewController.m in Sources */,
 				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
+				F55DD8011F03C161004915E3 /* THNPuzzleCollectionViewCell.m in Sources */,
 				D8ED5D8A1EF906060046642C /* NSTimer+Addition.m in Sources */,
 				D8ED5D8C1EF906060046642C /* UIBarButtonItem+Helper.m in Sources */,
 				D8ED5D8E1EF906060046642C /* UIColor+Extension.m in Sources */,
