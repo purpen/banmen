@@ -12,5 +12,6 @@
 
 + (UIColor *)colorWithHexString:(NSString *)color;
 + (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha;
++ (UIColor *)banmenColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 
 @end

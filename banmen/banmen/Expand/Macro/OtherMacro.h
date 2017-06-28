@@ -16,4 +16,15 @@
 #define BOUNDS_WIDTH        self.bounds.size.width
 #define BOUNDS_HEIGHT       self.bounds.size.height
 
+typedef enum {
+    product = 0,
+    sales = 1
+} HomeCategoryType;
+
+//首页第一个滑动条的高度
+#define XMGTitilesViewH 44;
+
+//首页第一个滑动条的y值
+#define XMGTitilesViewY 1;
+
 #endif /* OtherMacro_h */

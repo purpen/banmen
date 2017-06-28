@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "AppDelegate+Guide.h"
 
 static const NSTimeInterval MAX_DISMISSTIME = 2;
 
@@ -21,7 +22,7 @@ static const NSTimeInterval MAX_DISMISSTIME = 2;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self thn_initSVProgressHUDArgument];
-    
+    [self windowShow];
     return YES;
 }
 

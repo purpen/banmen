@@ -49,6 +49,10 @@
 		D8ED5D9D1EF90CDD0046642C /* THNEditImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5D9C1EF90CDD0046642C /* THNEditImageViewController.m */; };
 		D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */; };
 		D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA31EFA13540046642C /* THNPhotoTool.m */; };
+		F55DD7F31F039EFB004915E3 /* AppDelegate+Guide.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F21F039EFB004915E3 /* AppDelegate+Guide.m */; };
+		F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F51F039FA6004915E3 /* CooperationInProductViewController.m */; };
+		F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F81F039FC2004915E3 /* SalesAndTrendsViewController.m */; };
+		F55DD7FC1F03B2B7004915E3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7FB1F03B2B7004915E3 /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +142,14 @@
 		D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNAssetItem.m; sourceTree = "<group>"; };
 		D8ED5DA21EFA13540046642C /* THNPhotoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoTool.h; sourceTree = "<group>"; };
 		D8ED5DA31EFA13540046642C /* THNPhotoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTool.m; sourceTree = "<group>"; };
+		F55DD7F11F039EFB004915E3 /* AppDelegate+Guide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Guide.h"; sourceTree = "<group>"; };
+		F55DD7F21F039EFB004915E3 /* AppDelegate+Guide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Guide.m"; sourceTree = "<group>"; };
+		F55DD7F41F039FA6004915E3 /* CooperationInProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CooperationInProductViewController.h; sourceTree = "<group>"; };
+		F55DD7F51F039FA6004915E3 /* CooperationInProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CooperationInProductViewController.m; sourceTree = "<group>"; };
+		F55DD7F71F039FC2004915E3 /* SalesAndTrendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalesAndTrendsViewController.h; sourceTree = "<group>"; };
+		F55DD7F81F039FC2004915E3 /* SalesAndTrendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalesAndTrendsViewController.m; sourceTree = "<group>"; };
+		F55DD7FA1F03B2B7004915E3 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		F55DD7FB1F03B2B7004915E3 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +198,8 @@
 				D847DE471F00C1DA007E301E /* BaseNavController.m */,
 				D847DE481F00C1DA007E301E /* BaseTarBarViewController.h */,
 				D847DE491F00C1DA007E301E /* BaseTarBarViewController.m */,
+				F55DD7FA1F03B2B7004915E3 /* BaseViewController.h */,
+				F55DD7FB1F03B2B7004915E3 /* BaseViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -233,6 +247,10 @@
 			children = (
 				D847DE511F00C1DA007E301E /* HomeViewController.h */,
 				D847DE521F00C1DA007E301E /* HomeViewController.m */,
+				F55DD7F41F039FA6004915E3 /* CooperationInProductViewController.h */,
+				F55DD7F51F039FA6004915E3 /* CooperationInProductViewController.m */,
+				F55DD7F71F039FC2004915E3 /* SalesAndTrendsViewController.h */,
+				F55DD7F81F039FC2004915E3 /* SalesAndTrendsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -552,6 +570,7 @@
 		D8D9C2441EF278C5000688C6 /* banmen */ = {
 			isa = PBXGroup;
 			children = (
+				F55DD7F01F039EFB004915E3 /* AppDelegate */,
 				D847DE441F00C1DA007E301E /* Base */,
 				D847DE4E1F00C1DA007E301E /* Modules */,
 				D8B071101EF8F415005CC051 /* Classes */,
@@ -586,6 +605,15 @@
 				D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F55DD7F01F039EFB004915E3 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				F55DD7F11F039EFB004915E3 /* AppDelegate+Guide.h */,
+				F55DD7F21F039EFB004915E3 /* AppDelegate+Guide.m */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -711,6 +739,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F55DD7F31F039EFB004915E3 /* AppDelegate+Guide.m in Sources */,
+				F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */,
 				D847DE6C1F00C1DA007E301E /* BaseTarBarViewController.m in Sources */,
 				D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */,
 				D847DE6D1F00C1DA007E301E /* BaseTarBar.m in Sources */,
@@ -728,6 +758,7 @@
 				D8ED5D901EF906060046642C /* UIImage+Helper.m in Sources */,
 				D8ED5D921EF906060046642C /* UIImage+QRCode.m in Sources */,
 				D8ED5D941EF906060046642C /* UIImageView+SDWedImage.m in Sources */,
+				F55DD7FC1F03B2B7004915E3 /* BaseViewController.m in Sources */,
 				D847DE6F1F00C1DA007E301E /* PostersViewController.m in Sources */,
 				D8ED5D961EF906060046642C /* UILable+Frame.m in Sources */,
 				D847DE711F00C1DA007E301E /* UserViewController.m in Sources */,
@@ -745,6 +776,7 @@
 				D8D9C24A1EF278C5000688C6 /* AppDelegate.m in Sources */,
 				D847DE701F00C1DA007E301E /* RepositoryViewController.m in Sources */,
 				D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */,
+				F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */,
 				D8D9C2471EF278C5000688C6 /* main.m in Sources */,
 				D8B071231EF8FB80005CC051 /* THNLayoutViewController.m in Sources */,
 				D847DE6E1F00C1DA007E301E /* HomeViewController.m in Sources */,
