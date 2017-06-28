@@ -21,16 +21,16 @@
 #pragma mark - 绑定图片数据
 - (void)thn_setPhotoAssetItemImageData:(THNAssetItem *)assetItem {
     [self thn_getPhotoAsset:assetItem.asset];
+    [self setSelected:assetItem.selected];
 }
 
 #pragma mark - 获取图片资源的图像
 - (void)thn_getPhotoAsset:(PHAsset *)asset {
     PHImageManager *imageManager = [PHImageManager defaultManager];
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-    options.resizeMode = PHImageRequestOptionsResizeModeFast;
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
     
-    CGSize imageSize = CGSizeMake(asset.pixelWidth/10, asset.pixelHeight/10);
+    CGSize imageSize = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
     [imageManager requestImageForAsset:asset targetSize:imageSize contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         self.photoImageView.image = result;
     }];

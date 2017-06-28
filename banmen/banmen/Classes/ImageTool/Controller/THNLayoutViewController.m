@@ -26,7 +26,7 @@
 
 @property (nonatomic, strong) NSMutableArray<THNAssetItem *> *assets;
 @property (nonatomic, retain) NSMutableArray<THNPhotoAlbumList *> *photoAblumTitle;
-@property (nonatomic, strong) NSMutableArray<THNAssetItem *> *selectPhotoItemArray;
+@property (nonatomic, strong) NSMutableArray *selectPhotoItemArray;
 @property (nonatomic, strong) THNPhotoAlbumList *selectedPhotoAblum;
 @property (nonatomic, strong) THNPhotoListView *photoListView;
 @property (nonatomic, strong) THNPreviewPuzzleView *previewPuzzleView;
@@ -44,6 +44,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.selectPhotoItemArray = [NSMutableArray array];
+    [self addObserver:self forKeyPath:@"selectPhotoItemArray" options:NSKeyValueObservingOptionNew context:NULL];
     
     [self thn_hiddenNavTitle:YES];
     [self thn_getPhotoAlbumPermissions];
@@ -69,6 +72,8 @@
 
 #pragma mark - 获取所有的相册资源
 - (void)thn_getPhotoAlbumData {
+    [[self mutableArrayValueForKey:@"selectPhotoItemArray"] removeAllObjects];
+    
     NSMutableArray<THNAssetItem *> *assets = [NSMutableArray array];
     
     self.photoAblumTitle = [NSMutableArray arrayWithArray:[[THNPhotoTool sharePhotoTool] thn_getPhotoAlbumList]];
@@ -92,6 +97,21 @@
             [self thn_setControllerViewUI];
         });
     });
+}
+
+#pragma mark - KVO监测选中照片之后的变化
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"selectPhotoItemArray"]) {
+        if ([self mutableArrayValueForKey:@"selectPhotoItemArray"].count != 0) {
+            [self thn_hiddenPreviewPuzzleView:NO];
+            
+        } else {
+            [self thn_hiddenPreviewPuzzleView:YES];
+        }
+        
+        NSMutableArray *itemArray = [self mutableArrayValueForKey:@"selectPhotoItemArray"];
+        [self.previewPuzzleView thn_setPreviewPuzzlePhotoData:itemArray];
+    }
 }
 
 #pragma mark - 加载视图控件
@@ -132,28 +152,15 @@
  选择了图片
  */
 - (void)thn_didSelectItemAtPhotoList:(THNAssetItem *)item {
-    [self.selectPhotoItemArray addObject:item];
-    [self thn_LoadPuzzlePhotoData:self.selectPhotoItemArray];
+    [[self mutableArrayValueForKey:@"selectPhotoItemArray"] addObject:item];
 }
 
 /**
  取消选择的图片
  */
 - (void)thn_didDeselectItemAtPhotoList:(THNAssetItem *)item {
-    [self.selectPhotoItemArray removeObject:item];
-    [self thn_LoadPuzzlePhotoData:self.selectPhotoItemArray];
-}
-
-#pragma mark - 加载拼图预览
-- (void)thn_LoadPuzzlePhotoData:(NSMutableArray *)photoData {
-    if (photoData.count == 0) {
-        [self thn_hiddenPreviewPuzzleView:YES];
-        [self thn_hiddenNavTitle:YES];
-    } else {
-        [self thn_hiddenPreviewPuzzleView:NO];
-        [self thn_hiddenNavTitle:NO];
-    }
-    [self.previewPuzzleView thn_setPreviewPuzzlePhotoData:photoData];
+    NSInteger index = [[self mutableArrayValueForKey:@"selectPhotoItemArray"] indexOfObject:item];
+    [[self mutableArrayValueForKey:@"selectPhotoItemArray"] removeObjectAtIndex:index];
 }
 
 #pragma mark - 拼图预览视图
@@ -167,6 +174,8 @@
 }
 
 - (void)thn_hiddenPreviewPuzzleView:(BOOL)show {
+    [self thn_hiddenNavTitle:show];
+    
     [UIView animateWithDuration:.2 animations:^{
         self.previewPuzzleView.hidden = show;
         self.previewPuzzleView.alpha = show ? 0 : 1;
@@ -201,12 +210,9 @@
     }];
 }
 
-#pragma makr - NSMutableArray
-- (NSMutableArray<THNAssetItem *> *)selectPhotoItemArray {
-    if (!_selectPhotoItemArray) {
-        _selectPhotoItemArray = [NSMutableArray array];
-    }
-    return _selectPhotoItemArray;
+#pragma mark ---
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"selectPhotoItemArray" context:NULL];
 }
 
 @end

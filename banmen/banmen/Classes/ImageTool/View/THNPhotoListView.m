@@ -13,7 +13,7 @@
 
 static NSString *const PhotoAlbumTableCellId = @"THNPhotoAlbumTableViewCellId";
 static NSString *const PhotoItemCollectionCellId = @"THNPhotoItemCollectionViewCellId";
-static NSInteger const kMaxSelectPhotoItem = 9;
+static NSInteger const kMaxSelectPhotoItem = 6;
 
 @interface THNPhotoListView () <THNOpenAlbumButtonClickDelegate> {
     NSInteger _selectPhotoItem;
@@ -146,6 +146,8 @@ static NSInteger const kMaxSelectPhotoItem = 9;
     
     [self.photoAssetArray removeAllObjects];
     
+    _selectPhotoItem = selectedArray.count;
+    
     __block NSInteger index = 0;
     [selectedPhotoArray enumerateObjectsUsingBlock:^(PHAsset *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (![selectedIdentifierArray containsObject:obj.localIdentifier]) {
@@ -201,7 +203,6 @@ static NSInteger const kMaxSelectPhotoItem = 9;
         _photoColleciton.backgroundColor = [UIColor colorWithHexString:kColorPhotoAlbum];
         _photoColleciton.delegate = self;
         _photoColleciton.dataSource = self;
-        _photoColleciton.allowsMultipleSelection = YES;
         [_photoColleciton registerClass:[THNPhotoItemCollectionViewCell class] forCellWithReuseIdentifier:PhotoItemCollectionCellId];
     }
     return _photoColleciton;
@@ -221,21 +222,29 @@ static NSInteger const kMaxSelectPhotoItem = 9;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (_selectPhotoItem == kMaxSelectPhotoItem) {
-        [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-        [SVProgressHUD showInfoWithStatus:@"最多选择 9 张照片"];
-        return;
+    THNAssetItem *item = self.photoAssetArray[indexPath.row];
+    item.selected = !item.selected;
+    
+    if (item.selected) {
+        if (_selectPhotoItem == kMaxSelectPhotoItem) {
+            item.selected = !item.selected;
+            [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"最多选择 %zi 张照片", _selectPhotoItem]];
+            [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            return;
+        }
+        [self thn_didSelectPhotoItem:self.photoAssetArray[indexPath.row]];
+        [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+        
+    } else {
+        [self thn_didDeselectPhotoItem:self.photoAssetArray[indexPath.row]];
+        [collectionView reloadItemsAtIndexPaths:@[indexPath]];
     }
-    [self thn_didSelectPhotoItem:self.photoAssetArray[indexPath.row]];
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self thn_didDeselectPhotoItem:self.photoAssetArray[indexPath.row]];
 }
 
 #pragma mark - 选择了照片
 - (void)thn_didSelectPhotoItem:(THNAssetItem *)item {
     _selectPhotoItem += 1;
+    
     if ([self.delegate respondsToSelector:@selector(thn_didSelectItemAtPhotoList:)]) {
         [self.delegate thn_didSelectItemAtPhotoList:item];
     }
@@ -244,6 +253,7 @@ static NSInteger const kMaxSelectPhotoItem = 9;
 #pragma mark - 取消选择照片
 - (void)thn_didDeselectPhotoItem:(THNAssetItem *)item {
     _selectPhotoItem -= 1;
+
     if ([self.delegate respondsToSelector:@selector(thn_didDeselectItemAtPhotoList:)]) {
         [self.delegate thn_didDeselectItemAtPhotoList:item];
     }
