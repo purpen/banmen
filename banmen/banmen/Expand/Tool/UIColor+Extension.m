@@ -48,4 +48,8 @@
     return [UIColor colorWithHexString:color alpha:1.f];
 }
 
++(UIColor *)banmenColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha{
+    return [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
+}
+
 @end

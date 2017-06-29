@@ -24,6 +24,11 @@
 //    [self.view addGestureRecognizer:pan];
 }
 
++(void)initialize{
+    UINavigationBar *bar = [UINavigationBar appearance];
+    bar.translucent = NO;
+}
+
 #pragma mark - 手势代理方法
 // 是否开始触发手势
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer

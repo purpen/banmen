@@ -1,13 +1,16 @@
 //
-//  HomeViewController.h
+//  AppDelegate+Guide.h
 //  banmen
 //
 //  Created by dong on 2017/6/19.
 //  Copyright © 2017年 banmen. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "AppDelegate.h"
 
-@interface HomeViewController : BaseViewController
+@interface AppDelegate (Guide)
+
+
+-(void)windowShow;
 
 @end
