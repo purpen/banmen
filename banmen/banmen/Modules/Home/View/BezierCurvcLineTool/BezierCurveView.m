@@ -1,9 +1,7 @@
+//  banmen
 //
-//  BezierCurveView.m
-//  BezierCurveLineDemo
-//
-//  Created by mac on 16/7/20.
-//  Copyright © 2016年 xiayuanquan. All rights reserved.
+//  Created by dong on 2017/6/29.
+//  Copyright © 2017年 banmen. All rights reserved.
 //
 
 
@@ -39,6 +37,7 @@ static CGRect myFrame;
  *  画坐标轴
  */
 -(void)drawXYLine:(NSMutableArray *)x_names isBg:(BOOL)flag{
+    
     if (flag) {
         // 画出背景格子线
         UIBezierPath *bgPath = [UIBezierPath bezierPath];
@@ -62,9 +61,8 @@ static CGRect myFrame;
         bgShapeLayer.strokeColor = XYQColor(235, 234, 237).CGColor;
         bgShapeLayer.fillColor = [UIColor clearColor].CGColor;
         bgShapeLayer.borderWidth = 1.0;
-        [self.layer addSublayer:bgShapeLayer];
+        [self.subviews[0].layer addSublayer:bgShapeLayer];
     }
-    
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     
@@ -140,7 +138,7 @@ static CGRect myFrame;
     shapeLayer.strokeColor = [UIColor blackColor].CGColor;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
     shapeLayer.borderWidth = 2.0;
-    [self.layer addSublayer:shapeLayer];
+    [self.subviews[0].layer addSublayer:shapeLayer];
 }
 
 
