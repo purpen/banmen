@@ -21,6 +21,13 @@ typedef enum {
     sales = 1
 } HomeCategoryType;
 
+typedef enum {
+    sale = 0,
+    unitPrice = 1,
+    regional = 2,
+    top = 3
+} SalesCategoryType;
+
 //首页第一个滑动条的高度
 #define XMGTitilesViewH 44;
 

@@ -49,12 +49,21 @@
 		D8ED5D9D1EF90CDD0046642C /* THNEditImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5D9C1EF90CDD0046642C /* THNEditImageViewController.m */; };
 		D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */; };
 		D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA31EFA13540046642C /* THNPhotoTool.m */; };
+		F50EFF121F04E4CD0044762F /* AreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */; };
 		F55DD7F31F039EFB004915E3 /* AppDelegate+Guide.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F21F039EFB004915E3 /* AppDelegate+Guide.m */; };
 		F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F51F039FA6004915E3 /* CooperationInProductViewController.m */; };
 		F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F81F039FC2004915E3 /* SalesAndTrendsViewController.m */; };
 		F55DD7FC1F03B2B7004915E3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7FB1F03B2B7004915E3 /* BaseViewController.m */; };
 		F55DD8011F03C161004915E3 /* THNPuzzleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7FE1F03C161004915E3 /* THNPuzzleCollectionViewCell.m */; };
 		F55DD8021F03C161004915E3 /* THNShowPuzzleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD8001F03C161004915E3 /* THNShowPuzzleView.m */; };
+		F55DD8061F049B13004915E3 /* SalesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD8051F049B13004915E3 /* SalesViewController.m */; };
+		F55DD8091F04A3BE004915E3 /* UnitPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD8081F04A3BE004915E3 /* UnitPriceViewController.m */; };
+		F55DD80C1F04A43A004915E3 /* AreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD80B1F04A43A004915E3 /* AreaViewController.m */; };
+		F55DD80F1F04A4A2004915E3 /* TopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD80E1F04A4A2004915E3 /* TopViewController.m */; };
+		F55DD8121F04AE92004915E3 /* SaleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD8111F04AE92004915E3 /* SaleTableViewCell.m */; };
+		F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD8151F04D55C004915E3 /* BezierCurveView.m */; };
+		F55DD8181F04D55C004915E3 /* BezierCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F55DD8161F04D55C004915E3 /* BezierCurveView.xib */; };
+		F55DD81B1F04DDBE004915E3 /* UnitPriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +153,8 @@
 		D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNAssetItem.m; sourceTree = "<group>"; };
 		D8ED5DA21EFA13540046642C /* THNPhotoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoTool.h; sourceTree = "<group>"; };
 		D8ED5DA31EFA13540046642C /* THNPhotoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTool.m; sourceTree = "<group>"; };
+		F50EFF101F04E4CD0044762F /* AreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaTableViewCell.h; sourceTree = "<group>"; };
+		F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaTableViewCell.m; sourceTree = "<group>"; };
 		F55DD7F11F039EFB004915E3 /* AppDelegate+Guide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Guide.h"; sourceTree = "<group>"; };
 		F55DD7F21F039EFB004915E3 /* AppDelegate+Guide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Guide.m"; sourceTree = "<group>"; };
 		F55DD7F41F039FA6004915E3 /* CooperationInProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CooperationInProductViewController.h; sourceTree = "<group>"; };
@@ -157,6 +168,21 @@
 		F55DD7FF1F03C161004915E3 /* THNShowPuzzleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNShowPuzzleView.h; sourceTree = "<group>"; };
 		F55DD8001F03C161004915E3 /* THNShowPuzzleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNShowPuzzleView.m; sourceTree = "<group>"; };
 		F55DD8031F03C177004915E3 /* StyleMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleMacro.h; sourceTree = "<group>"; };
+		F55DD8041F049B13004915E3 /* SalesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalesViewController.h; sourceTree = "<group>"; };
+		F55DD8051F049B13004915E3 /* SalesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalesViewController.m; sourceTree = "<group>"; };
+		F55DD8071F04A3BE004915E3 /* UnitPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitPriceViewController.h; sourceTree = "<group>"; };
+		F55DD8081F04A3BE004915E3 /* UnitPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitPriceViewController.m; sourceTree = "<group>"; };
+		F55DD80A1F04A43A004915E3 /* AreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaViewController.h; sourceTree = "<group>"; };
+		F55DD80B1F04A43A004915E3 /* AreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaViewController.m; sourceTree = "<group>"; };
+		F55DD80D1F04A4A2004915E3 /* TopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopViewController.h; sourceTree = "<group>"; };
+		F55DD80E1F04A4A2004915E3 /* TopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopViewController.m; sourceTree = "<group>"; };
+		F55DD8101F04AE92004915E3 /* SaleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaleTableViewCell.h; sourceTree = "<group>"; };
+		F55DD8111F04AE92004915E3 /* SaleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaleTableViewCell.m; sourceTree = "<group>"; };
+		F55DD8141F04D55C004915E3 /* BezierCurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierCurveView.h; sourceTree = "<group>"; };
+		F55DD8151F04D55C004915E3 /* BezierCurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierCurveView.m; sourceTree = "<group>"; };
+		F55DD8161F04D55C004915E3 /* BezierCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BezierCurveView.xib; sourceTree = "<group>"; };
+		F55DD8191F04DDBE004915E3 /* UnitPriceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitPriceTableViewCell.h; sourceTree = "<group>"; };
+		F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitPriceTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +284,14 @@
 				F55DD7F51F039FA6004915E3 /* CooperationInProductViewController.m */,
 				F55DD7F71F039FC2004915E3 /* SalesAndTrendsViewController.h */,
 				F55DD7F81F039FC2004915E3 /* SalesAndTrendsViewController.m */,
+				F55DD8041F049B13004915E3 /* SalesViewController.h */,
+				F55DD8051F049B13004915E3 /* SalesViewController.m */,
+				F55DD8071F04A3BE004915E3 /* UnitPriceViewController.h */,
+				F55DD8081F04A3BE004915E3 /* UnitPriceViewController.m */,
+				F55DD80A1F04A43A004915E3 /* AreaViewController.h */,
+				F55DD80B1F04A43A004915E3 /* AreaViewController.m */,
+				F55DD80D1F04A4A2004915E3 /* TopViewController.h */,
+				F55DD80E1F04A4A2004915E3 /* TopViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -279,6 +313,13 @@
 		D847DE551F00C1DA007E301E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F55DD8131F04D55C004915E3 /* BezierCurvcLineTool */,
+				F55DD8101F04AE92004915E3 /* SaleTableViewCell.h */,
+				F55DD8111F04AE92004915E3 /* SaleTableViewCell.m */,
+				F55DD8191F04DDBE004915E3 /* UnitPriceTableViewCell.h */,
+				F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */,
+				F50EFF101F04E4CD0044762F /* AreaTableViewCell.h */,
+				F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -628,6 +669,16 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
+		F55DD8131F04D55C004915E3 /* BezierCurvcLineTool */ = {
+			isa = PBXGroup;
+			children = (
+				F55DD8141F04D55C004915E3 /* BezierCurveView.h */,
+				F55DD8151F04D55C004915E3 /* BezierCurveView.m */,
+				F55DD8161F04D55C004915E3 /* BezierCurveView.xib */,
+			);
+			path = BezierCurvcLineTool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -691,6 +742,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8D9C2551EF278C5000688C6 /* LaunchScreen.storyboard in Resources */,
+				F55DD8181F04D55C004915E3 /* BezierCurveView.xib in Resources */,
 				D8D9C2521EF278C5000688C6 /* Assets.xcassets in Resources */,
 				D8D9C2501EF278C5000688C6 /* Main.storyboard in Resources */,
 			);
@@ -757,14 +809,18 @@
 				D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */,
 				D847DE6D1F00C1DA007E301E /* BaseTarBar.m in Sources */,
 				D8ED5D821EF906060046642C /* NSString+FBMD5.m in Sources */,
+				F50EFF121F04E4CD0044762F /* AreaTableViewCell.m in Sources */,
+				F55DD8091F04A3BE004915E3 /* UnitPriceViewController.m in Sources */,
 				D8ED5D9D1EF90CDD0046642C /* THNEditImageViewController.m in Sources */,
 				D8ED5D841EF906060046642C /* NSString+Helper.m in Sources */,
 				D847DE401EFBDE95007E301E /* THNHintInfoView.m in Sources */,
 				D8ED5D861EF906060046642C /* NSString+JSON.m in Sources */,
 				F55DD8021F03C161004915E3 /* THNShowPuzzleView.m in Sources */,
+				F55DD8121F04AE92004915E3 /* SaleTableViewCell.m in Sources */,
 				D8ED5D881EF906060046642C /* NSString+TimeDate.m in Sources */,
 				D847DE431EFCDEDC007E301E /* THNDoneImageViewController.m in Sources */,
 				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
+				F55DD8061F049B13004915E3 /* SalesViewController.m in Sources */,
 				F55DD8011F03C161004915E3 /* THNPuzzleCollectionViewCell.m in Sources */,
 				D8ED5D8A1EF906060046642C /* NSTimer+Addition.m in Sources */,
 				D8ED5D8C1EF906060046642C /* UIBarButtonItem+Helper.m in Sources */,
@@ -778,8 +834,10 @@
 				D847DE711F00C1DA007E301E /* UserViewController.m in Sources */,
 				D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */,
 				D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */,
+				F55DD80C1F04A43A004915E3 /* AreaViewController.m in Sources */,
 				D847DE6B1F00C1DA007E301E /* BaseNavController.m in Sources */,
 				D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */,
+				F55DD80F1F04A4A2004915E3 /* TopViewController.m in Sources */,
 				D8ED5D981EF906060046642C /* UIView+FSExtension.m in Sources */,
 				D8ED5D9A1EF906060046642C /* UIView+Size.m in Sources */,
 				D8D378DD1EFA4C8500C89889 /* THNPhotoListView.m in Sources */,
@@ -791,8 +849,10 @@
 				D847DE701F00C1DA007E301E /* RepositoryViewController.m in Sources */,
 				D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */,
 				F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */,
+				F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */,
 				D8D9C2471EF278C5000688C6 /* main.m in Sources */,
 				D8B071231EF8FB80005CC051 /* THNLayoutViewController.m in Sources */,
+				F55DD81B1F04DDBE004915E3 /* UnitPriceTableViewCell.m in Sources */,
 				D847DE6E1F00C1DA007E301E /* HomeViewController.m in Sources */,
 				D8D378E01EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m in Sources */,
 			);
