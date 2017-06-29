@@ -8,6 +8,7 @@
 
 
 #import "BezierCurveView.h"
+#import "UIColor+Extension.h"
 
 static CGRect myFrame;
 #define Y_EVERY_MARGIN    (CGRectGetHeight(myFrame)-2*MARGIN)/10.5   // y轴每一个值的间隔数
@@ -37,32 +38,32 @@ static CGRect myFrame;
 /**
  *  画坐标轴
  */
--(void)drawXYLine:(NSMutableArray *)x_names{
-    
-    // 画出背景格子线
-    UIBezierPath *bgPath = [UIBezierPath bezierPath];
-    // 竖着的格子线
-    for (int i = 0; i<x_names.count; i++) {
-        CGFloat X = MARGIN + X_EVERY_MARGIN*(i);
-        [bgPath moveToPoint:CGPointMake(X, CGRectGetHeight(myFrame)-MARGIN)];
-        [bgPath addLineToPoint:CGPointMake(X, MARGIN)];
+-(void)drawXYLine:(NSMutableArray *)x_names isBg:(BOOL)flag{
+    if (flag) {
+        // 画出背景格子线
+        UIBezierPath *bgPath = [UIBezierPath bezierPath];
+        // 竖着的格子线
+        for (int i = 0; i<x_names.count; i++) {
+            CGFloat X = MARGIN + X_EVERY_MARGIN*(i);
+            [bgPath moveToPoint:CGPointMake(X, CGRectGetHeight(myFrame)-MARGIN)];
+            [bgPath addLineToPoint:CGPointMake(X, MARGIN)];
+        }
+        
+        // 横着的格子线
+        for (int i = 0; i<11; i++) {
+            CGFloat Y = CGRectGetHeight(myFrame)-MARGIN-Y_EVERY_MARGIN*i;
+            [bgPath moveToPoint:CGPointMake(MARGIN, Y)];
+            [bgPath addLineToPoint:CGPointMake(CGRectGetWidth(myFrame)-0.5*MARGIN, Y)];
+        }
+        
+        //渲染路径
+        CAShapeLayer *bgShapeLayer = [CAShapeLayer layer];
+        bgShapeLayer.path = bgPath.CGPath;
+        bgShapeLayer.strokeColor = XYQColor(235, 234, 237).CGColor;
+        bgShapeLayer.fillColor = [UIColor clearColor].CGColor;
+        bgShapeLayer.borderWidth = 1.0;
+        [self.layer addSublayer:bgShapeLayer];
     }
-    
-    // 横着的格子线
-    for (int i = 0; i<11; i++) {
-        CGFloat Y = CGRectGetHeight(myFrame)-MARGIN-Y_EVERY_MARGIN*i;
-        [bgPath moveToPoint:CGPointMake(MARGIN, Y)];
-        [bgPath addLineToPoint:CGPointMake(CGRectGetWidth(myFrame)-0.5*MARGIN, Y)];
-    }
-    
-    //渲染路径
-    CAShapeLayer *bgShapeLayer = [CAShapeLayer layer];
-    bgShapeLayer.path = bgPath.CGPath;
-    bgShapeLayer.strokeColor = XYQColor(235, 234, 237).CGColor;
-    bgShapeLayer.fillColor = [UIColor clearColor].CGColor;
-    bgShapeLayer.borderWidth = 1.0;
-    [self.layer addSublayer:bgShapeLayer];
-    
     
     
     UIBezierPath *path = [UIBezierPath bezierPath];
@@ -150,7 +151,7 @@ static CGRect myFrame;
 -(void)drawLineChartViewWithX_Value_Names:(NSMutableArray *)x_names TargetValues:(NSMutableArray *)targetValues LineType:(LineType) lineType{
     
     //1.画坐标轴
-    [self drawXYLine:x_names];
+    [self drawXYLine:x_names isBg:YES];
     
     //2.获取目标值点坐标
     NSMutableArray *allPoints = [NSMutableArray array];
@@ -230,7 +231,7 @@ static CGRect myFrame;
 -(void)drawBarChartViewWithX_Value_Names:(NSMutableArray *)x_names TargetValues:(NSMutableArray *)targetValues{
     
     //1.画坐标轴
-    [self drawXYLine:x_names];
+    [self drawXYLine:x_names isBg:NO];
     
     //2.每一个目标值点坐标
     for (int i=0; i<targetValues.count; i++) {
@@ -241,14 +242,14 @@ static CGRect myFrame;
         CAShapeLayer *shapeLayer = [CAShapeLayer layer];
         shapeLayer.path = path.CGPath;
         shapeLayer.strokeColor = [UIColor clearColor].CGColor;
-        shapeLayer.fillColor = XYQRandomColor.CGColor;
+        shapeLayer.fillColor = [UIColor colorWithHexString:@"#ff3266"].CGColor;
         shapeLayer.borderWidth = 2.0;
         [self.subviews[0].layer addSublayer:shapeLayer];
         
         //3.添加文字
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(X-MARGIN/2, Y-20, MARGIN-10, 20)];
         label.text = [NSString stringWithFormat:@"%.0lf",(CGRectGetHeight(myFrame)-Y-MARGIN)/2];
-        label.textColor = [UIColor purpleColor];
+        label.textColor = [UIColor colorWithHexString:@"#a09c97"];
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:10];
         [self.subviews[0] addSubview:label];
