@@ -119,9 +119,9 @@
     //  默认提示视图
     [self.view addSubview:self.hintInfoView];
     [_hintInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 140));
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 150));
         make.centerX.equalTo(self.view);
-        make.top.equalTo(self.view.mas_top).with.offset(64);
+        make.top.equalTo(self.view.mas_top).with.offset(74);
     }];
     
     //  图片列表
@@ -132,17 +132,16 @@
     //  拼图预览
     [self.view addSubview:self.previewPuzzleView];
     [_previewPuzzleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 150));
         make.right.left.equalTo(self.view).with.offset(0);
-        make.top.equalTo(self.view.mas_top).with.offset(64);
-        make.bottom.equalTo(_photoListView.mas_top).with.offset(-1);
+        make.top.equalTo(self.view.mas_top).with.offset(74);
     }];
 }
 
 #pragma mark - 加载相册列表视图
 - (THNPhotoListView *)photoListView {
     if (!_photoListView) {
-        _photoListView = [[THNPhotoListView alloc] initWithFrame:CGRectMake(0, 240, SCREEN_WIDTH, SCREEN_HEIGHT - 240)];
+        _photoListView = [[THNPhotoListView alloc] initWithFrame:CGRectMake(0, 260, SCREEN_WIDTH, SCREEN_HEIGHT - 260)];
         _photoListView.delegate = self;
     }
     return _photoListView;
