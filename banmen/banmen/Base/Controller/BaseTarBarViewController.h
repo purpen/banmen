@@ -10,6 +10,6 @@
 
 @interface BaseTarBarViewController : UITabBarController
 
-+(BaseTarBarViewController*)sharedManager;
++ (BaseTarBarViewController*)sharedManager;
 
 @end

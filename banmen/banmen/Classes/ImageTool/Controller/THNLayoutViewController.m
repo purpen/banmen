@@ -104,7 +104,6 @@
     if ([keyPath isEqualToString:@"selectPhotoItemArray"]) {
         if ([self mutableArrayValueForKey:@"selectPhotoItemArray"].count != 0) {
             [self thn_hiddenPreviewPuzzleView:NO];
-            
         } else {
             [self thn_hiddenPreviewPuzzleView:YES];
         }

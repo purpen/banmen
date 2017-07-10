@@ -74,12 +74,15 @@
 		D8736A991F04890500BF9F33 /* two_style_100.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A641F0488E800BF9F33 /* two_style_100.plist */; };
 		D8736A9A1F04890500BF9F33 /* two_style_101.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A651F0488E800BF9F33 /* two_style_101.plist */; };
 		D8736A9B1F04890500BF9F33 /* two_style_104.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A661F0488E800BF9F33 /* two_style_104.plist */; };
+		D8736A9F1F048A0000BF9F33 /* THNToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8736A9E1F048A0000BF9F33 /* THNToolViewController.m */; };
 		D8B0711D1EF8F92D005CC051 /* THNImageToolNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B0711C1EF8F92D005CC051 /* THNImageToolNavigationController.m */; };
 		D8B071201EF8FB38005CC051 /* THNImageToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B0711F1EF8FB38005CC051 /* THNImageToolViewController.m */; };
 		D8B071231EF8FB80005CC051 /* THNLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B071221EF8FB80005CC051 /* THNLayoutViewController.m */; };
 		D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B369451EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m */; };
 		D8D378DD1EFA4C8500C89889 /* THNPhotoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */; };
 		D8D378E01EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D378DF1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m */; };
+		D8D664FB1F0C8E7900C53DEB /* THNEditToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D664FA1F0C8E7900C53DEB /* THNEditToolButton.m */; };
+		D8D664FE1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D664FD1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m */; };
 		D8D9C2471EF278C5000688C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9C2461EF278C5000688C6 /* main.m */; };
 		D8D9C24A1EF278C5000688C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9C2491EF278C5000688C6 /* AppDelegate.m */; };
 		D8D9C24D1EF278C5000688C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9C24C1EF278C5000688C6 /* ViewController.m */; };
@@ -220,6 +223,8 @@
 		D8736A641F0488E800BF9F33 /* two_style_100.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = two_style_100.plist; sourceTree = "<group>"; };
 		D8736A651F0488E800BF9F33 /* two_style_101.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = two_style_101.plist; sourceTree = "<group>"; };
 		D8736A661F0488E800BF9F33 /* two_style_104.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = two_style_104.plist; sourceTree = "<group>"; };
+		D8736A9D1F048A0000BF9F33 /* THNToolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNToolViewController.h; sourceTree = "<group>"; };
+		D8736A9E1F048A0000BF9F33 /* THNToolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNToolViewController.m; sourceTree = "<group>"; };
 		D8B071151EF8F43D005CC051 /* ColorMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorMacro.h; sourceTree = "<group>"; };
 		D8B071161EF8F462005CC051 /* MainMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMacro.h; sourceTree = "<group>"; };
 		D8B071191EF8F493005CC051 /* OtherMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherMacro.h; sourceTree = "<group>"; };
@@ -235,6 +240,10 @@
 		D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPhotoListView.m; sourceTree = "<group>"; };
 		D8D378DE1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPhotoAlbumTableViewCell.h; sourceTree = "<group>"; };
 		D8D378DF1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPhotoAlbumTableViewCell.m; sourceTree = "<group>"; };
+		D8D664F91F0C8E7900C53DEB /* THNEditToolButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNEditToolButton.h; sourceTree = "<group>"; };
+		D8D664FA1F0C8E7900C53DEB /* THNEditToolButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNEditToolButton.m; sourceTree = "<group>"; };
+		D8D664FC1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNEditToolCollectionViewCell.h; sourceTree = "<group>"; };
+		D8D664FD1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNEditToolCollectionViewCell.m; sourceTree = "<group>"; };
 		D8D9C2421EF278C5000688C6 /* banmen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = banmen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8D9C2461EF278C5000688C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D8D9C2481EF278C5000688C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -743,6 +752,8 @@
 		D8B071121EF8F415005CC051 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D8736A9D1F048A0000BF9F33 /* THNToolViewController.h */,
+				D8736A9E1F048A0000BF9F33 /* THNToolViewController.m */,
 				D8B071211EF8FB80005CC051 /* THNLayoutViewController.h */,
 				D8B071221EF8FB80005CC051 /* THNLayoutViewController.m */,
 				D8ED5D9B1EF90CDD0046642C /* THNEditImageViewController.h */,
@@ -785,6 +796,10 @@
 				D840C6C11EFB99320021B83E /* THNPreviewPuzzleView.m */,
 				D847DE3E1EFBDE95007E301E /* THNHintInfoView.h */,
 				D847DE3F1EFBDE95007E301E /* THNHintInfoView.m */,
+				D8D664F91F0C8E7900C53DEB /* THNEditToolButton.h */,
+				D8D664FA1F0C8E7900C53DEB /* THNEditToolButton.m */,
+				D8D664FC1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.h */,
+				D8D664FD1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1043,11 +1058,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8D664FE1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m in Sources */,
 				F55DD7F31F039EFB004915E3 /* AppDelegate+Guide.m in Sources */,
 				F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */,
 				D847DE6C1F00C1DA007E301E /* BaseTarBarViewController.m in Sources */,
 				D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */,
 				D847DE6D1F00C1DA007E301E /* BaseTarBar.m in Sources */,
+				D8736A9F1F048A0000BF9F33 /* THNToolViewController.m in Sources */,
 				D8ED5D821EF906060046642C /* NSString+FBMD5.m in Sources */,
 				D8ED5D9D1EF90CDD0046642C /* THNEditImageViewController.m in Sources */,
 				D8ED5D841EF906060046642C /* NSString+Helper.m in Sources */,
@@ -1074,6 +1091,7 @@
 				D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */,
 				D8ED5D981EF906060046642C /* UIView+FSExtension.m in Sources */,
 				D8ED5D9A1EF906060046642C /* UIView+Size.m in Sources */,
+				D8D664FB1F0C8E7900C53DEB /* THNEditToolButton.m in Sources */,
 				D8D378DD1EFA4C8500C89889 /* THNPhotoListView.m in Sources */,
 				D8B071201EF8FB38005CC051 /* THNImageToolViewController.m in Sources */,
 				D840C6C21EFB99320021B83E /* THNPreviewPuzzleView.m in Sources */,

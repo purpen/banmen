@@ -14,7 +14,7 @@
 #import "UserViewController.h"
 #import "BaseTarBar.h"
 #import "BaseNavController.h"
-#import "THNLayoutViewController.h"
+#import "THNToolViewController.h"
 
 @interface BaseTarBarViewController ()
 
@@ -56,7 +56,7 @@
     
     [self setupChildVc:[[RepositoryViewController alloc] init] title:@"资源库" image:@"media" selectedImage:@"media_selected"];
     
-    [self setupChildVc:[[THNLayoutViewController alloc] init] title:@"工具" image:@"found" selectedImage:@"found_selected"];
+    [self setupChildVc:[[THNToolViewController alloc] init] title:@"工具" image:@"found" selectedImage:@"found_selected"];
     
     [self setupChildVc:[[UserViewController alloc] init] title:@"我的" image:@"me" selectedImage:@"me_selected"];
     
