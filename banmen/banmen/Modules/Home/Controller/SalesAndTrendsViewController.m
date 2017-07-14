@@ -7,20 +7,56 @@
 //
 
 #import "SalesAndTrendsViewController.h"
+#import "SalesViewController.h"
+#import "UnitPriceViewController.h"
+#import "AreaViewController.h"
+#import "TopViewController.h"
 
-@interface SalesAndTrendsViewController ()
+@interface SalesAndTrendsViewController ()<UIScrollViewDelegate>
 /** 顶部的所有标签 */
 @property (nonatomic, weak) UIView *titlesView;
 /** 当前选中的按钮 */
 @property (nonatomic, weak) UIButton *selectedButton;
+/** 底部的所有内容 */
+@property (nonatomic, weak) UIScrollView *contentView;
 @end
 
 @implementation SalesAndTrendsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 初始化子控制器
+    [self setupChildVces];
     // 设置顶部的标签栏
     [self setupTitlesView];
+    // 底部的scrollView
+    [self setupContentView];
+}
+
+/**
+ * 初始化子控制器
+ */
+- (void)setupChildVces
+{
+    SalesViewController *salesVC = [[SalesViewController alloc] init];
+    salesVC.title = @"销售额";
+    salesVC.type = sale;
+    [self addChildViewController:salesVC];
+    
+    UnitPriceViewController *priceVC = [[UnitPriceViewController alloc] init];
+    priceVC.title = @"销售客单价";
+    priceVC.type = unitPrice;
+    [self addChildViewController:priceVC];
+    
+    AreaViewController *areaVC = [[AreaViewController alloc] init];
+    areaVC.title = @"地域分布";
+    areaVC.type = regional;
+    [self addChildViewController:areaVC];
+    
+    TopViewController *topVC = [[TopViewController alloc] init];
+    topVC.title = @"TOP20标签";
+    topVC.type = top;
+    [self addChildViewController:topVC];
 }
 
 /**
@@ -32,7 +68,7 @@
     UIView *titlesView = [[UIView alloc] init];
     titlesView.backgroundColor = [UIColor banmenColorWithRed:248 green:248 blue:248 alpha:1];
     titlesView.width = self.view.width;
-    titlesView.height = XMGTitilesViewH;
+    titlesView.height = 35;
     titlesView.y =XMGTitilesViewY;
     [self.view addSubview:titlesView];
     self.titlesView = titlesView;
@@ -73,7 +109,55 @@
     self.selectedButton.enabled = YES;
     button.enabled = NO;
     self.selectedButton = button;
+    
+    // 滚动
+    CGPoint offset = self.contentView.contentOffset;
+    offset.x = button.tag * self.contentView.width;
+    [self.contentView setContentOffset:offset animated:YES];
 }
 
+/**
+ * 底部的scrollView
+ */
+- (void)setupContentView
+{
+    // 不要自动调整inset
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    UIScrollView *contentView = [[UIScrollView alloc] init];
+    contentView.scrollEnabled = NO;
+    contentView.frame = CGRectMake(0, self.titlesView.y+self.titlesView.height, SCREEN_WIDTH, SCREEN_HEIGHT-contentView.y-49);
+    contentView.delegate = self;
+    contentView.pagingEnabled = YES;
+    [self.view insertSubview:contentView atIndex:0];
+    contentView.contentSize = CGSizeMake(contentView.width * self.childViewControllers.count, 0);
+    self.contentView = contentView;
+    
+    // 添加第一个控制器的view
+    [self scrollViewDidEndScrollingAnimation:contentView];
+}
+
+#pragma mark - <UIScrollViewDelegate>
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    // 当前的索引
+    NSInteger index = scrollView.contentOffset.x / scrollView.width;
+    
+    // 取出子控制器
+    UIViewController *vc = self.childViewControllers[index];
+    vc.view.x = scrollView.contentOffset.x;
+    vc.view.y = 0; // 设置控制器view的y值为0(默认是20)
+    vc.view.height = scrollView.height; // 设置控制器view的height值为整个屏幕的高度(默认是比屏幕高度少个20)
+    [scrollView addSubview:vc.view];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self scrollViewDidEndScrollingAnimation:scrollView];
+    
+    // 点击按钮
+    NSInteger index = scrollView.contentOffset.x / scrollView.width;
+    [self titleClick:self.titlesView.subviews[index]];
+}
 
 @end
