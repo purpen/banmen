@@ -22,10 +22,10 @@ typedef NS_ENUM(NSInteger, THNChildEditViewBoarder){
 };
 
 static const NSInteger kChildViewInitTag = 51;
-static const CGFloat kMinWidth = 48;
-static const CGFloat kMinHeight = 48;
+//static const CGFloat kMinWidth = 48;
+//static const CGFloat kMinHeight = 48;
 
-@interface THNEditContentView () <THNEditChildViewDelegate>
+@interface THNEditContentView ()
 
 /**
  移动交换中间变量
@@ -129,7 +129,6 @@ static const CGFloat kMinHeight = 48;
         CGSize superSize = CGSizeFromString([[_styleDict objectForKey:@"SuperViewInfo"] objectForKey:@"size"]);
         superSize = [THNEditContentView thn_sizeScaleWithSize:superSize scale:2.0f];
         NSArray *subViewArray = [_styleDict objectForKey:@"SubViewArray"];
-        
         if (self.photoAsset.count < subViewArray.count) {
             NSInteger difference = subViewArray.count - self.photoAsset.count;
             for (NSInteger i = 0; i < difference; i++) {
@@ -150,7 +149,7 @@ static const CGFloat kMinHeight = 48;
             if ([subDict objectForKey:@"pointArray"]) {
                 NSArray *pointArray = [subDict objectForKey:@"pointArray"];
                 path = [UIBezierPath bezierPath];
-                if (pointArray.count > 2) { //  当点的数量大于2个的时候
+                if (pointArray.count > 2) {
                     //  生成点的坐标
                     for (int i = 0; i < [pointArray count]; i++) {
                         NSString *pointString = [pointArray objectAtIndex:i];
@@ -467,12 +466,6 @@ static const CGFloat kMinHeight = 48;
     }
 }
 
-//- (void)tapWithEditView:(THNEditChildView *)sender {
-//    if (_moveDelegate && [_moveDelegate respondsToSelector:@selector(movedEditView)]) {
-//        [_moveDelegate movedEditView];
-//    }
-//}
-
 #pragma mark 计算frame 超出范围的等比缩小成相应大小
 - (CGRect)thn_rectWithArray:(NSArray *)array andSuperSize:(CGSize)superSize {
     CGRect rect = CGRectZero;
@@ -586,7 +579,7 @@ static const CGFloat kMinHeight = 48;
         _fifthView = [[THNEditChildView alloc] initWithFrame:CGRectZero];
         _fifthView.tag = kChildViewInitTag + 4;
     }
-    return _firstView;
+    return _fifthView;
 }
 
 - (THNEditChildView *)sixthView {

@@ -84,11 +84,11 @@ typedef NS_ENUM(NSInteger, THNEditDirection) {
 @end
 
 
-@protocol THNEditChildViewDelegate <NSObject>
-
-- (void)thn_tapWithEditView:(THNEditChildView *)sender;
-
-@end
+//@protocol THNEditChildViewDelegate <NSObject>
+//
+//- (void)thn_tapWithEditView:(THNEditChildView *)sender;
+//
+//@end
 
 
 @protocol THNEditChildViewResizableDelegate <NSObject>

@@ -61,7 +61,6 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 - (THNEditContentView *)editContentView {
     if (!_editContentView) {
         _editContentView = [[THNEditContentView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_WIDTH) tag:self.styleTag];
-//        _editContentView.moveDelegate = self;
     }
     return _editContentView;
 }
@@ -140,10 +139,9 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
     self.addBorder = !self.addBorder;
     if (self.addBorder) {
         self.leftTopX = self.editContentView.frame.origin.x;
-        self.leftTopY = self.editContentView.frame.origin.y;
+        self.leftTopY = self.editContentView.frame.origin.y - 64;
         self.rightDownX = CGRectGetMaxX(self.editContentView.frame);
-        self.rightDownY = CGRectGetMaxY(self.editContentView.frame);
-        
+        self.rightDownY = CGRectGetMaxY(self.editContentView.frame) - 64;
         for (THNEditChildView *childView in self.editContentView.subviews) {
             [childView clearInnerBoarder];
             [self.editContentView removeBoarderMiddleView:childView];
@@ -160,30 +158,24 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 }
 
 - (void)drawInnerBoarder:(THNEditChildView *)childEditView {
-    NSLog(@"----------- %f, %f", childEditView.frame.origin.x, self.leftTopX);
-    NSLog(@"----------- %f, %f", childEditView.frame.origin.y, self.leftTopY);
-    NSLog(@"----------- %f, %f", CGRectGetMaxX(childEditView.frame), self.rightDownX);
-    NSLog(@"----------- %f, %f", CGRectGetMaxX(childEditView.frame), self.rightDownY);
-    NSLog(@"========================================================");
-    
     if (childEditView.frame.size.width == 0 || childEditView.frame.size.height == 0) {
         return;
     }
     
     if (childEditView.frame.origin.x != self.leftTopX) {
-        childEditView.leftBoarderLayer.backgroundColor = [UIColor whiteColor];
+        childEditView.leftBoarderLayer.backgroundColor = [UIColor colorWithHexString:kColorWhite];
     }
     
     if (childEditView.frame.origin.y != self.leftTopY) {
-        childEditView.topBoarderLayer.backgroundColor = [UIColor whiteColor];
+        childEditView.topBoarderLayer.backgroundColor = [UIColor colorWithHexString:kColorWhite];
     }
     
     if (CGRectGetMaxX(childEditView.frame) != self.rightDownX) {
-        childEditView.rightBoarderLayer.backgroundColor = [UIColor whiteColor];
+        childEditView.rightBoarderLayer.backgroundColor = [UIColor colorWithHexString:kColorWhite];
     }
     
     if (CGRectGetMaxY(childEditView.frame) != self.rightDownY) {
-        childEditView.bottomBoarderLayer.backgroundColor = [UIColor whiteColor];
+        childEditView.bottomBoarderLayer.backgroundColor = [UIColor colorWithHexString:kColorWhite];
     }
 }
 
@@ -308,6 +300,42 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 }
 
 - (void)thn_rightBarItemSelected {
+    [self thn_saveDonePuzzleImage];
+}
+
+#pragma mark 保存图片
+- (void)thn_saveDonePuzzleImage {
+    UIImage *resuleImage = [self cutImageWithView:self.editContentView];
+    UIImageWriteToSavedPhotosAlbum(resuleImage, self, @selector(imageSavedToPhotosAlbum: didFinishSavingWithError: contextInfo:), nil);
+}
+
+- (UIImage *)cutImageWithView:(THNEditContentView *)contentView {
+    UIGraphicsBeginImageContextWithOptions(contentView.frame.size, NO, 2.0);
+    //  保存时去选中边框,用CGColorEqualToColor判断是否是选中边框
+    for (THNEditChildView *childView in contentView.subviews) {
+        if (CGColorEqualToColor(childView.topBoarderLayer.backgroundColor.CGColor, [UIColor colorWithHexString:kColorMain].CGColor)) {
+            [childView clearInnerBoarder];
+        }
+        [self.editContentView removeBoarderMiddleView:childView];
+    }
+    
+    [contentView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+- (void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    if (!error) {
+        [SVProgressHUD showSuccessWithStatus:@"已保存到相册"];
+        [self thn_pushShareImageController];
+        
+    } else {
+        [SVProgressHUD showErrorWithStatus:@"保存失败，请再试试"];
+    }
+}
+
+- (void)thn_pushShareImageController {
     THNDoneImageViewController *doneController = [[THNDoneImageViewController alloc] init];
     [self.navigationController pushViewController:doneController animated:YES];
 }

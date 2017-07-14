@@ -10,12 +10,6 @@
 
 @class THNEditChildView;
 
-//@protocol THNEditContentViewDelegate <NSObject>
-//
-//- (void)movedEditView;
-//
-//@end
-
 @interface THNEditContentView : UIView {
     BOOL _contain;
     CGPoint _startPoint;
@@ -54,8 +48,6 @@
  保存各图片视图
  */
 @property (nonatomic, strong) NSMutableArray *contentViewArray;
-
-//@property (nonatomic, weak) id <THNEditContentViewDelegate> moveDelegate;
 
 - (instancetype)initWithFrame:(CGRect)frame tag:(NSInteger)tag;
 - (void)resetStyle;

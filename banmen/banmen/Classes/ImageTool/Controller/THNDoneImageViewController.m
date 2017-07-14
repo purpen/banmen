@@ -61,7 +61,7 @@
 - (UIButton *)hintText {
     if (!_hintText) {
         _hintText = [[UIButton alloc] init];
-        [_hintText setTitle:@"已保存到本地 " forState:(UIControlStateNormal)];
+        [_hintText setTitle:@"已保存到相册" forState:(UIControlStateNormal)];
         [_hintText setTitleColor:[UIColor colorWithHexString:kColorGray] forState:(UIControlStateNormal)];
         _hintText.titleLabel.font = [UIFont systemFontOfSize:16];
         [_hintText setImage:[UIImage imageNamed:@"icon_done_selected"] forState:(UIControlStateNormal)];
@@ -75,7 +75,7 @@
 - (UIButton *)backHomeButton {
     if (!_backHomeButton) {
         _backHomeButton = [[UIButton alloc] init];
-        [_backHomeButton setTitle:@"返回首页 " forState:(UIControlStateNormal)];
+        [_backHomeButton setTitle:@"返回首页" forState:(UIControlStateNormal)];
         [_backHomeButton setTitleColor:[UIColor colorWithHexString:kColorGray] forState:(UIControlStateNormal)];
         _backHomeButton.titleLabel.font = [UIFont systemFontOfSize:16];
         _backHomeButton.layer.borderWidth = 1;
@@ -94,7 +94,7 @@
 - (UIButton *)againButton {
     if (!_againButton) {
         _againButton = [[UIButton alloc] init];
-        [_againButton setTitle:@"再做一张 " forState:(UIControlStateNormal)];
+        [_againButton setTitle:@"再做一张" forState:(UIControlStateNormal)];
         [_againButton setTitleColor:[UIColor colorWithHexString:kColorWhite] forState:(UIControlStateNormal)];
         _againButton.titleLabel.font = [UIFont systemFontOfSize:16];
         _againButton.layer.cornerRadius = 4;
