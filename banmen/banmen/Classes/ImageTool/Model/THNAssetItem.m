@@ -19,7 +19,7 @@
     return self;
 }
 
-+ (instancetype)AssetItemWithPHAsset:(PHAsset *)asset {
++ (instancetype)assetItemWithPHAsset:(PHAsset *)asset {
     return [[self alloc] initWithPHAsset:asset];
 }
 

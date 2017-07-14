@@ -84,7 +84,7 @@
             if ([photoAlbum.title isEqualToString:@"相机胶卷"]) {
                 NSArray<PHAsset *> *result = [[THNPhotoTool sharePhotoTool] thn_getAssetOfAssetCollection:photoAlbum.assetCOllection ascending:NO];
                 [result enumerateObjectsUsingBlock:^(PHAsset * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    THNAssetItem *assetItem = [THNAssetItem AssetItemWithPHAsset:obj];
+                    THNAssetItem *assetItem = [THNAssetItem assetItemWithPHAsset:obj];
                     [assets addObject:assetItem];
                 }];
             }

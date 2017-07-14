@@ -15,6 +15,6 @@
 @property (nonatomic, assign) BOOL selected;
 
 - (instancetype)initWithPHAsset:(PHAsset *)asset;
-+ (instancetype)AssetItemWithPHAsset:(PHAsset *)asset;
++ (instancetype)assetItemWithPHAsset:(PHAsset *)asset;
 
 @end

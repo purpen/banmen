@@ -26,11 +26,12 @@
 
 - (UIButton *)puzzleButton {
     if (!_puzzleButton) {
-        _puzzleButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 100, 200, 200, 50)];
+        _puzzleButton = [[UIButton alloc] initWithFrame:CGRectMake(15, 200, SCREEN_WIDTH - 30, 120)];
         [_puzzleButton setTitle:@"拼图" forState:(UIControlStateNormal)];
         _puzzleButton.backgroundColor = [UIColor orangeColor];
         [_puzzleButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-        _puzzleButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _puzzleButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        _puzzleButton.layer.cornerRadius = 5;
         [_puzzleButton addTarget:self action:@selector(puzzleButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _puzzleButton;

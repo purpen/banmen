@@ -14,6 +14,6 @@
 /**
  设置展示不同拼图的样式视图
  */
-- (void)thn_setPreviewWithPhotoAssetArray:(NSMutableArray *)assetArray index:(NSInteger)index;
+- (void)thn_setPreviewWithPhotoAssetArray:(NSMutableArray *)assetArray styleTag:(NSInteger)styleTag;
 
 @end

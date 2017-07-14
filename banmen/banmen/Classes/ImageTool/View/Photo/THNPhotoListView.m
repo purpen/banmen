@@ -151,7 +151,7 @@ static NSInteger const kMaxSelectPhotoItem = 6;
     __block NSInteger index = 0;
     [selectedPhotoArray enumerateObjectsUsingBlock:^(PHAsset *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (![selectedIdentifierArray containsObject:obj.localIdentifier]) {
-            THNAssetItem *item = [THNAssetItem AssetItemWithPHAsset:obj];
+            THNAssetItem *item = [THNAssetItem assetItemWithPHAsset:obj];
             [self.photoAssetArray addObject:item];
         } else {
             [self.photoAssetArray addObject:selectedArray[index ++]];
