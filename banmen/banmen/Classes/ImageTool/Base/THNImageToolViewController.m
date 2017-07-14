@@ -115,10 +115,11 @@
 #pragma mark Nav右边按钮
 - (UIButton *)navRightItem {
     if (!_navRightItem) {
-        _navRightItem = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 54, 20, 44, 44)];
+        _navRightItem = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 59, 20, 44, 44)];
         [_navRightItem addTarget:self action:@selector(rightAction) forControlEvents:(UIControlEventTouchUpInside)];
         [_navRightItem setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
         _navRightItem.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        [_navRightItem setContentHorizontalAlignment:(UIControlContentHorizontalAlignmentRight)];
     }
     return _navRightItem;
 }
@@ -149,7 +150,7 @@
     //  如果设置按钮为“纯文字”
     [self.navRightItem setTitle:title forState:UIControlStateNormal];
     CGFloat buttonWidth = [title boundingRectWithSize:CGSizeMake(320, 44) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:nil context:nil].size.width *1.5;
-    self.navRightItem.frame = CGRectMake(SCREEN_WIDTH - buttonWidth - 10, 20, buttonWidth, 44);
+    self.navRightItem.frame = CGRectMake(SCREEN_WIDTH - buttonWidth - 15, 20, buttonWidth, 44);
     [self.navView addSubview:self.navRightItem];
 }
 

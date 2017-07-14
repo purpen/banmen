@@ -14,10 +14,9 @@
 #import "UserViewController.h"
 #import "BaseTarBar.h"
 #import "BaseNavController.h"
-#import "THNLayoutViewController.h"
-#import "LogInViewController.h"
+#import "THNToolViewController.h"
 
-@interface BaseTarBarViewController ()<UITabBarControllerDelegate>
+@interface BaseTarBarViewController ()
 
 @end
 
@@ -39,11 +38,11 @@
     // 后面带有UI_APPEARANCE_SELECTOR的方法, 都可以通过appearance对象来统一设置
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSFontAttributeName] = [UIFont systemFontOfSize:12];
-    attrs[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"#b4b4b4"];
+    attrs[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"#666666"];
     
     NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
     selectedAttrs[NSFontAttributeName] = attrs[NSFontAttributeName];
-    selectedAttrs[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"#ff5a5f"];
+    selectedAttrs[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"#222222"];
     
     UITabBarItem *item = [UITabBarItem appearance];
     [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
@@ -55,15 +54,14 @@
     // 添加子控制器
     [self setupChildVc:[[HomeViewController alloc] init] title:@"首页" image:@"home" selectedImage:@"home_selected"];
     
-    [self setupChildVc:[[RepositoryViewController alloc] init] title:@"资源库" image:@"library" selectedImage:@"library_selected"];
+    [self setupChildVc:[[RepositoryViewController alloc] init] title:@"资源库" image:@"media" selectedImage:@"media_selected"];
     
-    [self setupChildVc:[[THNLayoutViewController alloc] init] title:@"工具" image:@"tool" selectedImage:@"tool_selected"];
+    [self setupChildVc:[[THNToolViewController alloc] init] title:@"工具" image:@"found" selectedImage:@"found_selected"];
     
-    [self setupChildVc:[[UserViewController alloc] init] title:@"我的" image:@"main" selectedImage:@"main_selected"];
+    [self setupChildVc:[[UserViewController alloc] init] title:@"我的" image:@"me" selectedImage:@"me_selected"];
     
     // 更换tabBar
     [self setValue:[[BaseTarBar alloc] init] forKeyPath:@"tabBar"];
-    self.delegate = self;
 }
 
 /**
@@ -80,33 +78,6 @@
     // 包装一个导航控制器, 添加导航控制器为tabbarcontroller的子控制器
     BaseNavController *nav = [[BaseNavController alloc] initWithRootViewController:vc];
     [self addChildViewController:nav];
-}
-
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
-{
-//    FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
-    //这里我判断的是当前点击的tabBarItem的标题
-//    if ([viewController.tabBarItem.title isEqualToString:@"我的"]) {
-//        //如果没有登录
-//        if (NO) {
-//            return YES;
-//        }else{
-//            //登录注册
-//            LogUpViewController *vc = [[LogUpViewController alloc] init];
-//            [self presentViewController:vc animated:YES completion:nil];
-//            return NO;
-//        }
-//    }else {
-//        return YES;
-//    }
-    if ([viewController.tabBarItem.title isEqualToString:@"我的"]) {
-        //登录注册
-        LogInViewController *vc = [[LogInViewController alloc] init];
-        [self presentViewController:vc animated:YES completion:nil];
-        return NO;
-    }else {
-        return YES;
-    }
 }
 
 @end

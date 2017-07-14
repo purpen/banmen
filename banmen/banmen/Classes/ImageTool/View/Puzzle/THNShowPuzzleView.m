@@ -36,22 +36,12 @@
 - (void)thn_initViewUI {
     self.backgroundColor = [UIColor colorWithHexString:kColorBackground];
     
-    self.firstView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.secondView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.thirdView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.fourthView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.fifthView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.sixthView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    
-    if (self.imageViewArray == nil) {
-        self.imageViewArray = [NSMutableArray array];
-    }
-    [_imageViewArray addObject:_firstView];
-    [_imageViewArray addObject:_secondView];
-    [_imageViewArray addObject:_thirdView];
-    [_imageViewArray addObject:_fourthView];
-    [_imageViewArray addObject:_fifthView];
-    [_imageViewArray addObject:_sixthView];
+    [self.imageViewArray addObject:self.firstView];
+    [self.imageViewArray addObject:self.secondView];
+    [self.imageViewArray addObject:self.thirdView];
+    [self.imageViewArray addObject:self.fourthView];
+    [self.imageViewArray addObject:self.fifthView];
+    [self.imageViewArray addObject:self.sixthView];
     
     [self thn_resetAllImageView];
     
@@ -60,12 +50,12 @@
 
 #pragma mark - 初始化图片视图样式
 - (void)thn_resetAllImageView {
-    [self thn_setImageViewStyle:_firstView];
-    [self thn_setImageViewStyle:_secondView];
-    [self thn_setImageViewStyle:_thirdView];
-    [self thn_setImageViewStyle:_fourthView];
-    [self thn_setImageViewStyle:_fifthView];
-    [self thn_setImageViewStyle:_sixthView];
+    [self thn_setImageViewStyle:self.firstView];
+    [self thn_setImageViewStyle:self.secondView];
+    [self thn_setImageViewStyle:self.thirdView];
+    [self thn_setImageViewStyle:self.fourthView];
+    [self thn_setImageViewStyle:self.fifthView];
+    [self thn_setImageViewStyle:self.sixthView];
 }
 
 - (void)thn_setImageViewStyle:(UIImageView *)imageView {
@@ -79,12 +69,12 @@
 
 #pragma mark - 添加图片视图
 - (void)thn_addImageView {
-    [self addSubview:_firstView];
-    [self addSubview:_secondView];
-    [self addSubview:_thirdView];
-    [self addSubview:_fourthView];
-    [self addSubview:_fifthView];
-    [self addSubview:_sixthView];
+    [self addSubview:self.firstView];
+    [self addSubview:self.secondView];
+    [self addSubview:self.thirdView];
+    [self addSubview:self.fourthView];
+    [self addSubview:self.fifthView];
+    [self addSubview:self.sixthView];
 }
 
 #pragma mark - 设置样式
@@ -259,6 +249,56 @@
     rect.size.width = rect.size.width * self.frame.size.width/superSize.width;
     rect.size.height = rect.size.height * self.frame.size.height/superSize.height;
     return rect;
+}
+
+#pragma mark - init
+- (NSMutableArray *)imageViewArray {
+    if (!_imageViewArray) {
+        _imageViewArray = [NSMutableArray array];
+    }
+    return _imageViewArray;
+}
+
+- (UIImageView *)firstView {
+    if (!_firstView) {
+        _firstView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _firstView;
+}
+
+- (UIImageView *)secondView {
+    if (!_secondView) {
+        _secondView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _secondView;
+}
+
+- (UIImageView *)thirdView {
+    if (!_thirdView) {
+        _thirdView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _thirdView;
+}
+
+- (UIImageView *)fourthView {
+    if (!_fourthView) {
+        _fourthView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _fourthView;
+}
+
+- (UIImageView *)fifthView {
+    if (!_fifthView) {
+        _fifthView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _fifthView;
+}
+
+- (UIImageView *)sixthView {
+    if (!_sixthView) {
+        _sixthView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _sixthView;
 }
 
 @end
