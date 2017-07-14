@@ -103,6 +103,9 @@
 		D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */; };
 		D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA31EFA13540046642C /* THNPhotoTool.m */; };
 		F50EFF121F04E4CD0044762F /* AreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */; };
+		F53C28D71F18673E004DB319 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D61F18673E004DB319 /* LogInViewController.m */; };
+		F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D91F1867CB004DB319 /* LogInView.m */; };
+		F53C28DD1F18BA31004DB319 /* LogUpview.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28DC1F18BA31004DB319 /* LogUpview.m */; };
 		F55DD7F31F039EFB004915E3 /* AppDelegate+Guide.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F21F039EFB004915E3 /* AppDelegate+Guide.m */; };
 		F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F51F039FA6004915E3 /* CooperationInProductViewController.m */; };
 		F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F81F039FC2004915E3 /* SalesAndTrendsViewController.m */; };
@@ -261,6 +264,12 @@
 		D8ED5DA31EFA13540046642C /* THNPhotoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTool.m; sourceTree = "<group>"; };
 		F50EFF101F04E4CD0044762F /* AreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaTableViewCell.h; sourceTree = "<group>"; };
 		F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaTableViewCell.m; sourceTree = "<group>"; };
+		F53C28D51F18673E004DB319 /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		F53C28D61F18673E004DB319 /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		F53C28D81F1867CB004DB319 /* LogInView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInView.h; sourceTree = "<group>"; };
+		F53C28D91F1867CB004DB319 /* LogInView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInView.m; sourceTree = "<group>"; };
+		F53C28DB1F18BA31004DB319 /* LogUpview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogUpview.h; sourceTree = "<group>"; };
+		F53C28DC1F18BA31004DB319 /* LogUpview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogUpview.m; sourceTree = "<group>"; };
 		F55DD7F11F039EFB004915E3 /* AppDelegate+Guide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Guide.h"; sourceTree = "<group>"; };
 		F55DD7F21F039EFB004915E3 /* AppDelegate+Guide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Guide.m"; sourceTree = "<group>"; };
 		F55DD7F41F039FA6004915E3 /* CooperationInProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CooperationInProductViewController.h; sourceTree = "<group>"; };
@@ -362,6 +371,7 @@
 		D847DE4E1F00C1DA007E301E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F53C28B81F18658A004DB319 /* LoginAndUp */,
 				D847DE4F1F00C1DA007E301E /* Home */,
 				D847DE561F00C1DA007E301E /* Posters */,
 				D847DE5D1F00C1DA007E301E /* Repository */,
@@ -899,6 +909,51 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F53C28B81F18658A004DB319 /* LoginAndUp */ = {
+			isa = PBXGroup;
+			children = (
+				F53C28B91F18658A004DB319 /* Controller */,
+				F53C28C81F18658A004DB319 /* Model */,
+				F53C28C91F18658A004DB319 /* Service */,
+				F53C28CA1F18658A004DB319 /* View */,
+			);
+			path = LoginAndUp;
+			sourceTree = "<group>";
+		};
+		F53C28B91F18658A004DB319 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F53C28D51F18673E004DB319 /* LogInViewController.h */,
+				F53C28D61F18673E004DB319 /* LogInViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F53C28C81F18658A004DB319 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F53C28C91F18658A004DB319 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F53C28CA1F18658A004DB319 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F53C28D81F1867CB004DB319 /* LogInView.h */,
+				F53C28D91F1867CB004DB319 /* LogInView.m */,
+				F53C28DB1F18BA31004DB319 /* LogUpview.h */,
+				F53C28DC1F18BA31004DB319 /* LogUpview.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F55DD7F01F039EFB004915E3 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -1104,6 +1159,7 @@
 				F50EFF121F04E4CD0044762F /* AreaTableViewCell.m in Sources */,
 				F55DD8091F04A3BE004915E3 /* UnitPriceViewController.m in Sources */,
 				D8ED5D9D1EF90CDD0046642C /* THNEditImageViewController.m in Sources */,
+				F53C28DD1F18BA31004DB319 /* LogUpview.m in Sources */,
 				D8ED5D841EF906060046642C /* NSString+Helper.m in Sources */,
 				D847DE401EFBDE95007E301E /* THNHintInfoView.m in Sources */,
 				D8ED5D861EF906060046642C /* NSString+JSON.m in Sources */,
@@ -1113,6 +1169,7 @@
 				D847DE431EFCDEDC007E301E /* THNDoneImageViewController.m in Sources */,
 				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
 				F55DD8061F049B13004915E3 /* SalesViewController.m in Sources */,
+				F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */,
 				F55DD8011F03C161004915E3 /* THNPuzzleCollectionViewCell.m in Sources */,
 				D8ED5D8A1EF906060046642C /* NSTimer+Addition.m in Sources */,
 				D8ED5D8C1EF906060046642C /* UIBarButtonItem+Helper.m in Sources */,
@@ -1127,6 +1184,7 @@
 				D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */,
 				D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */,
 				F55DD80C1F04A43A004915E3 /* AreaViewController.m in Sources */,
+				F53C28D71F18673E004DB319 /* LogInViewController.m in Sources */,
 				D847DE6B1F00C1DA007E301E /* BaseNavController.m in Sources */,
 				D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */,
 				F55DD80F1F04A4A2004915E3 /* TopViewController.m in Sources */,
