@@ -244,7 +244,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"selectedIndex"]) {
-        //  防闪替换
+        
         PHAsset *asset = self.photoAssets[[[self valueForKeyPath:@"selectedIndex"] integerValue] ];
         [self.selectedAssetArray replaceObjectAtIndex:self.childViewIndex withObject:asset];
         
@@ -337,6 +337,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 
 - (void)thn_pushShareImageController {
     THNDoneImageViewController *doneController = [[THNDoneImageViewController alloc] init];
+    doneController.doneImage = [self cutImageWithView:self.editContentView];
     [self.navigationController pushViewController:doneController animated:YES];
 }
 

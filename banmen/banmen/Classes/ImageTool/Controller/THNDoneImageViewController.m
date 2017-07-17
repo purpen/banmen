@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIButton *hintText;
 @property (nonatomic, strong) UIButton *backHomeButton;
 @property (nonatomic, strong) UIButton *againButton;
+@property (nonatomic, strong) UIButton *shareButton;
 
 @end
 
@@ -53,6 +54,13 @@
     [_hintText mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(130, 20));
         make.bottom.equalTo(_backHomeButton.mas_top).with.offset(-10);
+        make.centerX.equalTo(self.view);
+    }];
+    
+    [self.view addSubview:self.shareButton];
+    [_shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 50));
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(0);
         make.centerX.equalTo(self.view);
     }];
 }
@@ -101,6 +109,28 @@
         _againButton.backgroundColor = [UIColor colorWithHexString:kColorMain];
     }
     return _againButton;
+}
+
+#pragma mark - 分享
+- (UIButton *)shareButton {
+    if (!_shareButton) {
+        _shareButton = [[UIButton alloc] init];
+        [_shareButton setTitle:@"发送到电脑／微信" forState:(UIControlStateNormal)];
+        [_shareButton setTitleColor:[UIColor colorWithHexString:kColorWhite] forState:(UIControlStateNormal)];
+        _shareButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        _shareButton.backgroundColor = [UIColor colorWithHexString:kColorGreen];
+        [_shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    return _shareButton;
+}
+
+- (void)shareButtonClick:(UIButton *)button {
+    [self systemShareWithImage:self.doneImage];
+}
+
+- (void)systemShareWithImage:(UIImage *)image {
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:image, nil] applicationActivities:nil];
+    [self presentViewController:activityController animated:true completion:nil];
 }
 
 #pragma mark - 设置Nav

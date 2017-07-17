@@ -10,4 +10,6 @@
 
 @interface THNDoneImageViewController : THNImageToolViewController
 
+@property (nonatomic, strong) UIImage *doneImage;
+
 @end

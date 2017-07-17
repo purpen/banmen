@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9959F7C22A2F1793FD74BF /* Pods_banmen.framework */; };
+		D83393B41F1C61EC00EB39ED /* THNJointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83393B31F1C61EC00EB39ED /* THNJointViewController.m */; };
 		D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */; };
 		D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */; };
 		D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D840C6BE1EFB54A00021B83E /* THNOpenAlbumButton.m */; };
@@ -128,6 +129,8 @@
 		093B00529CC62D5B0A9C39F7 /* Pods-banmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-banmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-banmen/Pods-banmen.debug.xcconfig"; sourceTree = "<group>"; };
 		239D47117F03E1BB587C0396 /* Pods-banmen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-banmen.release.xcconfig"; path = "Pods/Target Support Files/Pods-banmen/Pods-banmen.release.xcconfig"; sourceTree = "<group>"; };
 		CA9959F7C22A2F1793FD74BF /* Pods_banmen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_banmen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D83393B21F1C61EC00EB39ED /* THNJointViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNJointViewController.h; sourceTree = "<group>"; };
+		D83393B31F1C61EC00EB39ED /* THNJointViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNJointViewController.m; sourceTree = "<group>"; };
 		D83689E81EFA68DB005B0709 /* THNPhotoTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoTableViewModel.h; sourceTree = "<group>"; };
 		D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTableViewModel.m; sourceTree = "<group>"; };
 		D83689EB1EFA6900005B0709 /* THNPhotoCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoCellViewModel.h; sourceTree = "<group>"; };
@@ -803,6 +806,8 @@
 				D8736A9E1F048A0000BF9F33 /* THNToolViewController.m */,
 				D8B071211EF8FB80005CC051 /* THNLayoutViewController.h */,
 				D8B071221EF8FB80005CC051 /* THNLayoutViewController.m */,
+				D83393B21F1C61EC00EB39ED /* THNJointViewController.h */,
+				D83393B31F1C61EC00EB39ED /* THNJointViewController.m */,
 				D8ED5D9B1EF90CDD0046642C /* THNEditImageViewController.h */,
 				D8ED5D9C1EF90CDD0046642C /* THNEditImageViewController.m */,
 				D847DE411EFCDEDC007E301E /* THNDoneImageViewController.h */,
@@ -1166,6 +1171,7 @@
 				D8ED5D9D1EF90CDD0046642C /* THNEditImageViewController.m in Sources */,
 				D8ED5D841EF906060046642C /* NSString+Helper.m in Sources */,
 				D847DE401EFBDE95007E301E /* THNHintInfoView.m in Sources */,
+				D83393B41F1C61EC00EB39ED /* THNJointViewController.m in Sources */,
 				D8ED5D861EF906060046642C /* NSString+JSON.m in Sources */,
 				F55DD8021F03C161004915E3 /* THNShowPuzzleView.m in Sources */,
 				F55DD8121F04AE92004915E3 /* SaleTableViewCell.m in Sources */,

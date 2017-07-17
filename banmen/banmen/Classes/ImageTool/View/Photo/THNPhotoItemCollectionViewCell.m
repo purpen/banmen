@@ -28,10 +28,10 @@
 - (void)thn_getPhotoAsset:(PHAsset *)asset {
     PHImageManager *imageManager = [PHImageManager defaultManager];
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-    options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
     
-    CGSize imageSize = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
-    [imageManager requestImageForAsset:asset targetSize:imageSize contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+    CGSize imageSize = CGSizeMake(100, 100);
+    [imageManager requestImageForAsset:asset targetSize:imageSize contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         self.photoImageView.image = result;
     }];
 }

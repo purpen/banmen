@@ -11,7 +11,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
-
+#import "THNJointViewController.h"
 #import "THNAssetItem.h"
 #import "THNPhotoTool.h"
 #import "THNHintInfoView.h"
@@ -198,7 +198,8 @@
 }
 
 - (void)thn_rightBarItemSelected {
-    [SVProgressHUD showSuccessWithStatus:@"切换拼接"];
+    THNJointViewController *jointController = [[THNJointViewController alloc] init];
+    [self.navigationController pushViewController:jointController animated:YES];
 }
 
 - (void)thn_hiddenNavTitle:(BOOL)hidden {
