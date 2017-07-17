@@ -15,8 +15,10 @@
 #import "BaseTarBar.h"
 #import "BaseNavController.h"
 #import "THNToolViewController.h"
+#import "LogInViewController.h"
+#import "UserModel.h"
 
-@interface BaseTarBarViewController ()
+@interface BaseTarBarViewController () <UITabBarControllerDelegate>
 
 @end
 
@@ -54,14 +56,15 @@
     // 添加子控制器
     [self setupChildVc:[[HomeViewController alloc] init] title:@"首页" image:@"home" selectedImage:@"home_selected"];
     
-    [self setupChildVc:[[RepositoryViewController alloc] init] title:@"资源库" image:@"media" selectedImage:@"media_selected"];
+    [self setupChildVc:[[RepositoryViewController alloc] init] title:@"资源库" image:@"library" selectedImage:@"library_selected"];
     
-    [self setupChildVc:[[THNToolViewController alloc] init] title:@"工具" image:@"found" selectedImage:@"found_selected"];
+    [self setupChildVc:[[THNToolViewController alloc] init] title:@"工具" image:@"tool" selectedImage:@"tool_selected"];
     
-    [self setupChildVc:[[UserViewController alloc] init] title:@"我的" image:@"me" selectedImage:@"me_selected"];
+    [self setupChildVc:[[UserViewController alloc] init] title:@"我的" image:@"main" selectedImage:@"main_selected"];
     
     // 更换tabBar
     [self setValue:[[BaseTarBar alloc] init] forKeyPath:@"tabBar"];
+    self.delegate = self;
 }
 
 /**
@@ -78,6 +81,23 @@
     // 包装一个导航控制器, 添加导航控制器为tabbarcontroller的子控制器
     BaseNavController *nav = [[BaseNavController alloc] initWithRootViewController:vc];
     [self addChildViewController:nav];
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    if ([viewController.tabBarItem.title isEqualToString:@"我的"]) {
+        UserModel *model = [[UserModel findAll] lastObject];
+        if (model.isLogin) {
+            return YES;
+        } else {
+            LogInViewController *vc = [[LogInViewController alloc] init];
+            UINavigationController *naviVc = [[UINavigationController alloc] initWithRootViewController:vc];
+            [self presentViewController:naviVc animated:YES completion:nil];
+            return NO;
+        }
+    }else {
+        return YES;
+    }
 }
 
 @end

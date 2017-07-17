@@ -7,31 +7,58 @@
 //
 
 #import "CooperationInProductViewController.h"
+#import "CooperationView.h"
+#import "MJRefresh.h"
+#import "Cooperation.h"
 
 @interface CooperationInProductViewController ()
-
+@property(nonatomic, strong) CooperationView *cView;
+@property (nonatomic, strong) NSMutableArray *modelAry;
+@property (nonatomic, strong) Cooperation *c;
 @end
 
 @implementation CooperationInProductViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.cView = [[CooperationView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:self.cView];
+    self.modelAry = [NSMutableArray array];
+    self.cView.modelAry = self.modelAry;
+    [self setupRefresh];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(Cooperation *)c{
+    if (!_c) {
+        _c = [Cooperation new];
+    }
+    return _c;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)setupRefresh{
+    self.cView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
+    // 自动改变透明度
+    self.cView.collectionView.mj_header.automaticallyChangeAlpha = YES;
+    [self.cView.collectionView.mj_header beginRefreshing];
+    self.cView.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+    self.cView.collectionView.mj_footer.hidden = YES;
 }
-*/
+
+-(void)loadView{
+    [self.cView.collectionView.mj_footer endRefreshing];
+    self.modelAry = [self.c getCooperationItemList];
+    [self.cView.collectionView reloadData];
+    [self.cView.collectionView.mj_header endRefreshing];
+    [self checkFooterState];
+}
+
+-(void)checkFooterState{
+    self.cView.collectionView.mj_footer.hidden = self.modelAry.count == 0;
+    if (self.modelAry.count == self.c.total_rows) {
+        self.cView.collectionView.mj_footer.hidden = YES;
+    }else{
+        [self.cView.collectionView.mj_footer endRefreshing];
+    }
+}
 
 @end

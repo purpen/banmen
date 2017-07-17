@@ -192,8 +192,24 @@
             make.width.mas_equalTo(SCREEN_WIDTH);
             make.height.mas_equalTo(344/2);
         }];
+        
+        [self addSubview:self.cancelBtn];
+        [_cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.mas_right).mas_offset(-15);
+            make.top.mas_equalTo(self.mas_top).mas_offset(30);
+            make.width.mas_equalTo(15);
+            make.height.mas_equalTo(15);
+        }];
     }
     return self;
+}
+
+-(UIButton *)cancelBtn{
+    if (!_cancelBtn) {
+        _cancelBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        [_cancelBtn setBackgroundImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
+    }
+    return _cancelBtn;
 }
 
 -(UIView *)logInView{
@@ -232,8 +248,8 @@
         _changBtn.backgroundColor = [UIColor clearColor];
         [_changBtn setTitle:@"立即注册?" forState:(UIControlStateNormal)];
         _changBtn.font = [UIFont systemFontOfSize:11];
-        [_changBtn addTarget:self action:@selector(changState:) forControlEvents:(UIControlEventTouchUpInside)];
         [_changBtn setTitleColor:[UIColor colorWithHexString:@"#3daaff"] forState:UIControlStateNormal];
+        [_changBtn addTarget:self action:@selector(changState:) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _changBtn;
 }
@@ -241,17 +257,17 @@
 -(void)changState:(UIButton*)sender{
     sender.selected = !sender.selected;
     if (sender.selected) {
-        self.tipLabel.text = @"已有帐号";
-        [self.changBtn setTitle:@"立即登录?" forState:(UIControlStateNormal)];
+        _tipLabel.text = @"已有帐号";
+        [_changBtn setTitle:@"立即登录?" forState:(UIControlStateNormal)];
     }else{
-        self.tipLabel.text = @"还没有帐号";
-        [self.changBtn setTitle:@"立即注册?" forState:(UIControlStateNormal)];
+        _tipLabel.text = @"还没有帐号";
+        [_changBtn setTitle:@"立即注册?" forState:(UIControlStateNormal)];
     }
     // 退出键盘
-    [self endEditing:YES];
+    [_logInView endEditing:YES];
     
     if (sender.selected) {
-        [self.logInView mas_updateConstraints:^(MASConstraintMaker *make) {
+        [_logInView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.mas_left).mas_offset(-SCREEN_WIDTH);
         }];
     }else{
@@ -261,7 +277,7 @@
     }
     
     [UIView animateWithDuration:0.25 animations:^{
-        [self layoutIfNeeded];
+        [_logInView layoutIfNeeded];
     }];
 }
 
