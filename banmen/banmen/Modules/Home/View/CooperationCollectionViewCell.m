@@ -9,6 +9,7 @@
 #import "CooperationCollectionViewCell.h"
 #import "Masonry.h"
 #import "UIColor+Extension.h"
+#import "UIImageView+WebCache.h"
 
 @implementation CooperationCollectionViewCell
 
@@ -92,7 +93,10 @@
 }
 
 -(void)setModel:(Cooperation *)model{
-    
+    [self.goodImageView sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:nil];
+    self.goodLabel.text = model.name;
+    self.priceLabel.text = [NSString stringWithFormat:@"￥%@",model.price];
+    self.inventoryLabel.text = [NSString stringWithFormat:@"库存：%@", model.inventory];
 }
 
 @end

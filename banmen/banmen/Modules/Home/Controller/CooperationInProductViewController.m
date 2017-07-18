@@ -44,9 +44,10 @@
     self.cView.collectionView.mj_footer.hidden = YES;
 }
 
--(void)loadView{
+-(void)loadNew{
     [self.cView.collectionView.mj_footer endRefreshing];
     self.modelAry = [self.c getCooperationItemList];
+    self.cView.modelAry = self.modelAry;
     [self.cView.collectionView reloadData];
     [self.cView.collectionView.mj_header endRefreshing];
     [self checkFooterState];
