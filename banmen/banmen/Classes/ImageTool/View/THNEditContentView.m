@@ -22,8 +22,8 @@ typedef NS_ENUM(NSInteger, THNChildEditViewBoarder){
 };
 
 static const NSInteger kChildViewInitTag = 51;
-//static const CGFloat kMinWidth = 48;
-//static const CGFloat kMinHeight = 48;
+static const CGFloat kMinWidth = 48;
+static const CGFloat kMinHeight = 48;
 
 @interface THNEditContentView ()
 
@@ -238,9 +238,9 @@ static const NSInteger kChildViewInitTag = 51;
 
 - (void)drawBoarderMiddleView:(THNEditChildView *)childEditView {
     self.leftTopX = self.frame.origin.x;
-    self.leftTopY = self.frame.origin.y;
+    self.leftTopY = self.frame.origin.y - 64;
     self.rightDownX = CGRectGetMaxX(self.frame);
-    self.rightDownY = CGRectGetMaxY(self.frame);
+    self.rightDownY = CGRectGetMaxY(self.frame) - 64;
     
     if (childEditView.frame.size.width == 0 || childEditView.frame.size.height == 0) {
         return;
@@ -424,12 +424,581 @@ static const NSInteger kChildViewInitTag = 51;
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self];
+    CGPoint prePoint = [touch previousLocationInView:self];
+    CGFloat offset_X = point.x - prePoint.x;
+    CGFloat offset_Y = point.y - prePoint.y;
     
+    THNEditChildView *childView = [self viewAccordingToTag:touch.view.superview.tag];
     
+    if (touch.view == childView.rightBoarderView) {
+        [self thn_touchesMovedChildViewBoarderRight:childView offsetX:offset_X];
+        
+    } else if (touch.view == childView.leftBoarderView) {
+        [self thn_touchesMovedChildViewBoarderLeft:childView offsetX:offset_X];
+        
+    } else if (touch.view == childView.bottomBoarderView) {
+        [self thn_touchesMovedChildViewBoarderDown:childView offsetY:offset_Y];
+        
+    } else if (touch.view == childView.topBoarderView) {
+        [self thn_touchesMovedChildViewBoarderTop:childView offsetY:offset_Y];
+    }
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    ///
+}
+
+#pragma mark - 根据触摸的边框调整拼图尺寸
+#pragma mark 右边框
+- (void)thn_touchesMovedChildViewBoarderRight:(THNEditChildView *)childView offsetX:(CGFloat)offset_X {
+    if ([childView.rightArray[0] isEqualToString:@"0"]) {
+        return;
+    }
     
+    CGRect currentOldRect = childView.frame;
+    
+    //  视图太小时禁止拖动
+    if ((CGRectGetWidth(currentOldRect) <= kMinWidth) && (offset_X < 0)) {
+        currentOldRect.size.width = kMinWidth;
+        childView.frame = currentOldRect;
+        childView.oldRect = currentOldRect;
+        return;
+        
+    } else {
+        for (NSString * neighbor in childView.rightArray) {
+            if ([neighbor isEqualToString:@"0"]) {
+                break;
+            }
+            
+            NSArray *component = [neighbor componentsSeparatedByString:@"."];
+            THNEditChildView *neighborView = [self viewAccordingToTag:[component[0] integerValue]];
+            CGRect neighborRect = neighborView.frame;
+            
+            switch ([component[1] integerValue]) {
+                case THNChildEditViewBoarderTop:
+                    break;
+                    
+                case THNChildEditViewBoarderLeft:
+                    if (CGRectGetWidth(neighborRect) <= kMinWidth && (offset_X > 0)) {
+                        neighborRect.size.width = kMinWidth;
+                        neighborView.frame = neighborRect;
+                        neighborView.oldRect = neighborRect;
+                        self.reachSmallest = YES;
+                        break;
+                    }
+                    break;
+                    
+                case THNChildEditViewBoarderDown:
+                    break;
+                    
+                case THNChildEditViewBoarderRight:
+                    if (CGRectGetWidth(neighborRect) <= kMinWidth && (offset_X < 0)) {
+                        neighborRect.size.width = kMinWidth;
+                        neighborView.frame = neighborRect;
+                        neighborView.oldRect = neighborRect;
+                        self.reachSmallest = YES;
+                        break;
+                    }
+                    break;
+            }
+            if (self.reachSmallest) {
+                break;
+            }
+        }
+        
+        if (self.reachSmallest) {
+            return;
+        }
+    }
+    
+    currentOldRect.size.width += offset_X;
+    if (CGRectGetWidth(currentOldRect) < kMinWidth && (offset_X < 0)) {
+        currentOldRect.size.width = kMinWidth;
+    }
+    childView.frame = currentOldRect;
+    childView.oldRect = currentOldRect;
+    
+    //  更新相邻的视图
+    [self thn_updateChildViewNeighborRight:childView oldRect:currentOldRect offsetX:offset_X];
+}
+
+- (void)thn_updateChildViewNeighborRight:(THNEditChildView *)childView oldRect:(CGRect)currentOldRect offsetX:(CGFloat)offset_X {
+    for (NSString *neighbor in childView.rightArray) {
+        if ([neighbor isEqualToString:@"0"])
+            break;
+        
+        NSArray *component = [neighbor componentsSeparatedByString:@"."];
+        THNEditChildView *neighborView = [self viewAccordingToTag:[component[0] integerValue]];
+        CGRect neighborRect = neighborView.frame;
+        if (CGRectGetHeight(neighborRect) < kMinWidth) {
+            neighborRect.size.height = kMinWidth;
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+        }
+        
+        switch ([component[1] integerValue]) {
+            case THNChildEditViewBoarderTop:
+                break;
+                
+            case THNChildEditViewBoarderLeft:
+                neighborRect = CGRectMake(CGRectGetMaxX(currentOldRect), CGRectGetMinY(neighborView.frame), CGRectGetWidth(neighborView.frame) - offset_X, CGRectGetHeight(neighborView.frame));
+                if (CGRectGetWidth(neighborRect) < kMinWidth && (offset_X > 0)) {
+                    neighborRect.size.width = kMinWidth;
+                    neighborView.frame = neighborRect;
+                    neighborView.oldRect = neighborRect;
+                    
+                    currentOldRect = CGRectMake(CGRectGetMinX(childView.frame), CGRectGetMinY(childView.frame), CGRectGetMinX(neighborView.frame) - CGRectGetMinX(childView.frame), CGRectGetHeight(childView.frame));
+                    childView.frame = currentOldRect;
+                    childView.oldRect = currentOldRect;
+                }
+                break;
+                
+            case THNChildEditViewBoarderDown:
+                break;
+                
+            case THNChildEditViewBoarderRight:
+                neighborRect = CGRectMake(CGRectGetMinX(neighborView.frame), CGRectGetMinY(neighborView.frame), CGRectGetWidth(neighborView.frame) + offset_X, CGRectGetHeight(neighborView.frame));
+                if (CGRectGetWidth(neighborRect) < kMinWidth && (offset_X < 0)) {
+                    neighborRect.size.width = kMinWidth;
+                    neighborView.frame = neighborRect;
+                    neighborView.oldRect = neighborRect;
+                    
+                    currentOldRect = CGRectMake(CGRectGetMinX(childView.frame), CGRectGetMinY(childView.frame), CGRectGetMaxX(neighborView.frame) - CGRectGetMinX(childView.frame), CGRectGetHeight(childView.frame));
+                    childView.frame = currentOldRect;
+                    childView.oldRect = currentOldRect;
+                }
+                break;
+        }
+        
+        if (CGRectGetWidth(neighborRect) < kMinWidth) {
+            neighborRect.size.width = kMinWidth;
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+            return;
+            
+        } else {
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+        }
+    }
+}
+
+#pragma mark 左边框
+- (void)thn_touchesMovedChildViewBoarderLeft:(THNEditChildView *)childView offsetX:(CGFloat)offset_X {
+    if ([childView.leftArray[0] isEqualToString:@"0"]) {
+        return;
+    }
+    
+    CGRect currentOldRect = childView.frame;
+    
+    //  视图太小时禁止拖动
+    if ((CGRectGetWidth(currentOldRect) <= kMinWidth) && (offset_X > 0)) {
+        currentOldRect.size.width = kMinWidth;
+        childView.frame = currentOldRect;
+        childView.oldRect = currentOldRect;
+        return;
+        
+    } else {
+        for (NSString *neighbor in childView.leftArray) {
+            if ([neighbor isEqualToString:@"0"]) {
+                break;
+            }
+            NSArray *component = [neighbor componentsSeparatedByString:@"."];
+            THNEditChildView *neighborView = [self viewAccordingToTag:[component[0] integerValue]];
+            CGRect neighborRect = neighborView.frame;
+            switch ([component[1] integerValue]) {
+                case THNChildEditViewBoarderTop:
+                    break;
+                    
+                case THNChildEditViewBoarderLeft:
+                    if (CGRectGetWidth(neighborRect) <= kMinWidth && (offset_X > 0)) {
+                        neighborRect.size.width = kMinWidth;
+                        neighborView.frame = neighborRect;
+                        neighborView.oldRect = neighborRect;
+                        self.reachSmallest = YES;
+                        break;
+                    }
+                    break;
+                    
+                case THNChildEditViewBoarderDown:
+                    break;
+                    
+                case THNChildEditViewBoarderRight:
+                    if (CGRectGetWidth(neighborRect) <= kMinWidth && (offset_X < 0)) {
+                        neighborRect.size.width = kMinWidth;
+                        neighborView.frame = neighborRect;
+                        neighborView.oldRect = neighborRect;
+                        self.reachSmallest = YES;
+                        break;
+                    }
+                    break;
+            }
+            
+            if (self.reachSmallest) {
+                break;
+            }
+        }
+        
+        if (self.reachSmallest) {
+            return;
+        }
+    }
+    
+    
+    currentOldRect = CGRectMake(CGRectGetMinX(childView.frame) + offset_X, CGRectGetMinY(childView.frame), CGRectGetWidth(childView.frame) - offset_X, CGRectGetHeight(childView.frame));
+    
+    if (CGRectGetWidth(currentOldRect) < kMinWidth && (offset_X > 0)) {
+        currentOldRect.size.width = kMinWidth;
+    }
+    childView.frame = currentOldRect;
+    childView.oldRect = currentOldRect;
+    
+    //  更新相邻的视图
+    [self thn_updateChildViewNeighborLeft:childView oldRect:currentOldRect offsetX:offset_X];
+}
+
+- (void)thn_updateChildViewNeighborLeft:(THNEditChildView *)childView oldRect:(CGRect)currentOldRect offsetX:(CGFloat)offset_X {
+    for (NSString *neighbor in childView.leftArray) {
+        if ([neighbor isEqualToString:@"0"])break;
+        
+        NSArray *component = [neighbor componentsSeparatedByString:@"."];
+        THNEditChildView *neighborView = [self viewAccordingToTag:[component[0] integerValue]];
+        CGRect neighborRect = neighborView.frame;
+        if (CGRectGetWidth(neighborRect) < kMinWidth) {
+            neighborRect.size.width = kMinWidth;
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+        }
+        
+        if (CGRectGetWidth(neighborRect) < kMinWidth)return;
+        switch ([component[1] integerValue]) {
+            case THNChildEditViewBoarderTop:
+                break;
+                
+            case THNChildEditViewBoarderLeft:
+                neighborRect = CGRectMake(CGRectGetMinX(childView.frame), CGRectGetMinY(neighborView.frame), CGRectGetWidth(neighborView.frame) - offset_X, CGRectGetHeight(neighborView.frame));
+                
+                if (CGRectGetWidth(neighborRect) < kMinWidth && (offset_X > 0)) {
+                    neighborRect.size.width = kMinWidth;
+                    neighborView.frame = neighborRect;
+                    neighborView.oldRect = neighborRect;
+                    
+                    currentOldRect = CGRectMake(CGRectGetMinX(neighborView.frame), CGRectGetMinY(childView.frame), CGRectGetMaxX(childView.frame) - CGRectGetMinX(neighborView.frame), CGRectGetHeight(childView.frame));
+                    childView.frame = currentOldRect;
+                    childView.oldRect = currentOldRect;
+                }
+                break;
+                
+            case THNChildEditViewBoarderDown:
+                break;
+                
+            case THNChildEditViewBoarderRight:
+                neighborRect = CGRectMake(CGRectGetMinX(neighborView.frame), CGRectGetMinY(neighborView.frame), CGRectGetWidth(neighborView.frame) + offset_X, CGRectGetHeight(neighborView.frame));
+                
+                if (CGRectGetWidth(neighborRect) < kMinWidth && (offset_X < 0)) {
+                    neighborRect.size.width = kMinWidth;
+                    neighborView.frame = neighborRect;
+                    neighborView.oldRect = neighborRect;
+                    
+                    currentOldRect = CGRectMake(CGRectGetMaxX(neighborView.frame), CGRectGetMinY(childView.frame), CGRectGetMaxX(childView.frame) - CGRectGetMaxX(neighborView.frame), CGRectGetHeight(childView.frame));
+                    childView.frame = currentOldRect;
+                    childView.oldRect = currentOldRect;
+                }
+                break;
+        }
+        
+        if (CGRectGetWidth(neighborRect) < kMinWidth) {
+            neighborRect.size.width = kMinWidth;
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+            return;
+            
+        } else {
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+        }
+    }
+}
+
+#pragma mark 上边框
+- (void)thn_touchesMovedChildViewBoarderTop:(THNEditChildView *)childView offsetY:(CGFloat)offset_Y {
+    if ([childView.topArray[0] isEqualToString:@"0"]) {
+        return;
+    }
+    
+    CGRect currentOldRect = childView.frame;
+    //  视图太小时禁止拖动
+    if ((CGRectGetHeight(currentOldRect) <= kMinHeight) && (offset_Y > 0)) {
+        currentOldRect.size.height = kMinHeight;
+        childView.frame = currentOldRect;
+        childView.oldRect = currentOldRect;
+        return;
+        
+    } else {
+        for (NSString *neighbor in childView.topArray) {
+            if ([neighbor isEqualToString:@"0"]) {
+                break;
+            }
+            NSArray *component = [neighbor componentsSeparatedByString:@"."];
+            THNEditChildView *neighborView = [self viewAccordingToTag:[component[0] integerValue]];
+            CGRect neighborRect = neighborView.frame;
+            
+            switch ([component[1] integerValue]) {
+                case THNChildEditViewBoarderTop:
+                    if (CGRectGetHeight(neighborRect) <= kMinHeight && (offset_Y > 0)) {
+                        neighborRect.size.height = kMinHeight;
+                        neighborView.frame = neighborRect;
+                        neighborView.oldRect = neighborRect;
+                        self.reachSmallest = YES;
+                        break;
+                    }
+                    break;
+                    
+                case THNChildEditViewBoarderLeft:
+                    break;
+                    
+                case THNChildEditViewBoarderDown:
+                    if (CGRectGetHeight(neighborRect) <= kMinHeight && (offset_Y < 0)) {
+                        neighborRect.size.height = kMinHeight;
+                        neighborView.frame = neighborRect;
+                        neighborView.oldRect = neighborRect;
+                        self.reachSmallest = YES;
+                        break;
+                    }
+                    break;
+                    
+                case THNChildEditViewBoarderRight:
+                    break;
+            }
+            
+            if (self.reachSmallest) {
+                break;
+            }
+        }
+        
+        if (self.reachSmallest) {
+            return;
+        }
+    }
+    
+    currentOldRect = CGRectMake(CGRectGetMinX(childView.frame), CGRectGetMinY(childView.frame) + offset_Y, CGRectGetWidth(childView.frame), CGRectGetHeight(childView.frame) - offset_Y);
+    
+    if (CGRectGetHeight(currentOldRect) < kMinHeight) {
+        currentOldRect.size.height = kMinHeight;
+    }
+    childView.frame = currentOldRect;
+    childView.oldRect = currentOldRect;
+    
+    //  更新相邻的视图
+    [self thn_updateChildViewNeighborTop:childView oldRect:currentOldRect offsetY:offset_Y];
+}
+
+- (void)thn_updateChildViewNeighborTop:(THNEditChildView *)childView oldRect:(CGRect)currentOldRect offsetY:(CGFloat)offset_Y  {
+    for (NSString *neighbor in childView.topArray) {
+        if ([neighbor isEqualToString:@"0"]) {
+            break;
+        }
+        
+        NSArray *component = [neighbor componentsSeparatedByString:@"."];
+        THNEditChildView *neighborView = [self viewAccordingToTag:[component[0] integerValue]];
+        CGRect neighborRect = neighborView.frame;
+        
+        if (CGRectGetHeight(neighborRect) < kMinHeight) {
+            neighborRect.size.height = kMinHeight;
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+        }
+        
+        if (CGRectGetWidth(neighborRect) < kMinHeight) {
+            return;
+        }
+        
+        switch ([component[1] integerValue]) {
+            case THNChildEditViewBoarderTop:
+                neighborRect = CGRectMake(CGRectGetMinX(neighborView.frame), CGRectGetMinY(neighborView.frame) + offset_Y, CGRectGetWidth(neighborView.frame), CGRectGetHeight(neighborView.frame) - offset_Y);
+                
+                if (CGRectGetHeight(neighborRect) < kMinHeight && (offset_Y > 0)) {
+                    neighborRect.size.height = kMinHeight;
+                    neighborView.frame = neighborRect;
+                    neighborView.oldRect = neighborRect;
+                    
+                    currentOldRect = CGRectMake(CGRectGetMinX(childView.frame), CGRectGetMinY(neighborView.frame), CGRectGetWidth(childView.frame), CGRectGetMaxY(childView.frame) - CGRectGetMinY(neighborView.frame));
+                    childView.frame = currentOldRect;
+                    childView.oldRect = currentOldRect;
+                }
+                break;
+                
+            case THNChildEditViewBoarderLeft:
+                break;
+                
+            case THNChildEditViewBoarderDown:
+                neighborRect = CGRectMake(CGRectGetMinX(neighborView.frame), CGRectGetMinY(neighborView.frame), CGRectGetWidth(neighborView.frame), CGRectGetHeight(neighborView.frame) + offset_Y);
+                
+                if (CGRectGetHeight(neighborRect) < kMinHeight && (offset_Y < 0)) {
+                    neighborRect.size.height = kMinHeight;
+                    neighborView.frame = neighborRect;
+                    neighborView.oldRect = neighborRect;
+                    
+                    currentOldRect = CGRectMake(CGRectGetMinX(childView.frame), CGRectGetMaxY(neighborView.frame), CGRectGetWidth(childView.frame), CGRectGetMaxY(childView.frame) - CGRectGetMaxY(neighborView.frame));
+                    childView.frame = currentOldRect;
+                    childView.oldRect = currentOldRect;
+                }
+                break;
+                
+            case THNChildEditViewBoarderRight:
+                break;
+        }
+        
+        if (CGRectGetHeight(neighborRect) < kMinHeight) {
+            neighborRect.size.height = kMinHeight;
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+            return;
+            
+        } else {
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+        }
+    }
+}
+
+#pragma mark 下边框
+- (void)thn_touchesMovedChildViewBoarderDown:(THNEditChildView *)childView offsetY:(CGFloat)offset_Y {
+    if ([childView.bottomArray[0] isEqualToString:@"0"])return;
+    CGRect currentOldRect = childView.frame;
+    //  视图太小时禁止拖动
+    if ((CGRectGetHeight(currentOldRect) <= kMinHeight) && (offset_Y < 0)) {
+        currentOldRect.size.height = kMinHeight;
+        childView.frame = currentOldRect;
+        childView.oldRect = currentOldRect;
+        return;
+        
+    } else {
+        for (NSString *neighbor in childView.bottomArray) {
+            if ([neighbor isEqualToString:@"0"]) {
+                break;
+            }
+            
+            NSArray *component = [neighbor componentsSeparatedByString:@"."];
+            THNEditChildView *neighborView = [self viewAccordingToTag:[component[0] integerValue]];
+            CGRect neighborRect = neighborView.frame;
+            switch ([component[1] integerValue]) {
+                case THNChildEditViewBoarderTop:
+                    if (CGRectGetHeight(neighborRect) <= kMinHeight && (offset_Y > 0)) {
+                        neighborRect.size.height = kMinHeight;
+                        neighborView.frame = neighborRect;
+                        neighborView.oldRect = neighborRect;
+                        self.reachSmallest = YES;
+                        break;
+                    }
+                    break;
+                    
+                case THNChildEditViewBoarderLeft:
+                    break;
+                    
+                case THNChildEditViewBoarderDown:
+                    if (CGRectGetHeight(neighborRect) <= kMinHeight && (offset_Y < 0)) {
+                        neighborRect.size.height = kMinHeight;
+                        neighborView.frame = neighborRect;
+                        neighborView.oldRect = neighborRect;
+                        self.reachSmallest = YES;
+                        break;
+                    }
+                    break;
+                    
+                case THNChildEditViewBoarderRight:
+                    break;
+            }
+            
+            if (self.reachSmallest) {
+                break;
+            }
+        }
+        
+        if (self.reachSmallest) {
+            return;
+        }
+    }
+    
+    currentOldRect.size.height += offset_Y;
+    if (CGRectGetHeight(currentOldRect) < kMinHeight) {
+        currentOldRect.size.height = kMinHeight;
+    }
+    childView.frame = currentOldRect;
+    childView.oldRect = currentOldRect;
+    
+    //  更新相邻的视图
+    [self thn_updateChildViewNeighborDown:childView oldRect:currentOldRect offsetY:offset_Y];
+}
+
+- (void)thn_updateChildViewNeighborDown:(THNEditChildView *)childView oldRect:(CGRect)currentOldRect offsetY:(CGFloat)offset_Y {
+    for (NSString *neighbor in childView.bottomArray) {
+        if ([neighbor isEqualToString:@"0"]) {
+            break;
+        }
+        
+        NSArray *component = [neighbor componentsSeparatedByString:@"."];
+        THNEditChildView *neighborView = [self viewAccordingToTag:[component[0] integerValue]];
+        CGRect neighborRect = neighborView.frame;
+        
+        if (CGRectGetHeight(neighborRect) < kMinHeight) {
+            neighborRect.size.height = kMinHeight;
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+        }
+        
+        if (CGRectGetWidth(neighborRect) < kMinHeight) {
+            return;
+        }
+        
+        switch ([component[1] integerValue]) {
+            case THNChildEditViewBoarderTop:
+                neighborRect = CGRectMake(CGRectGetMinX(neighborView.frame), CGRectGetMinY(neighborView.frame) + offset_Y, CGRectGetWidth(neighborView.frame), CGRectGetHeight(neighborView.frame) - offset_Y);
+                
+                if (CGRectGetHeight(neighborRect) < kMinHeight && (offset_Y > 0)) {
+                    neighborRect.size.height = kMinHeight;
+                    neighborView.frame = neighborRect;
+                    neighborView.oldRect = neighborRect;
+                    
+                    currentOldRect = CGRectMake(CGRectGetMinX(childView.frame), CGRectGetMinY(childView.frame), CGRectGetWidth(childView.frame), CGRectGetMinY(neighborView.frame) - CGRectGetMinY(childView.frame));
+                    childView.frame = currentOldRect;
+                    childView.oldRect = currentOldRect;
+                }
+                break;
+                
+            case THNChildEditViewBoarderLeft:
+                break;
+                
+            case THNChildEditViewBoarderDown:
+                neighborRect = CGRectMake(CGRectGetMinX(neighborView.frame), CGRectGetMinY(neighborView.frame), CGRectGetWidth(neighborView.frame), CGRectGetHeight(neighborView.frame) + offset_Y);
+                
+                if (CGRectGetHeight(neighborRect) < kMinHeight && (offset_Y < 0)) {
+                    neighborRect.size.height = kMinHeight;
+                    neighborView.frame = neighborRect;
+                    neighborView.oldRect = neighborRect;
+                    
+                    currentOldRect = CGRectMake(CGRectGetMinX(childView.frame), CGRectGetMinY(childView.frame), CGRectGetWidth(childView.frame), CGRectGetMaxY(neighborView.frame) - CGRectGetMinY(childView.frame));
+                    childView.frame = currentOldRect;
+                    childView.oldRect = currentOldRect;
+                }
+                break;
+                
+            case THNChildEditViewBoarderRight:
+                break;
+        }
+        
+        if (CGRectGetHeight(neighborRect) < kMinHeight) {
+            neighborRect.size.height = kMinHeight;
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+            return;
+        } else {
+            neighborView.frame = neighborRect;
+            neighborView.oldRect = neighborRect;
+        }
+    }
 }
 
 #pragma mark - 根据标识显示视图
