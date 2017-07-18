@@ -23,11 +23,6 @@ typedef NS_ENUM(NSInteger, THNEditDirection) {
 
 @end
 
-/**
- 调整大小的delegate
- */
-@protocol THNEditChildViewResizableDelegate;
-
 @interface THNEditChildView : UIView <UIScrollViewDelegate>
 
 @property (nonatomic, retain) UIScrollView *contentView;
@@ -69,8 +64,6 @@ typedef NS_ENUM(NSInteger, THNEditDirection) {
 @property (nonatomic, assign) CGFloat minWidth;
 @property (nonatomic, assign) CGFloat minHeight;
 
-@property (nonatomic, weak) id <THNEditChildViewResizableDelegate> resizeDelegate;
-
 - (void)thn_setImageViewData:(UIImage *)imageData;
 - (void)thn_setImageViewData:(UIImage *)imageData rect:(CGRect)rect;
 - (void)thn_setNotReloadFrame:(CGRect)frame;
@@ -80,28 +73,6 @@ typedef NS_ENUM(NSInteger, THNEditDirection) {
  */
 - (void)drawInnerBoarder;
 - (void)clearInnerBoarder;
-
-@end
-
-
-//@protocol THNEditChildViewDelegate <NSObject>
-//
-//- (void)thn_tapWithEditView:(THNEditChildView *)sender;
-//
-//@end
-
-
-@protocol THNEditChildViewResizableDelegate <NSObject>
-
-/**
- 触摸开始
- */
-- (void)thn_editChildViewDidBeginEditing:(THNEditChildView *)editChildView;
-
-/**
- 触摸结束
- */
-- (void)thn_editChildViewDidEndEditing:(THNEditChildView *)editChildView;
 
 @end
 

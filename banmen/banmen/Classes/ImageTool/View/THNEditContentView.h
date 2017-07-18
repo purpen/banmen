@@ -10,6 +10,12 @@
 
 @class THNEditChildView;
 
+@protocol THNEditChildViewDelegate <NSObject>
+
+- (void)thn_tapWithEditView:(THNEditChildView *)childView;
+
+@end
+
 @interface THNEditContentView : UIView {
     BOOL _contain;
     CGPoint _startPoint;
@@ -48,6 +54,11 @@
  保存各图片视图
  */
 @property (nonatomic, strong) NSMutableArray *contentViewArray;
+
+/**
+ 选中拼图的子视图
+ */
+@property (nonatomic, weak) id <THNEditChildViewDelegate> childViewDelegate;
 
 - (instancetype)initWithFrame:(CGRect)frame tag:(NSInteger)tag;
 - (void)resetStyle;

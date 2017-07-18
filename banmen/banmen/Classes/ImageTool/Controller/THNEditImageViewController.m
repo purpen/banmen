@@ -18,7 +18,7 @@
 
 static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionViewCellId";
 
-@interface THNEditImageViewController () <THNImageToolNavigationBarItemsDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface THNEditImageViewController () <THNImageToolNavigationBarItemsDelegate, UICollectionViewDelegate, UICollectionViewDataSource, THNEditChildViewDelegate>
 
 @property (nonatomic, strong) NSArray *titleArr;
 @property (nonatomic, strong) NSArray *iconArr;
@@ -32,6 +32,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 @property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, assign) NSInteger childViewIndex;
 @property (nonatomic, assign) BOOL addBorder;
+@property (nonatomic, strong) THNEditChildView *tempChildView;
 
 @end
 
@@ -61,6 +62,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 - (THNEditContentView *)editContentView {
     if (!_editContentView) {
         _editContentView = [[THNEditContentView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_WIDTH) tag:self.styleTag];
+        _editContentView.childViewDelegate = self;
     }
     return _editContentView;
 }
@@ -71,6 +73,15 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
     [self.editContentView.firstView drawInnerBoarder];
     [self.editContentView drawBoarderMiddleView:self.editContentView.firstView];
     [self.editContentView setValue:[NSNumber numberWithInteger:0] forKey:@"childViewIndex"];
+}
+
+#pragma mark 选中了子视图
+- (void)thn_tapWithEditView:(THNEditChildView *)childView {
+    self.tempChildView = childView;
+    
+    self.addBorder = NO;
+    
+    [self thn_hiddenEditContentViewBoarder:YES];
 }
 
 #pragma mark - 初始化编辑功能按钮标题／图标
@@ -120,7 +131,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0:
-            NSLog(@"=================  替换图片");
+            [self thn_replaceImage];
             break;
         case 1:
             [self thn_mirrorImage];
@@ -134,9 +145,17 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
     }
 }
 
+#pragma mark 替换照片
+- (void)thn_replaceImage {
+    NSLog(@"=================  替换图片");
+}
+
 #pragma mark 边框
 - (void)thn_boarderImage {
+    [self thn_hiddenEditContentViewBoarder:self.addBorder];
+    
     self.addBorder = !self.addBorder;
+    
     if (self.addBorder) {
         self.leftTopX = self.editContentView.frame.origin.x;
         self.leftTopY = self.editContentView.frame.origin.y - 64;
@@ -145,19 +164,23 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
         for (THNEditChildView *childView in self.editContentView.subviews) {
             [childView clearInnerBoarder];
             [self.editContentView removeBoarderMiddleView:childView];
-            [self drawInnerBoarder:childView];
+            [self thn_drawPuzzleViewBoarder:childView];
         }
-        [self.editContentView setValue:[NSNumber numberWithInteger:-1] forKey:@"childViewIndex"];
+        [self.editContentView setValue:[NSNumber numberWithInteger:self.childViewIndex] forKey:@"childViewIndex"];
         
     } else {
         for (THNEditChildView *childView in self.editContentView.subviews) {
             [self thn_clearInnerBoarder:childView];
         }
-        [self.editContentView setValue:[NSNumber numberWithInteger:0] forKey:@"childViewIndex"];
+        
+        [self.tempChildView drawInnerBoarder];
+        [self.editContentView drawBoarderMiddleView:self.tempChildView];
+        
+        [self.editContentView setValue:[NSNumber numberWithInteger:self.childViewIndex] forKey:@"childViewIndex"];
     }
 }
 
-- (void)drawInnerBoarder:(THNEditChildView *)childEditView {
+- (void)thn_drawPuzzleViewBoarder:(THNEditChildView *)childEditView {
     if (childEditView.frame.size.width == 0 || childEditView.frame.size.height == 0) {
         return;
     }
@@ -177,6 +200,11 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
     if (CGRectGetMaxY(childEditView.frame) != self.rightDownY) {
         childEditView.bottomBoarderLayer.backgroundColor = [UIColor colorWithHexString:kColorWhite];
     }
+}
+
+- (void)thn_hiddenEditContentViewBoarder:(BOOL)hidden {
+    self.editContentView.layer.borderWidth = hidden ? 0 : 4;
+    self.editContentView.layer.borderColor = [UIColor colorWithHexString:kColorWhite].CGColor;
 }
 
 #pragma mark 镜像
@@ -245,7 +273,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"selectedIndex"]) {
         
-        PHAsset *asset = self.photoAssets[[[self valueForKeyPath:@"selectedIndex"] integerValue] ];
+        PHAsset *asset = self.photoAssets[[[self valueForKeyPath:@"selectedIndex"] integerValue]];
         [self.selectedAssetArray replaceObjectAtIndex:self.childViewIndex withObject:asset];
         
         PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
@@ -262,25 +290,6 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
     
     if ([keyPath isEqualToString:@"childViewIndex"]) {
         self.childViewIndex = [[self.editContentView valueForKey:@"childViewIndex"] integerValue];
-        if (self.childViewIndex == -1) {
-//            WXIEditButton *mirroButton = self.editButtonArray[1];
-//            [mirroButton disableClick];
-//
-//            WXIEditButton *flipButton = self.editButtonArray[2];
-//            [flipButton disableClick];
-        } else {
-//            WXIEditButton *mirroButton = self.editButtonArray[1];
-//            [mirroButton enableClick];
-//
-//            WXIEditButton *flipButton = self.editButtonArray[2];
-//            [flipButton enableClick];
-            //  保证在去边框的情况下，下次可以加边框
-            self.addBorder = NO;
-            //  去除内边框
-            for (THNEditChildView *childView in self.editContentView.subviews) {
-                [self thn_clearInnerBoarder:childView];
-            }
-        }
     }
 }
 

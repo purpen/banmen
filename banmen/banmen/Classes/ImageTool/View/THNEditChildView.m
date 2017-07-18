@@ -197,7 +197,7 @@ static const CGFloat kTHNEditChildViewInnerBoarderWidth     = 2.0f;
 #pragma mark - 重新设置frame
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
-    _contentView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    self.contentView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
     
     //  缩放
     if (self.originalContentSize.width != 0) {

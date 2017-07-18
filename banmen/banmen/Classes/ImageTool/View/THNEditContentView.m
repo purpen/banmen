@@ -184,7 +184,7 @@ static const CGFloat kMinHeight = 48;
                 childEditView.leftArray = [[[subDict objectForKey:@"Left"] componentsSeparatedByString:@","] mutableCopy];
                 childEditView.bottomArray = [[[subDict objectForKey:@"Bottom"] componentsSeparatedByString:@","] mutableCopy];
                 childEditView.rightArray = [[[subDict objectForKey:@"Right"] componentsSeparatedByString:@","] mutableCopy];
-                childEditView.backgroundColor = [UIColor colorWithHexString:kColorMain alpha:0];
+                childEditView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
                 [[PHImageManager defaultManager] requestImageForAsset:assetItem.asset targetSize:CGSizeMake(350, 350) contentMode:PHImageContentModeAspectFill options:requestOption resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                     [childEditView thn_setImageViewData:result rect:rect];
                 }];
@@ -232,8 +232,13 @@ static const CGFloat kMinHeight = 48;
     [self removeBoarderMiddleView:self.fifthView];
     [self removeBoarderMiddleView:self.sixthView];
     
-    //  加入粗提示拖动边框
+    //  加入拖动边框
     [self drawBoarderMiddleView:childEditView];
+    
+    //  点击事件
+    if ([self.childViewDelegate respondsToSelector:@selector(thn_tapWithEditView:)]) {
+        [self.childViewDelegate thn_tapWithEditView:childEditView];
+    }
 }
 
 - (void)drawBoarderMiddleView:(THNEditChildView *)childEditView {
