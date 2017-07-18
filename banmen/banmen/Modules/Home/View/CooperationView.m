@@ -26,6 +26,7 @@
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.sectionInset = UIEdgeInsetsMake(10, 20, 10, 20);
         _collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -44,8 +45,12 @@
     return 1;
 }
 
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(10, 5, 0, 0);
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return 10;
+}
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    return 10;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -55,7 +60,7 @@
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((SCREEN_WIDTH-40-10)/2, 0.26*SCREEN_HEIGHT);
+    return CGSizeMake((SCREEN_WIDTH-40-10)/2, 347.0/2);
 }
 
 @end

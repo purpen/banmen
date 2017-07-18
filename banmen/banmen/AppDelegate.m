@@ -20,7 +20,6 @@ static const NSTimeInterval MAX_DISMISSTIME = 2;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     [self thn_initSVProgressHUDArgument];
     [self windowShow];
     return YES;

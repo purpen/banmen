@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PNChart.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-banmen.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -50,6 +55,11 @@
 			<false/>
 		</dict>
 		<key>TYAlertController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UICountingLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

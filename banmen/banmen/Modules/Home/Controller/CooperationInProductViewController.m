@@ -11,10 +11,12 @@
 #import "MJRefresh.h"
 #import "Cooperation.h"
 
-@interface CooperationInProductViewController ()
+@interface CooperationInProductViewController ()<CooperationDelegate>
 @property(nonatomic, strong) CooperationView *cView;
-@property (nonatomic, strong) NSMutableArray *modelAry;
 @property (nonatomic, strong) Cooperation *c;
+@property(nonatomic,assign) NSInteger current_page;
+@property(nonatomic,assign) NSInteger total_rows;
+@property(nonatomic,strong) NSMutableArray *modelAry;
 @end
 
 @implementation CooperationInProductViewController
@@ -23,8 +25,7 @@
     [super viewDidLoad];
     self.cView = [[CooperationView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:self.cView];
-    self.modelAry = [NSMutableArray array];
-    self.cView.modelAry = self.modelAry;
+    self.cView.modelAry = self.c.modelAry;
     [self setupRefresh];
 }
 
@@ -44,18 +45,40 @@
     self.cView.collectionView.mj_footer.hidden = YES;
 }
 
+-(void)loadMore{
+    [self.cView.collectionView.mj_header endRefreshing];
+    self.c.cDelegate = self;
+    [self.c getMoreCooperationItemList:self.current_page];
+}
+
+-(void)getMoreCooperation:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
+    [self.modelAry addObjectsFromArray:modelAry];
+    [self.cView.collectionView reloadData];
+    [self.cView.collectionView.mj_footer endRefreshing];
+    self.current_page = current_page;
+    self.total_rows = total_rows;
+    [self checkFooterState];
+}
+
 -(void)loadNew{
     [self.cView.collectionView.mj_footer endRefreshing];
-    self.modelAry = [self.c getCooperationItemList];
-    self.cView.modelAry = self.modelAry;
+    self.c.cDelegate = self;
+    [self.c getCooperationItemList];
+}
+
+-(void)getCooperation:(NSMutableArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
+    self.modelAry = modelAry;
+    self.cView.modelAry = modelAry;
     [self.cView.collectionView reloadData];
     [self.cView.collectionView.mj_header endRefreshing];
+    self.current_page = current_page;
+    self.total_rows = total_rows;
     [self checkFooterState];
 }
 
 -(void)checkFooterState{
     self.cView.collectionView.mj_footer.hidden = self.modelAry.count == 0;
-    if (self.modelAry.count == self.c.total_rows) {
+    if (self.modelAry.count == self.total_rows) {
         self.cView.collectionView.mj_footer.hidden = YES;
     }else{
         [self.cView.collectionView.mj_footer endRefreshing];

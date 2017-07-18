@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol CooperationDelegate <NSObject>
+
+-(void)getCooperation:(NSMutableArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows;
+-(void)getMoreCooperation:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows;
+
+@end
+
 @interface Cooperation : NSObject
 
 @property(nonatomic, copy) NSString *product_id;
@@ -18,7 +25,10 @@
 @property(nonatomic, copy) NSString *image;
 @property(nonatomic,assign) NSInteger current_page;
 @property(nonatomic,assign) NSInteger total_rows;
+@property(nonatomic,strong) NSMutableArray *modelAry;
+@property(nonatomic,weak) id <CooperationDelegate> cDelegate;
 
--(NSMutableArray*)getCooperationItemList;
+-(void)getCooperationItemList;
+-(void)getMoreCooperationItemList:(NSInteger)currentPage;
 
 @end

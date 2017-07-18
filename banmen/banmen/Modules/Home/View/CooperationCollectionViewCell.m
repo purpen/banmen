@@ -15,33 +15,35 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        [self addSubview:self.goodImageView];
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        
+        [self.contentView addSubview:self.goodImageView];
         [_goodImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.mas_equalTo(self.contentView).mas_offset(0);
             make.top.mas_equalTo(self.contentView.mas_top).mas_offset(0);
-            make.bottom.mas_equalTo(self.contentView.mas_bottom).mas_offset(50);
+            make.bottom.mas_equalTo(self.contentView.mas_bottom).mas_offset(-50);
         }];
         
-        [self addSubview:self.lineView];
+        [self.contentView addSubview:self.lineView];
         [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.mas_equalTo(self.contentView).mas_offset(0);
             make.top.mas_equalTo(self.goodImageView.mas_bottom).mas_offset(0);
             make.height.mas_equalTo(1);
         }];
         
-        [self addSubview:self.goodLabel];
+        [self.contentView addSubview:self.goodLabel];
         [_goodLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).mas_offset(5);
             make.top.mas_equalTo(self.lineView.mas_bottom).mas_offset(5);
         }];
         
-        [self addSubview:self.priceLabel];
+        [self.contentView addSubview:self.priceLabel];
         [_priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.goodLabel.mas_left).mas_offset(0);
             make.top.mas_equalTo(self.goodLabel.mas_bottom).mas_offset(10);
         }];
         
-        [self addSubview:self.inventoryLabel];
+        [self.contentView addSubview:self.inventoryLabel];
         [_inventoryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-5);
             make.centerY.mas_equalTo(self.priceLabel.mas_centerY).mas_offset(0);

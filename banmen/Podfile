@@ -11,4 +11,5 @@ target "banmen" do
  pod 'MJExtension'
  pod 'TYAlertController'
  pod 'JKDBModel-JDBR', '~> 0.0.1'
+ pod 'PNChart'
 end
