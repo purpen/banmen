@@ -130,6 +130,14 @@
 		F595FE0B1F1CA18D006F4E46 /* CooperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0A1F1CA18D006F4E46 /* CooperationView.m */; };
 		F595FE0E1F1CA382006F4E46 /* CooperationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0D1F1CA382006F4E46 /* CooperationCollectionViewCell.m */; };
 		F595FE111F1CC762006F4E46 /* Cooperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE101F1CC762006F4E46 /* Cooperation.m */; };
+		F595FE141F1DAB0D006F4E46 /* SalesTrendsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE131F1DAB0D006F4E46 /* SalesTrendsModel.m */; };
+		F595FE1E1F1DDE8E006F4E46 /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE171F1DDE8E006F4E46 /* DayCollectionViewCell.m */; };
+		F595FE1F1F1DDE8E006F4E46 /* HotelCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE191F1DDE8E006F4E46 /* HotelCalendarViewController.m */; };
+		F595FE201F1DDE8E006F4E46 /* MonthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE1B1F1DDE8E006F4E46 /* MonthModel.m */; };
+		F595FE211F1DDE8E006F4E46 /* MonthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE1D1F1DDE8E006F4E46 /* MonthTableViewCell.m */; };
+		F595FE241F1E0E6C006F4E46 /* SalesChannelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE231F1E0E6C006F4E46 /* SalesChannelsViewController.m */; };
+		F595FE271F1E1068006F4E46 /* SalesChannelsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */; };
+		F595FE2A1F1E144A006F4E46 /* SalesChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE291F1E144A006F4E46 /* SalesChannelsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -328,6 +336,23 @@
 		F595FE0D1F1CA382006F4E46 /* CooperationCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CooperationCollectionViewCell.m; sourceTree = "<group>"; };
 		F595FE0F1F1CC762006F4E46 /* Cooperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cooperation.h; sourceTree = "<group>"; };
 		F595FE101F1CC762006F4E46 /* Cooperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cooperation.m; sourceTree = "<group>"; };
+		F595FE121F1DAB0D006F4E46 /* SalesTrendsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesTrendsModel.h; sourceTree = "<group>"; };
+		F595FE131F1DAB0D006F4E46 /* SalesTrendsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesTrendsModel.m; sourceTree = "<group>"; };
+		F595FE161F1DDE8E006F4E46 /* DayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewCell.h; sourceTree = "<group>"; };
+		F595FE171F1DDE8E006F4E46 /* DayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCollectionViewCell.m; sourceTree = "<group>"; };
+		F595FE181F1DDE8E006F4E46 /* HotelCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelCalendarViewController.h; sourceTree = "<group>"; };
+		F595FE191F1DDE8E006F4E46 /* HotelCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelCalendarViewController.m; sourceTree = "<group>"; };
+		F595FE1A1F1DDE8E006F4E46 /* MonthModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthModel.h; sourceTree = "<group>"; };
+		F595FE1B1F1DDE8E006F4E46 /* MonthModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthModel.m; sourceTree = "<group>"; };
+		F595FE1C1F1DDE8E006F4E46 /* MonthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthTableViewCell.h; sourceTree = "<group>"; };
+		F595FE1D1F1DDE8E006F4E46 /* MonthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthTableViewCell.m; sourceTree = "<group>"; };
+		F595FE221F1E0E6C006F4E46 /* SalesChannelsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesChannelsViewController.h; sourceTree = "<group>"; };
+		F595FE231F1E0E6C006F4E46 /* SalesChannelsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsViewController.m; sourceTree = "<group>"; };
+		F595FE251F1E1068006F4E46 /* SalesChannelsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesChannelsModel.h; sourceTree = "<group>"; };
+		F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsModel.m; sourceTree = "<group>"; };
+		F595FE281F1E144A006F4E46 /* SalesChannelsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesChannelsView.h; sourceTree = "<group>"; };
+		F595FE291F1E144A006F4E46 /* SalesChannelsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsView.m; sourceTree = "<group>"; };
+		F5B30B641F1E20DF007D1959 /* ChartsSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartsSwift.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +455,8 @@
 				F55DD7F51F039FA6004915E3 /* CooperationInProductViewController.m */,
 				F55DD7F71F039FC2004915E3 /* SalesAndTrendsViewController.h */,
 				F55DD7F81F039FC2004915E3 /* SalesAndTrendsViewController.m */,
+				F595FE221F1E0E6C006F4E46 /* SalesChannelsViewController.h */,
+				F595FE231F1E0E6C006F4E46 /* SalesChannelsViewController.m */,
 				F55DD8041F049B13004915E3 /* SalesViewController.h */,
 				F55DD8051F049B13004915E3 /* SalesViewController.m */,
 				F55DD8071F04A3BE004915E3 /* UnitPriceViewController.h */,
@@ -447,6 +474,10 @@
 			children = (
 				F595FE0F1F1CC762006F4E46 /* Cooperation.h */,
 				F595FE101F1CC762006F4E46 /* Cooperation.m */,
+				F595FE121F1DAB0D006F4E46 /* SalesTrendsModel.h */,
+				F595FE131F1DAB0D006F4E46 /* SalesTrendsModel.m */,
+				F595FE251F1E1068006F4E46 /* SalesChannelsModel.h */,
+				F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -454,6 +485,7 @@
 		D847DE541F00C1DA007E301E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F595FE151F1DDE8E006F4E46 /* HotelCalendar */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -472,6 +504,9 @@
 				F595FE0A1F1CA18D006F4E46 /* CooperationView.m */,
 				F595FE0C1F1CA382006F4E46 /* CooperationCollectionViewCell.h */,
 				F595FE0D1F1CA382006F4E46 /* CooperationCollectionViewCell.m */,
+				F595FE281F1E144A006F4E46 /* SalesChannelsView.h */,
+				F595FE291F1E144A006F4E46 /* SalesChannelsView.m */,
+				F5B30B641F1E20DF007D1959 /* ChartsSwift.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1047,6 +1082,22 @@
 			path = BezierCurvcLineTool;
 			sourceTree = "<group>";
 		};
+		F595FE151F1DDE8E006F4E46 /* HotelCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				F595FE161F1DDE8E006F4E46 /* DayCollectionViewCell.h */,
+				F595FE171F1DDE8E006F4E46 /* DayCollectionViewCell.m */,
+				F595FE181F1DDE8E006F4E46 /* HotelCalendarViewController.h */,
+				F595FE191F1DDE8E006F4E46 /* HotelCalendarViewController.m */,
+				F595FE1A1F1DDE8E006F4E46 /* MonthModel.h */,
+				F595FE1B1F1DDE8E006F4E46 /* MonthModel.m */,
+				F595FE1C1F1DDE8E006F4E46 /* MonthTableViewCell.h */,
+				F595FE1D1F1DDE8E006F4E46 /* MonthTableViewCell.m */,
+			);
+			name = HotelCalendar;
+			path = "../../../../../../../Downloads/CalendarDemo-master/CalendarDemo/HotelCalendar";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1082,6 +1133,7 @@
 					D8D9C2411EF278C5000688C6 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 7ET6PJMCHV;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1227,6 +1279,7 @@
 				D8D664FE1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m in Sources */,
 				D8DCAD411F135E5B009A8A1F /* THNEditContentView.m in Sources */,
 				F55DD7F31F039EFB004915E3 /* AppDelegate+Guide.m in Sources */,
+				F595FE1F1F1DDE8E006F4E46 /* HotelCalendarViewController.m in Sources */,
 				F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */,
 				D847DE6C1F00C1DA007E301E /* BaseTarBarViewController.m in Sources */,
 				D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */,
@@ -1244,6 +1297,7 @@
 				F55DD8021F03C161004915E3 /* THNShowPuzzleView.m in Sources */,
 				F55DD8121F04AE92004915E3 /* SaleTableViewCell.m in Sources */,
 				D8ED5D881EF906060046642C /* NSString+TimeDate.m in Sources */,
+				F595FE211F1DDE8E006F4E46 /* MonthTableViewCell.m in Sources */,
 				D847DE431EFCDEDC007E301E /* THNDoneImageViewController.m in Sources */,
 				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
 				F55DD8061F049B13004915E3 /* SalesViewController.m in Sources */,
@@ -1252,19 +1306,24 @@
 				D8ED5D8A1EF906060046642C /* NSTimer+Addition.m in Sources */,
 				D8ED5D8C1EF906060046642C /* UIBarButtonItem+Helper.m in Sources */,
 				D8ED5D8E1EF906060046642C /* UIColor+Extension.m in Sources */,
+				F595FE2A1F1E144A006F4E46 /* SalesChannelsView.m in Sources */,
 				D8ED5D901EF906060046642C /* UIImage+Helper.m in Sources */,
+				F595FE141F1DAB0D006F4E46 /* SalesTrendsModel.m in Sources */,
 				D8ED5D921EF906060046642C /* UIImage+QRCode.m in Sources */,
 				D8ED5D941EF906060046642C /* UIImageView+SDWedImage.m in Sources */,
 				F55DD7FC1F03B2B7004915E3 /* BaseViewController.m in Sources */,
 				D847DE6F1F00C1DA007E301E /* PostersViewController.m in Sources */,
 				D8ED5D961EF906060046642C /* UILable+Frame.m in Sources */,
 				D847DE711F00C1DA007E301E /* UserViewController.m in Sources */,
+				F595FE1E1F1DDE8E006F4E46 /* DayCollectionViewCell.m in Sources */,
 				F595FE0B1F1CA18D006F4E46 /* CooperationView.m in Sources */,
+				F595FE201F1DDE8E006F4E46 /* MonthModel.m in Sources */,
 				D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */,
 				D8DCAD3E1F135E48009A8A1F /* THNEditChildView.m in Sources */,
 				F53C28E31F1C8C7C004DB319 /* UserModel.m in Sources */,
 				D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */,
 				F55DD80C1F04A43A004915E3 /* AreaViewController.m in Sources */,
+				F595FE241F1E0E6C006F4E46 /* SalesChannelsViewController.m in Sources */,
 				F53C28D71F18673E004DB319 /* LogInViewController.m in Sources */,
 				D847DE6B1F00C1DA007E301E /* BaseNavController.m in Sources */,
 				D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */,
@@ -1286,6 +1345,7 @@
 				F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */,
 				D8D9C2471EF278C5000688C6 /* main.m in Sources */,
 				D8B071231EF8FB80005CC051 /* THNLayoutViewController.m in Sources */,
+				F595FE271F1E1068006F4E46 /* SalesChannelsModel.m in Sources */,
 				F55DD81B1F04DDBE004915E3 /* UnitPriceTableViewCell.m in Sources */,
 				D847DE6E1F00C1DA007E301E /* HomeViewController.m in Sources */,
 				D8D378E01EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m in Sources */,
@@ -1421,6 +1481,7 @@
 			baseConfigurationReference = 093B00529CC62D5B0A9C39F7 /* Pods-banmen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 7ET6PJMCHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1471,6 +1532,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "banmen/Modules/Home/View/banmen-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1479,6 +1543,7 @@
 			baseConfigurationReference = 239D47117F03E1BB587C0396 /* Pods-banmen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 7ET6PJMCHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1529,6 +1594,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "banmen/Modules/Home/View/banmen-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

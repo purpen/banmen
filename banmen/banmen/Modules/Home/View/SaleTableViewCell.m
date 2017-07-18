@@ -17,10 +17,10 @@
 
 @property(nonatomic, strong) UILabel *salesLabel;
 @property(nonatomic, strong) UILabel *topLeftTwoLabel;
-@property (strong,nonatomic)BezierCurveView *bezierView;
 @property (strong,nonatomic)NSMutableArray *x_names;
 @property (strong,nonatomic)NSMutableArray *targets;
 @property (strong,nonatomic)UIView *lineview;
+@property (strong,nonatomic)UIView *chartView;
 
 @end
 
@@ -42,8 +42,8 @@
             make.top.mas_equalTo(self.salesLabel.mas_bottom).mas_offset(10);
         }];
         
-        [self.contentView addSubview:self.bezierView];
-        [_bezierView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.contentView addSubview:self.chartView];
+        [_chartView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.salesLabel.mas_left).mas_offset(0);
             make.top.mas_equalTo(self.topLeftTwoLabel.mas_bottom).mas_offset(5);
         }];
@@ -55,10 +55,35 @@
             make.height.mas_equalTo(5);
         }];
         
-        [self drawLineChart];
+        [self.contentView addSubview:self.dateSelectBtn];
+        [_dateSelectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-15);
+            make.top.mas_equalTo(self.contentView.mas_top).mas_offset(10);
+            make.height.mas_equalTo(46/2);
+            make.width.mas_equalTo(288/2);
+        }];
+        
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
+}
+
+-(UIButton *)dateSelectBtn{
+    if (!_dateSelectBtn) {
+        _dateSelectBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _dateSelectBtn.layer.borderColor = [UIColor colorWithHexString:@"#e9e9e9"].CGColor;
+        _dateSelectBtn.layer.borderWidth = 1;
+        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+        [date_formatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
+        NSTimeInterval  oneDay = 24*60*60*1;
+        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
+        NSString *the_date_str = [date_formatter stringFromDate:theDate];
+        [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
+        _dateSelectBtn.font = [UIFont systemFontOfSize:10];
+        [_dateSelectBtn setTitleColor:[UIColor colorWithHexString:@"#7d7d7d"] forState:(UIControlStateNormal)];
+    }
+    return _dateSelectBtn;
 }
 
 -(UIView *)lineview{
@@ -69,43 +94,50 @@
     return _lineview;
 }
 
-/**
- *  X轴值
- */
--(NSMutableArray *)x_names{
-    if (!_x_names) {
-        _x_names = [NSMutableArray arrayWithArray:@[@"语文",@"数学",@"英语",@"物理",@"化学",@"生物",@"政治",@"历史",@"地理"]];
+//-(void)setModelAry:(NSArray *)modelAry{
+//    PNLineChartData *data01 = [PNLineChartData new];
+//    data01.color = PNFreshGreen;
+//    data01.itemCount = 0;
+//    __block CGFloat max = 0;
+//    data01.getData = ^(NSUInteger index) {
+//        SalesTrendsModel *model = modelAry[index];
+//        if (max < [model.sum_money floatValue]) {
+//            max = [model.sum_money floatValue];
+//        }
+//        CGFloat yValue = [model.sum_money floatValue];
+//        return [PNLineChartDataItem dataItemWithY:yValue];
+//    };
+//    if (modelAry.count==0) {
+//        [_lineChart setYLabels:@[@(0),@(50), @(100), @(150), @(200), @(300)]];
+//    }
+//    [_lineChart setYLabels:@[@(0),@(max/5), @(max*2/5), @(max*3/5), @(max*4/5), @(max)]];
+//    self.lineChart.chartData = @[data01];
+//    [self.lineChart strokeChart];
+//    self.lineChart.showSmoothLines = YES;
+//}
+
+-(UIView *)chartView{
+    if (!_chartView) {
+        _chartView = [[UIView alloc] initWithFrame:CGRectMake(15, self.topLeftTwoLabel.y+self.topLeftTwoLabel.height+5, SCREEN_WIDTH-30, 170)];
+        _chartView.backgroundColor = [UIColor redColor];
+//        [_chartView addSubview:self.lineChart];
     }
-    return _x_names;
+    return _chartView;
 }
 
-/**
- *  Y轴值
- */
--(NSMutableArray *)targets{
-    if (!_targets) {
-        _targets = [NSMutableArray arrayWithArray:@[@20,@40,@20,@50,@30,@90,@30,@100,@70]];
-    }
-    return _targets;
-}
-
-//画折线图
--(void)drawLineChart{
-    
-    //直线
-    //        [_bezierView drawLineChartViewWithX_Value_Names:self.x_names TargetValues:self.targets LineType:LineType_Straight];
-    
-    //曲线
-    [_bezierView drawLineChartViewWithX_Value_Names:self.x_names TargetValues:self.targets LineType:LineType_Curve];
-    
-}
-
--(BezierCurveView *)bezierView{
-    if (!_bezierView) {
-        _bezierView = [BezierCurveView initWithFrame:CGRectMake(15, self.topLeftTwoLabel.y+self.topLeftTwoLabel.height+5, SCREEN_WIDTH-30, 170)];
-    }
-    return _bezierView;
-}
+//-(PNLineChart *)lineChart{
+//    if (!_lineChart) {
+//        _lineChart = [[PNLineChart alloc] initWithFrame:self.chartView.frame];
+//        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+//        [date_formatter setDateFormat:@"yyyy-MM-dd"];
+//        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
+//        NSTimeInterval  oneDay = 24*60*60*1;
+//        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
+//        NSString *the_date_str = [date_formatter stringFromDate:theDate];
+//        [_lineChart setXLabels:@[current_date_str, the_date_str]];
+//    }
+//    return _lineChart;
+//}
 
 -(UILabel *)salesLabel{
     if (!_salesLabel) {

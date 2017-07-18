@@ -14,6 +14,9 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Charts (3.0.2):
+    - Charts/Core (= 3.0.2)
+  - Charts/Core (3.0.2)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
@@ -22,22 +25,19 @@ PODS:
   - Masonry (1.0.2)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
-  - PNChart (0.8.9):
-    - UICountingLabel (~> 1.2.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.1.2)
   - TYAlertController (1.1.8)
-  - UICountingLabel (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - Charts
   - JKDBModel-JDBR (~> 0.0.1)
   - Masonry
   - MJExtension
   - MJRefresh
-  - PNChart
   - SDWebImage (~> 3.8)
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - TYAlertController
@@ -53,17 +53,16 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   JKDBModel-JDBR: 432c379e4bbba54ee4068aed8aac08f9ebde5c1b
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   SVProgressHUD: d65371a8e4482380deddb9fe60e14e59ddb30eb3
   TYAlertController: 502d3dbc5d007e68559400b509c736f60ebc2cc1
-  UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-PODFILE CHECKSUM: d40f9abb0debe4dd64bcb398fad003002a8c394c
+PODFILE CHECKSUM: fd5d7c83758049ce94c74b84470d5378fe58c2be
 
 COCOAPODS: 1.2.1

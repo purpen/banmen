@@ -11,6 +11,7 @@
 #import "UnitPriceViewController.h"
 #import "AreaViewController.h"
 #import "TopViewController.h"
+#import "SalesChannelsViewController.h"
 
 @interface SalesAndTrendsViewController ()<UIScrollViewDelegate>
 /** 顶部的所有标签 */
@@ -43,6 +44,11 @@
     salesVC.type = sale;
     [self addChildViewController:salesVC];
     
+    SalesChannelsViewController *channelVC = [[SalesChannelsViewController alloc] init];
+    channelVC.title = @"销售渠道";
+    channelVC.type = channel;
+    [self addChildViewController:channelVC];
+    
     UnitPriceViewController *priceVC = [[UnitPriceViewController alloc] init];
     priceVC.title = @"销售客单价";
     priceVC.type = unitPrice;
@@ -73,7 +79,7 @@
     [self.view addSubview:titlesView];
     self.titlesView = titlesView;
     
-    NSArray *tittleAry = @[@"销售额", @"销售客单价", @"地域分布", @"TOP20标签"];
+    NSArray *tittleAry = @[@"销售额",@"销售渠道", @"销售客单价", @"地域分布", @"TOP20标签"];
     
     // 内部的子标签
     CGFloat width = titlesView.width / tittleAry.count;
@@ -86,9 +92,9 @@
         button.x = i * width;
         [button setTitle:tittleAry[i] forState:UIControlStateNormal];
         //        [button layoutIfNeeded]; // 强制布局(强制更新子控件的frame)
-        [button setTitleColor:[UIColor colorWithHexString:@"#0076ff"] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor colorWithHexString:@"#0076ff"] forState:UIControlStateDisabled];
-        button.titleLabel.font = [UIFont systemFontOfSize:14];
+        [button setTitleColor:[UIColor colorWithHexString:@"#686868"] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor colorWithHexString:@"#686868"] forState:UIControlStateDisabled];
+        button.titleLabel.font = [UIFont systemFontOfSize:12];
         [button addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
         [titlesView addSubview:button];
         
