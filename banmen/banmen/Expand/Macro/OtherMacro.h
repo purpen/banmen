@@ -28,6 +28,11 @@ typedef enum {
     top = 3
 } SalesCategoryType;
 
+// API ROOT URL
+//#define kDomainBaseUrl @"http://k.taihuoniao.com/saasApi/"           //生产环境
+#define kDomainBaseUrl @"http://k.taihuoniao.com/saasApi/"             //  上线正式环境
+//#define kDomainBaseUrl @"http://k.taihuoniao.com/saasApi/"     //  开发环境
+
 //首页第一个滑动条的高度
 #define XMGTitilesViewH 44;
 

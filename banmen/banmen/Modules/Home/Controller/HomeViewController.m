@@ -134,6 +134,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     UIScrollView *contentView = [[UIScrollView alloc] init];
+    contentView.scrollEnabled = NO;
     contentView.frame = self.view.bounds;
     contentView.y = 1+44;
     contentView.delegate = self;
