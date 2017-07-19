@@ -111,6 +111,7 @@
 		F50EFF121F04E4CD0044762F /* AreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */; };
 		F523A8101F1F64D300DD5C8B /* RepositoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F523A80F1F1F64D300DD5C8B /* RepositoryView.m */; };
 		F523A8131F1F694C00DD5C8B /* RecommendedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F523A8121F1F694C00DD5C8B /* RecommendedModel.m */; };
+		F523A8161F1F76F300DD5C8B /* UserView.m in Sources */ = {isa = PBXBuildFile; fileRef = F523A8151F1F76F300DD5C8B /* UserView.m */; };
 		F53C28D71F18673E004DB319 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D61F18673E004DB319 /* LogInViewController.m */; };
 		F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D91F1867CB004DB319 /* LogInView.m */; };
 		F53C28DD1F18BA31004DB319 /* LogUpview.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28DC1F18BA31004DB319 /* LogUpview.m */; };
@@ -303,6 +304,8 @@
 		F523A80F1F1F64D300DD5C8B /* RepositoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepositoryView.m; sourceTree = "<group>"; };
 		F523A8111F1F694C00DD5C8B /* RecommendedModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendedModel.h; sourceTree = "<group>"; };
 		F523A8121F1F694C00DD5C8B /* RecommendedModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendedModel.m; sourceTree = "<group>"; };
+		F523A8141F1F76F300DD5C8B /* UserView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserView.h; sourceTree = "<group>"; };
+		F523A8151F1F76F300DD5C8B /* UserView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserView.m; sourceTree = "<group>"; };
 		F53C28D51F18673E004DB319 /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		F53C28D61F18673E004DB319 /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		F53C28D81F1867CB004DB319 /* LogInView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInView.h; sourceTree = "<group>"; };
@@ -657,6 +660,8 @@
 		D847DE6A1F00C1DA007E301E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F523A8141F1F76F300DD5C8B /* UserView.h */,
+				F523A8151F1F76F300DD5C8B /* UserView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1368,6 +1373,7 @@
 				D8D9C24A1EF278C5000688C6 /* AppDelegate.m in Sources */,
 				D847DE701F00C1DA007E301E /* RepositoryViewController.m in Sources */,
 				D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */,
+				F523A8161F1F76F300DD5C8B /* UserView.m in Sources */,
 				F523A8131F1F694C00DD5C8B /* RecommendedModel.m in Sources */,
 				F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */,
 				F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */,
