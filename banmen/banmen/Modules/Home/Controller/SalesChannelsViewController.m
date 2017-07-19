@@ -13,6 +13,7 @@
 @interface SalesChannelsViewController () <SalesChannelsModelDelegate>
 @property (nonatomic, strong) SalesChannelsModel *s;
 @property (nonatomic, strong) SalesChannelsView *channelView;
+@property (nonatomic, strong) NSArray *modelAry;
 @end
 
 @implementation SalesChannelsViewController
@@ -40,7 +41,8 @@
 }
 
 -(void)updateSalesChannelsModel:(NSArray *)modelAry{
-    
+    self.modelAry = modelAry;
+    self.channelView.modelAry = modelAry;
 }
 
 -(SalesChannelsModel *)s{

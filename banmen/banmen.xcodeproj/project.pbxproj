@@ -109,6 +109,8 @@
 		D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */; };
 		D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA31EFA13540046642C /* THNPhotoTool.m */; };
 		F50EFF121F04E4CD0044762F /* AreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */; };
+		F523A8101F1F64D300DD5C8B /* RepositoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F523A80F1F1F64D300DD5C8B /* RepositoryView.m */; };
+		F523A8131F1F694C00DD5C8B /* RecommendedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F523A8121F1F694C00DD5C8B /* RecommendedModel.m */; };
 		F53C28D71F18673E004DB319 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D61F18673E004DB319 /* LogInViewController.m */; };
 		F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D91F1867CB004DB319 /* LogInView.m */; };
 		F53C28DD1F18BA31004DB319 /* LogUpview.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28DC1F18BA31004DB319 /* LogUpview.m */; };
@@ -138,6 +140,9 @@
 		F595FE241F1E0E6C006F4E46 /* SalesChannelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE231F1E0E6C006F4E46 /* SalesChannelsViewController.m */; };
 		F595FE271F1E1068006F4E46 /* SalesChannelsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */; };
 		F595FE2A1F1E144A006F4E46 /* SalesChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE291F1E144A006F4E46 /* SalesChannelsView.m */; };
+		F5ADCD931F1F077C001FC5DD /* ChannelsItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */; };
+		F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */; };
+		F5B30B6D1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -294,6 +299,10 @@
 		D8ED5DA31EFA13540046642C /* THNPhotoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTool.m; sourceTree = "<group>"; };
 		F50EFF101F04E4CD0044762F /* AreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaTableViewCell.h; sourceTree = "<group>"; };
 		F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaTableViewCell.m; sourceTree = "<group>"; };
+		F523A80E1F1F64D300DD5C8B /* RepositoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepositoryView.h; sourceTree = "<group>"; };
+		F523A80F1F1F64D300DD5C8B /* RepositoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepositoryView.m; sourceTree = "<group>"; };
+		F523A8111F1F694C00DD5C8B /* RecommendedModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendedModel.h; sourceTree = "<group>"; };
+		F523A8121F1F694C00DD5C8B /* RecommendedModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendedModel.m; sourceTree = "<group>"; };
 		F53C28D51F18673E004DB319 /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		F53C28D61F18673E004DB319 /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		F53C28D81F1867CB004DB319 /* LogInView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInView.h; sourceTree = "<group>"; };
@@ -352,7 +361,13 @@
 		F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsModel.m; sourceTree = "<group>"; };
 		F595FE281F1E144A006F4E46 /* SalesChannelsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesChannelsView.h; sourceTree = "<group>"; };
 		F595FE291F1E144A006F4E46 /* SalesChannelsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsView.m; sourceTree = "<group>"; };
+		F5ADCD911F1F077C001FC5DD /* ChannelsItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChannelsItemTableViewCell.h; sourceTree = "<group>"; };
+		F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChannelsItemTableViewCell.m; sourceTree = "<group>"; };
+		F5ADCD941F1F3882001FC5DD /* UnitPriceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitPriceModel.h; sourceTree = "<group>"; };
+		F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitPriceModel.m; sourceTree = "<group>"; };
 		F5B30B641F1E20DF007D1959 /* ChartsSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartsSwift.h; sourceTree = "<group>"; };
+		F5B30B6B1F1EFD9C007D1959 /* SalesChannelsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesChannelsTableViewCell.h; sourceTree = "<group>"; };
+		F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +493,8 @@
 				F595FE131F1DAB0D006F4E46 /* SalesTrendsModel.m */,
 				F595FE251F1E1068006F4E46 /* SalesChannelsModel.h */,
 				F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */,
+				F5ADCD941F1F3882001FC5DD /* UnitPriceModel.h */,
+				F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -507,6 +524,10 @@
 				F595FE281F1E144A006F4E46 /* SalesChannelsView.h */,
 				F595FE291F1E144A006F4E46 /* SalesChannelsView.m */,
 				F5B30B641F1E20DF007D1959 /* ChartsSwift.h */,
+				F5B30B6B1F1EFD9C007D1959 /* SalesChannelsTableViewCell.h */,
+				F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */,
+				F5ADCD911F1F077C001FC5DD /* ChannelsItemTableViewCell.h */,
+				F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -575,6 +596,8 @@
 		D847DE611F00C1DA007E301E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F523A8111F1F694C00DD5C8B /* RecommendedModel.h */,
+				F523A8121F1F694C00DD5C8B /* RecommendedModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -589,6 +612,8 @@
 		D847DE631F00C1DA007E301E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F523A80E1F1F64D300DD5C8B /* RepositoryView.h */,
+				F523A80F1F1F64D300DD5C8B /* RepositoryView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1303,6 +1328,7 @@
 				F55DD8061F049B13004915E3 /* SalesViewController.m in Sources */,
 				F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */,
 				F55DD8011F03C161004915E3 /* THNPuzzleCollectionViewCell.m in Sources */,
+				F523A8101F1F64D300DD5C8B /* RepositoryView.m in Sources */,
 				D8ED5D8A1EF906060046642C /* NSTimer+Addition.m in Sources */,
 				D8ED5D8C1EF906060046642C /* UIBarButtonItem+Helper.m in Sources */,
 				D8ED5D8E1EF906060046642C /* UIColor+Extension.m in Sources */,
@@ -1324,7 +1350,9 @@
 				D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */,
 				F55DD80C1F04A43A004915E3 /* AreaViewController.m in Sources */,
 				F595FE241F1E0E6C006F4E46 /* SalesChannelsViewController.m in Sources */,
+				F5B30B6D1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m in Sources */,
 				F53C28D71F18673E004DB319 /* LogInViewController.m in Sources */,
+				F5ADCD931F1F077C001FC5DD /* ChannelsItemTableViewCell.m in Sources */,
 				D847DE6B1F00C1DA007E301E /* BaseNavController.m in Sources */,
 				D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */,
 				F595FE111F1CC762006F4E46 /* Cooperation.m in Sources */,
@@ -1340,7 +1368,9 @@
 				D8D9C24A1EF278C5000688C6 /* AppDelegate.m in Sources */,
 				D847DE701F00C1DA007E301E /* RepositoryViewController.m in Sources */,
 				D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */,
+				F523A8131F1F694C00DD5C8B /* RecommendedModel.m in Sources */,
 				F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */,
+				F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */,
 				F595FE0E1F1CA382006F4E46 /* CooperationCollectionViewCell.m in Sources */,
 				F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */,
 				D8D9C2471EF278C5000688C6 /* main.m in Sources */,

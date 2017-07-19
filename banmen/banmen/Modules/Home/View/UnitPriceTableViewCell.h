@@ -10,4 +10,7 @@
 
 @interface UnitPriceTableViewCell : UITableViewCell
 
+@property (strong,nonatomic) UIButton *dateSelectBtn;
+@property (strong,nonatomic) NSArray *modelAry;
+
 @end

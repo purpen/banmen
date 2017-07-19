@@ -12,6 +12,7 @@
 @interface SalesChannelsView : UIView
 
 @property (nonatomic, strong) PieChartView *pieChartView;
-@property (nonatomic, strong) UIView *topView;
+@property (nonatomic, strong) NSArray *modelAry;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
