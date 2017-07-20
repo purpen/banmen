@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface RepositoryViewController : UIViewController
+@interface RepositoryViewController : BaseViewController
 
 @end

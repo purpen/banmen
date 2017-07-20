@@ -7,8 +7,12 @@
 //
 
 #import "UserViewController.h"
+#import "UserView.h"
+#import "UserModel.h"
 
-@interface UserViewController ()
+@interface UserViewController () <UserModelDelegate>
+
+@property(nonatomic, strong) UserView *userView;
 
 @end
 
@@ -16,22 +20,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    UserModel *userModel = [[UserModel findAll] lastObject];
+    userModel.delegate = self;
+    [userModel netGetUserInfo];
+    [self.view addSubview:self.userView];
+    [self.userView.updatePersonalInformationBtn addTarget:self action:@selector(updateUserInfo) forControlEvents:(UIControlEventTouchUpInside)];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)updateUserInfo{
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)update{
+    UserModel *userModel = [[UserModel findAll] lastObject];
+    self.userView.userModel = userModel;
 }
-*/
+
+-(UserView *)userView{
+    if (!_userView) {
+        _userView = [[UserView alloc] initWithFrame:self.view.frame];
+    }
+    return _userView;
+}
 
 @end

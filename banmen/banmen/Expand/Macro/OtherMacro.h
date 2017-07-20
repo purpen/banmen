@@ -25,7 +25,8 @@ typedef enum {
     sale = 0,
     unitPrice = 1,
     regional = 2,
-    top = 3
+    top = 3,
+    channel = 4
 } SalesCategoryType;
 
 // API ROOT URL

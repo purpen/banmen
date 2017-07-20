@@ -56,7 +56,7 @@
     // 添加子控制器
     [self setupChildVc:[[HomeViewController alloc] init] title:@"首页" image:@"home" selectedImage:@"home_selected"];
     
-    [self setupChildVc:[[RepositoryViewController alloc] init] title:@"资源库" image:@"library" selectedImage:@"library_selected"];
+    [self setupChildVc:[[RepositoryViewController alloc] init] title:@"产品库" image:@"library" selectedImage:@"library_selected"];
     
     [self setupChildVc:[[THNToolViewController alloc] init] title:@"工具" image:@"tool" selectedImage:@"tool_selected"];
     

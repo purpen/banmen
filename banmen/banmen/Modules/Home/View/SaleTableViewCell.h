@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SalesTrendsModel.h"
 
 @interface SaleTableViewCell : UITableViewCell
-
+@property (strong,nonatomic)UIButton *dateSelectBtn;
+@property (strong,nonatomic)NSArray *modelAry;
+//@property (strong,nonatomic)PNLineChart *lineChart;
 @end
