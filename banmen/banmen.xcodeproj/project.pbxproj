@@ -11,6 +11,10 @@
 		D83393B41F1C61EC00EB39ED /* THNJointImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83393B31F1C61EC00EB39ED /* THNJointImageViewController.m */; };
 		D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */; };
 		D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */; };
+		D836C63C1F20951C00CF38C8 /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D836C6351F20942200CF38C8 /* DayCollectionViewCell.m */; };
+		D836C63D1F20951C00CF38C8 /* HotelCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D836C6371F20942200CF38C8 /* HotelCalendarViewController.m */; };
+		D836C63E1F20951C00CF38C8 /* MonthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D836C6391F20942200CF38C8 /* MonthModel.m */; };
+		D836C63F1F20951C00CF38C8 /* MonthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D836C63B1F20942200CF38C8 /* MonthTableViewCell.m */; };
 		D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D840C6BE1EFB54A00021B83E /* THNOpenAlbumButton.m */; };
 		D840C6C21EFB99320021B83E /* THNPreviewPuzzleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D840C6C11EFB99320021B83E /* THNPreviewPuzzleView.m */; };
 		D847DE401EFBDE95007E301E /* THNHintInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D847DE3F1EFBDE95007E301E /* THNHintInfoView.m */; };
@@ -136,10 +140,6 @@
 		F595FE0E1F1CA382006F4E46 /* CooperationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0D1F1CA382006F4E46 /* CooperationCollectionViewCell.m */; };
 		F595FE111F1CC762006F4E46 /* Cooperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE101F1CC762006F4E46 /* Cooperation.m */; };
 		F595FE141F1DAB0D006F4E46 /* SalesTrendsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE131F1DAB0D006F4E46 /* SalesTrendsModel.m */; };
-		F595FE1E1F1DDE8E006F4E46 /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE171F1DDE8E006F4E46 /* DayCollectionViewCell.m */; };
-		F595FE1F1F1DDE8E006F4E46 /* HotelCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE191F1DDE8E006F4E46 /* HotelCalendarViewController.m */; };
-		F595FE201F1DDE8E006F4E46 /* MonthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE1B1F1DDE8E006F4E46 /* MonthModel.m */; };
-		F595FE211F1DDE8E006F4E46 /* MonthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE1D1F1DDE8E006F4E46 /* MonthTableViewCell.m */; };
 		F595FE241F1E0E6C006F4E46 /* SalesChannelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE231F1E0E6C006F4E46 /* SalesChannelsViewController.m */; };
 		F595FE271F1E1068006F4E46 /* SalesChannelsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */; };
 		F595FE2A1F1E144A006F4E46 /* SalesChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE291F1E144A006F4E46 /* SalesChannelsView.m */; };
@@ -158,6 +158,14 @@
 		D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTableViewModel.m; sourceTree = "<group>"; };
 		D83689EB1EFA6900005B0709 /* THNPhotoCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoCellViewModel.h; sourceTree = "<group>"; };
 		D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoCellViewModel.m; sourceTree = "<group>"; };
+		D836C6341F20942200CF38C8 /* DayCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewCell.h; sourceTree = "<group>"; };
+		D836C6351F20942200CF38C8 /* DayCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DayCollectionViewCell.m; sourceTree = "<group>"; };
+		D836C6361F20942200CF38C8 /* HotelCalendarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelCalendarViewController.h; sourceTree = "<group>"; };
+		D836C6371F20942200CF38C8 /* HotelCalendarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelCalendarViewController.m; sourceTree = "<group>"; };
+		D836C6381F20942200CF38C8 /* MonthModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonthModel.h; sourceTree = "<group>"; };
+		D836C6391F20942200CF38C8 /* MonthModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonthModel.m; sourceTree = "<group>"; };
+		D836C63A1F20942200CF38C8 /* MonthTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonthTableViewCell.h; sourceTree = "<group>"; };
+		D836C63B1F20942200CF38C8 /* MonthTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonthTableViewCell.m; sourceTree = "<group>"; };
 		D840C6BA1EFA85250021B83E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D840C6BD1EFB54A00021B83E /* THNOpenAlbumButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNOpenAlbumButton.h; sourceTree = "<group>"; };
 		D840C6BE1EFB54A00021B83E /* THNOpenAlbumButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNOpenAlbumButton.m; sourceTree = "<group>"; };
@@ -356,14 +364,6 @@
 		F595FE101F1CC762006F4E46 /* Cooperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cooperation.m; sourceTree = "<group>"; };
 		F595FE121F1DAB0D006F4E46 /* SalesTrendsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesTrendsModel.h; sourceTree = "<group>"; };
 		F595FE131F1DAB0D006F4E46 /* SalesTrendsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesTrendsModel.m; sourceTree = "<group>"; };
-		F595FE161F1DDE8E006F4E46 /* DayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewCell.h; sourceTree = "<group>"; };
-		F595FE171F1DDE8E006F4E46 /* DayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCollectionViewCell.m; sourceTree = "<group>"; };
-		F595FE181F1DDE8E006F4E46 /* HotelCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelCalendarViewController.h; sourceTree = "<group>"; };
-		F595FE191F1DDE8E006F4E46 /* HotelCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelCalendarViewController.m; sourceTree = "<group>"; };
-		F595FE1A1F1DDE8E006F4E46 /* MonthModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthModel.h; sourceTree = "<group>"; };
-		F595FE1B1F1DDE8E006F4E46 /* MonthModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthModel.m; sourceTree = "<group>"; };
-		F595FE1C1F1DDE8E006F4E46 /* MonthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthTableViewCell.h; sourceTree = "<group>"; };
-		F595FE1D1F1DDE8E006F4E46 /* MonthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthTableViewCell.m; sourceTree = "<group>"; };
 		F595FE221F1E0E6C006F4E46 /* SalesChannelsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesChannelsViewController.h; sourceTree = "<group>"; };
 		F595FE231F1E0E6C006F4E46 /* SalesChannelsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsViewController.m; sourceTree = "<group>"; };
 		F595FE251F1E1068006F4E46 /* SalesChannelsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesChannelsModel.h; sourceTree = "<group>"; };
@@ -406,6 +406,21 @@
 				239D47117F03E1BB587C0396 /* Pods-banmen.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D836C6331F20942200CF38C8 /* HotelCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				D836C6341F20942200CF38C8 /* DayCollectionViewCell.h */,
+				D836C6351F20942200CF38C8 /* DayCollectionViewCell.m */,
+				D836C6361F20942200CF38C8 /* HotelCalendarViewController.h */,
+				D836C6371F20942200CF38C8 /* HotelCalendarViewController.m */,
+				D836C6381F20942200CF38C8 /* MonthModel.h */,
+				D836C6391F20942200CF38C8 /* MonthModel.m */,
+				D836C63A1F20942200CF38C8 /* MonthTableViewCell.h */,
+				D836C63B1F20942200CF38C8 /* MonthTableViewCell.m */,
+			);
+			path = HotelCalendar;
 			sourceTree = "<group>";
 		};
 		D847DE441F00C1DA007E301E /* Base */ = {
@@ -511,7 +526,7 @@
 		D847DE541F00C1DA007E301E /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				F595FE151F1DDE8E006F4E46 /* HotelCalendar */,
+				D836C6331F20942200CF38C8 /* HotelCalendar */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1130,22 +1145,6 @@
 			path = BezierCurvcLineTool;
 			sourceTree = "<group>";
 		};
-		F595FE151F1DDE8E006F4E46 /* HotelCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				F595FE161F1DDE8E006F4E46 /* DayCollectionViewCell.h */,
-				F595FE171F1DDE8E006F4E46 /* DayCollectionViewCell.m */,
-				F595FE181F1DDE8E006F4E46 /* HotelCalendarViewController.h */,
-				F595FE191F1DDE8E006F4E46 /* HotelCalendarViewController.m */,
-				F595FE1A1F1DDE8E006F4E46 /* MonthModel.h */,
-				F595FE1B1F1DDE8E006F4E46 /* MonthModel.m */,
-				F595FE1C1F1DDE8E006F4E46 /* MonthTableViewCell.h */,
-				F595FE1D1F1DDE8E006F4E46 /* MonthTableViewCell.m */,
-			);
-			name = HotelCalendar;
-			path = "../../../../../../../Downloads/CalendarDemo-master/CalendarDemo/HotelCalendar";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1324,10 +1323,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D836C63C1F20951C00CF38C8 /* DayCollectionViewCell.m in Sources */,
+				D836C63D1F20951C00CF38C8 /* HotelCalendarViewController.m in Sources */,
+				D836C63E1F20951C00CF38C8 /* MonthModel.m in Sources */,
+				D836C63F1F20951C00CF38C8 /* MonthTableViewCell.m in Sources */,
 				D8D664FE1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m in Sources */,
 				D8DCAD411F135E5B009A8A1F /* THNEditContentView.m in Sources */,
 				F55DD7F31F039EFB004915E3 /* AppDelegate+Guide.m in Sources */,
-				F595FE1F1F1DDE8E006F4E46 /* HotelCalendarViewController.m in Sources */,
 				F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */,
 				D847DE6C1F00C1DA007E301E /* BaseTarBarViewController.m in Sources */,
 				D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */,
@@ -1345,7 +1347,6 @@
 				F55DD8021F03C161004915E3 /* THNShowPuzzleView.m in Sources */,
 				F55DD8121F04AE92004915E3 /* SaleTableViewCell.m in Sources */,
 				D8ED5D881EF906060046642C /* NSString+TimeDate.m in Sources */,
-				F595FE211F1DDE8E006F4E46 /* MonthTableViewCell.m in Sources */,
 				D847DE431EFCDEDC007E301E /* THNDoneImageViewController.m in Sources */,
 				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
 				F55DD8061F049B13004915E3 /* SalesViewController.m in Sources */,
@@ -1365,9 +1366,7 @@
 				D847DE6F1F00C1DA007E301E /* PostersViewController.m in Sources */,
 				D8ED5D961EF906060046642C /* UILable+Frame.m in Sources */,
 				D847DE711F00C1DA007E301E /* UserViewController.m in Sources */,
-				F595FE1E1F1DDE8E006F4E46 /* DayCollectionViewCell.m in Sources */,
 				F595FE0B1F1CA18D006F4E46 /* CooperationView.m in Sources */,
-				F595FE201F1DDE8E006F4E46 /* MonthModel.m in Sources */,
 				D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */,
 				D8DCAD3E1F135E48009A8A1F /* THNEditChildView.m in Sources */,
 				F53C28E31F1C8C7C004DB319 /* UserModel.m in Sources */,

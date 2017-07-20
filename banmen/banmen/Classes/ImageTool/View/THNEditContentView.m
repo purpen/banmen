@@ -91,7 +91,7 @@ static const CGFloat kMinHeight = 48;
     }
     
     if (![picCountFlag isEqualToString:@""]) {
-        _styleFileName = [NSString stringWithFormat:@"%@_style_%li",picCountFlag,_styleTag];
+        _styleFileName = [NSString stringWithFormat:@"%@_style_%zi",picCountFlag,_styleTag];
         _styleDict = nil;
         _styleDict = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:_styleFileName ofType:@"plist"]];
         if (_styleDict) {
