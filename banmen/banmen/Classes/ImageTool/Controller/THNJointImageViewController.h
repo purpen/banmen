@@ -8,6 +8,11 @@
 
 #import "THNImageToolViewController.h"
 
-@interface THNJointViewController : THNImageToolViewController
+@interface THNJointImageViewController : THNImageToolViewController
+
+/**
+ 选中的图片数组
+ */
+@property (nonatomic, strong) NSMutableArray *selectedAssetArray;
 
 @end

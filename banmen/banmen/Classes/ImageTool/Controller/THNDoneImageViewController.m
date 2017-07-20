@@ -9,6 +9,7 @@
 #import "THNDoneImageViewController.h"
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface THNDoneImageViewController ()
 
@@ -107,8 +108,13 @@
         _againButton.titleLabel.font = [UIFont systemFontOfSize:16];
         _againButton.layer.cornerRadius = 4;
         _againButton.backgroundColor = [UIColor colorWithHexString:kColorMain];
+        [_againButton addTarget:self action:@selector(againButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _againButton;
+}
+
+- (void)againButtonClick:(UIButton *)button {
+    [SVProgressHUD showImage:[UIImage imageNamed:@""] status:@"歇一歇吧～\n\n_(:_」∠)_"];
 }
 
 #pragma mark - 分享
@@ -136,6 +142,7 @@
 #pragma mark - 设置Nav
 - (void)thn_setNavViewUI {
     self.navTitle.text = @"分享";
+    self.navBackButton.hidden = YES;
 }
 
 @end

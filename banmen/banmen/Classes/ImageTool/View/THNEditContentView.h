@@ -51,7 +51,7 @@
 @property (nonatomic, assign) NSInteger childViewIndex;
 
 /**
- 保存各图片视图
+ 保存各图片视图的数组
  */
 @property (nonatomic, strong) NSMutableArray *contentViewArray;
 

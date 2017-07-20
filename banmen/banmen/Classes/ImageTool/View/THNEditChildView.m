@@ -29,14 +29,14 @@ static const CGFloat kTHNEditChildViewInnerBoarderWidth     = 2.0f;
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self thn_setImageView];
+        [self thn_setViewUI];
         [self thn_setupDefaultAttributes];
     }
     return self;
 }
 
 #pragma mark - set
-- (void)thn_setImageView {
+- (void)thn_setViewUI {
     [self addSubview:self.contentView];
     [self.contentView addSubview:self.loadImageView];
     
