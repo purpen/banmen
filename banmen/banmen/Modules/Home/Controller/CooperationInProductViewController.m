@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.cView = [[CooperationView alloc] initWithFrame:self.view.frame];
+    self.cView.navC = self.navigationController;
     [self.view addSubview:self.cView];
     self.cView.modelAry = self.c.modelAry;
     [self setupRefresh];

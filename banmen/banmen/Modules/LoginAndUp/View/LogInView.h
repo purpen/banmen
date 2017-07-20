@@ -35,6 +35,7 @@
 @property(nonatomic, strong) LogUpview *logUpView;
 @property(nonatomic, strong) UIView *logInView;
 @property(nonatomic, strong) UIButton *cancelBtn;
+@property(nonatomic, strong) UIView *fengeLineView;
 
 -(void)changState:(UIButton*)sender;
 
