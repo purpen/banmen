@@ -46,7 +46,7 @@
     if (self.childViewControllers.count > 0) { // 如果push进来的不是第一个控制器
         self.backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         //        [button setTitle:@"返回" forState:UIControlStateNormal];
-        [self.backBtn setImage:[UIImage imageNamed:@"navi_back"] forState:UIControlStateNormal];
+        [self.backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
         //        [button setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
         //        button.size = CGSizeMake(70, 30);
         // 让按钮内部的所有内容左对齐

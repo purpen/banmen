@@ -130,6 +130,8 @@
 		F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD8151F04D55C004915E3 /* BezierCurveView.m */; };
 		F55DD8181F04D55C004915E3 /* BezierCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F55DD8161F04D55C004915E3 /* BezierCurveView.xib */; };
 		F55DD81B1F04DDBE004915E3 /* UnitPriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */; };
+		F58DE8BD1F20A25800C80ECF /* ChangPsdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8BB1F20A25800C80ECF /* ChangPsdViewController.m */; };
+		F58DE8BE1F20A25800C80ECF /* ChangPsdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58DE8BC1F20A25800C80ECF /* ChangPsdViewController.xib */; };
 		F595FE0B1F1CA18D006F4E46 /* CooperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0A1F1CA18D006F4E46 /* CooperationView.m */; };
 		F595FE0E1F1CA382006F4E46 /* CooperationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0D1F1CA382006F4E46 /* CooperationCollectionViewCell.m */; };
 		F595FE111F1CC762006F4E46 /* Cooperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE101F1CC762006F4E46 /* Cooperation.m */; };
@@ -141,6 +143,8 @@
 		F595FE241F1E0E6C006F4E46 /* SalesChannelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE231F1E0E6C006F4E46 /* SalesChannelsViewController.m */; };
 		F595FE271F1E1068006F4E46 /* SalesChannelsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */; };
 		F595FE2A1F1E144A006F4E46 /* SalesChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE291F1E144A006F4E46 /* SalesChannelsView.m */; };
+		F5A42CDC1F207E51006687D8 /* EditUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A42CDB1F207E51006687D8 /* EditUserInfoViewController.m */; };
+		F5A42CDF1F207F4F006687D8 /* EditUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A42CDE1F207F4F006687D8 /* EditUserView.m */; };
 		F5ADCD931F1F077C001FC5DD /* ChannelsItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */; };
 		F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */; };
 		F5B30B6D1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */; };
@@ -342,6 +346,9 @@
 		F55DD8161F04D55C004915E3 /* BezierCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BezierCurveView.xib; sourceTree = "<group>"; };
 		F55DD8191F04DDBE004915E3 /* UnitPriceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitPriceTableViewCell.h; sourceTree = "<group>"; };
 		F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitPriceTableViewCell.m; sourceTree = "<group>"; };
+		F58DE8BA1F20A25800C80ECF /* ChangPsdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangPsdViewController.h; sourceTree = "<group>"; };
+		F58DE8BB1F20A25800C80ECF /* ChangPsdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangPsdViewController.m; sourceTree = "<group>"; };
+		F58DE8BC1F20A25800C80ECF /* ChangPsdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangPsdViewController.xib; sourceTree = "<group>"; };
 		F595FE091F1CA18D006F4E46 /* CooperationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CooperationView.h; sourceTree = "<group>"; };
 		F595FE0A1F1CA18D006F4E46 /* CooperationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CooperationView.m; sourceTree = "<group>"; };
 		F595FE0C1F1CA382006F4E46 /* CooperationCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CooperationCollectionViewCell.h; sourceTree = "<group>"; };
@@ -364,6 +371,10 @@
 		F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsModel.m; sourceTree = "<group>"; };
 		F595FE281F1E144A006F4E46 /* SalesChannelsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesChannelsView.h; sourceTree = "<group>"; };
 		F595FE291F1E144A006F4E46 /* SalesChannelsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsView.m; sourceTree = "<group>"; };
+		F5A42CDA1F207E51006687D8 /* EditUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserInfoViewController.h; sourceTree = "<group>"; };
+		F5A42CDB1F207E51006687D8 /* EditUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserInfoViewController.m; sourceTree = "<group>"; };
+		F5A42CDD1F207F4F006687D8 /* EditUserView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserView.h; sourceTree = "<group>"; };
+		F5A42CDE1F207F4F006687D8 /* EditUserView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserView.m; sourceTree = "<group>"; };
 		F5ADCD911F1F077C001FC5DD /* ChannelsItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChannelsItemTableViewCell.h; sourceTree = "<group>"; };
 		F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChannelsItemTableViewCell.m; sourceTree = "<group>"; };
 		F5ADCD941F1F3882001FC5DD /* UnitPriceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitPriceModel.h; sourceTree = "<group>"; };
@@ -637,6 +648,11 @@
 			children = (
 				D847DE661F00C1DA007E301E /* UserViewController.h */,
 				D847DE671F00C1DA007E301E /* UserViewController.m */,
+				F5A42CDA1F207E51006687D8 /* EditUserInfoViewController.h */,
+				F5A42CDB1F207E51006687D8 /* EditUserInfoViewController.m */,
+				F58DE8BA1F20A25800C80ECF /* ChangPsdViewController.h */,
+				F58DE8BB1F20A25800C80ECF /* ChangPsdViewController.m */,
+				F58DE8BC1F20A25800C80ECF /* ChangPsdViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -662,6 +678,8 @@
 			children = (
 				F523A8141F1F76F300DD5C8B /* UserView.h */,
 				F523A8151F1F76F300DD5C8B /* UserView.m */,
+				F5A42CDD1F207F4F006687D8 /* EditUserView.h */,
+				F5A42CDE1F207F4F006687D8 /* EditUserView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1199,6 +1217,7 @@
 				D8736A6C1F04890500BF9F33 /* eight_style_140.plist in Resources */,
 				D8736A6D1F04890500BF9F33 /* five_style_115.plist in Resources */,
 				D8736A6E1F04890500BF9F33 /* five_style_116.plist in Resources */,
+				F58DE8BE1F20A25800C80ECF /* ChangPsdViewController.xib in Resources */,
 				D8736A6F1F04890500BF9F33 /* five_style_117.plist in Resources */,
 				D8736A701F04890500BF9F33 /* five_style_118.plist in Resources */,
 				D8736A711F04890500BF9F33 /* five_style_119.plist in Resources */,
@@ -1345,8 +1364,10 @@
 				F55DD7FC1F03B2B7004915E3 /* BaseViewController.m in Sources */,
 				D847DE6F1F00C1DA007E301E /* PostersViewController.m in Sources */,
 				D8ED5D961EF906060046642C /* UILable+Frame.m in Sources */,
+				F5A42CDC1F207E51006687D8 /* EditUserInfoViewController.m in Sources */,
 				D847DE711F00C1DA007E301E /* UserViewController.m in Sources */,
 				F595FE1E1F1DDE8E006F4E46 /* DayCollectionViewCell.m in Sources */,
+				F5A42CDF1F207F4F006687D8 /* EditUserView.m in Sources */,
 				F595FE0B1F1CA18D006F4E46 /* CooperationView.m in Sources */,
 				F595FE201F1DDE8E006F4E46 /* MonthModel.m in Sources */,
 				D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */,
@@ -1356,6 +1377,7 @@
 				F55DD80C1F04A43A004915E3 /* AreaViewController.m in Sources */,
 				F595FE241F1E0E6C006F4E46 /* SalesChannelsViewController.m in Sources */,
 				F5B30B6D1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m in Sources */,
+				F58DE8BD1F20A25800C80ECF /* ChangPsdViewController.m in Sources */,
 				F53C28D71F18673E004DB319 /* LogInViewController.m in Sources */,
 				F5ADCD931F1F077C001FC5DD /* ChannelsItemTableViewCell.m in Sources */,
 				D847DE6B1F00C1DA007E301E /* BaseNavController.m in Sources */,
