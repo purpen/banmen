@@ -320,7 +320,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 
 - (UIImage *)cutImageWithView:(THNEditContentView *)contentView {
     UIGraphicsBeginImageContextWithOptions(contentView.frame.size, NO, 2.0);
-    //  保存时去选中边框,用CGColorEqualToColor判断是否是选中边框
+    //  判断是否有选中边框，保存时去除
     for (THNEditChildView *childView in contentView.subviews) {
         if (CGColorEqualToColor(childView.topBoarderLayer.backgroundColor.CGColor, [UIColor colorWithHexString:kColorMain].CGColor)) {
             [childView clearInnerBoarder];

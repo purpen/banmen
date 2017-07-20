@@ -11,7 +11,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
-#import "THNJointViewController.h"
+#import "THNJointImageViewController.h"
 #import "THNAssetItem.h"
 #import "THNPhotoTool.h"
 #import "THNHintInfoView.h"
@@ -198,7 +198,8 @@
 }
 
 - (void)thn_rightBarItemSelected {
-    THNJointViewController *jointController = [[THNJointViewController alloc] init];
+    THNJointImageViewController *jointController = [[THNJointImageViewController alloc] init];
+    jointController.selectedAssetArray = self.selectPhotoItemArray;
     [self.navigationController pushViewController:jointController animated:YES];
 }
 

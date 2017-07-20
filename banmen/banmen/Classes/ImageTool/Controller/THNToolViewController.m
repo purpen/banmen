@@ -33,9 +33,12 @@
     if (!_posterButton) {
         _posterButton = [[UIButton alloc] initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 150)];
         [_posterButton setTitle:@"海报模版" forState:(UIControlStateNormal)];
-        _posterButton.backgroundColor = [UIColor grayColor];
         [_posterButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-        _posterButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        _posterButton.titleLabel.font = [UIFont systemFontOfSize:18];
+        [_posterButton setTitleEdgeInsets:(UIEdgeInsetsMake(40, -60, 0, 0))];
+        [_posterButton setBackgroundImage:[UIImage imageNamed:@"bg_tool_poster"] forState:(UIControlStateNormal)];
+        [_posterButton setImage:[UIImage imageNamed:@"icon_poster"] forState:(UIControlStateNormal)];
+        [_posterButton setImageEdgeInsets:(UIEdgeInsetsMake(45, (SCREEN_WIDTH - 60)/2, 75, (SCREEN_WIDTH - 60)/2))];
         _posterButton.layer.cornerRadius = 5;
         [_posterButton addTarget:self action:@selector(posterButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     }
@@ -49,11 +52,14 @@
 #pragma mark - 拼图拼接按钮
 - (UIButton *)puzzleButton {
     if (!_puzzleButton) {
-        _puzzleButton = [[UIButton alloc] initWithFrame:CGRectMake(15, 175, SCREEN_WIDTH - 30, 150)];
+        _puzzleButton = [[UIButton alloc] initWithFrame:CGRectMake(15, 180, SCREEN_WIDTH - 30, 150)];
         [_puzzleButton setTitle:@"拼图拼接" forState:(UIControlStateNormal)];
-        _puzzleButton.backgroundColor = [UIColor grayColor];
         [_puzzleButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-        _puzzleButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        _puzzleButton.titleLabel.font = [UIFont systemFontOfSize:18];
+        [_puzzleButton setTitleEdgeInsets:(UIEdgeInsetsMake(40, -60, 0, 0))];
+        [_puzzleButton setBackgroundImage:[UIImage imageNamed:@"bg_tool_photo"] forState:(UIControlStateNormal)];
+        [_puzzleButton setImage:[UIImage imageNamed:@"icon_photo"] forState:(UIControlStateNormal)];
+        [_puzzleButton setImageEdgeInsets:(UIEdgeInsetsMake(45, (SCREEN_WIDTH - 60)/2, 75, (SCREEN_WIDTH - 60)/2))];
         _puzzleButton.layer.cornerRadius = 5;
         [_puzzleButton addTarget:self action:@selector(puzzleButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     }

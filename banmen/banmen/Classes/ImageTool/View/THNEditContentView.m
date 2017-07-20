@@ -56,7 +56,6 @@ static const CGFloat kMinHeight = 48;
         self.backgroundColor = [UIColor colorWithHexString:kColorMain alpha:0];
         self.styleTag = tag;
         [self resetAllView];
-        [self thn_arrayAddViewObject];
         [self thn_addChildView];
         [self addTapGesture];
     }
@@ -102,7 +101,7 @@ static const CGFloat kMinHeight = 48;
     }
 }
 
-#pragma mark - 重置所有视图
+#pragma mark - 设置所有视图
 - (void)resetAllView {
     [self styleSettingWithView:self.firstView];
     [self styleSettingWithView:self.secondView];
@@ -110,6 +109,8 @@ static const CGFloat kMinHeight = 48;
     [self styleSettingWithView:self.fourthView];
     [self styleSettingWithView:self.fifthView];
     [self styleSettingWithView:self.sixthView];
+    
+    [self thn_arrayAddViewObject];
 }
 
 //  重置子视图的样式
@@ -185,7 +186,7 @@ static const CGFloat kMinHeight = 48;
                 childEditView.bottomArray = [[[subDict objectForKey:@"Bottom"] componentsSeparatedByString:@","] mutableCopy];
                 childEditView.rightArray = [[[subDict objectForKey:@"Right"] componentsSeparatedByString:@","] mutableCopy];
                 childEditView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
-                [[PHImageManager defaultManager] requestImageForAsset:assetItem.asset targetSize:CGSizeMake(350, 350) contentMode:PHImageContentModeAspectFill options:requestOption resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                [[PHImageManager defaultManager] requestImageForAsset:assetItem.asset targetSize:CGSizeMake(assetItem.asset.pixelWidth, assetItem.asset.pixelHeight) contentMode:PHImageContentModeAspectFill options:requestOption resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                     [childEditView thn_setImageViewData:result rect:rect];
                 }];
                 childEditView.oldRect = rect;
@@ -1166,6 +1167,9 @@ static const CGFloat kMinHeight = 48;
 
 #pragma mark - Array
 - (void)thn_arrayAddViewObject {
+    if (self.contentViewArray.count) {
+        return;
+    }
     [self.contentViewArray addObject:self.firstView];
     [self.contentViewArray addObject:self.secondView];
     [self.contentViewArray addObject:self.thirdView];
