@@ -44,7 +44,7 @@
     
     NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
     selectedAttrs[NSFontAttributeName] = attrs[NSFontAttributeName];
-    selectedAttrs[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"#222222"];
+    selectedAttrs[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"#ff5a5f"];
     
     UITabBarItem *item = [UITabBarItem appearance];
     [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
@@ -91,7 +91,7 @@
             return YES;
         } else {
             LogInViewController *vc = [[LogInViewController alloc] init];
-            UINavigationController *naviVc = [[UINavigationController alloc] initWithRootViewController:vc];
+            BaseNavController *naviVc = [[BaseNavController alloc] initWithRootViewController:vc];
             [self presentViewController:naviVc animated:YES completion:nil];
             return NO;
         }

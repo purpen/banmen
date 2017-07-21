@@ -10,6 +10,7 @@
 #import "UIColor+Extension.h"
 #import "CooperationCollectionViewCell.h"
 #import "OtherMacro.h"
+#import "GoodDetailsViewController.h"
 
 @interface CooperationView () <UICollectionViewDelegate, UICollectionViewDataSource>
 @end
@@ -57,6 +58,12 @@
     CooperationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CooperationCollectionViewCell" forIndexPath:indexPath];
     cell.model = self.modelAry[indexPath.row];
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    GoodDetailsViewController *vc = [[GoodDetailsViewController alloc] init];
+    vc.model = self.modelAry[indexPath.row];
+    [self.navC pushViewController:vc animated:YES];
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{

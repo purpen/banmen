@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CooperationView : UIView
+
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *modelAry;
+@property (nonatomic, strong) UINavigationController *navC;
+
 @end

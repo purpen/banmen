@@ -24,8 +24,9 @@
         
         [self addSubview:self.logoImageView];
         [_logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.height.mas_equalTo(236/2);
-            make.top.mas_equalTo(self.mas_top).mas_offset(188/2);
+            make.width.mas_equalTo(130/2);
+            make.height.mas_equalTo(71/2);
+            make.top.mas_equalTo(self.mas_top).mas_offset(274/2);
             make.centerX.mas_equalTo(self.mas_centerX).mas_offset(0);
         }];
         
@@ -42,27 +43,26 @@
             make.left.mas_equalTo(self.mas_left).mas_offset(15);
             make.right.mas_equalTo(self.mas_right).mas_offset(-15);
             make.top.mas_equalTo(self.logoImageView.mas_bottom).mas_offset(40);
-            make.height.mas_equalTo(33);
+            make.height.mas_equalTo(44);
         }];
         
         [self.accountView addSubview:self.accountImageView];
         [_accountImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.accountView.mas_left).mas_offset(3);
+            make.left.mas_equalTo(self.accountView.mas_left).mas_offset(10);
             make.centerY.mas_equalTo(self.accountView.mas_centerY).mas_offset(0);
             make.width.mas_equalTo(24/2);
             make.height.mas_equalTo(32/2);
         }];
         
-        [self.accountView addSubview:self.accountLabel];
-        [_accountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.accountImageView.mas_right).mas_offset(3);
-            make.centerY.mas_equalTo(self.accountView.mas_centerY).mas_offset(0);
-            make.width.mas_equalTo(30);
-        }];
+//        [self.accountView addSubview:self.accountLabel];
+//        [_accountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.accountImageView.mas_right).mas_offset(5);
+//            make.centerY.mas_equalTo(self.accountView.mas_centerY).mas_offset(0);
+//        }];
         
         [self.accountView addSubview:self.accountTF];
         [_accountTF mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.accountLabel.mas_right).mas_offset(5);
+            make.left.mas_equalTo(self.accountImageView.mas_right).mas_offset(5);
             make.top.mas_equalTo(self.accountView.mas_top).mas_offset(0);
             make.right.mas_equalTo(self.accountView.mas_right).mas_offset(0);
             make.bottom.mas_equalTo(self.accountView.mas_bottom).mas_offset(0);
@@ -73,27 +73,27 @@
             make.left.mas_equalTo(self.mas_left).mas_offset(15);
             make.right.mas_equalTo(self.mas_right).mas_offset(-15);
             make.top.mas_equalTo(self.accountView.mas_bottom).mas_offset(15);
-            make.height.mas_equalTo(33);
+            make.height.mas_equalTo(44);
         }];
         
         [self.psdView addSubview:self.psdImageView];
         [_psdImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.psdView.mas_left).mas_offset(3);
+            make.left.mas_equalTo(self.psdView.mas_left).mas_offset(10);
             make.centerY.mas_equalTo(self.psdView.mas_centerY).mas_offset(0);
             make.width.mas_equalTo(24/2);
             make.height.mas_equalTo(32/2);
         }];
         
-        [self.psdView addSubview:self.psdLabel];
-        [_psdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.psdImageView.mas_right).mas_offset(3);
-            make.centerY.mas_equalTo(self.psdView.mas_centerY).mas_offset(0);
-            make.width.mas_equalTo(30);
-        }];
+//        [self.psdView addSubview:self.psdLabel];
+//        [_psdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.psdImageView.mas_right).mas_offset(5);
+//            make.centerY.mas_equalTo(self.psdView.mas_centerY).mas_offset(0);
+//            make.width.mas_equalTo(30);
+//        }];
         
         [self.psdView addSubview:self.psdTF];
         [_psdTF mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.psdLabel.mas_right).mas_offset(5);
+            make.left.mas_equalTo(self.psdImageView.mas_right).mas_offset(5);
             make.top.mas_equalTo(self.psdView.mas_top).mas_offset(0);
             make.right.mas_equalTo(self.psdView.mas_right).mas_offset(0);
             make.bottom.mas_equalTo(self.psdView.mas_bottom).mas_offset(0);
@@ -104,85 +104,93 @@
             make.left.mas_equalTo(self.accountView.mas_left).mas_offset(0);
             make.right.mas_equalTo(self.accountView.mas_right).mas_offset(0);
             make.top.mas_equalTo(self.psdView.mas_bottom).mas_offset(15);
-            make.height.mas_equalTo(33);
+            make.height.mas_equalTo(44);
         }];
         
-        [self.logInView addSubview:self.taihuoniaoAccountBtn];
-        [_taihuoniaoAccountBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.accountView.mas_left).mas_offset(4);
-            make.top.mas_equalTo(self.logInBtn.mas_bottom).mas_offset(10);
-        }];
+//        [self.logInView addSubview:self.taihuoniaoAccountBtn];
+//        [_taihuoniaoAccountBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.accountView.mas_left).mas_offset(4);
+//            make.top.mas_equalTo(self.logInBtn.mas_bottom).mas_offset(10);
+//        }];
         
-        [self.logInView addSubview:self.forgetPsdBtn];
-        [_forgetPsdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(self.accountView.mas_right).mas_offset(-4);
-            make.top.mas_equalTo(self.logInBtn.mas_bottom).mas_offset(10);
-        }];
-        
-        [self addSubview:self.thirdLabel];
-        [_thirdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self addSubview:self.fengeLineView];
+        [_fengeLineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(self.mas_centerX).mas_offset(0);
-            make.top.mas_equalTo(self.forgetPsdBtn.mas_bottom).mas_offset(50);
-        }];
-        
-        [self addSubview:self.leftLineView];
-        [_leftLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.accountView.mas_left).mas_offset(20);
-            make.right.mas_equalTo(self.thirdLabel.mas_left).mas_offset(-20);
-            make.centerY.mas_equalTo(self.thirdLabel.mas_centerY).mas_offset(0);
-            make.height.mas_equalTo(1);
-        }];
-        
-        [self addSubview:self.rightLineView];
-        [_rightLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(self.accountView.mas_right).mas_offset(-20);
-            make.left.mas_equalTo(self.thirdLabel.mas_right).mas_offset(20);
-            make.centerY.mas_equalTo(self.thirdLabel.mas_centerY).mas_offset(0);
-            make.height.mas_equalTo(1);
-        }];
-        
-        [self addSubview:self.wechatBtn];
-        [_wechatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.mas_left).mas_offset(40);
-            make.top.mas_equalTo(self.thirdLabel.mas_bottom).mas_offset(20);
-            make.width.mas_equalTo((self.frame.size.width-80)/4);
-            make.height.mas_equalTo(70);
-        }];
-        
-        [self addSubview:self.quanBtn];
-        [_quanBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.wechatBtn.mas_right).mas_offset(0);
-            make.top.mas_equalTo(self.thirdLabel.mas_bottom).mas_offset(20);
-            make.width.mas_equalTo((self.frame.size.width-80)/4);
-            make.height.mas_equalTo(70);
-        }];
-        
-        [self addSubview:self.weiboBtn];
-        [_weiboBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.quanBtn.mas_right).mas_offset(0);
-            make.top.mas_equalTo(self.thirdLabel.mas_bottom).mas_offset(20);
-            make.width.mas_equalTo((self.frame.size.width-80)/4);
-            make.height.mas_equalTo(70);
-        }];
-        
-        [self addSubview:self.qqBtn];
-        [_qqBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.weiboBtn.mas_right).mas_offset(0);
-            make.top.mas_equalTo(self.thirdLabel.mas_bottom).mas_offset(20);
-            make.width.mas_equalTo((self.frame.size.width-80)/4);
-            make.height.mas_equalTo(70);
-        }];
-        
-        [self addSubview:self.tipLabel];
-        [_tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.mas_left).mas_offset(267/2*SCREEN_HEIGHT/667.0);
+            make.width.mas_equalTo(1);
             make.bottom.mas_equalTo(self.mas_bottom).mas_offset(-20);
+            make.height.mas_equalTo(14);
         }];
+
+        [self addSubview:self.forgetPsdBtn];
+        [_forgetPsdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.fengeLineView.mas_right).mas_offset(5);
+            make.centerY.mas_equalTo(self.fengeLineView.mas_centerY).mas_offset(0);
+        }];
+        
+//        [self addSubview:self.thirdLabel];
+//        [_thirdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.centerX.mas_equalTo(self.mas_centerX).mas_offset(0);
+//            make.top.mas_equalTo(self.forgetPsdBtn.mas_bottom).mas_offset(50);
+//        }];
+//        
+//        [self addSubview:self.leftLineView];
+//        [_leftLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.accountView.mas_left).mas_offset(20);
+//            make.right.mas_equalTo(self.thirdLabel.mas_left).mas_offset(-20);
+//            make.centerY.mas_equalTo(self.thirdLabel.mas_centerY).mas_offset(0);
+//            make.height.mas_equalTo(1);
+//        }];
+//        
+//        [self addSubview:self.rightLineView];
+//        [_rightLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.right.mas_equalTo(self.accountView.mas_right).mas_offset(-20);
+//            make.left.mas_equalTo(self.thirdLabel.mas_right).mas_offset(20);
+//            make.centerY.mas_equalTo(self.thirdLabel.mas_centerY).mas_offset(0);
+//            make.height.mas_equalTo(1);
+//        }];
+//        
+//        [self addSubview:self.wechatBtn];
+//        [_wechatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.mas_left).mas_offset(40);
+//            make.top.mas_equalTo(self.thirdLabel.mas_bottom).mas_offset(20);
+//            make.width.mas_equalTo((self.frame.size.width-80)/4);
+//            make.height.mas_equalTo(70);
+//        }];
+//        
+//        [self addSubview:self.quanBtn];
+//        [_quanBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.wechatBtn.mas_right).mas_offset(0);
+//            make.top.mas_equalTo(self.thirdLabel.mas_bottom).mas_offset(20);
+//            make.width.mas_equalTo((self.frame.size.width-80)/4);
+//            make.height.mas_equalTo(70);
+//        }];
+//        
+//        [self addSubview:self.weiboBtn];
+//        [_weiboBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.quanBtn.mas_right).mas_offset(0);
+//            make.top.mas_equalTo(self.thirdLabel.mas_bottom).mas_offset(20);
+//            make.width.mas_equalTo((self.frame.size.width-80)/4);
+//            make.height.mas_equalTo(70);
+//        }];
+//        
+//        [self addSubview:self.qqBtn];
+//        [_qqBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.weiboBtn.mas_right).mas_offset(0);
+//            make.top.mas_equalTo(self.thirdLabel.mas_bottom).mas_offset(20);
+//            make.width.mas_equalTo((self.frame.size.width-80)/4);
+//            make.height.mas_equalTo(70);
+//        }];
+        
+//        [self addSubview:self.tipLabel];
+//        [_tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.mas_left).mas_offset(267/2*SCREEN_HEIGHT/667.0);
+//            make.bottom.mas_equalTo(self.mas_bottom).mas_offset(-20);
+//        }];
         
         [self addSubview:self.changBtn];
         [_changBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.tipLabel.mas_right).mas_offset(0);
-            make.centerY.mas_equalTo(self.tipLabel.mas_centerY).mas_offset(0);
+            make.right.mas_equalTo(self.fengeLineView.mas_left).mas_offset(-5);
+            make.centerY.mas_equalTo(self.fengeLineView.mas_centerY).mas_offset(0);
         }];
         
         [self addSubview:self.logUpView];
@@ -195,10 +203,8 @@
         
         [self addSubview:self.cancelBtn];
         [_cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(self.mas_right).mas_offset(-15);
+            make.left.mas_equalTo(self.mas_left).mas_offset(15);
             make.top.mas_equalTo(self.mas_top).mas_offset(30);
-            make.width.mas_equalTo(15);
-            make.height.mas_equalTo(15);
         }];
     }
     return self;
@@ -210,6 +216,14 @@
         [_cancelBtn setBackgroundImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
     }
     return _cancelBtn;
+}
+
+-(UIView *)fengeLineView{
+    if (!_fengeLineView) {
+        _fengeLineView = [[UIView alloc] init];
+        _fengeLineView.backgroundColor = [UIColor colorWithHexString:@"#898989"];
+    }
+    return _fengeLineView;
 }
 
 -(UIView *)logInView{
@@ -246,9 +260,9 @@
     if (!_changBtn) {
         _changBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _changBtn.backgroundColor = [UIColor clearColor];
-        [_changBtn setTitle:@"立即注册?" forState:(UIControlStateNormal)];
-        _changBtn.font = [UIFont systemFontOfSize:11];
-        [_changBtn setTitleColor:[UIColor colorWithHexString:@"#3daaff"] forState:UIControlStateNormal];
+        [_changBtn setTitle:@"注册Fiu" forState:(UIControlStateNormal)];
+        _changBtn.font = [UIFont systemFontOfSize:13];
+        [_changBtn setTitleColor:[UIColor colorWithHexString:@"#be8914"] forState:UIControlStateNormal];
         [_changBtn addTarget:self action:@selector(changState:) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _changBtn;
@@ -257,11 +271,11 @@
 -(void)changState:(UIButton*)sender{
     sender.selected = !sender.selected;
     if (sender.selected) {
-        _tipLabel.text = @"已有帐号";
-        [_changBtn setTitle:@"立即登录?" forState:(UIControlStateNormal)];
+//        _tipLabel.text = @"已有帐号";
+        [_changBtn setTitle:@"登录Fiu" forState:(UIControlStateNormal)];
     }else{
-        _tipLabel.text = @"还没有帐号";
-        [_changBtn setTitle:@"立即注册?" forState:(UIControlStateNormal)];
+//        _tipLabel.text = @"还没有帐号";
+        [_changBtn setTitle:@"注册Fiu" forState:(UIControlStateNormal)];
     }
     // 退出键盘
     [_logInView endEditing:YES];
@@ -344,7 +358,7 @@
         _forgetPsdBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _forgetPsdBtn.backgroundColor = [UIColor clearColor];
         [_forgetPsdBtn setTitle:@"忘记密码" forState:(UIControlStateNormal)];
-        _forgetPsdBtn.font = [UIFont systemFontOfSize:11];
+        _forgetPsdBtn.font = [UIFont systemFontOfSize:13];
         [_forgetPsdBtn setTitleColor:[UIColor colorWithHexString:@"#797979"] forState:UIControlStateNormal];
     }
     return _forgetPsdBtn;
@@ -364,9 +378,11 @@
 -(UIButton *)logInBtn{
     if (!_logInBtn) {
         _logInBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _logInBtn.backgroundColor = [UIColor colorWithHexString:@"#ff5a5f"];
+        _logInBtn.backgroundColor = [UIColor colorWithHexString:@"#be8914"];
         [_logInBtn setTitle:@"登录" forState:(UIControlStateNormal)];
-        _logInBtn.font = [UIFont systemFontOfSize:14];
+        _logInBtn.font = [UIFont systemFontOfSize:16];
+        _logInBtn.layer.masksToBounds = YES;
+        _logInBtn.layer.cornerRadius = 2;
     }
     return _logInBtn;
 }
@@ -374,8 +390,8 @@
 -(UILabel *)accountLabel{
     if (!_accountLabel) {
         _accountLabel = [[UILabel alloc] init];
-        _accountLabel.font = [UIFont systemFontOfSize:11];
-        _accountLabel.text = @"账号";
+        _accountLabel.font = [UIFont systemFontOfSize:14];
+        _accountLabel.text = @"手机号";
         _accountLabel.textColor = [UIColor colorWithHexString:@"#838383"];
     }
     return _accountLabel;
@@ -384,7 +400,7 @@
 -(UILabel *)tipLabel{
     if (!_tipLabel) {
         _tipLabel = [[UILabel alloc] init];
-        _tipLabel.font = [UIFont systemFontOfSize:11];
+        _tipLabel.font = [UIFont systemFontOfSize:14];
         _tipLabel.text = @"还没有账号";
         _tipLabel.textColor = [UIColor colorWithHexString:@"#838383"];
     }
@@ -404,7 +420,7 @@
 -(UILabel *)psdLabel{
     if (!_psdLabel) {
         _psdLabel = [[UILabel alloc] init];
-        _psdLabel.font = [UIFont systemFontOfSize:11];
+        _psdLabel.font = [UIFont systemFontOfSize:14];
         _psdLabel.text = @"密码";
         _psdLabel.textColor = [UIColor colorWithHexString:@"#838383"];
     }
@@ -451,6 +467,8 @@
         _accountTF.borderStyle = UITextBorderStyleNone;
         _accountTF.returnKeyType = UIReturnKeyDone;
         _accountTF.delegate = self;
+        _accountTF.placeholder = @"手机号";
+        _accountTF.font = [UIFont systemFontOfSize:14];
     }
     return _accountTF;
 }
@@ -462,6 +480,8 @@
         _psdTF.returnKeyType = UIReturnKeyDone;
         _psdTF.delegate = self;
         _psdTF.secureTextEntry = YES;
+        _psdTF.placeholder = @"密码";
+        _psdTF.font = [UIFont systemFontOfSize:14];
     }
     return _psdTF;
 }
@@ -474,12 +494,7 @@
 
 -(UIImageView *)logoImageView{
     if (!_logoImageView) {
-        _logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
-        _logoImageView.backgroundColor = [UIColor redColor];
-        _logoImageView.layer.masksToBounds = YES;
-        _logoImageView.layer.cornerRadius = 236/2/2;
-        _logoImageView.layer.borderColor = [UIColor colorWithHexString:@"#cbcbcb"].CGColor;
-        _logoImageView.layer.borderWidth = 1;
+        _logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
     }
     return _logoImageView;
 }

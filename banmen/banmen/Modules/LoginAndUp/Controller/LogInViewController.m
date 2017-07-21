@@ -15,6 +15,7 @@
 #import "SVProgressHUD.h"
 #import "Masonry.h"
 #import "UserModel.h"
+#import "ForgetPsdViewController.h"
 
 @interface LogInViewController ()
 
@@ -34,6 +35,12 @@
     [_logInView.logUpView.logUpBtn addTarget:self action:@selector(logup) forControlEvents:(UIControlEventTouchUpInside)];
     [_logInView.logInBtn addTarget:self action:@selector(login) forControlEvents:(UIControlEventTouchUpInside)];
     [_logInView.cancelBtn addTarget:self action:@selector(cancel) forControlEvents:(UIControlEventTouchUpInside)];
+    [_logInView.forgetPsdBtn addTarget:self action:@selector(forgetPsd) forControlEvents:(UIControlEventTouchUpInside)];
+}
+
+-(void)forgetPsd{
+    ForgetPsdViewController *vc = [[ForgetPsdViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)cancel{

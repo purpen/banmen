@@ -1,28 +1,42 @@
 //
-//  LogUpview.m
+//  ForgetPsdView.m
 //  banmen
 //
-//  Created by dong on 2017/7/14.
+//  Created by dong on 2017/7/21.
 //  Copyright © 2017年 banmen. All rights reserved.
 //
 
-#import "LogUpview.h"
+#import "ForgetPsdView.h"
 #import "Masonry.h"
+#import "OtherMacro.h"
 #import "UIColor+Extension.h"
 
-@interface LogUpview () <UITextFieldDelegate>
+@interface ForgetPsdView () <UITextFieldDelegate>
 
 @end
 
-@implementation LogUpview
+@implementation ForgetPsdView
 
--(instancetype)init{
-    if (self = [super init]) {
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        
+        [self addSubview:self.navView];
+        [_navView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.mas_equalTo(self).mas_offset(0);
+            make.height.mas_equalTo(64);
+        }];
+        
+        [self addSubview:self.tipLabel];
+        [_tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.mas_equalTo(self.mas_centerX).mas_offset(0);
+            make.top.mas_equalTo(self.navView.mas_bottom).mas_offset(30);
+        }];
+        
         [self addSubview:self.phoneTF];
         [_phoneTF mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.mas_left).mas_offset(15);
             make.right.mas_equalTo(self.mas_right).mas_offset(-15);
-            make.top.mas_equalTo(self.mas_top).mas_offset(0);
+            make.top.mas_equalTo(self.tipLabel.mas_bottom).mas_offset(15);
             make.height.mas_equalTo(44);
         }];
         
@@ -49,28 +63,80 @@
             make.height.mas_equalTo(44);
         }];
         
-        [self addSubview:self.logUpBtn];
-        [_logUpBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self addSubview:self.commitBtn];
+        [_commitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.phoneTF.mas_left).mas_offset(0);
             make.right.mas_equalTo(self.phoneTF.mas_right).mas_offset(0);
             make.top.mas_equalTo(self.psdUpTF.mas_bottom).mas_offset(15);
             make.height.mas_equalTo(44);
         }];
+
         
     }
     return self;
 }
 
--(UIButton *)logUpBtn{
-    if (!_logUpBtn) {
-        _logUpBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _logUpBtn.backgroundColor = [UIColor colorWithHexString:@"#be8914"];
-        [_logUpBtn setTitle:@"注册" forState:(UIControlStateNormal)];
-        _logUpBtn.font = [UIFont systemFontOfSize:16];
-        _logUpBtn.layer.masksToBounds = YES;
-        _logUpBtn.layer.cornerRadius = 2;
+-(UIView *)navView{
+    if (!_navView) {
+        _navView = [[UIView alloc] init];
+        
+        [_navView addSubview:self.lineView];
+        [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(_navView).mas_offset(0);
+            make.height.mas_equalTo(1);
+        }];
+        
+        [_navView addSubview:self.backBtn];
+        [_backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(_navView.mas_left).mas_offset(15);
+            make.bottom.mas_equalTo(_navView.mas_bottom).mas_offset(-15);
+        }];
+        
+        [_navView addSubview:self.navTitleLabel];
+        [_navTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.mas_equalTo(_navView.mas_centerX).mas_offset(0);
+            make.bottom.mas_equalTo(_navView.mas_bottom).mas_offset(-15);
+        }];
     }
-    return _logUpBtn;
+    return _navView;
+}
+
+-(UILabel *)navTitleLabel{
+    if (!_navTitleLabel) {
+        _navTitleLabel = [[UILabel alloc] init];
+        _navTitleLabel.text = @"忘记密码";
+        _navTitleLabel.font = [UIFont systemFontOfSize:17 weight:(15)];
+        _navTitleLabel.textColor = [UIColor colorWithHexString:@"#222222"];
+    }
+    return _navTitleLabel;
+}
+
+-(UIButton *)backBtn{
+    if (!_backBtn) {
+        _backBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        [_backBtn setImage:[UIImage imageNamed:@"back"] forState:(UIControlStateNormal)];
+    }
+    return _backBtn;
+}
+
+-(UIView *)lineView{
+    if (!_lineView) {
+        _lineView = [[UIView alloc] init];
+        _lineView.backgroundColor = [UIColor colorWithHexString:@"#ececec"];
+    }
+    return _lineView;
+}
+
+-(UIButton *)commitBtn{
+    if (!_commitBtn) {
+        _commitBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _commitBtn.backgroundColor = [UIColor colorWithHexString:@"#be8914"];
+        [_commitBtn setTitle:@"提交" forState:(UIControlStateNormal)];
+        _commitBtn.font = [UIFont systemFontOfSize:16];
+        _commitBtn.layer.masksToBounds = YES;
+        _commitBtn.layer.cornerRadius = 2;
+    }
+    return _commitBtn;
 }
 
 -(UITextField *)validationTF{
@@ -139,6 +205,17 @@
 {
     [textField resignFirstResponder];
     return true;
+}
+
+
+-(UILabel *)tipLabel{
+    if (!_tipLabel) {
+        _tipLabel = [[UILabel alloc] init];
+        _tipLabel.font = [UIFont systemFontOfSize:14];
+        _tipLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+        _tipLabel.text = @"如果您忘记了你的密码，可以通过手机号找回密码。";
+    }
+    return _tipLabel;
 }
 
 @end
