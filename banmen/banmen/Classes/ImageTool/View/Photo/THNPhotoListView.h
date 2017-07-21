@@ -16,6 +16,7 @@
 @optional
 - (void)thn_didSelectItemAtPhotoList:(THNAssetItem *)item;
 - (void)thn_didDeselectItemAtPhotoList:(THNAssetItem *)item;
+- (void)thn_didSelectItemAtPhotoListOfReplace:(THNAssetItem *)item;
 
 @end
 
@@ -57,8 +58,9 @@
  获取全部的照片
 
  @param assetArray 图片资源
+ @param replace 如果是替换照片，相册列表只能单选
  */
-- (void)thn_getPhotoAssetInAlbumData:(NSMutableArray<THNAssetItem *> *)assetArray;
+- (void)thn_getPhotoAssetInAlbumData:(NSMutableArray<THNAssetItem *> *)assetArray isReplace:(BOOL)replace;
 
 /**
  相册视图的代理

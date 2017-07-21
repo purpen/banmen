@@ -17,6 +17,8 @@ static NSInteger const kMaxSelectPhotoItem = 6;
 
 @interface THNPhotoListView () <THNOpenAlbumButtonClickDelegate> {
     NSInteger _selectPhotoItem;
+    BOOL _isReplace;
+    THNAssetItem *_tempAssetItem;
 }
 
 @property (nonatomic, strong) NSMutableArray<THNPhotoAlbumList *> *photoAlbumArray;
@@ -185,7 +187,8 @@ static NSInteger const kMaxSelectPhotoItem = 6;
 }
 
 #pragma mark - 加载相簿内所有的照片数据
-- (void)thn_getPhotoAssetInAlbumData:(NSMutableArray<THNAssetItem *> *)assetArray {
+- (void)thn_getPhotoAssetInAlbumData:(NSMutableArray<THNAssetItem *> *)assetArray isReplace:(BOOL)replace {
+    _isReplace = replace;
     self.photoAssetArray = assetArray;
     [self.photoColleciton reloadData];
 }
@@ -222,22 +225,27 @@ static NSInteger const kMaxSelectPhotoItem = 6;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    THNAssetItem *item = self.photoAssetArray[indexPath.row];
-    item.selected = !item.selected;
-    
-    if (item.selected) {
-        if (_selectPhotoItem == kMaxSelectPhotoItem) {
-            item.selected = !item.selected;
-            [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"最多选择 %zi 张照片", _selectPhotoItem]];
-            [collectionView reloadItemsAtIndexPaths:@[indexPath]];
-            return;
-        }
-        [self thn_didSelectPhotoItem:self.photoAssetArray[indexPath.row]];
-        [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    if (_isReplace == YES) {
+        [self thn_thn_didSelectPhotoItemOfReplace:self.photoAssetArray[indexPath.row]];
         
     } else {
-        [self thn_didDeselectPhotoItem:self.photoAssetArray[indexPath.row]];
-        [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+        THNAssetItem *item = self.photoAssetArray[indexPath.row];
+        item.selected = !item.selected;
+        
+        if (item.selected) {
+            if (_selectPhotoItem == kMaxSelectPhotoItem) {
+                item.selected = !item.selected;
+                [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"最多选择 %zi 张照片", _selectPhotoItem]];
+                [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                return;
+            }
+            [self thn_didSelectPhotoItem:item];
+            [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            
+        } else {
+            [self thn_didDeselectPhotoItem:item];
+            [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+        }
     }
 }
 
@@ -256,6 +264,13 @@ static NSInteger const kMaxSelectPhotoItem = 6;
 
     if ([self.delegate respondsToSelector:@selector(thn_didDeselectItemAtPhotoList:)]) {
         [self.delegate thn_didDeselectItemAtPhotoList:item];
+    }
+}
+
+#pragma mark - 替换照片的选择
+- (void)thn_thn_didSelectPhotoItemOfReplace:(THNAssetItem *)item {
+    if ([self.delegate respondsToSelector:@selector(thn_didSelectItemAtPhotoListOfReplace:)]) {
+        [self.delegate thn_didSelectItemAtPhotoListOfReplace:item];
     }
 }
 

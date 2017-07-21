@@ -10,15 +10,19 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "UIColor+Extension.h"
 #import "MainMacro.h"
-
+#import <Photos/Photos.h>
 #import "THNEditChildView.h"
 #import "THNEditContentView.h"
 #import "THNDoneImageViewController.h"
 #import "THNEditToolCollectionViewCell.h"
+#import "THNPhotoListView.h"
 
 static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionViewCellId";
 
-@interface THNEditImageViewController () <THNImageToolNavigationBarItemsDelegate, UICollectionViewDelegate, UICollectionViewDataSource, THNEditChildViewDelegate>
+@interface THNEditImageViewController () <THNImageToolNavigationBarItemsDelegate, UICollectionViewDelegate, UICollectionViewDataSource, THNEditChildViewDelegate, THNPhotoListViewDelegate>
+{
+    BOOL _replace;
+}
 
 @property (nonatomic, strong) NSArray *titleArr;
 @property (nonatomic, strong) NSArray *iconArr;
@@ -33,6 +37,13 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 @property (nonatomic, assign) NSInteger childViewIndex;
 @property (nonatomic, assign) BOOL addBorder;
 @property (nonatomic, strong) THNEditChildView *tempChildView;
+@property (nonatomic, strong) UIButton *doneReplaceButton;
+
+//  相册列表
+@property (nonatomic, strong) NSMutableArray<THNAssetItem *> *assets;
+@property (nonatomic, retain) NSMutableArray<THNPhotoAlbumList *> *photoAblumTitle;
+@property (nonatomic, strong) THNPhotoAlbumList *selectedPhotoAblum;
+@property (nonatomic, strong) THNPhotoListView *photoListView;
 
 @end
 
@@ -47,7 +58,8 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _replace = NO;
+    [self thn_getPhotoAlbumData];
     [self thn_intiTitleAndIconImageNameArray];
     [self thn_initEditContentViewKVC];
 }
@@ -78,8 +90,11 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 #pragma mark 选中了子视图
 - (void)thn_tapWithEditView:(THNEditChildView *)childView {
     self.tempChildView = childView;
-    
     self.addBorder = NO;
+    
+    if (_replace == YES) {
+        [self.photoListView.photoColleciton reloadData];
+    }
     
     [self thn_hiddenEditContentViewBoarder:YES];
 }
@@ -92,7 +107,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
     [self thn_setControllerViewUI];
 }
 
-#pragma mark - 图片编辑功能按钮
+#pragma mark 图片编辑功能
 - (UICollectionView *)editToolCollection {
     if (!_editToolCollection) {
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -147,7 +162,56 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 
 #pragma mark 替换照片
 - (void)thn_replaceImage {
-    NSLog(@"=================  替换图片");
+    _replace = YES;
+    [self thn_replaceImageAndChangeViewUI:YES];
+}
+
+//  改变成替换图片的UI
+- (void)thn_replaceImageAndChangeViewUI:(BOOL)replace {
+    NSString *titleText = replace ? @"替换" : @"编辑";
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.navBackButton.alpha = replace ? 0 : 1;
+        self.navRightItem.alpha = replace ? 0 : 1;
+        self.editToolCollection.alpha = replace ? 0 : 1;
+        self.navTitle.text = titleText;
+        self.doneReplaceButton.alpha = replace ? 1 : 0;
+        self.photoListView.alpha = replace ? 1 : 0;
+    }];
+    
+    [self thn_scaleEditContentView:replace];
+}
+
+//  缩放拼图预览视图
+- (void)thn_scaleEditContentView:(BOOL)scale {
+    CGFloat scaleX = scale ? 0.8 : 1;
+    CGFloat scaleY = scale ? 0.8 : 1;
+    CGFloat pointY = scale ? (SCREEN_WIDTH / 2) + 30 : (SCREEN_WIDTH / 2) + 64;
+    CGPoint scalePoint = CGPointMake(self.view.center.x, pointY);
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.editContentView.transform = CGAffineTransformMakeScale(scaleX, scaleY);
+        self.editContentView.center = scalePoint;
+    }];
+}
+
+//  替换图片完成按钮
+- (UIButton *)doneReplaceButton {
+    if (!_doneReplaceButton) {
+        _doneReplaceButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 59, 20, 44, 44)];
+        [_doneReplaceButton setTitleColor:[UIColor colorWithHexString:kColorMain alpha:1] forState:(UIControlStateNormal)];
+        _doneReplaceButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        [_doneReplaceButton setContentHorizontalAlignment:(UIControlContentHorizontalAlignmentRight)];
+        [_doneReplaceButton setTitle:@"完成" forState:(UIControlStateNormal)];
+        _doneReplaceButton.alpha = 0;
+        [_doneReplaceButton addTarget:self action:@selector(doneReplaceButton:) forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    return _doneReplaceButton;
+}
+
+- (void)doneReplaceButton:(UIButton *)button {
+    _replace = NO;
+    [self thn_replaceImageAndChangeViewUI:NO];
 }
 
 #pragma mark 边框
@@ -280,7 +344,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
         options.resizeMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
         
         [[PHImageManager defaultManager] requestImageForAsset:asset
-                                                   targetSize:CGSizeMake(200, 200)
+                                                   targetSize:CGSizeMake(asset.pixelWidth, asset.pixelHeight)
                                                   contentMode:PHImageContentModeAspectFill
                                                       options:options
                                                 resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
@@ -300,11 +364,72 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
     childEditView.bottomBoarderLayer.backgroundColor = [UIColor colorWithHexString:kColorMain alpha:0];
 }
 
+#pragma mark - 加载相册列表视图
+- (THNPhotoListView *)photoListView {
+    if (!_photoListView) {
+        _photoListView = [[THNPhotoListView alloc] initWithFrame:CGRectMake(0, SCREEN_WIDTH + 30, SCREEN_WIDTH, SCREEN_HEIGHT - (SCREEN_WIDTH + 30))];
+        _photoListView.delegate = self;
+        _photoListView.alpha = 0;
+    }
+    return _photoListView;
+}
+
+#pragma mark 选中照片替换拼图照片
+- (void)thn_didSelectItemAtPhotoListOfReplace:(THNAssetItem *)item {
+    [self.selectedAssetArray replaceObjectAtIndex:self.childViewIndex withObject:item];
+    
+    PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
+    option.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+    
+    [[PHImageManager defaultManager] requestImageForAsset:item.asset
+                                               targetSize:CGSizeMake(item.asset.pixelWidth, item.asset.pixelHeight)
+                                              contentMode:PHImageContentModeAspectFill
+                                                  options:option
+                                            resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                                                [self.editContentView.contentViewArray[self.childViewIndex] thn_setImageViewData:result];
+                                            }];
+}
+
+#pragma mark - 获取所有的相册资源
+- (void)thn_getPhotoAlbumData {
+    NSMutableArray<THNAssetItem *> *assets = [NSMutableArray array];
+    
+    self.photoAblumTitle = [NSMutableArray arrayWithArray:[[THNPhotoTool sharePhotoTool] thn_getPhotoAlbumList]];
+    
+    dispatch_queue_t myQueue = dispatch_queue_create("myQueue", NULL);
+    dispatch_async(myQueue, ^{
+        for (THNPhotoAlbumList *photoAlbum in self.photoAblumTitle) {
+            if ([photoAlbum.title isEqualToString:@"相机胶卷"]) {
+                NSArray<PHAsset *> *result = [[THNPhotoTool sharePhotoTool] thn_getAssetOfAssetCollection:photoAlbum.assetCOllection ascending:NO];
+                [result enumerateObjectsUsingBlock:^(PHAsset * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    THNAssetItem *assetItem = [THNAssetItem assetItemWithPHAsset:obj];
+                    [assets addObject:assetItem];
+                }];
+            }
+        }
+        self.assets = assets;
+    });
+    
+    dispatch_barrier_async(myQueue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self thn_loadPhotoCollectionView];
+        });
+    });
+}
+
+#pragma mark 加载相册图片、相簿列表
+- (void)thn_loadPhotoCollectionView {
+    [self.view addSubview:self.photoListView];
+    [self.photoListView thn_getPhotoAlbumListData:self.photoAblumTitle];
+    [self.photoListView thn_getPhotoAssetInAlbumData:self.assets isReplace:YES];
+}
+
 #pragma mark - 设置Nav
 - (void)thn_setNavViewUI {
     self.navTitle.text = @"编辑";
     [self thn_addBarItemRightBarButton:@"保存" image:nil];
     [self.navRightItem setTitleColor:[UIColor colorWithHexString:kColorMain] forState:(UIControlStateNormal)];
+    [self.navView addSubview:self.doneReplaceButton];
     self.delegate = self;
 }
 

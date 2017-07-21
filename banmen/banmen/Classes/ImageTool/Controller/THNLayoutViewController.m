@@ -126,7 +126,7 @@
     //  图片列表
     [self.view addSubview:self.photoListView];
     [self.photoListView thn_getPhotoAlbumListData:self.photoAblumTitle];
-    [self.photoListView thn_getPhotoAssetInAlbumData:self.assets];
+    [self.photoListView thn_getPhotoAssetInAlbumData:self.assets isReplace:NO];
     
     //  拼图预览
     [self.view addSubview:self.previewPuzzleView];
