@@ -154,6 +154,8 @@
 		F5ADCD931F1F077C001FC5DD /* ChannelsItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */; };
 		F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */; };
 		F5B30B6D1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */; };
+		F5C8EBED1F21EB83009FC203 /* GoodsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */; };
+		F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -400,6 +402,10 @@
 		F5B30B641F1E20DF007D1959 /* ChartsSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartsSwift.h; sourceTree = "<group>"; };
 		F5B30B6B1F1EFD9C007D1959 /* SalesChannelsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesChannelsTableViewCell.h; sourceTree = "<group>"; };
 		F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsTableViewCell.m; sourceTree = "<group>"; };
+		F5C8EBEB1F21EB83009FC203 /* GoodsDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailTableViewCell.h; sourceTree = "<group>"; };
+		F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailTableViewCell.m; sourceTree = "<group>"; };
+		F5C8EBEE1F21F032009FC203 /* GoodsDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailModel.h; sourceTree = "<group>"; };
+		F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -529,6 +535,8 @@
 				F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */,
 				F5ADCD941F1F3882001FC5DD /* UnitPriceModel.h */,
 				F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */,
+				F5C8EBEE1F21F032009FC203 /* GoodsDetailModel.h */,
+				F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -564,6 +572,8 @@
 				F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */,
 				F58DE8F01F20B15400C80ECF /* GoodDetailsView.h */,
 				F58DE8F11F20B15400C80ECF /* GoodDetailsView.m */,
+				F5C8EBEB1F21EB83009FC203 /* GoodsDetailTableViewCell.h */,
+				F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1386,6 +1396,7 @@
 				F55DD8021F03C161004915E3 /* THNShowPuzzleView.m in Sources */,
 				F55DD8121F04AE92004915E3 /* SaleTableViewCell.m in Sources */,
 				D8ED5D881EF906060046642C /* NSString+TimeDate.m in Sources */,
+				F5C8EBED1F21EB83009FC203 /* GoodsDetailTableViewCell.m in Sources */,
 				D847DE431EFCDEDC007E301E /* THNDoneImageViewController.m in Sources */,
 				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
 				F55DD8061F049B13004915E3 /* SalesViewController.m in Sources */,
@@ -1440,6 +1451,7 @@
 				F523A8161F1F76F300DD5C8B /* UserView.m in Sources */,
 				F523A8131F1F694C00DD5C8B /* RecommendedModel.m in Sources */,
 				F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */,
+				F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */,
 				F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */,
 				F595FE0E1F1CA382006F4E46 /* CooperationCollectionViewCell.m in Sources */,
 				F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */,
