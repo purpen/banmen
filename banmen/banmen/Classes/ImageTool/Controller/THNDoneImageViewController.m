@@ -121,7 +121,7 @@
 - (UIButton *)shareButton {
     if (!_shareButton) {
         _shareButton = [[UIButton alloc] init];
-        [_shareButton setTitle:@"发送到电脑／微信" forState:(UIControlStateNormal)];
+        [_shareButton setTitle:@"分享" forState:(UIControlStateNormal)];
         [_shareButton setTitleColor:[UIColor colorWithHexString:kColorWhite] forState:(UIControlStateNormal)];
         _shareButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
         _shareButton.backgroundColor = [UIColor colorWithHexString:kColorGreen];
