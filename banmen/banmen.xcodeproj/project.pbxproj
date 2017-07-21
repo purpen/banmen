@@ -155,6 +155,7 @@
 		F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */; };
 		F5B30B6D1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */; };
 		F5C8EBED1F21EB83009FC203 /* GoodsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */; };
+		F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -403,6 +404,8 @@
 		F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsTableViewCell.m; sourceTree = "<group>"; };
 		F5C8EBEB1F21EB83009FC203 /* GoodsDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailTableViewCell.h; sourceTree = "<group>"; };
 		F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailTableViewCell.m; sourceTree = "<group>"; };
+		F5C8EBEE1F21F032009FC203 /* GoodsDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailModel.h; sourceTree = "<group>"; };
+		F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -532,6 +535,8 @@
 				F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */,
 				F5ADCD941F1F3882001FC5DD /* UnitPriceModel.h */,
 				F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */,
+				F5C8EBEE1F21F032009FC203 /* GoodsDetailModel.h */,
+				F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1447,6 +1452,7 @@
 				F523A8161F1F76F300DD5C8B /* UserView.m in Sources */,
 				F523A8131F1F694C00DD5C8B /* RecommendedModel.m in Sources */,
 				F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */,
+				F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */,
 				F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */,
 				F595FE0E1F1CA382006F4E46 /* CooperationCollectionViewCell.m in Sources */,
 				F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */,

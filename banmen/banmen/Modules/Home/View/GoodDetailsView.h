@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GoodsDetailModel.h"
 
 @interface GoodDetailsView : UIView
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) GoodsDetailModel *model;
 
 @end
 
