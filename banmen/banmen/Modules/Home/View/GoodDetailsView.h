@@ -10,4 +10,7 @@
 
 @interface GoodDetailsView : UIView
 
+@property (nonatomic, strong) UITableView *tableView;
+
 @end
+

@@ -154,6 +154,7 @@
 		F5ADCD931F1F077C001FC5DD /* ChannelsItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */; };
 		F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */; };
 		F5B30B6D1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */; };
+		F5C8EBED1F21EB83009FC203 /* GoodsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -400,6 +401,8 @@
 		F5B30B641F1E20DF007D1959 /* ChartsSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartsSwift.h; sourceTree = "<group>"; };
 		F5B30B6B1F1EFD9C007D1959 /* SalesChannelsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesChannelsTableViewCell.h; sourceTree = "<group>"; };
 		F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsTableViewCell.m; sourceTree = "<group>"; };
+		F5C8EBEB1F21EB83009FC203 /* GoodsDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailTableViewCell.h; sourceTree = "<group>"; };
+		F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,6 +567,8 @@
 				F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */,
 				F58DE8F01F20B15400C80ECF /* GoodDetailsView.h */,
 				F58DE8F11F20B15400C80ECF /* GoodDetailsView.m */,
+				F5C8EBEB1F21EB83009FC203 /* GoodsDetailTableViewCell.h */,
+				F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1385,6 +1390,7 @@
 				F55DD8121F04AE92004915E3 /* SaleTableViewCell.m in Sources */,
 				D8ED5D881EF906060046642C /* NSString+TimeDate.m in Sources */,
 				F595FE211F1DDE8E006F4E46 /* MonthTableViewCell.m in Sources */,
+				F5C8EBED1F21EB83009FC203 /* GoodsDetailTableViewCell.m in Sources */,
 				D847DE431EFCDEDC007E301E /* THNDoneImageViewController.m in Sources */,
 				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
 				F55DD8061F049B13004915E3 /* SalesViewController.m in Sources */,
