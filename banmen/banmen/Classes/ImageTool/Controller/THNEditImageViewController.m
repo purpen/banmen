@@ -461,7 +461,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
 
 - (void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     if (!error) {
-        [SVProgressHUD showSuccessWithStatus:@"已保存到相册"];
+//        [SVProgressHUD showSuccessWithStatus:@"已保存到相册"];
         [self thn_pushShareImageController];
         
     } else {

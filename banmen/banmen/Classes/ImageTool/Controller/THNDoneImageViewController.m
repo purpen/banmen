@@ -39,23 +39,23 @@
 - (void)thn_setControllerViewUI {
     [self.view addSubview:self.againButton];
     [_againButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(120, 40));
+        make.size.mas_equalTo(CGSizeMake(140, 40));
         make.centerX.equalTo(self.view);
         make.centerY.equalTo(self.view.mas_centerY).with.offset(0);
     }];
     
     [self.view addSubview:self.backHomeButton];
     [_backHomeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(120, 40));
-        make.bottom.equalTo(_againButton.mas_top).with.offset(-10);
-        make.centerX.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(60, 44));
+        make.right.equalTo(self.view.mas_right).with.offset(-15);
+        make.top.equalTo(self.view.mas_top).with.offset(20);
     }];
     
     [self.view addSubview:self.hintText];
     [_hintText mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(130, 20));
-        make.bottom.equalTo(_backHomeButton.mas_top).with.offset(-10);
         make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.againButton.mas_top).with.offset(-15);
     }];
     
     [self.view addSubview:self.shareButton];
@@ -71,7 +71,7 @@
     if (!_hintText) {
         _hintText = [[UIButton alloc] init];
         [_hintText setTitle:@"已保存到相册" forState:(UIControlStateNormal)];
-        [_hintText setTitleColor:[UIColor colorWithHexString:kColorGray] forState:(UIControlStateNormal)];
+        [_hintText setTitleColor:[UIColor colorWithHexString:kColorWhite] forState:(UIControlStateNormal)];
         _hintText.titleLabel.font = [UIFont systemFontOfSize:16];
         [_hintText setImage:[UIImage imageNamed:@"icon_done_selected"] forState:(UIControlStateNormal)];
         [_hintText setTitleEdgeInsets:(UIEdgeInsetsMake(0, 10, 0, 0))];
@@ -84,13 +84,11 @@
 - (UIButton *)backHomeButton {
     if (!_backHomeButton) {
         _backHomeButton = [[UIButton alloc] init];
-        [_backHomeButton setTitle:@"返回首页" forState:(UIControlStateNormal)];
-        [_backHomeButton setTitleColor:[UIColor colorWithHexString:kColorGray] forState:(UIControlStateNormal)];
-        _backHomeButton.titleLabel.font = [UIFont systemFontOfSize:16];
-        _backHomeButton.layer.borderWidth = 1;
-        _backHomeButton.layer.borderColor = [UIColor colorWithHexString:kColorGray].CGColor;
-        _backHomeButton.layer.cornerRadius = 4;
+        [_backHomeButton setTitle:@"首页" forState:(UIControlStateNormal)];
+        [_backHomeButton setTitleColor:[UIColor colorWithHexString:kColorWhite] forState:(UIControlStateNormal)];
+        _backHomeButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
         [_backHomeButton addTarget:self action:@selector(backHomeButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+        [_backHomeButton setContentHorizontalAlignment:(UIControlContentHorizontalAlignmentRight)];
     }
     return _backHomeButton;
 }
@@ -107,7 +105,8 @@
         [_againButton setTitleColor:[UIColor colorWithHexString:kColorWhite] forState:(UIControlStateNormal)];
         _againButton.titleLabel.font = [UIFont systemFontOfSize:16];
         _againButton.layer.cornerRadius = 4;
-        _againButton.backgroundColor = [UIColor colorWithHexString:kColorMain];
+        _againButton.layer.borderColor = [UIColor colorWithHexString:kColorWhite].CGColor;
+        _againButton.layer.borderWidth = 0.5;
         [_againButton addTarget:self action:@selector(againButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _againButton;
@@ -142,7 +141,6 @@
 #pragma mark - 设置Nav
 - (void)thn_setNavViewUI {
     self.navTitle.text = @"分享";
-    self.navBackButton.hidden = YES;
 }
 
 @end

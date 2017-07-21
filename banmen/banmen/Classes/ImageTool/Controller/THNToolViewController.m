@@ -34,7 +34,7 @@
         _posterButton = [[UIButton alloc] initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 150)];
         [_posterButton setTitle:@"海报模版" forState:(UIControlStateNormal)];
         [_posterButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-        _posterButton.titleLabel.font = [UIFont systemFontOfSize:18];
+        _posterButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
         [_posterButton setTitleEdgeInsets:(UIEdgeInsetsMake(50, -60, 0, 0))];
         [_posterButton setBackgroundImage:[UIImage imageNamed:@"bg_tool_poster"] forState:(UIControlStateNormal)];
         [_posterButton setImage:[UIImage imageNamed:@"icon_poster"] forState:(UIControlStateNormal)];
@@ -55,7 +55,7 @@
         _puzzleButton = [[UIButton alloc] initWithFrame:CGRectMake(15, 180, SCREEN_WIDTH - 30, 150)];
         [_puzzleButton setTitle:@"拼图拼接" forState:(UIControlStateNormal)];
         [_puzzleButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-        _puzzleButton.titleLabel.font = [UIFont systemFontOfSize:18];
+        _puzzleButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
         [_puzzleButton setTitleEdgeInsets:(UIEdgeInsetsMake(50, -60, 0, 0))];
         [_puzzleButton setBackgroundImage:[UIImage imageNamed:@"bg_tool_photo"] forState:(UIControlStateNormal)];
         [_puzzleButton setImage:[UIImage imageNamed:@"icon_photo"] forState:(UIControlStateNormal)];
