@@ -91,7 +91,7 @@
             return YES;
         } else {
             LogInViewController *vc = [[LogInViewController alloc] init];
-            UINavigationController *naviVc = [[UINavigationController alloc] initWithRootViewController:vc];
+            BaseNavController *naviVc = [[BaseNavController alloc] initWithRootViewController:vc];
             [self presentViewController:naviVc animated:YES completion:nil];
             return NO;
         }

@@ -136,6 +136,8 @@
 		F58DE8EE1F20B05800C80ECF /* THNJointChildView.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8EB1F20B05800C80ECF /* THNJointChildView.m */; };
 		F58DE8EF1F20B05800C80ECF /* THNJointContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8ED1F20B05800C80ECF /* THNJointContentView.m */; };
 		F58DE8F21F20B15400C80ECF /* GoodDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8F11F20B15400C80ECF /* GoodDetailsView.m */; };
+		F58DE8F51F218DC400C80ECF /* ForgetPsdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8F41F218DC400C80ECF /* ForgetPsdViewController.m */; };
+		F58DE8F81F218E0900C80ECF /* ForgetPsdView.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8F71F218E0900C80ECF /* ForgetPsdView.m */; };
 		F595FE0B1F1CA18D006F4E46 /* CooperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0A1F1CA18D006F4E46 /* CooperationView.m */; };
 		F595FE0E1F1CA382006F4E46 /* CooperationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0D1F1CA382006F4E46 /* CooperationCollectionViewCell.m */; };
 		F595FE111F1CC762006F4E46 /* Cooperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE101F1CC762006F4E46 /* Cooperation.m */; };
@@ -361,6 +363,10 @@
 		F58DE8ED1F20B05800C80ECF /* THNJointContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNJointContentView.m; sourceTree = "<group>"; };
 		F58DE8F01F20B15400C80ECF /* GoodDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodDetailsView.h; sourceTree = "<group>"; };
 		F58DE8F11F20B15400C80ECF /* GoodDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDetailsView.m; sourceTree = "<group>"; };
+		F58DE8F31F218DC400C80ECF /* ForgetPsdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPsdViewController.h; sourceTree = "<group>"; };
+		F58DE8F41F218DC400C80ECF /* ForgetPsdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPsdViewController.m; sourceTree = "<group>"; };
+		F58DE8F61F218E0900C80ECF /* ForgetPsdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPsdView.h; sourceTree = "<group>"; };
+		F58DE8F71F218E0900C80ECF /* ForgetPsdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPsdView.m; sourceTree = "<group>"; };
 		F595FE091F1CA18D006F4E46 /* CooperationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CooperationView.h; sourceTree = "<group>"; };
 		F595FE0A1F1CA18D006F4E46 /* CooperationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CooperationView.m; sourceTree = "<group>"; };
 		F595FE0C1F1CA382006F4E46 /* CooperationCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CooperationCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1099,6 +1105,8 @@
 			children = (
 				F53C28D51F18673E004DB319 /* LogInViewController.h */,
 				F53C28D61F18673E004DB319 /* LogInViewController.m */,
+				F58DE8F31F218DC400C80ECF /* ForgetPsdViewController.h */,
+				F58DE8F41F218DC400C80ECF /* ForgetPsdViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1124,6 +1132,8 @@
 				F53C28D91F1867CB004DB319 /* LogInView.m */,
 				F53C28DB1F18BA31004DB319 /* LogUpview.h */,
 				F53C28DC1F18BA31004DB319 /* LogUpview.m */,
+				F58DE8F61F218E0900C80ECF /* ForgetPsdView.h */,
+				F58DE8F71F218E0900C80ECF /* ForgetPsdView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1360,6 +1370,7 @@
 				F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */,
 				D847DE6C1F00C1DA007E301E /* BaseTarBarViewController.m in Sources */,
 				D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */,
+				F58DE8F51F218DC400C80ECF /* ForgetPsdViewController.m in Sources */,
 				D847DE6D1F00C1DA007E301E /* BaseTarBar.m in Sources */,
 				D8736A9F1F048A0000BF9F33 /* THNToolViewController.m in Sources */,
 				D8ED5D821EF906060046642C /* NSString+FBMD5.m in Sources */,
@@ -1379,6 +1390,7 @@
 				F55DD8061F049B13004915E3 /* SalesViewController.m in Sources */,
 				F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */,
 				F55DD8011F03C161004915E3 /* THNPuzzleCollectionViewCell.m in Sources */,
+				F58DE8F81F218E0900C80ECF /* ForgetPsdView.m in Sources */,
 				F523A8101F1F64D300DD5C8B /* RepositoryView.m in Sources */,
 				D8ED5D8A1EF906060046642C /* NSTimer+Addition.m in Sources */,
 				D8ED5D8C1EF906060046642C /* UIBarButtonItem+Helper.m in Sources */,

@@ -48,21 +48,21 @@
         
         [self.accountView addSubview:self.accountImageView];
         [_accountImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.accountView.mas_left).mas_offset(5);
+            make.left.mas_equalTo(self.accountView.mas_left).mas_offset(10);
             make.centerY.mas_equalTo(self.accountView.mas_centerY).mas_offset(0);
             make.width.mas_equalTo(24/2);
             make.height.mas_equalTo(32/2);
         }];
         
-        [self.accountView addSubview:self.accountLabel];
-        [_accountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.accountImageView.mas_right).mas_offset(5);
-            make.centerY.mas_equalTo(self.accountView.mas_centerY).mas_offset(0);
-        }];
+//        [self.accountView addSubview:self.accountLabel];
+//        [_accountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.accountImageView.mas_right).mas_offset(5);
+//            make.centerY.mas_equalTo(self.accountView.mas_centerY).mas_offset(0);
+//        }];
         
         [self.accountView addSubview:self.accountTF];
         [_accountTF mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.accountLabel.mas_right).mas_offset(5);
+            make.left.mas_equalTo(self.accountImageView.mas_right).mas_offset(5);
             make.top.mas_equalTo(self.accountView.mas_top).mas_offset(0);
             make.right.mas_equalTo(self.accountView.mas_right).mas_offset(0);
             make.bottom.mas_equalTo(self.accountView.mas_bottom).mas_offset(0);
@@ -78,22 +78,22 @@
         
         [self.psdView addSubview:self.psdImageView];
         [_psdImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.psdView.mas_left).mas_offset(5);
+            make.left.mas_equalTo(self.psdView.mas_left).mas_offset(10);
             make.centerY.mas_equalTo(self.psdView.mas_centerY).mas_offset(0);
             make.width.mas_equalTo(24/2);
             make.height.mas_equalTo(32/2);
         }];
         
-        [self.psdView addSubview:self.psdLabel];
-        [_psdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.psdImageView.mas_right).mas_offset(5);
-            make.centerY.mas_equalTo(self.psdView.mas_centerY).mas_offset(0);
-            make.width.mas_equalTo(30);
-        }];
+//        [self.psdView addSubview:self.psdLabel];
+//        [_psdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.psdImageView.mas_right).mas_offset(5);
+//            make.centerY.mas_equalTo(self.psdView.mas_centerY).mas_offset(0);
+//            make.width.mas_equalTo(30);
+//        }];
         
         [self.psdView addSubview:self.psdTF];
         [_psdTF mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.psdLabel.mas_right).mas_offset(5);
+            make.left.mas_equalTo(self.psdImageView.mas_right).mas_offset(5);
             make.top.mas_equalTo(self.psdView.mas_top).mas_offset(0);
             make.right.mas_equalTo(self.psdView.mas_right).mas_offset(0);
             make.bottom.mas_equalTo(self.psdView.mas_bottom).mas_offset(0);
@@ -121,7 +121,7 @@
             make.height.mas_equalTo(14);
         }];
 
-        [self.logInView addSubview:self.forgetPsdBtn];
+        [self addSubview:self.forgetPsdBtn];
         [_forgetPsdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.fengeLineView.mas_right).mas_offset(5);
             make.centerY.mas_equalTo(self.fengeLineView.mas_centerY).mas_offset(0);
@@ -467,6 +467,8 @@
         _accountTF.borderStyle = UITextBorderStyleNone;
         _accountTF.returnKeyType = UIReturnKeyDone;
         _accountTF.delegate = self;
+        _accountTF.placeholder = @"手机号";
+        _accountTF.font = [UIFont systemFontOfSize:14];
     }
     return _accountTF;
 }
@@ -478,6 +480,8 @@
         _psdTF.returnKeyType = UIReturnKeyDone;
         _psdTF.delegate = self;
         _psdTF.secureTextEntry = YES;
+        _psdTF.placeholder = @"密码";
+        _psdTF.font = [UIFont systemFontOfSize:14];
     }
     return _psdTF;
 }
