@@ -9,10 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "GoodsDetailModel.h"
 
+@protocol GoodDetailsViewDelegate <NSObject>
+
+-(void)uploadModel:(NSInteger)status;
+-(void)editPictures;
+
+@end
+
 @interface GoodDetailsView : UIView
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) GoodsDetailModel *model;
+@property(nonatomic,weak) id <GoodDetailsViewDelegate> delegate;
 
 @end
 
