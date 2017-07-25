@@ -133,6 +133,9 @@
 		F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD8151F04D55C004915E3 /* BezierCurveView.m */; };
 		F55DD8181F04D55C004915E3 /* BezierCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F55DD8161F04D55C004915E3 /* BezierCurveView.xib */; };
 		F55DD81B1F04DDBE004915E3 /* UnitPriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */; };
+		F57139CF1F25BAFF00C1A62B /* MaterialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F57139CE1F25BAFF00C1A62B /* MaterialTableViewCell.m */; };
+		F57139D21F25DFC100C1A62B /* THNGoodsWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = F57139D11F25DFC100C1A62B /* THNGoodsWorld.m */; };
+		F57139D51F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F57139D41F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.m */; };
 		F58DE8BD1F20A25800C80ECF /* ChangPsdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8BB1F20A25800C80ECF /* ChangPsdViewController.m */; };
 		F58DE8BE1F20A25800C80ECF /* ChangPsdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58DE8BC1F20A25800C80ECF /* ChangPsdViewController.xib */; };
 		F58DE8C11F20AD2100C80ECF /* GoodDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8C01F20AD2100C80ECF /* GoodDetailsViewController.m */; };
@@ -360,6 +363,12 @@
 		F55DD8161F04D55C004915E3 /* BezierCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BezierCurveView.xib; sourceTree = "<group>"; };
 		F55DD8191F04DDBE004915E3 /* UnitPriceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitPriceTableViewCell.h; sourceTree = "<group>"; };
 		F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitPriceTableViewCell.m; sourceTree = "<group>"; };
+		F57139CD1F25BAFF00C1A62B /* MaterialTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialTableViewCell.h; sourceTree = "<group>"; };
+		F57139CE1F25BAFF00C1A62B /* MaterialTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaterialTableViewCell.m; sourceTree = "<group>"; };
+		F57139D01F25DFC100C1A62B /* THNGoodsWorld.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNGoodsWorld.h; sourceTree = "<group>"; };
+		F57139D11F25DFC100C1A62B /* THNGoodsWorld.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNGoodsWorld.m; sourceTree = "<group>"; };
+		F57139D31F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNGoodsWordCollectionViewCell.h; sourceTree = "<group>"; };
+		F57139D41F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNGoodsWordCollectionViewCell.m; sourceTree = "<group>"; };
 		F58DE8BA1F20A25800C80ECF /* ChangPsdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangPsdViewController.h; sourceTree = "<group>"; };
 		F58DE8BB1F20A25800C80ECF /* ChangPsdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangPsdViewController.m; sourceTree = "<group>"; };
 		F58DE8BC1F20A25800C80ECF /* ChangPsdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangPsdViewController.xib; sourceTree = "<group>"; };
@@ -537,6 +546,8 @@
 				F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */,
 				F5C8EBEE1F21F032009FC203 /* GoodsDetailModel.h */,
 				F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */,
+				F57139D01F25DFC100C1A62B /* THNGoodsWorld.h */,
+				F57139D11F25DFC100C1A62B /* THNGoodsWorld.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -574,6 +585,10 @@
 				F58DE8F11F20B15400C80ECF /* GoodDetailsView.m */,
 				F5C8EBEB1F21EB83009FC203 /* GoodsDetailTableViewCell.h */,
 				F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */,
+				F57139CD1F25BAFF00C1A62B /* MaterialTableViewCell.h */,
+				F57139CE1F25BAFF00C1A62B /* MaterialTableViewCell.m */,
+				F57139D31F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.h */,
+				F57139D41F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1222,12 +1237,13 @@
 		D8D9C23A1EF278C5000688C6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = THN;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = banmen;
 				TargetAttributes = {
 					D8D9C2411EF278C5000688C6 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 7ET6PJMCHV;
+						DevelopmentTeam = 3256449JXC;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
@@ -1372,7 +1388,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F57139D51F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.m in Sources */,
 				D886F8411F21A102009382C3 /* DayCollectionViewCell.m in Sources */,
+				F57139CF1F25BAFF00C1A62B /* MaterialTableViewCell.m in Sources */,
 				D886F8421F21A102009382C3 /* HotelCalendarViewController.m in Sources */,
 				D886F8431F21A102009382C3 /* MonthModel.m in Sources */,
 				D886F8441F21A102009382C3 /* MonthTableViewCell.m in Sources */,
@@ -1447,6 +1465,7 @@
 				D8D9C24D1EF278C5000688C6 /* ViewController.m in Sources */,
 				D8D9C24A1EF278C5000688C6 /* AppDelegate.m in Sources */,
 				D847DE701F00C1DA007E301E /* RepositoryViewController.m in Sources */,
+				F57139D21F25DFC100C1A62B /* THNGoodsWorld.m in Sources */,
 				D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */,
 				F523A8161F1F76F300DD5C8B /* UserView.m in Sources */,
 				F523A8131F1F694C00DD5C8B /* RecommendedModel.m in Sources */,
@@ -1597,7 +1616,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 7ET6PJMCHV;
+				DEVELOPMENT_TEAM = 3256449JXC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
@@ -1647,8 +1666,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23cf2777-95e7-4f04-a0e1-a630fd01d205";
-				PROVISIONING_PROFILE_SPECIFIER = banmen_release;
+				PROVISIONING_PROFILE = "f7ad3c28-0ed0-43e8-9d09-6c08d7d786bf";
+				PROVISIONING_PROFILE_SPECIFIER = allProfile1;
 				SWIFT_OBJC_BRIDGING_HEADER = "banmen/Modules/Home/View/banmen-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1664,7 +1683,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 7ET6PJMCHV;
+				DEVELOPMENT_TEAM = 3256449JXC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
@@ -1714,8 +1733,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23cf2777-95e7-4f04-a0e1-a630fd01d205";
-				PROVISIONING_PROFILE_SPECIFIER = banmen_release;
+				PROVISIONING_PROFILE = "f7ad3c28-0ed0-43e8-9d09-6c08d7d786bf";
+				PROVISIONING_PROFILE_SPECIFIER = allProfile1;
 				SWIFT_OBJC_BRIDGING_HEADER = "banmen/Modules/Home/View/banmen-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

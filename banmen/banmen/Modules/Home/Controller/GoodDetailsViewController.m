@@ -10,11 +10,17 @@
 #import "GoodDetailsView.h"
 #import "GoodsDetailModel.h"
 #import "MJRefresh.h"
+#import "THNGoodsWorld.h"
 
-@interface GoodDetailsViewController () <GoodsDetailModelDelegate, GoodDetailsViewDelegate>
+@interface GoodDetailsViewController () <GoodsDetailModelDelegate, THNGoodsWorldDelegate, GoodDetailsViewDelegate>
 
 @property(nonatomic, strong) GoodDetailsView *goodDetailsView;
 @property(nonatomic, strong) GoodsDetailModel *goodsDetailModel;
+@property(nonatomic, strong) THNGoodsWorld *goodsWorldModel;
+@property(nonatomic,assign) NSInteger current_page;
+@property(nonatomic,assign) NSInteger total_pages;
+@property(nonatomic, strong) NSArray *goodsWorldModelAry;
+@property(nonatomic,assign) NSInteger MClassification;
 
 @end
 
@@ -26,6 +32,7 @@
     [self.view addSubview:self.goodDetailsView];
     [self setupRefresh];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.MClassification = 0;
 }
 
 -(void)setupRefresh{
@@ -45,6 +52,84 @@
     [self.goodDetailsView.tableView.mj_footer endRefreshing];
     self.goodsDetailModel.delegate = self;
     [self.goodsDetailModel netGetGoodsDetailModel:self.model.product_id];
+    self.goodsWorldModel.delegate = self;
+    switch (self.MClassification) {
+        case 0:
+            //文字素材
+        {
+            [self.goodsWorldModel netGetGoodsWorld:self.model.product_id];
+        }
+            break;
+        case 1:
+            //文章
+        {
+            
+        }
+            break;
+        case 3:
+            //图片
+        {
+            
+        }
+            break;
+        case 4:
+            //视频
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)chooseWhichClassification:(NSInteger)classification{
+    self.MClassification = classification;
+    switch (classification) {
+        case 0:
+            //文字素材
+            {
+                
+            }
+            break;
+        case 1:
+            //文章
+        {
+            
+        }
+            break;
+        case 3:
+            //图片
+        {
+            
+        }
+            break;
+        case 4:
+            //视频
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)getGoodsWorld:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
+    self.current_page = current_page;
+    self.total_pages = total_rows;
+    self.goodsWorldModelAry = modelAry;
+    self.goodDetailsView.modelAry = modelAry;
+    self.goodDetailsView.tableView.mj_header.hidden = YES;
+}
+
+-(THNGoodsWorld *)goodsWorldModel{
+    if (!_goodsWorldModel) {
+        _goodsWorldModel = [THNGoodsWorld new];
+    }
+    return _goodsWorldModel;
 }
 
 -(void)uploadModel:(NSInteger)status{

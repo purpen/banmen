@@ -153,7 +153,7 @@
     if (!_nameLabel) {
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.font = [UIFont systemFontOfSize:14];
-        _nameLabel.textColor = [UIColor colorWithHexString:@"#222222"];
+        _nameLabel.textColor = [UIColor colorWithHexString:@"#777777"];
     }
     return _nameLabel;
 }

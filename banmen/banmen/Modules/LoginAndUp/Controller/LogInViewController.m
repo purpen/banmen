@@ -119,14 +119,18 @@
         params[@"token"] = [defaults objectForKey:@"token"];
         [manager POST:[kDomainBaseUrl stringByAppendingString:@"auth/login"] parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            NSString *token = responseObject[@"data"][@"token"];
-            [defaults setObject:token forKey:@"token"];
-            [defaults synchronize];
-            [self dismissViewControllerAnimated:YES completion:nil];
-            UserModel *model = [[UserModel alloc] init];
-            model.isLogin = YES;
-            [model saveOrUpdate];
+            if ([responseObject[@"meta"][@"status_code"] integerValue] == 200) {
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                NSString *token = responseObject[@"data"][@"token"];
+                [defaults setObject:token forKey:@"token"];
+                [defaults synchronize];
+                [self dismissViewControllerAnimated:YES completion:nil];
+                UserModel *model = [[UserModel alloc] init];
+                model.isLogin = YES;
+                [model saveOrUpdate];
+            } else {
+                [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
+            }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         }];
     }

@@ -13,6 +13,7 @@
 
 -(void)uploadModel:(NSInteger)status;
 -(void)editPictures;
+-(void)chooseWhichClassification:(NSInteger)classification;
 
 @end
 
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) GoodsDetailModel *model;
 @property(nonatomic,weak) id <GoodDetailsViewDelegate> delegate;
+@property (nonatomic, strong) NSArray *modelAry;
 
 @end
 

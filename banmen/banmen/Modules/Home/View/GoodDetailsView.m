@@ -12,6 +12,9 @@
 #import "GoodsDetailTableViewCell.h"
 #import "AFNetworking.h"
 #import "OtherMacro.h"
+#import "MaterialTableViewCell.h"
+#import "THNGoodsWorld.h"
+#import "UIView+FSExtension.h"
 
 @interface GoodDetailsView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -27,6 +30,11 @@
     return self;
 }
 
+-(void)setModelAry:(NSArray *)modelAry{
+    _modelAry = modelAry;
+    [self.tableView reloadData];
+}
+
 -(void)setModel:(GoodsDetailModel *)model{
     _model = model;
     [self.tableView reloadData];
@@ -40,6 +48,9 @@
         _tableView.dataSource = self;
         [_tableView registerClass:[GoodsDetailTableViewCell class] forCellReuseIdentifier:@"GoodsDetailTableViewCell"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [_tableView registerClass:[MaterialTableViewCell class] forCellReuseIdentifier:@"MaterialTableViewCell"];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.estimatedRowHeight = 438/2+5;
     }
     return _tableView;
 }
@@ -53,11 +64,32 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    GoodsDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodsDetailTableViewCell"];
-    cell.model = self.model;
-    [cell.relationshipBtn addTarget:self action:@selector(relationship:) forControlEvents:(UIControlEventTouchUpInside)];
-    [cell.editPicturesMaterialBtn addTarget:self action:@selector(editPicturesMaterial) forControlEvents:(UIControlEventTouchUpInside)];
-    return cell;
+    if (indexPath.row == 0) {
+        GoodsDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodsDetailTableViewCell"];
+        cell.model = self.model;
+        [cell.relationshipBtn addTarget:self action:@selector(relationship:) forControlEvents:(UIControlEventTouchUpInside)];
+        [cell.editPicturesMaterialBtn addTarget:self action:@selector(editPicturesMaterial) forControlEvents:(UIControlEventTouchUpInside)];
+        return cell;
+    } else {
+        MaterialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MaterialTableViewCell"];
+        [cell.segmentedC addTarget:self action:@selector(segmentedChanged:) forControlEvents:UIControlEventValueChanged];
+        [cell.switchingArrangementBtn addTarget:self action:@selector(switchingArrangement:) forControlEvents:UIControlEventValueChanged];
+//        cell.modelAry = self.modelAry;
+        return cell;
+    }
+}
+
+-(void)switchingArrangement:(UIButton*)sender{
+    sender.selected = !sender.selected;
+}
+
+-(void)segmentedChanged:(UISegmentedControl*)sender
+{
+    MaterialTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    [cell.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:sender.selectedSegmentIndex inSection:0] animated:YES scrollPosition:(UICollectionViewScrollPositionCenteredVertically)];
+    if ([self.delegate respondsToSelector:@selector(chooseWhichClassification:)]) {
+        [self.delegate chooseWhichClassification:sender.selectedSegmentIndex];
+    }
 }
 
 -(void)editPicturesMaterial{
