@@ -35,39 +35,14 @@ open class ChartDataEntry: ChartDataEntryBase
     /// - parameter x: the x value
     /// - parameter y: the y value (the actual value of the entry)
     /// - parameter data: Space for additional data this Entry represents.
-    
+
     public init(x: Double, y: Double, data: AnyObject?)
     {
         super.init(y: y)
         
         self.x = x
-        
+
         self.data = data
-    }
-    
-    /// An Entry represents one single entry in the chart.
-    /// - parameter x: the x value
-    /// - parameter y: the y value (the actual value of the entry)
-    /// - parameter icon: icon image
-    
-    public init(x: Double, y: Double, icon: NSUIImage?)
-    {
-        super.init(y: y, icon: icon)
-        
-        self.x = x
-    }
-    
-    /// An Entry represents one single entry in the chart.
-    /// - parameter x: the x value
-    /// - parameter y: the y value (the actual value of the entry)
-    /// - parameter icon: icon image
-    /// - parameter data: Space for additional data this Entry represents.
-    
-    public init(x: Double, y: Double, icon: NSUIImage?, data: AnyObject?)
-    {
-        super.init(y: y, icon: icon, data: data)
-        
-        self.x = x
     }
     
     // MARK: NSObject
@@ -79,7 +54,7 @@ open class ChartDataEntry: ChartDataEntryBase
             return false
         }
         
-        if fabs((object! as AnyObject).x - x) > Double.ulpOfOne
+        if fabs((object! as AnyObject).x - x) > DBL_EPSILON
         {
             return false
         }
@@ -125,12 +100,12 @@ public func ==(lhs: ChartDataEntry, rhs: ChartDataEntry) -> Bool
         return false
     }
     
-    if fabs(lhs.x - rhs.x) > Double.ulpOfOne
+    if fabs(lhs.x - rhs.x) > DBL_EPSILON
     {
         return false
     }
     
-    if fabs(lhs.y - rhs.y) > Double.ulpOfOne
+    if fabs(lhs.y - rhs.y) > DBL_EPSILON
     {
         return false
     }

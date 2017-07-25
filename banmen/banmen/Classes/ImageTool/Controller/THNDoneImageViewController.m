@@ -13,6 +13,7 @@
 
 @interface THNDoneImageViewController ()
 
+@property (nonatomic, strong) UIImageView *previewImageView;
 @property (nonatomic, strong) UIButton *hintText;
 @property (nonatomic, strong) UIButton *backHomeButton;
 @property (nonatomic, strong) UIButton *againButton;
@@ -37,25 +38,32 @@
 
 #pragma mark - 设置视图
 - (void)thn_setControllerViewUI {
-    [self.view addSubview:self.againButton];
-    [_againButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(140, 40));
+    [self.view addSubview:self.previewImageView];
+    [_previewImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(300, 300));
+        make.top.equalTo(self.view.mas_top).with.offset(64);
         make.centerX.equalTo(self.view);
-        make.centerY.equalTo(self.view.mas_centerY).with.offset(0);
-    }];
-    
-    [self.view addSubview:self.backHomeButton];
-    [_backHomeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(60, 44));
-        make.right.equalTo(self.view.mas_right).with.offset(-15);
-        make.top.equalTo(self.view.mas_top).with.offset(20);
     }];
     
     [self.view addSubview:self.hintText];
     [_hintText mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(130, 20));
+        make.size.mas_equalTo(CGSizeMake(130, 25));
         make.centerX.equalTo(self.view);
-        make.bottom.equalTo(self.againButton.mas_top).with.offset(-15);
+        make.top.equalTo(_previewImageView.mas_bottom).with.offset(15);
+    }];
+    
+    [self.view addSubview:self.againButton];
+    [_againButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(130, 40));
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(_hintText.mas_bottom).with.offset(15);
+    }];
+    
+    [self.view addSubview:self.backHomeButton];
+    [_backHomeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(100, 44));
+        make.right.equalTo(self.view.mas_right).with.offset(-15);
+        make.top.equalTo(self.view.mas_top).with.offset(20);
     }];
     
     [self.view addSubview:self.shareButton];
@@ -66,6 +74,16 @@
     }];
 }
 
+#pragma mark - 预览图片
+- (UIImageView *)previewImageView {
+    if (!_previewImageView) {
+        _previewImageView = [[UIImageView alloc] initWithImage:self.doneImage];
+        _previewImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _previewImageView.clipsToBounds = YES;
+    }
+    return _previewImageView;
+}
+
 #pragma mark - 提示文字
 - (UIButton *)hintText {
     if (!_hintText) {
@@ -73,18 +91,19 @@
         [_hintText setTitle:@"已保存到相册" forState:(UIControlStateNormal)];
         [_hintText setTitleColor:[UIColor colorWithHexString:kColorWhite] forState:(UIControlStateNormal)];
         _hintText.titleLabel.font = [UIFont systemFontOfSize:16];
-        [_hintText setImage:[UIImage imageNamed:@"icon_done_selected"] forState:(UIControlStateNormal)];
-        [_hintText setTitleEdgeInsets:(UIEdgeInsetsMake(0, 10, 0, 0))];
+        [_hintText setImage:[UIImage imageNamed:@"icon_done_photo"] forState:(UIControlStateNormal)];
+        [_hintText setImageEdgeInsets:(UIEdgeInsetsMake(0, 0, 0, 105))];
+        [_hintText setTitleEdgeInsets:(UIEdgeInsetsMake(0, -24, 0, 0))];
+        _hintText.userInteractionEnabled = NO;
     }
     return _hintText;
 }
-
 
 #pragma mark - 返回首页
 - (UIButton *)backHomeButton {
     if (!_backHomeButton) {
         _backHomeButton = [[UIButton alloc] init];
-        [_backHomeButton setTitle:@"首页" forState:(UIControlStateNormal)];
+        [_backHomeButton setTitle:@"返回首页" forState:(UIControlStateNormal)];
         [_backHomeButton setTitleColor:[UIColor colorWithHexString:kColorWhite] forState:(UIControlStateNormal)];
         _backHomeButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
         [_backHomeButton addTarget:self action:@selector(backHomeButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
@@ -104,9 +123,8 @@
         [_againButton setTitle:@"再做一张" forState:(UIControlStateNormal)];
         [_againButton setTitleColor:[UIColor colorWithHexString:kColorWhite] forState:(UIControlStateNormal)];
         _againButton.titleLabel.font = [UIFont systemFontOfSize:16];
-        _againButton.layer.cornerRadius = 4;
-        _againButton.layer.borderColor = [UIColor colorWithHexString:kColorWhite].CGColor;
-        _againButton.layer.borderWidth = 0.5;
+        _againButton.layer.cornerRadius = 3;
+        _againButton.backgroundColor = [UIColor colorWithHexString:@"#3E4044"];
         [_againButton addTarget:self action:@selector(againButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _againButton;

@@ -25,7 +25,7 @@ open class RadarHighlighter: PieRadarHighlighter
         let distanceToCenter = Double(chart.distanceToCenter(x: x, y: y) / chart.factor)
         
         var closest: Highlight? = nil
-        var distance = Double.greatestFiniteMagnitude
+        var distance = DBL_MAX
         
         for high in highlights
         {

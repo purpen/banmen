@@ -11,6 +11,7 @@
 
 #import "THNLayoutViewController.h"
 #import "THNImageToolNavigationController.h"
+#import "THNPosterListViewController.h"
 
 @interface THNToolViewController ()
 
@@ -46,7 +47,12 @@
 }
 
 - (void)posterButtonClick:(UIButton *)button {
-    [SVProgressHUD showSuccessWithStatus:@"跳转海报模版"];
+    [self thn_openPosterListViewController];
+}
+
+- (void)thn_openPosterListViewController {
+    THNPosterListViewController *posterController = [[THNPosterListViewController alloc] init];
+    [self.navigationController pushViewController:posterController animated:YES];
 }
 
 #pragma mark - 拼图拼接按钮

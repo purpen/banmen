@@ -12,4 +12,5 @@ target "banmen" do
  pod 'TYAlertController'
  pod 'JKDBModel-JDBR', '~> 0.0.1'
  pod 'Charts'
+ pod 'MXSegmentedPager'
 end

@@ -31,6 +31,7 @@
 @property (nonatomic, strong) THNPhotoListView *photoListView;
 @property (nonatomic, strong) THNPreviewPuzzleView *previewPuzzleView;
 @property (nonatomic, strong) THNHintInfoView *hintInfoView;
+@property (nonatomic, strong) UIButton *changeFrameButton;
 
 @end
 
@@ -123,11 +124,6 @@
         make.top.equalTo(self.view.mas_top).with.offset(74);
     }];
     
-    //  图片列表
-    [self.view addSubview:self.photoListView];
-    [self.photoListView thn_getPhotoAlbumListData:self.photoAblumTitle];
-    [self.photoListView thn_getPhotoAssetInAlbumData:self.assets isReplace:NO];
-    
     //  拼图预览
     [self.view addSubview:self.previewPuzzleView];
     [_previewPuzzleView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -135,6 +131,19 @@
         make.right.left.equalTo(self.view).with.offset(0);
         make.top.equalTo(self.view.mas_top).with.offset(74);
     }];
+    
+    //  改变视图大小按钮
+//    [self.view addSubview:self.changeFrameButton];
+//    [_changeFrameButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(CGSizeMake(100, 20));
+//        make.top.equalTo(_previewPuzzleView.mas_bottom).with.offset(10);
+//        make.centerX.equalTo(self.view);
+//    }];
+    
+    //  图片列表
+    [self.view addSubview:self.photoListView];
+    [self.photoListView thn_getPhotoAlbumListData:self.photoAblumTitle];
+    [self.photoListView thn_getPhotoAssetInAlbumData:self.assets isReplace:NO];
 }
 
 #pragma mark - 加载相册列表视图
@@ -184,9 +193,45 @@
 - (THNHintInfoView *)hintInfoView {
     if (!_hintInfoView) {
         _hintInfoView = [[THNHintInfoView alloc] init];
-        [_hintInfoView thn_showHintInfoViewWithText:@"请挑选照片" fontOfSize:20 color:@"#777777"];
+        [_hintInfoView thn_showHintInfoWithImage:@"icon_logo_white"];
     }
     return _hintInfoView;
+}
+
+#pragma mark - 改变视图大小
+- (UIButton *)changeFrameButton {
+    if (!_changeFrameButton) {
+        _changeFrameButton = [[UIButton alloc] init];
+        [_changeFrameButton setImage:[UIImage imageNamed:@"icon_indicate"] forState:(UIControlStateNormal)];
+        
+        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizerAction:)];
+        [_changeFrameButton addGestureRecognizer:panGesture];
+    }
+    return _changeFrameButton;
+}
+
+- (void)panGestureRecognizerAction:(UIPanGestureRecognizer *)panGesture {
+    switch (panGesture.state) {
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateFailed: {
+            NSLog(@"000");
+            break;
+        }
+            
+        case UIGestureRecognizerStateBegan: {
+            NSLog(@"111");
+            break;
+        }
+            
+        case UIGestureRecognizerStateChanged: {
+            NSLog(@"222");
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - 设置Nav
@@ -194,6 +239,7 @@
     self.navTitle.text = @"选择布局";
     [self thn_addNavCloseButton];
     [self thn_addBarItemRightBarButton:@"拼接" image:nil];
+    [self.navRightItem setTitleColor:[UIColor colorWithHexString:kColorMain] forState:(UIControlStateNormal)];
     self.delegate = self;
 }
 
@@ -205,7 +251,7 @@
 
 - (void)thn_hiddenNavTitle:(BOOL)hidden {
     [UIView animateWithDuration:.3 animations:^{
-        self.navTitle.alpha = hidden ? 0 : 1;
+//        self.changeFrameButton.alpha = hidden ? 0 : 1;
         self.navRightItem.alpha = hidden ? 0 : 1;
     }];
 }
