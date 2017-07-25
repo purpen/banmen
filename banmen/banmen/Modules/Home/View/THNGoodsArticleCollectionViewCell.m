@@ -1,12 +1,12 @@
 //
-//  THNGoodsWordCollectionViewCell.m
+//  THNGoodsArticleCollectionViewCell.m
 //  banmen
 //
 //  Created by dong on 2017/7/25.
 //  Copyright © 2017年 banmen. All rights reserved.
 //
 
-#import "THNGoodsWordCollectionViewCell.h"
+#import "THNGoodsArticleCollectionViewCell.h"
 #import "Masonry.h"
 #import "UIColor+Extension.h"
 #import "OtherMacro.h"
@@ -14,12 +14,12 @@
 #import "THNwordCollectionViewCell.h"
 #import "UIView+FSExtension.h"
 
-@interface THNGoodsWordCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface THNGoodsArticleCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 
 @end
 
-@implementation THNGoodsWordCollectionViewCell
+@implementation THNGoodsArticleCollectionViewCell
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {

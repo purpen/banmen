@@ -1,5 +1,5 @@
 //
-//  THNGoodsWordCollectionViewCell.h
+//  THNGoodsArticleCollectionViewCell.h
 //  banmen
 //
 //  Created by dong on 2017/7/25.
@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface THNGoodsWordCollectionViewCell : UICollectionViewCell
+@interface THNGoodsArticleCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *modelAry;
+@property (nonatomic, strong) UICollectionView *collectionView;
 
 @end

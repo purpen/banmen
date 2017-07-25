@@ -35,6 +35,21 @@
     [self.tableView reloadData];
 }
 
+-(void)setArticleModelAry:(NSArray *)articleModelAry{
+    _articleModelAry = articleModelAry;
+    [self.tableView reloadData];
+}
+
+-(void)setVideoModelAry:(NSArray *)videoModelAry{
+    _videoModelAry = videoModelAry;
+    [self.tableView reloadData];
+}
+
+-(void)setPictureModelAry:(NSArray *)pictureModelAry{
+    _pictureModelAry = pictureModelAry;
+    [self.tableView reloadData];
+}
+
 -(void)setModel:(GoodsDetailModel *)model{
     _model = model;
     [self.tableView reloadData];
@@ -60,7 +75,52 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 438/2+5;
+    if (indexPath.row == 0) {
+        return 438/2+5;
+    } else {
+        switch (self.category) {
+            case 0:
+                //文字素材
+            {
+                if (self.modelAry.count % 2 == 0) {
+                    return 190/2+361/2*(self.modelAry.count/2)+30;
+                }
+                return 190/2+361/2*(self.modelAry.count/2+1)+30;
+            }
+                break;
+            case 1:
+                //文章
+            {
+                if (self.articleModelAry.count % 2 == 0) {
+                    return 190/2+361/2*(self.articleModelAry.count/2)+30;
+                }
+                return 190/2+361/2*(self.articleModelAry.count/2+1)+30;
+            }
+                break;
+            case 2:
+                //图片
+            {
+                if (self.pictureModelAry.count % 4 == 0) {
+                    return 190/2+(SCREEN_WIDTH-3)/4*(self.pictureModelAry.count/4)+30;
+                }
+                return 190/2+(SCREEN_WIDTH-3)/4*(self.pictureModelAry.count/4+1)+30;
+            }
+                break;
+            case 3:
+                //视频
+            {
+                if (self.videoModelAry.count % 2 == 0) {
+                    return 190/2+361/2*(self.videoModelAry.count/2)+30;
+                }
+                return 190/2+361/2*(self.videoModelAry.count/2+1)+30;
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -74,7 +134,10 @@
         MaterialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MaterialTableViewCell"];
         [cell.segmentedC addTarget:self action:@selector(segmentedChanged:) forControlEvents:UIControlEventValueChanged];
         [cell.switchingArrangementBtn addTarget:self action:@selector(switchingArrangement:) forControlEvents:UIControlEventValueChanged];
-//        cell.modelAry = self.modelAry;
+        cell.modelAry = self.modelAry;
+        cell.articleModelAry = self.articleModelAry;
+        cell.pictureModelAry = self.pictureModelAry;
+        cell.videoModelAry = self.videoModelAry;
         return cell;
     }
 }
@@ -85,8 +148,9 @@
 
 -(void)segmentedChanged:(UISegmentedControl*)sender
 {
+    self.category = sender.selectedSegmentIndex;
     MaterialTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    [cell.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:sender.selectedSegmentIndex inSection:0] animated:YES scrollPosition:(UICollectionViewScrollPositionCenteredVertically)];
+    [cell.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:sender.selectedSegmentIndex inSection:0] atScrollPosition:(UICollectionViewScrollPositionLeft) animated:YES];
     if ([self.delegate respondsToSelector:@selector(chooseWhichClassification:)]) {
         [self.delegate chooseWhichClassification:sender.selectedSegmentIndex];
     }

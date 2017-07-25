@@ -15,5 +15,9 @@
 @property (nonatomic, strong) UIButton *switchingArrangementBtn;
 @property (nonatomic, strong) THNGoodsWorld *model;
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NSArray *modelAry;
+@property (nonatomic, strong) NSArray *articleModelAry;
+@property (nonatomic, strong) NSArray *pictureModelAry;
+@property (nonatomic, strong) NSArray *videoModelAry;
 
 @end

@@ -13,6 +13,9 @@
 #import "UIImageView+WebCache.h"
 #import "UIView+FSExtension.h"
 #import "THNGoodsWordCollectionViewCell.h"
+#import "THNGoodsArticleCollectionViewCell.h"
+#import "THNGoodsPictureCollectionViewCell.h"
+#import "THNGoodsVideoCollectionViewCell.h"
 
 @interface MaterialTableViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -52,13 +55,28 @@
 
 -(void)setModel:(THNGoodsWorld *)model{
     _model = model;
-    
+}
+
+-(void)setModelAry:(NSArray *)modelAry{
+    _modelAry = modelAry;
+    [self.collectionView reloadData];
+}
+
+-(void)setPictureModelAry:(NSArray *)pictureModelAry{
+    _pictureModelAry = pictureModelAry;
+    [self.collectionView reloadData];
+}
+
+-(void)setVideoModelAry:(NSArray *)videoModelAry{
+    _videoModelAry = videoModelAry;
+    [self.collectionView reloadData];
 }
 
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         _collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -66,24 +84,31 @@
         _collectionView.scrollEnabled = NO;
         _collectionView.dataSource = self;
         [_collectionView registerClass:[THNGoodsWordCollectionViewCell class] forCellWithReuseIdentifier:@"THNGoodsWordCollectionViewCell"];
+        [_collectionView registerClass:[THNGoodsArticleCollectionViewCell class] forCellWithReuseIdentifier:@"THNGoodsArticleCollectionViewCell"];
+        [_collectionView registerClass:[THNGoodsPictureCollectionViewCell class] forCellWithReuseIdentifier:@"THNGoodsPictureCollectionViewCell"];
+        [_collectionView registerClass:[THNGoodsVideoCollectionViewCell class] forCellWithReuseIdentifier:@"THNGoodsVideoCollectionViewCell"];
     }
     return _collectionView;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    THNGoodsWordCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsWordCollectionViewCell" forIndexPath:indexPath];
-    switch (indexPath.row) {
-        case 0:
-            cell.backgroundColor = [UIColor redColor];
-            break;
-        case 1:
-            cell.backgroundColor = [UIColor yellowColor];
-            break;
-            
-        default:
-            break;
+    if (indexPath.row == 0) {
+        THNGoodsWordCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsWordCollectionViewCell" forIndexPath:indexPath];
+        cell.modelAry = self.modelAry;
+        return cell;
+    } else if (indexPath.row == 1){
+        THNGoodsArticleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsArticleCollectionViewCell" forIndexPath:indexPath];
+        cell.modelAry = self.articleModelAry;
+        return cell;
+    } else if (indexPath.row == 2) {
+        THNGoodsPictureCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsPictureCollectionViewCell" forIndexPath:indexPath];
+        cell.modelAry = self.pictureModelAry;
+        return cell;
+    } else {
+        THNGoodsVideoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsVideoCollectionViewCell" forIndexPath:indexPath];
+        cell.modelAry = self.videoModelAry;
+        return cell;
     }
-    return cell;
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{

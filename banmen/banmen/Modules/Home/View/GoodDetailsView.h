@@ -23,6 +23,10 @@
 @property (nonatomic, strong) GoodsDetailModel *model;
 @property(nonatomic,weak) id <GoodDetailsViewDelegate> delegate;
 @property (nonatomic, strong) NSArray *modelAry;
+@property (nonatomic, strong) NSArray *articleModelAry;
+@property (nonatomic, strong) NSArray *pictureModelAry;
+@property (nonatomic, strong) NSArray *videoModelAry;
+@property (nonatomic, assign) NSInteger category;
 
 @end
 

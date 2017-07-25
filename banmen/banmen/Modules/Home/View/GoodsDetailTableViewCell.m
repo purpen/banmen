@@ -122,7 +122,7 @@
         _relationshipBtn.font = [UIFont systemFontOfSize:13];
         [_relationshipBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
         [_relationshipBtn setTitle:@"+ 添加合作产品" forState:UIControlStateNormal];
-        [_relationshipBtn setTitle:@"- 已合作产品" forState:UIControlStateSelected];
+        [_relationshipBtn setTitle:@"— 已合作产品" forState:UIControlStateSelected];
         [_relationshipBtn setBackgroundImage:[UIImage imageNamed:@"blackbuttonBg"] forState:UIControlStateNormal];
         [_relationshipBtn setBackgroundImage:[UIImage imageNamed:@"redbuttonBg"] forState:UIControlStateSelected];
     }
