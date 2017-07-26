@@ -23,8 +23,14 @@
 @property(nonatomic, strong) THNGoodsArticleModel *goodsArticleModel;
 @property(nonatomic, strong) THNGoodsPictureModel *goodsPictureModel;
 @property(nonatomic, strong) THNGoodsVideoModel *goodsVideoModel;
-@property(nonatomic,assign) NSInteger current_page;
-@property(nonatomic,assign) NSInteger total_pages;
+@property(nonatomic,assign) NSInteger word_current_page;
+@property(nonatomic,assign) NSInteger word_total_pages;
+@property(nonatomic,assign) NSInteger article_current_page;
+@property(nonatomic,assign) NSInteger article_total_pages;
+@property(nonatomic,assign) NSInteger picture_current_page;
+@property(nonatomic,assign) NSInteger picture_total_pages;
+@property(nonatomic,assign) NSInteger video_current_page;
+@property(nonatomic,assign) NSInteger video_total_pages;
 @property(nonatomic, strong) NSArray *goodsWorldModelAry;
 @property(nonatomic,assign) NSInteger MClassification;
 
@@ -93,6 +99,39 @@
     }
 }
 
+-(void)loadMore{
+    [self.goodDetailsView.tableView.mj_header endRefreshing];
+    switch (self.MClassification) {
+        case 0:
+            //文字素材
+        {
+            [self.goodsWorldModel netGetMoreGoodsWorld:self.model.product_id andCurrent_page:self.word_current_page];
+        }
+            break;
+        case 1:
+            //文章
+        {
+            [self.goodsArticleModel netGetMoreArticle:self.model.product_id andCurrent_page:self.article_current_page];
+        }
+            break;
+        case 2:
+            //图片
+        {
+            [self.goodsPictureModel netGetMoreGoodsPicture:self.model.product_id andCurrent_page:self.picture_current_page];
+        }
+            break;
+        case 3:
+            //视频
+        {
+            [self.goodsVideoModel netGetMoreGoodsVideo:self.model.product_id andCurrent_page:self.video_current_page];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 -(void)chooseWhichClassification:(NSInteger)classification{
     self.MClassification = classification;
     switch (classification) {
@@ -128,22 +167,72 @@
 
 -(void)video:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
     self.goodDetailsView.videoModelAry = modelAry;
+    self.video_current_page = current_page;
+    self.video_total_pages = total_rows;
+    [self.goodDetailsView.tableView.mj_header endRefreshing];
+    [self checkFooterState];
+}
+
+-(void)videoMore:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
+    NSMutableArray *ary = [NSMutableArray arrayWithArray:self.goodDetailsView.modelAry];
+    [ary addObjectsFromArray:modelAry];
+    self.goodDetailsView.videoModelAry = (NSArray*)ary;
+    self.video_current_page = current_page;
+    self.video_total_pages = total_rows;
+    [self checkFooterState];
 }
 
 -(void)picture:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
     self.goodDetailsView.pictureModelAry = modelAry;
+    [self.goodDetailsView.tableView.mj_header endRefreshing];
+    self.picture_current_page = current_page;
+    self.picture_total_pages = total_rows;
+    [self checkFooterState];
+}
+
+-(void)pictureMore:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
+    NSMutableArray *ary = [NSMutableArray arrayWithArray:self.goodDetailsView.modelAry];
+    [ary addObjectsFromArray:modelAry];
+    self.goodDetailsView.pictureModelAry = (NSArray*)ary;
+    self.picture_current_page = current_page;
+    self.picture_total_pages = total_rows;
+    [self checkFooterState];
 }
 
 -(void)article:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
     self.goodDetailsView.articleModelAry = modelAry;
+    self.article_current_page = current_page;
+    [self.goodDetailsView.tableView.mj_header endRefreshing];
+    self.article_total_pages = total_rows;
+    [self checkFooterState];
+}
+
+-(void)articleMore:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
+    NSMutableArray *ary = [NSMutableArray arrayWithArray:self.goodDetailsView.modelAry];
+    [ary addObjectsFromArray:modelAry];
+    self.goodDetailsView.articleModelAry = (NSArray*)ary;
+    self.article_current_page = current_page;
+    self.article_total_pages = total_rows;
+    [self checkFooterState];
 }
 
 -(void)getGoodsWorld:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
-    self.current_page = current_page;
-    self.total_pages = total_rows;
+    self.word_current_page = current_page;
+    self.word_total_pages = total_rows;
+    [self.goodDetailsView.tableView.mj_header endRefreshing];
     self.goodsWorldModelAry = modelAry;
     self.goodDetailsView.modelAry = modelAry;
-    self.goodDetailsView.tableView.mj_header.hidden = YES;
+    [self checkFooterState];
+}
+
+-(void)getMoreGoodsWorld:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
+    self.word_current_page = current_page;
+    self.word_total_pages = total_rows;
+    self.goodsWorldModelAry = modelAry;
+    NSMutableArray *ary = [NSMutableArray arrayWithArray:self.goodDetailsView.modelAry];
+    [ary addObjectsFromArray:modelAry];
+    self.goodDetailsView.modelAry = (NSArray*)ary;
+    [self checkFooterState];
 }
 
 -(THNGoodsWorld *)goodsWorldModel{
@@ -181,8 +270,6 @@
 -(void)getGoodsDetailModel:(id)model{
     self.goodsDetailModel = model;
     self.goodDetailsView.model = model;
-    self.goodDetailsView.tableView.mj_header.hidden = YES;
-//    [self checkFooterState];
 }
 
 -(GoodsDetailModel *)goodsDetailModel{
@@ -204,13 +291,56 @@
     self.navigationItem.title = model.name;
 }
 
-//-(void)checkFooterState{
-////    self.goodDetailsView.tableView.mj_footer.hidden = self.modelAry.count == 0;
-//    if (self.modelAry.count == self.total_rows) {
-//        self.cView.collectionView.mj_footer.hidden = YES;
-//    }else{
-//        [self.cView.collectionView.mj_footer endRefreshing];
-//    }
-//}
+-(void)checkFooterState{
+    switch (self.MClassification) {
+        case 0:
+            //文字素材
+        {
+            self.goodDetailsView.tableView.mj_footer.hidden = self.goodDetailsView.modelAry.count == 0;
+            if (self.word_total_pages == self.word_current_page) {
+                self.goodDetailsView.tableView.mj_footer.hidden = YES;
+            }else{
+                [self.goodDetailsView.tableView.mj_footer endRefreshing];
+            }
+        }
+            break;
+        case 1:
+            //文章
+        {
+            self.goodDetailsView.tableView.mj_footer.hidden = self.goodDetailsView.articleModelAry.count == 0;
+            if (self.article_total_pages == self.article_current_page) {
+                self.goodDetailsView.tableView.mj_footer.hidden = YES;
+            }else{
+                [self.goodDetailsView.tableView.mj_footer endRefreshing];
+            }
+        }
+            break;
+        case 2:
+            //图片
+        {
+            self.goodDetailsView.tableView.mj_footer.hidden = self.goodDetailsView.pictureModelAry.count == 0;
+            if (self.picture_total_pages == self.picture_current_page) {
+                self.goodDetailsView.tableView.mj_footer.hidden = YES;
+            }else{
+                [self.goodDetailsView.tableView.mj_footer endRefreshing];
+            }
+        }
+            break;
+        case 3:
+            //视频
+        {
+            self.goodDetailsView.tableView.mj_footer.hidden = self.goodDetailsView.videoModelAry.count == 0;
+            if (self.video_total_pages == self.video_current_page) {
+                self.goodDetailsView.tableView.mj_footer.hidden = YES;
+            }else{
+                [self.goodDetailsView.tableView.mj_footer endRefreshing];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 
 @end

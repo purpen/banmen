@@ -15,6 +15,7 @@
 #import "UIView+FSExtension.h"
 #import "THNGoodsVideoModel.h"
 #import <AVFoundation/AVFoundation.h>
+#import "THNVideoCollectionViewCell.h"
 
 @interface THNGoodsVideoCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -41,7 +42,11 @@
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.sectionInset = UIEdgeInsetsMake(15, 15, 0, 15);
+        if (self.sender_selected) {
+            layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        } else {
+            layout.sectionInset = UIEdgeInsetsMake(15, 15, 0, 15);
+        }
         _collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -50,12 +55,18 @@
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.dataSource = self;
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
+        [_collectionView registerClass:[THNVideoCollectionViewCell class] forCellWithReuseIdentifier:@"THNVideoCollectionViewCell"];
     }
     return _collectionView;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     THNGoodsVideoModel *model = self.modelAry[indexPath.row];
+    if (self.sender_selected) {
+        THNVideoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNVideoCollectionViewCell" forIndexPath:indexPath];
+        cell.model = model;
+        return cell;
+    }
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCell" forIndexPath:indexPath];
     UIImageView *imageView = [[UIImageView alloc] init];
     [cell.contentView addSubview:imageView];
@@ -108,6 +119,9 @@
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.sender_selected) {
+        return CGSizeMake(SCREEN_WIDTH, 51);
+    }
     return CGSizeMake((SCREEN_WIDTH-45)/2, (SCREEN_WIDTH-45)/2);
 }
 

@@ -18,11 +18,12 @@
 @interface THNGoodsPictureModel : NSObject
 
 @property(nonatomic, copy) NSString *image;
-@property(nonatomic, copy) NSString *type;
+@property(nonatomic, copy) NSString *describe;
 @property(nonatomic,weak) id <THNGoodsPictureModelDelegate> delegate;
 @property(nonatomic,assign) NSInteger current_page;
 @property(nonatomic,assign) NSInteger total_pages;
 
 -(void)netGetpicture:(NSString*)productId;
+-(void)netGetMoreGoodsPicture:(NSString*)productId andCurrent_page:(NSInteger)current_page;
 
 @end

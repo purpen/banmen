@@ -31,6 +31,11 @@
     return self;
 }
 
+-(void)setSender_selected:(BOOL)sender_selected{
+    _sender_selected = sender_selected;
+    [self.collectionView reloadData];
+}
+
 -(void)setModelAry:(NSArray *)modelAry{
     _modelAry = modelAry;
     [self.collectionView reloadData];
@@ -39,7 +44,11 @@
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
+        if (self.sender_selected) {
+            layout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
+        } else {
+            layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
+        }
         _collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -54,12 +63,16 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     THNwordCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNwordCollectionViewCell" forIndexPath:indexPath];
-    cell.goodsWordModel = self.modelAry[indexPath.row];
+    cell.goodsArticleModel = self.modelAry[indexPath.row];
     return cell;
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((SCREEN_WIDTH-45)/2, 361/2);
+    if (self.sender_selected) {
+        return CGSizeMake((SCREEN_WIDTH-20), 112);
+    } else {
+        return CGSizeMake((SCREEN_WIDTH-45)/2, 361/2);
+    }
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

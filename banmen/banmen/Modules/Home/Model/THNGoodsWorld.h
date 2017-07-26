@@ -26,5 +26,6 @@
 @property(nonatomic,assign) NSInteger total_pages;
 
 -(void)netGetGoodsWorld:(NSString*)productId;
+-(void)netGetMoreGoodsWorld:(NSString*)productId andCurrent_page:(NSInteger)current_page;
 
 @end

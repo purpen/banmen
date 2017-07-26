@@ -18,7 +18,7 @@
 @interface THNGoodsVideoModel : NSObject
 
 @property(nonatomic, copy) NSString *video;
-@property(nonatomic, copy) NSString *type;
+@property(nonatomic, copy) NSString *describe;
 @property(nonatomic, copy) NSString *video_size;
 @property(nonatomic, copy) NSString *video_image;
 @property(nonatomic,weak) id <THNGoodsVideoModelDelegate> delegate;
@@ -26,5 +26,6 @@
 @property(nonatomic,assign) NSInteger total_pages;
 
 -(void)netGetVideo:(NSString*)productId;
+-(void)netGetMoreGoodsVideo:(NSString*)productId andCurrent_page:(NSInteger)current_page;
 
 @end

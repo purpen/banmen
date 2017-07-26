@@ -26,6 +26,7 @@
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         [self.contentView addSubview:self.segmentedC];
         [_segmentedC mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -94,19 +95,23 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         THNGoodsWordCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsWordCollectionViewCell" forIndexPath:indexPath];
+        cell.sender_selected = self.switchingArrangementBtn.selected;
         cell.modelAry = self.modelAry;
         return cell;
     } else if (indexPath.row == 1){
         THNGoodsArticleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsArticleCollectionViewCell" forIndexPath:indexPath];
         cell.modelAry = self.articleModelAry;
+        cell.sender_selected = self.switchingArrangementBtn.selected;
         return cell;
     } else if (indexPath.row == 2) {
         THNGoodsPictureCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsPictureCollectionViewCell" forIndexPath:indexPath];
         cell.modelAry = self.pictureModelAry;
+        cell.sender_selected = self.switchingArrangementBtn.selected;
         return cell;
     } else {
         THNGoodsVideoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsVideoCollectionViewCell" forIndexPath:indexPath];
         cell.modelAry = self.videoModelAry;
+        cell.sender_selected = self.switchingArrangementBtn.selected;
         return cell;
     }
 }
@@ -122,7 +127,6 @@
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
-
 
 
 -(UIButton *)switchingArrangementBtn{

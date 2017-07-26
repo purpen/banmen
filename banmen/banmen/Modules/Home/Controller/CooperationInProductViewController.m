@@ -48,7 +48,6 @@
 
 -(void)loadMore{
     [self.cView.collectionView.mj_header endRefreshing];
-    self.c.cDelegate = self;
     [self.c getMoreCooperationItemList:self.current_page];
 }
 

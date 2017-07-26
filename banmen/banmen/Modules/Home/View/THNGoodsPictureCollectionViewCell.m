@@ -14,6 +14,7 @@
 #import "THNwordCollectionViewCell.h"
 #import "UIView+FSExtension.h"
 #import "THNGoodsPictureModel.h"
+#import "THNPictureCollectionViewCell.h"
 
 @interface THNGoodsPictureCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -37,13 +38,23 @@
     [self.collectionView reloadData];
 }
 
+-(void)setSender_selected:(BOOL)sender_selected{
+    _sender_selected = sender_selected;
+    [self.collectionView reloadData];
+}
+
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        layout.minimumInteritemSpacing = 1;
+        if (self.sender_selected) {
+            layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            layout.minimumInteritemSpacing = 2;
+//            layout.minimumLineSpacing = 1;
+        } else {
+            layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            layout.minimumInteritemSpacing = 1;
+        }
         _collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
-//        _collectionView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
         _collectionView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.delegate = self;
@@ -51,12 +62,18 @@
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.dataSource = self;
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
+        [_collectionView registerClass:[THNPictureCollectionViewCell class] forCellWithReuseIdentifier:@"THNPictureCollectionViewCell"];
     }
     return _collectionView;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     THNGoodsPictureModel *model = self.modelAry[indexPath.row];
+    if (self.sender_selected) {
+        THNPictureCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNPictureCollectionViewCell" forIndexPath:indexPath];
+        cell.model = model;
+        return cell;
+    }
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCell" forIndexPath:indexPath];
     UIImageView *imageView = [[UIImageView alloc] init];
     [cell.contentView addSubview:imageView];
@@ -68,7 +85,11 @@
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((SCREEN_WIDTH-3)/4, (SCREEN_WIDTH-3)/4);
+    if (self.sender_selected) {
+        return CGSizeMake(SCREEN_WIDTH, 51);
+    } else {
+        return CGSizeMake((SCREEN_WIDTH-3)/4, (SCREEN_WIDTH-3)/4);
+    }
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

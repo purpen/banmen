@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *modelAry;
+@property (nonatomic, assign) BOOL sender_selected;
 
 @end

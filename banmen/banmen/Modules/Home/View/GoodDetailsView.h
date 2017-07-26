@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSArray *pictureModelAry;
 @property (nonatomic, strong) NSArray *videoModelAry;
 @property (nonatomic, assign) NSInteger category;
+@property (nonatomic, assign) BOOL sender_selected;
 
 @end
 

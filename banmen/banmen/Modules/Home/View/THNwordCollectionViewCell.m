@@ -35,6 +35,11 @@
     self.wordLabel.text = goodsWordModel.describe;
 }
 
+-(void)setGoodsArticleModel:(THNGoodsArticleModel *)goodsArticleModel{
+    _goodsArticleModel = goodsArticleModel;
+    self.wordLabel.text = goodsArticleModel.article_describe;
+}
+
 -(UILabel *)wordLabel{
     if (!_wordLabel) {
         _wordLabel = [[UILabel alloc] init];
