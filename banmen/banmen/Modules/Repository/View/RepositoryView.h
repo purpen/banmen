@@ -12,5 +12,6 @@
 
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *modelAry;
+@property (nonatomic, strong) UINavigationController *nav;
 
 @end

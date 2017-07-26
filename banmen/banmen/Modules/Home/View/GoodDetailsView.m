@@ -82,12 +82,12 @@
                 //文字素材
             {
                 if (self.sender_selected) {
-                    return 190/2+112*(self.modelAry.count)+30;
+                    return 190/2+(112+15)*(self.modelAry.count)+30;
                 } else {
                     if (self.modelAry.count % 2 == 0) {
-                        return 190/2+361/2*(self.modelAry.count/2)+30;
+                        return 190/2+(361/2+15)*(self.modelAry.count/2)+30;
                     }
-                    return 190/2+361/2*(self.modelAry.count/2+1)+30;
+                    return 190/2+(361/2+15)*(self.modelAry.count/2+1)+30;
                 }
             }
                 break;
@@ -95,12 +95,12 @@
                 //文章
             {
                 if (self.sender_selected) {
-                    return 190/2+112*(self.articleModelAry.count)+30;
+                    return 190/2+(112+15)*(self.articleModelAry.count)+30;
                 } else {
                     if (self.articleModelAry.count % 2 == 0) {
-                        return 190/2+361/2*(self.articleModelAry.count/2)+30;
+                        return 190/2+(361/2+15)*(self.articleModelAry.count/2)+30;
                     }
-                    return 190/2+361/2*(self.articleModelAry.count/2+1)+30;
+                    return 190/2+(361/2+15)*(self.articleModelAry.count/2+1)+30;
                 }
             }
                 break;
@@ -108,12 +108,12 @@
                 //图片
             {
                 if (self.sender_selected) {
-                    return 190/2+(51+10)*(self.pictureModelAry.count)+30;
+                    return 190/2+(51+15)*(self.pictureModelAry.count)+30;
                 } else {
                     if (self.pictureModelAry.count % 4 == 0) {
-                        return 190/2+(SCREEN_WIDTH-3)/4*(self.pictureModelAry.count/4)+30;
+                        return 190/2+((SCREEN_WIDTH-3)/4+15)*(self.pictureModelAry.count/4)+30;
                     }
-                    return 190/2+(SCREEN_WIDTH-3)/4*(self.pictureModelAry.count/4+1)+30;
+                    return 190/2+((SCREEN_WIDTH-3)/4+15)*(self.pictureModelAry.count/4+1)+30;
                 }
             }
                 break;
@@ -121,12 +121,12 @@
                 //视频
             {
                 if (self.sender_selected) {
-                    return 190/2+(51+10)*(self.videoModelAry.count)+30;
+                    return 190/2+(51+15)*(self.videoModelAry.count)+30;
                 } else {
                     if (self.videoModelAry.count % 2 == 0) {
-                        return 190/2+(SCREEN_WIDTH-45)/2*(self.videoModelAry.count/2)+30;
+                        return 190/2+((SCREEN_WIDTH-45)/2+15)*(self.videoModelAry.count/2)+30;
                     }
-                    return 190/2+(SCREEN_WIDTH-45)/2*(self.videoModelAry.count/2+1)+30;
+                    return 190/2+((SCREEN_WIDTH-45)/2+15)*(self.videoModelAry.count/2+1)+30;
                 }
             }
                 break;
