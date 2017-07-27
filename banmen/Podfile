@@ -13,4 +13,5 @@ target "banmen" do
  pod 'JKDBModel-JDBR', '~> 0.0.1'
  pod 'Charts'
  pod 'MXSegmentedPager'
+ pod 'IQKeyboardManager'
 end
