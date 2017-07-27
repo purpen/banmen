@@ -12,6 +12,7 @@
 #import "MainMacro.h"
 
 #import "THNPosterListCollectionViewCell.h"
+#import "THNEditPosterViewController.h"
 
 static NSString *const PosterListCollectionViewCellId = @"THNPosterListCollectionViewCell";
 
@@ -59,18 +60,25 @@ static NSString *const PosterListCollectionViewCellId = @"THNPosterListCollectio
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     THNPosterListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PosterListCollectionViewCellId
                                                                                       forIndexPath:indexPath];
-    cell.posterImageView.image = [UIImage imageNamed:@"poster_0"];
+    cell.posterImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"poster_%zi", indexPath.row]];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self thn_openEditPosterImageController:[UIImage imageNamed:[NSString stringWithFormat:@"poster_%zi", indexPath.row]]];
+}
+
+#pragma mark - 跳转编辑海报
+- (void)thn_openEditPosterImageController:(UIImage *)image {
+    THNEditPosterViewController *editPosterVC = [[THNEditPosterViewController alloc] init];
+    editPosterVC.previewImage = image;
+    [self presentViewController:editPosterVC animated:YES completion:nil];
 }
 
 #pragma mark - 分页控制视图
@@ -105,7 +113,7 @@ static NSString *const PosterListCollectionViewCellId = @"THNPosterListCollectio
 }
 
 - (void)segmentedPager:(MXSegmentedPager *)segmentedPager didSelectViewWithTitle:(NSString *)title {
-    NSLog(@"%@ page selected.", title);
+    NSLog(@"%@", title);
 }
 
 
