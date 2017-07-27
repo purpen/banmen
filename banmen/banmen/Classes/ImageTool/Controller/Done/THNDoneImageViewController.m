@@ -72,16 +72,35 @@
         make.bottom.equalTo(self.view.mas_bottom).with.offset(0);
         make.centerX.equalTo(self.view);
     }];
+    
+    [self thn_loadPreviewImageAndScale:self.doneImage];
 }
 
 #pragma mark - 预览图片
 - (UIImageView *)previewImageView {
     if (!_previewImageView) {
-        _previewImageView = [[UIImageView alloc] initWithImage:self.doneImage];
+        _previewImageView = [[UIImageView alloc] init];
         _previewImageView.contentMode = UIViewContentModeScaleAspectFill;
         _previewImageView.clipsToBounds = YES;
     }
     return _previewImageView;
+}
+
+//  加载图片并缩放
+- (void)thn_loadPreviewImageAndScale:(UIImage *)image {
+    if (image == nil) {
+        [SVProgressHUD showInfoWithStatus:@"获取图片错误"];
+        return;
+    }
+    CGFloat scaleNum = (SCREEN_WIDTH - 60) / image.size.height;
+    CGFloat imageViewWidth = self.doneImage.size.width * scaleNum;
+    CGFloat imageViewHeight = self.doneImage.size.height * scaleNum;
+    
+    [_previewImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(imageViewWidth, imageViewHeight));
+    }];
+    
+    self.previewImageView.image = image;
 }
 
 #pragma mark - 提示文字

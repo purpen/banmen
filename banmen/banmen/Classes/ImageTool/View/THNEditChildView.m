@@ -319,15 +319,5 @@ static const CGFloat kTHNEditChildViewInnerBoarderWidth     = 2.0f;
     self.contentView.contentOffset = CGPointMake(self.contentView.contentSize.width / 2.f - self.bounds.size.width / 2.f, self.contentView.contentSize.height / 2.f - self.bounds.size.height / 2.f);
 }
 
-#pragma mark -
-//- (UIImage *)originImage:(UIImage *)image scaleToSize:(CGSize)size {
-//    //  创建一个bitmap的context
-//    //  并把它设置成为当前正在使用的context
-//    UIGraphicsBeginImageContext(size);
-//    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-//    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return scaledImage;
-//}
 
 @end

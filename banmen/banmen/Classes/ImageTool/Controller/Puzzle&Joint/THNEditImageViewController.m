@@ -464,7 +464,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
         [self thn_pushShareImageController];
         
     } else {
-        [SVProgressHUD showErrorWithStatus:@"保存失败，请再试试"];
+        [SVProgressHUD showErrorWithStatus:@"保存失败，请重试"];
     }
 }
 

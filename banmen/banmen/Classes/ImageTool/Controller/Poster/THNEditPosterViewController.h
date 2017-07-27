@@ -10,6 +10,6 @@
 
 @interface THNEditPosterViewController : THNImageToolViewController
 
-@property (nonatomic, strong) UIImage *previewImage;
+- (void)thn_setPreviewPosterImage:(UIImage *)image styleTag:(NSInteger)styleTag;
 
 @end

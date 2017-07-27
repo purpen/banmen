@@ -19,6 +19,7 @@
 @property (nonatomic, assign) NSInteger fontBold;
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
+@property (nonatomic, strong) NSString *background;
 @property (nonatomic, strong) THNPosterModelTextPosition *position;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;

@@ -87,6 +87,7 @@
 		D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B369451EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m */; };
 		D8D378DD1EFA4C8500C89889 /* THNPhotoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */; };
 		D8D378E01EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D378DF1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m */; };
+		D8D5EB501F29D41500980933 /* THNPosterImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D5EB4F1F29D41500980933 /* THNPosterImageView.m */; };
 		D8D664FB1F0C8E7900C53DEB /* THNEditToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D664FA1F0C8E7900C53DEB /* THNEditToolButton.m */; };
 		D8D664FE1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D664FD1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m */; };
 		D8D9C2471EF278C5000688C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9C2461EF278C5000688C6 /* main.m */; };
@@ -321,6 +322,8 @@
 		D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPhotoListView.m; sourceTree = "<group>"; };
 		D8D378DE1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPhotoAlbumTableViewCell.h; sourceTree = "<group>"; };
 		D8D378DF1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPhotoAlbumTableViewCell.m; sourceTree = "<group>"; };
+		D8D5EB4E1F29D41500980933 /* THNPosterImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterImageView.h; sourceTree = "<group>"; };
+		D8D5EB4F1F29D41500980933 /* THNPosterImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPosterImageView.m; sourceTree = "<group>"; };
 		D8D664F91F0C8E7900C53DEB /* THNEditToolButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNEditToolButton.h; sourceTree = "<group>"; };
 		D8D664FA1F0C8E7900C53DEB /* THNEditToolButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNEditToolButton.m; sourceTree = "<group>"; };
 		D8D664FC1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNEditToolCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1083,12 +1086,10 @@
 		D8B071121EF8F415005CC051 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D8736A9D1F048A0000BF9F33 /* THNToolViewController.h */,
-				D8736A9E1F048A0000BF9F33 /* THNToolViewController.m */,
+				D8D5EB511F29E4EC00980933 /* ToolHome */,
 				D89DBBA41F2591C9001A8C56 /* Poster */,
 				D89DBBA31F2591B3001A8C56 /* Puzzle&Joint */,
-				D847DE411EFCDEDC007E301E /* THNDoneImageViewController.h */,
-				D847DE421EFCDEDC007E301E /* THNDoneImageViewController.m */,
+				D8D5EB521F29E52000980933 /* Done */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1111,7 +1112,7 @@
 			children = (
 				D8E957DF1F271BF0003F9A29 /* Poster */,
 				F58DE8E91F20B05800C80ECF /* Joint */,
-				D8DCAD471F137F69009A8A1F /* Other */,
+				D8DCAD471F137F69009A8A1F /* Hint */,
 				D8DCAD461F137F50009A8A1F /* Photo */,
 				D8DCAD451F137F42009A8A1F /* Puzzle */,
 				D8DCAD441F137F1E009A8A1F /* ImageEdit */,
@@ -1128,6 +1129,24 @@
 				D8B0711F1EF8FB38005CC051 /* THNImageToolViewController.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		D8D5EB511F29E4EC00980933 /* ToolHome */ = {
+			isa = PBXGroup;
+			children = (
+				D8736A9D1F048A0000BF9F33 /* THNToolViewController.h */,
+				D8736A9E1F048A0000BF9F33 /* THNToolViewController.m */,
+			);
+			path = ToolHome;
+			sourceTree = "<group>";
+		};
+		D8D5EB521F29E52000980933 /* Done */ = {
+			isa = PBXGroup;
+			children = (
+				D847DE411EFCDEDC007E301E /* THNDoneImageViewController.h */,
+				D847DE421EFCDEDC007E301E /* THNDoneImageViewController.m */,
+			);
+			path = Done;
 			sourceTree = "<group>";
 		};
 		D8D9C2391EF278C5000688C6 = {
@@ -1223,13 +1242,13 @@
 			path = Photo;
 			sourceTree = "<group>";
 		};
-		D8DCAD471F137F69009A8A1F /* Other */ = {
+		D8DCAD471F137F69009A8A1F /* Hint */ = {
 			isa = PBXGroup;
 			children = (
 				D847DE3E1EFBDE95007E301E /* THNHintInfoView.h */,
 				D847DE3F1EFBDE95007E301E /* THNHintInfoView.m */,
 			);
-			path = Other;
+			path = Hint;
 			sourceTree = "<group>";
 		};
 		D8E957DF1F271BF0003F9A29 /* Poster */ = {
@@ -1239,6 +1258,8 @@
 				D869B3F51F26FFE10074C37B /* THNPosterListCollectionViewCell.m */,
 				D8E957E01F2724A7003F9A29 /* THNPosterInfoView.h */,
 				D8E957E11F2724A7003F9A29 /* THNPosterInfoView.m */,
+				D8D5EB4E1F29D41500980933 /* THNPosterImageView.h */,
+				D8D5EB4F1F29D41500980933 /* THNPosterImageView.m */,
 			);
 			path = Poster;
 			sourceTree = "<group>";
@@ -1388,7 +1409,7 @@
 				TargetAttributes = {
 					D8D9C2411EF278C5000688C6 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 3256449JXC;
+						DevelopmentTeam = 7ET6PJMCHV;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1561,6 +1582,7 @@
 				D8736A9F1F048A0000BF9F33 /* THNToolViewController.m in Sources */,
 				F57139E71F2749A200C1A62B /* THNGoodsVideoCollectionViewCell.m in Sources */,
 				D8ED5D821EF906060046642C /* NSString+FBMD5.m in Sources */,
+				D8D5EB501F29D41500980933 /* THNPosterImageView.m in Sources */,
 				F50EFF121F04E4CD0044762F /* AreaTableViewCell.m in Sources */,
 				F55DD8091F04A3BE004915E3 /* UnitPriceViewController.m in Sources */,
 				D8ED5D9D1EF90CDD0046642C /* THNEditImageViewController.m in Sources */,
@@ -1788,7 +1810,7 @@
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3256449JXC;
+				DEVELOPMENT_TEAM = 7ET6PJMCHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
@@ -1856,7 +1878,7 @@
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3256449JXC;
+				DEVELOPMENT_TEAM = 7ET6PJMCHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
