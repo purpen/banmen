@@ -13,6 +13,7 @@
 
 #import "THNPosterListCollectionViewCell.h"
 #import "THNEditPosterViewController.h"
+#import "THNImageToolNavigationController.h"
 
 static NSString *const PosterListCollectionViewCellId = @"THNPosterListCollectionViewCell";
 
@@ -60,25 +61,27 @@ static NSString *const PosterListCollectionViewCellId = @"THNPosterListCollectio
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
+    return 4;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     THNPosterListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PosterListCollectionViewCellId
                                                                                       forIndexPath:indexPath];
-    cell.posterImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"poster_%zi", indexPath.row]];
+    cell.posterImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"poster_style_%zi", indexPath.row]];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self thn_openEditPosterImageController:[UIImage imageNamed:[NSString stringWithFormat:@"poster_%zi", indexPath.row]]];
+    [self thn_openEditPosterImageController:[UIImage imageNamed:[NSString stringWithFormat:@"poster_style_%zi", indexPath.row]] index:indexPath.row];
 }
 
 #pragma mark - 跳转编辑海报
-- (void)thn_openEditPosterImageController:(UIImage *)image {
+- (void)thn_openEditPosterImageController:(UIImage *)image index:(NSInteger)index {
     THNEditPosterViewController *editPosterVC = [[THNEditPosterViewController alloc] init];
-    editPosterVC.previewImage = image;
-    [self presentViewController:editPosterVC animated:YES completion:nil];
+    [editPosterVC thn_setPreviewPosterImage:image styleTag:index];
+    THNImageToolNavigationController *imageToolNavController = [[THNImageToolNavigationController alloc] initWithRootViewController:editPosterVC];
+    [self presentViewController:imageToolNavController animated:YES completion:nil];
+    
 }
 
 #pragma mark - 分页控制视图

@@ -9,11 +9,14 @@
 #import "THNPosterInfoView.h"
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 static NSInteger const textViewTag = 3521;
 static NSInteger const imageViewTag = 3821;
 
-@interface THNPosterInfoView () <UITextViewDelegate>
+@interface THNPosterInfoView () <UITextViewDelegate> {
+    THNPosterImageView *_selectImageView;
+}
 
 @property (nonatomic, strong) NSMutableArray *textViewArray;
 @property (nonatomic, strong) NSMutableArray *imageViewArray;
@@ -26,8 +29,27 @@ static NSInteger const imageViewTag = 3821;
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor colorWithHexString:kColorBlack];
+        
+        [self thn_setIQKeyboardManager];
     }
     return self;
+}
+
+#pragma mark - 选择了图片进行加载
+- (void)thn_setPosterPhotoSelectImage:(UIImage *)image withTag:(NSInteger)tag {
+    for (THNPosterImageView *imageView in self.imageViewArray) {
+        if (imageView.tag == tag) {
+            [imageView thn_setImageViewData:image];
+        }
+    }
+}
+
+- (void)thn_allTextViewResignFirstResponder {
+    for (UITextView *textView in self.textViewArray) {
+        if ([textView isFirstResponder]) {
+            [textView resignFirstResponder];
+        }
+    }
 }
 
 #pragma mark - 添加海报默认信息
@@ -75,18 +97,22 @@ static NSInteger const imageViewTag = 3821;
 
 #pragma mark textViewDelegate
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    [self thn_addTextViewBorder:textView];
+    
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    
 }
 
 //  编辑时给textView添加边框
 - (void)thn_addTextViewBorder:(UITextView *)textView {
     CAShapeLayer *borderLayer = [CAShapeLayer layer];
-    borderLayer.bounds = textView.frame;
+    borderLayer.bounds = textView.bounds;
     borderLayer.position = CGPointMake(CGRectGetMidX(textView.bounds), CGRectGetMidY(textView.bounds));
     borderLayer.path = [UIBezierPath bezierPathWithRoundedRect:borderLayer.bounds cornerRadius:0].CGPath;
-    borderLayer.lineWidth = 1;
+    borderLayer.lineWidth = 2;
     //  虚线边框
-    borderLayer.lineDashPattern = @[@8, @8];
+    borderLayer.lineDashPattern = @[@10, @10];
     borderLayer.fillColor = [UIColor colorWithHexString:kColorRed alpha:0].CGColor;
     borderLayer.strokeColor = [UIColor colorWithHexString:kColorRed alpha:1].CGColor;
     [textView.layer addSublayer:borderLayer];
@@ -99,16 +125,16 @@ static NSInteger const imageViewTag = 3821;
         return;
     }
     
-    [UIView animateWithDuration:1 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         view.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:1];
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:1 animations:^{
+        [UIView animateWithDuration:0.5 animations:^{
             view.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0];
         } completion:^(BOOL finished) {
-            [UIView animateWithDuration:1 animations:^{
+            [UIView animateWithDuration:0.5 animations:^{
                 view.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:1];
             } completion:^(BOOL finished) {
-                [UIView animateWithDuration:1 animations:^{
+                [UIView animateWithDuration:0.5 animations:^{
                     view.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0];
                 }];
             }];
@@ -124,11 +150,11 @@ static NSInteger const imageViewTag = 3821;
     
     for (NSInteger idx = 0; idx < imageArray.count; ++ idx) {
         THNPosterModelImage *model = imageArray[idx];
-        UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"poster_add_%@", model.name]];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        imageView.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0];
+        THNPosterImageView *imageView = [[THNPosterImageView alloc] initWithFrame:CGRectMake(0, 0, model.width, model.height)];
+        [imageView thn_setImageViewData:[UIImage imageNamed:[NSString stringWithFormat:@"poster_add_%@", model.name]]];
         imageView.tag = imageViewTag + idx;
+        
+        [self thn_imageViewAddTapGestureRecognizer:imageView];
         
         [self addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -140,6 +166,28 @@ static NSInteger const imageViewTag = 3821;
         
         [self.imageViewArray addObject:imageView];
     }
+}
+
+#pragma mark 图片选择操作
+- (void)thn_imageViewAddTapGestureRecognizer:(THNPosterImageView *)imageView {
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [imageView addGestureRecognizer:tapGesture];
+}
+
+- (void)handleTapGesture:(UITapGestureRecognizer *)tapGesture {
+    if ([self.delegate respondsToSelector:@selector(thn_tapWithImageViewAndSelectPhoto:)]) {
+        [self.delegate thn_tapWithImageViewAndSelectPhoto:tapGesture.view.tag];
+    }
+}
+
+#pragma mark -
+- (void)thn_setIQKeyboardManager {
+    //  键盘弹起模式
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.enableAutoToolbar = NO;
 }
 
 #pragma mark - initArray

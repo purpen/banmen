@@ -17,6 +17,7 @@ NSString *const kPosterModelTextFontBold = @"fontBold";
 NSString *const kPosterModelTextWidth = @"width";
 NSString *const kPosterModelTextHeight = @"height";
 NSString *const kPosterModelTextPosition = @"position";
+NSString *const kPosterModelTextBackground = @"background";
 
 @implementation THNPosterModelText
 
@@ -37,6 +38,10 @@ NSString *const kPosterModelTextPosition = @"position";
     
     if (![dictionary[kPosterModelTextColor] isKindOfClass:[NSNull class]]) {
         self.color = dictionary[kPosterModelTextColor];
+    }
+    
+    if (![dictionary[kPosterModelTextBackground] isKindOfClass:[NSNull class]]) {
+        self.background = dictionary[kPosterModelTextBackground];
     }
     
     if (![dictionary[kPosterModelTextFontSize] isKindOfClass:[NSNull class]]) {

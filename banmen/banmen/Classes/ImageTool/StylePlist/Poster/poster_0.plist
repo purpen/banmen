@@ -94,6 +94,8 @@
 		<key>text</key>
 		<array>
 			<dict>
+				<key>background</key>
+				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
@@ -123,6 +125,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>background</key>
+				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
@@ -152,6 +156,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>background</key>
+				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
@@ -181,6 +187,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>background</key>
+				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
@@ -210,6 +218,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>background</key>
+				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
@@ -239,6 +249,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>background</key>
+				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
@@ -268,6 +280,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>background</key>
+				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
@@ -297,6 +311,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>background</key>
+				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
