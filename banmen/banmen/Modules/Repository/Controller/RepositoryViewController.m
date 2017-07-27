@@ -96,6 +96,7 @@
 -(RepositoryView *)rView{
     if (!_rView) {
         _rView = [[RepositoryView alloc] initWithFrame:self.view.frame];
+        _rView.nav = self.navigationController;
     }
     return _rView;
 }

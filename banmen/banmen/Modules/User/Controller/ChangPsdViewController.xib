@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="17A264c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Mi-sK-CiD">
-                    <rect key="frame" x="15" y="76" width="345" height="44"/>
+                    <rect key="frame" x="15" y="30" width="345" height="44"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入旧密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1y4-z8-9Lj">
                             <rect key="frame" x="15" y="0.0" width="330" height="44"/>
@@ -41,7 +41,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OlI-0F-DbQ">
-                    <rect key="frame" x="15" y="125" width="345" height="44"/>
+                    <rect key="frame" x="15" y="79" width="345" height="44"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UQJ-iG-35v">
                             <rect key="frame" x="15" y="0.0" width="330" height="44"/>
@@ -59,7 +59,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dx3-rk-Qtb">
-                    <rect key="frame" x="15" y="233" width="345" height="44"/>
+                    <rect key="frame" x="15" y="187" width="345" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="TVT-QG-I1D"/>
@@ -70,7 +70,7 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码由6-20位英文字母、数字或符号组成" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bj-5A-HDQ">
-                    <rect key="frame" x="15" y="187" width="308" height="21"/>
+                    <rect key="frame" x="15" y="141" width="308" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="0Ix-vl-2KC"/>
                         <constraint firstAttribute="width" constant="308" id="7Xj-0A-C5k"/>
@@ -84,7 +84,7 @@
             <constraints>
                 <constraint firstItem="OlI-0F-DbQ" firstAttribute="leading" secondItem="xee-84-Uh2" secondAttribute="leading" constant="15" id="0Wl-H8-gwo"/>
                 <constraint firstAttribute="trailing" secondItem="OlI-0F-DbQ" secondAttribute="trailing" constant="15" id="4fx-uH-xzX"/>
-                <constraint firstItem="6Mi-sK-CiD" firstAttribute="top" secondItem="xee-84-Uh2" secondAttribute="top" constant="76" id="Fcc-Db-fd7"/>
+                <constraint firstItem="6Mi-sK-CiD" firstAttribute="top" secondItem="xee-84-Uh2" secondAttribute="top" constant="30" id="Fcc-Db-fd7"/>
                 <constraint firstAttribute="trailing" secondItem="6Mi-sK-CiD" secondAttribute="trailing" constant="15" id="U7k-Gc-FME"/>
                 <constraint firstItem="0Bj-5A-HDQ" firstAttribute="leading" secondItem="xee-84-Uh2" secondAttribute="leading" constant="15" id="bNL-R3-KtM"/>
                 <constraint firstItem="OlI-0F-DbQ" firstAttribute="top" secondItem="6Mi-sK-CiD" secondAttribute="bottom" constant="5" id="czW-nZ-XzD"/>
