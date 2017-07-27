@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "THNwordCollectionViewCell.h"
 #import "UIView+FSExtension.h"
+#import "THNArticleDetailViewController.h"
 
 @interface THNGoodsArticleCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -77,6 +78,13 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.modelAry.count;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    THNGoodsArticleModel *model = self.modelAry[indexPath.row];
+    THNArticleDetailViewController *vc = [[THNArticleDetailViewController alloc] init];
+    vc.content = model.content;
+    [self.controller presentViewController:vc animated:YES completion:nil];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
