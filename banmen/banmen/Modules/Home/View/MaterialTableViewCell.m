@@ -97,6 +97,7 @@
         THNGoodsWordCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsWordCollectionViewCell" forIndexPath:indexPath];
         cell.sender_selected = self.switchingArrangementBtn.selected;
         cell.modelAry = self.modelAry;
+        cell.controller = self.controller;
         return cell;
     } else if (indexPath.row == 1){
         THNGoodsArticleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsArticleCollectionViewCell" forIndexPath:indexPath];
@@ -112,6 +113,7 @@
         THNGoodsVideoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsVideoCollectionViewCell" forIndexPath:indexPath];
         cell.modelAry = self.videoModelAry;
         cell.sender_selected = self.switchingArrangementBtn.selected;
+        cell.controller = self.controller;
         return cell;
     }
 }

@@ -19,5 +19,6 @@
 @property (nonatomic, strong) NSArray *articleModelAry;
 @property (nonatomic, strong) NSArray *pictureModelAry;
 @property (nonatomic, strong) NSArray *videoModelAry;
+@property (nonatomic, strong) UIViewController *controller;
 
 @end
