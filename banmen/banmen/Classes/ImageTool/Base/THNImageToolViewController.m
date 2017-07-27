@@ -58,7 +58,7 @@
 #pragma mark 返回按钮
 - (UIButton *)navBackButton {
     if (!_navBackButton) {
-        _navBackButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 44, 44)];
+        _navBackButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 40, 44)];
         [_navBackButton setImage:[UIImage imageNamed:@"icon_back_white"] forState:(UIControlStateNormal)];
         [_navBackButton addTarget:self action:@selector(popViewController) forControlEvents:(UIControlEventTouchUpInside)];
     }

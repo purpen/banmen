@@ -9,7 +9,6 @@
 #ifndef ColorMacro_h
 #define ColorMacro_h
 
-//#define kColorMain            @"#FF5A5F"
 #define kColorMain            @"#8EC1FF"
 #define kColorBlue            @"#8EC1FF"
 #define kColorNavView         @"#292A2A"
@@ -19,6 +18,9 @@
 #define kColorGray            @"#F7F7F7"
 #define kColorWhite           @"#FFFFFF"
 #define kColorBlack           @"#000000"
+#define kColorMenuText        @"#222222"
 #define kColorGreen           @"#1B9A53"
+#define kColorYellow          @"#BE8914"
+#define kColorRed             @"#FF5A5F"
 
 #endif /* ColorMacro_h */

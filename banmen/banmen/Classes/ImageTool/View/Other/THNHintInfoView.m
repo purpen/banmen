@@ -16,22 +16,45 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor colorWithHexString:kColorBackground];
-        [self thn_setHintViewUI];
     }
     return self;
 }
 
-- (void)thn_setHintViewUI {
+- (void)thn_showHintInfoViewWithText:(NSString *)text fontOfSize:(CGFloat)size color:(NSString *)color {
+    if (text.length == 0) {
+        return;
+    }
+    
     [self addSubview:self.textLabel];
     [_textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.centerX.equalTo(self);
     }];
-}
-
-- (void)thn_showHintInfoViewWithText:(NSString *)text fontOfSize:(CGFloat)size color:(NSString *)color {
+    
     self.textLabel.font = [UIFont boldSystemFontOfSize:size];
     self.textLabel.textColor = [UIColor colorWithHexString:color];
     self.textLabel.text = text;
+}
+
+- (void)thn_showHintInfoWithImage:(NSString *)imageName {
+    if (imageName.length == 0) {
+        return;
+    }
+    
+    [self addSubview:self.iconImageView];
+    [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.centerX.equalTo(self);
+        make.size.mas_offset(CGSizeMake(60, 30));
+    }];
+    
+    self.iconImageView.image = [UIImage imageNamed:imageName];
+}
+
+- (UIImageView *)iconImageView {
+    if (!_iconImageView) {
+        _iconImageView = [[UIImageView alloc] init];
+        _iconImageView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _iconImageView;
 }
 
 - (UILabel *)textLabel {
