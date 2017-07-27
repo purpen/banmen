@@ -12,6 +12,8 @@
 #import "AreaViewController.h"
 #import "TopViewController.h"
 #import "SalesChannelsViewController.h"
+#import "UIColor+Extension.h"
+#import "Masonry.h"
 
 @interface SalesAndTrendsViewController ()<UIScrollViewDelegate>
 /** 顶部的所有标签 */
@@ -72,9 +74,23 @@
 {
     // 标签栏整体
     UIView *titlesView = [[UIView alloc] init];
-    titlesView.backgroundColor = [UIColor banmenColorWithRed:248 green:248 blue:248 alpha:1];
+    titlesView.backgroundColor = [UIColor whiteColor];
+    UIView *lineView = [[UIView alloc] init];
+    lineView.backgroundColor = [UIColor colorWithHexString:@"#dddddd"];
+    [titlesView addSubview:lineView];
+    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(titlesView).mas_offset(0);
+        make.height.mas_equalTo(1);
+    }];
+    UIView *lineView2 = [[UIView alloc] init];
+    lineView2.backgroundColor = [UIColor colorWithHexString:@"#dddddd"];
+    [titlesView addSubview:lineView2];
+    [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.mas_equalTo(titlesView).mas_offset(0);
+        make.height.mas_equalTo(2);
+    }];
     titlesView.width = self.view.width;
-    titlesView.height = 35;
+    titlesView.height = 35+2;
     titlesView.y =XMGTitilesViewY;
     [self.view addSubview:titlesView];
     self.titlesView = titlesView;

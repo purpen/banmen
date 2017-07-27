@@ -597,6 +597,7 @@
 		D847DE551F00C1DA007E301E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F56C76D91F29C2B400DAC486 /* DetailView */,
 				F55DD8131F04D55C004915E3 /* BezierCurvcLineTool */,
 				F55DD8101F04AE92004915E3 /* SaleTableViewCell.h */,
 				F55DD8111F04AE92004915E3 /* SaleTableViewCell.m */,
@@ -1244,6 +1245,13 @@
 			path = BezierCurvcLineTool;
 			sourceTree = "<group>";
 		};
+		F56C76D91F29C2B400DAC486 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
 		F58DE8E91F20B05800C80ECF /* Joint */ = {
 			isa = PBXGroup;
 			children = (
@@ -1290,9 +1298,9 @@
 				TargetAttributes = {
 					D8D9C2411EF278C5000688C6 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 3256449JXC;
+						DevelopmentTeam = 7ET6PJMCHV;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1676,9 +1684,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3256449JXC;
+				CODE_SIGN_IDENTITY = "iPhone Developer: admin@taihuoniao.com (GMN42V2S46)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: admin@taihuoniao.com (GMN42V2S46)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 7ET6PJMCHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
@@ -1728,8 +1737,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "426ccc36-c914-4691-90b8-000eaf7e90e9";
+				PROVISIONING_PROFILE_SPECIFIER = banmen;
 				SWIFT_OBJC_BRIDGING_HEADER = "banmen/Modules/Home/View/banmen-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1744,9 +1753,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3256449JXC;
+				CODE_SIGN_IDENTITY = "iPhone Developer: admin@taihuoniao.com (GMN42V2S46)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: admin@taihuoniao.com (GMN42V2S46)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 7ET6PJMCHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
@@ -1796,8 +1806,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "23cf2777-95e7-4f04-a0e1-a630fd01d205";
+				PROVISIONING_PROFILE_SPECIFIER = banmen_release;
 				SWIFT_OBJC_BRIDGING_HEADER = "banmen/Modules/Home/View/banmen-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
