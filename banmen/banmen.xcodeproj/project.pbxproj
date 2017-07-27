@@ -125,6 +125,8 @@
 		D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA01EFA0DB80046642C /* THNAssetItem.m */; };
 		D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED5DA31EFA13540046642C /* THNPhotoTool.m */; };
 		F50EFF121F04E4CD0044762F /* AreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */; };
+		F51AE79A1F29D9B30093D9EB /* THNWordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51AE7981F29D9B30093D9EB /* THNWordDetailViewController.m */; };
+		F51AE79B1F29D9B30093D9EB /* THNWordDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F51AE7991F29D9B30093D9EB /* THNWordDetailViewController.xib */; };
 		F523A8101F1F64D300DD5C8B /* RepositoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F523A80F1F1F64D300DD5C8B /* RepositoryView.m */; };
 		F523A8131F1F694C00DD5C8B /* RecommendedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F523A8121F1F694C00DD5C8B /* RecommendedModel.m */; };
 		F523A8161F1F76F300DD5C8B /* UserView.m in Sources */ = {isa = PBXBuildFile; fileRef = F523A8151F1F76F300DD5C8B /* UserView.m */; };
@@ -368,6 +370,9 @@
 		D8ED5DA31EFA13540046642C /* THNPhotoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTool.m; sourceTree = "<group>"; };
 		F50EFF101F04E4CD0044762F /* AreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaTableViewCell.h; sourceTree = "<group>"; };
 		F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaTableViewCell.m; sourceTree = "<group>"; };
+		F51AE7971F29D9B30093D9EB /* THNWordDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNWordDetailViewController.h; sourceTree = "<group>"; };
+		F51AE7981F29D9B30093D9EB /* THNWordDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNWordDetailViewController.m; sourceTree = "<group>"; };
+		F51AE7991F29D9B30093D9EB /* THNWordDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THNWordDetailViewController.xib; sourceTree = "<group>"; };
 		F523A80E1F1F64D300DD5C8B /* RepositoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepositoryView.h; sourceTree = "<group>"; };
 		F523A80F1F1F64D300DD5C8B /* RepositoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepositoryView.m; sourceTree = "<group>"; };
 		F523A8111F1F694C00DD5C8B /* RecommendedModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendedModel.h; sourceTree = "<group>"; };
@@ -635,6 +640,7 @@
 		D847DE551F00C1DA007E301E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F56C76D91F29C2B400DAC486 /* DetailView */,
 				F55DD8131F04D55C004915E3 /* BezierCurvcLineTool */,
 				F55DD8101F04AE92004915E3 /* SaleTableViewCell.h */,
 				F55DD8111F04AE92004915E3 /* SaleTableViewCell.m */,
@@ -1363,6 +1369,16 @@
 			path = BezierCurvcLineTool;
 			sourceTree = "<group>";
 		};
+		F56C76D91F29C2B400DAC486 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				F51AE7971F29D9B30093D9EB /* THNWordDetailViewController.h */,
+				F51AE7981F29D9B30093D9EB /* THNWordDetailViewController.m */,
+				F51AE7991F29D9B30093D9EB /* THNWordDetailViewController.xib */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
 		F58DE8E91F20B05800C80ECF /* Joint */ = {
 			isa = PBXGroup;
 			children = (
@@ -1475,6 +1491,7 @@
 				D8736A831F04890500BF9F33 /* one_style_101.plist in Resources */,
 				D8736A841F04890500BF9F33 /* one_style_102.plist in Resources */,
 				D8736A851F04890500BF9F33 /* one_style_103.plist in Resources */,
+				F51AE79B1F29D9B30093D9EB /* THNWordDetailViewController.xib in Resources */,
 				D8736A861F04890500BF9F33 /* seven_style_128.plist in Resources */,
 				D8736A871F04890500BF9F33 /* seven_style_129.plist in Resources */,
 				D8736A881F04890500BF9F33 /* seven_style_130.plist in Resources */,
@@ -1566,6 +1583,7 @@
 				F57139CF1F25BAFF00C1A62B /* MaterialTableViewCell.m in Sources */,
 				D886F8421F21A102009382C3 /* HotelCalendarViewController.m in Sources */,
 				D886F8431F21A102009382C3 /* MonthModel.m in Sources */,
+				F51AE79A1F29D9B30093D9EB /* THNWordDetailViewController.m in Sources */,
 				D886F8441F21A102009382C3 /* MonthTableViewCell.m in Sources */,
 				D8D664FE1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m in Sources */,
 				D8DCAD411F135E5B009A8A1F /* THNEditContentView.m in Sources */,
@@ -1808,6 +1826,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ET6PJMCHV;
@@ -1876,6 +1895,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ET6PJMCHV;

@@ -20,7 +20,6 @@
 @property (strong,nonatomic)NSMutableArray *x_names;
 @property (strong,nonatomic)NSMutableArray *targets;
 @property (strong,nonatomic)UIView *lineview;
-@property (strong,nonatomic)UIView *chartView;
 
 @end
 
@@ -42,12 +41,6 @@
             make.top.mas_equalTo(self.salesLabel.mas_bottom).mas_offset(10);
         }];
         
-        [self.contentView addSubview:self.chartView];
-        [_chartView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.salesLabel.mas_left).mas_offset(0);
-            make.top.mas_equalTo(self.topLeftTwoLabel.mas_bottom).mas_offset(5);
-        }];
-        
         [self.contentView addSubview:self.lineview];
         [_lineview mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.mas_equalTo(self.contentView).mas_offset(0);
@@ -61,6 +54,20 @@
             make.top.mas_equalTo(self.contentView.mas_top).mas_offset(10);
             make.height.mas_equalTo(46/2);
             make.width.mas_equalTo(288/2);
+        }];
+        
+        [self.contentView addSubview:self.timeLabel];
+        [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.dateSelectBtn.mas_right).mas_offset(0);
+            make.centerY.mas_equalTo(self.topLeftTwoLabel.centerY).mas_offset(0);
+        }];
+        
+        [self.contentView addSubview:self.lineChartView];
+        [_lineChartView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.salesLabel.mas_left).mas_offset(0);
+            make.top.mas_equalTo(self.topLeftTwoLabel.mas_bottom).mas_offset(5);
+            make.right.mas_equalTo(self.dateSelectBtn.mas_right).mas_offset(0);
+            make.bottom.mas_equalTo(self.contentView.mas_bottom).mas_offset(-10);
         }];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -94,66 +101,69 @@
     return _lineview;
 }
 
-//-(void)setModelAry:(NSArray *)modelAry{
-//    PNLineChartData *data01 = [PNLineChartData new];
-//    data01.color = PNFreshGreen;
-//    data01.itemCount = 0;
-//    __block CGFloat max = 0;
-//    data01.getData = ^(NSUInteger index) {
-//        SalesTrendsModel *model = modelAry[index];
-//        if (max < [model.sum_money floatValue]) {
-//            max = [model.sum_money floatValue];
-//        }
-//        CGFloat yValue = [model.sum_money floatValue];
-//        return [PNLineChartDataItem dataItemWithY:yValue];
-//    };
-//    if (modelAry.count==0) {
-//        [_lineChart setYLabels:@[@(0),@(50), @(100), @(150), @(200), @(300)]];
-//    }
-//    [_lineChart setYLabels:@[@(0),@(max/5), @(max*2/5), @(max*3/5), @(max*4/5), @(max)]];
-//    self.lineChart.chartData = @[data01];
-//    [self.lineChart strokeChart];
-//    self.lineChart.showSmoothLines = YES;
-//}
-
--(UIView *)chartView{
-    if (!_chartView) {
-        _chartView = [[UIView alloc] initWithFrame:CGRectMake(15, self.topLeftTwoLabel.y+self.topLeftTwoLabel.height+5, SCREEN_WIDTH-30, 170)];
-        _chartView.backgroundColor = [UIColor redColor];
-//        [_chartView addSubview:self.lineChart];
+-(void)setModelAry:(NSArray *)modelAry{
+    int xVals_count = 12;//X轴上要显示多少条数据
+    double maxYVal = 100;//Y轴的最大值
+    //X轴上面需要显示的数据
+    NSMutableArray *xVals = [[NSMutableArray alloc] init];
+    for (int i = 0; i < xVals_count; i++) {
+        [xVals addObject:[NSString stringWithFormat:@"%d月", i+1]];
     }
-    return _chartView;
+    //对应Y轴上面需要显示的数据
+    NSMutableArray *yVals = [[NSMutableArray alloc] init];
+    for (int i = 0; i < xVals_count; i++) {
+        double mult = maxYVal + 1;
+        double val = (double)(arc4random_uniform(mult));
+        ChartDataEntry *entry = [[ChartDataEntry alloc] initWithX:i y:0 data:yVals];
+        [yVals addObject:entry];
+    }
+    LineChartDataSet *set1 = nil;
 }
 
-//-(PNLineChart *)lineChart{
-//    if (!_lineChart) {
-//        _lineChart = [[PNLineChart alloc] initWithFrame:self.chartView.frame];
-//        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
-//        [date_formatter setDateFormat:@"yyyy-MM-dd"];
-//        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
-//        NSTimeInterval  oneDay = 24*60*60*1;
-//        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
-//        NSString *the_date_str = [date_formatter stringFromDate:theDate];
-//        [_lineChart setXLabels:@[current_date_str, the_date_str]];
-//    }
-//    return _lineChart;
-//}
+-(LineChartView *)lineChartView{
+    if (!_lineChartView) {
+        _lineChartView = [[LineChartView alloc] init];
+        _lineChartView.delegate = self;
+        _lineChartView.noDataText = @"暂无数据";
+        _lineChartView.chartDescription.enabled = YES;
+        _lineChartView.scaleYEnabled = NO;//取消Y轴缩放
+        _lineChartView.doubleTapToZoomEnabled = NO;//取消双击缩放
+        _lineChartView.dragEnabled = YES;//启用拖拽图标
+        _lineChartView.dragDecelerationEnabled = YES;//拖拽后是否有惯性效果
+        _lineChartView.dragDecelerationFrictionCoef = 0.9;//拖拽后惯性效果的摩擦系数(0~1)，数值越小，惯性越不明显
+        //描述及图例样式
+        [_lineChartView setDescriptionText:@""];
+        _lineChartView.legend.enabled = NO;
+        [_lineChartView animateWithXAxisDuration:1.0f];
+        
+    }
+    return _lineChartView;
+}
 
 -(UILabel *)salesLabel{
     if (!_salesLabel) {
         _salesLabel = [[UILabel alloc] init];
         _salesLabel.text = @"销售额";
-        _salesLabel.textColor = [UIColor colorWithHexString:@"#0f7efe"];
+        _salesLabel.textColor = [UIColor colorWithHexString:@"#2f2f2f"];
         _salesLabel.font = [UIFont systemFontOfSize:13];
     }
     return _salesLabel;
 }
 
+-(UILabel *)timeLabel{
+    if (!_timeLabel) {
+        _timeLabel = [[UILabel alloc] init];
+        _timeLabel.textColor = [UIColor colorWithHexString:@"#848484"];
+        _timeLabel.font = [UIFont systemFontOfSize:10];
+    }
+    return _timeLabel;
+}
+
 -(UILabel *)topLeftTwoLabel{
     if (!_topLeftTwoLabel) {
         _topLeftTwoLabel = [[UILabel alloc] init];
-        _topLeftTwoLabel.text = @"销售额：123232312";
-        _topLeftTwoLabel.textColor = [UIColor colorWithHexString:@"#0f7efe"];
+//        _topLeftTwoLabel.text = @"销售额：123232312";
+        _topLeftTwoLabel.textColor = [UIColor colorWithHexString:@"#2f2f2f"];
         _topLeftTwoLabel.font = [UIFont systemFontOfSize:10];
     }
     return _topLeftTwoLabel;

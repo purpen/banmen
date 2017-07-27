@@ -16,6 +16,7 @@
 #import "THNGoodsVideoModel.h"
 #import <AVFoundation/AVFoundation.h>
 #import "THNVideoCollectionViewCell.h"
+ #import <MediaPlayer/MediaPlayer.h>
 
 @interface THNGoodsVideoCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -127,6 +128,13 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.modelAry.count;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    THNGoodsVideoModel *model = self.modelAry[indexPath.row];
+    NSURL *url = [NSURL URLWithString:model.video];
+    MPMoviePlayerViewController *vc = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+    [self.controller presentViewController:vc animated:YES completion:nil];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{

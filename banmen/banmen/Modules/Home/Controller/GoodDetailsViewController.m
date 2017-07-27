@@ -282,6 +282,7 @@
 -(GoodDetailsView *)goodDetailsView{
     if (!_goodDetailsView) {
         _goodDetailsView = [[GoodDetailsView alloc] initWithFrame:self.view.frame];
+        _goodDetailsView.controller = self;
     }
     return _goodDetailsView;
 }

@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "THNwordCollectionViewCell.h"
 #import "UIView+FSExtension.h"
+#import "THNWordDetailViewController.h"
 
 @interface THNGoodsWordCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -73,6 +74,13 @@
     } else {
         return CGSizeMake((SCREEN_WIDTH-45)/2, 361/2);
     }
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    THNGoodsWorld *model = self.modelAry[indexPath.row];
+    THNWordDetailViewController *vc = [[THNWordDetailViewController alloc] init];
+    vc.word = model.describe;
+    [self.controller presentViewController:vc animated:YES completion:nil];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

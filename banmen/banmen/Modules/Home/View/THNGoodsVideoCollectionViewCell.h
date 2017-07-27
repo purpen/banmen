@@ -14,5 +14,6 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, assign) BOOL sender_selected;
+@property (nonatomic, strong) UIViewController *controller;
 
 @end

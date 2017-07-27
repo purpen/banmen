@@ -15,6 +15,7 @@
 #import "UIView+FSExtension.h"
 #import "THNGoodsPictureModel.h"
 #import "THNPictureCollectionViewCell.h"
+#import "PYPhotoBrowser.h"
 
 @interface THNGoodsPictureCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -90,6 +91,20 @@
     } else {
         return CGSizeMake((SCREEN_WIDTH-3)/4, (SCREEN_WIDTH-3)/4);
     }
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    PYPhotoBrowseView *photoBroseView = [[PYPhotoBrowseView alloc] init];
+    NSMutableArray *imageViews = [NSMutableArray array];
+    for (int i = 0; i<self.modelAry.count; i++) {
+        THNGoodsPictureModel *model = self.modelAry[i];
+        [imageViews addObject:model.image];
+    }
+    photoBroseView.frameFormWindow = CGRectMake(500, 200, 100, 100);
+    photoBroseView.frameToWindow = CGRectMake(500, 200, 100, 100);
+    photoBroseView.imagesURL = (NSArray*)imageViews;
+    photoBroseView.currentIndex = indexPath.row;
+    [photoBroseView show];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

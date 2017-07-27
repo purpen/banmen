@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSArray *videoModelAry;
 @property (nonatomic, assign) NSInteger category;
 @property (nonatomic, assign) BOOL sender_selected;
+@property (nonatomic, strong) UIViewController *controller;
 
 @end
 

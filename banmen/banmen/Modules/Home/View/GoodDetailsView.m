@@ -153,6 +153,7 @@
         cell.articleModelAry = self.articleModelAry;
         cell.pictureModelAry = self.pictureModelAry;
         cell.videoModelAry = self.videoModelAry;
+        cell.controller = self.controller;
         return cell;
     }
 }

@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SalesTrendsModel.h"
+#import "ChartsSwift.h"
 
-@interface SaleTableViewCell : UITableViewCell
+@interface SaleTableViewCell : UITableViewCell <ChartViewDelegate>
+
 @property (strong,nonatomic)UIButton *dateSelectBtn;
 @property (strong,nonatomic)NSArray *modelAry;
-//@property (strong,nonatomic)PNLineChart *lineChart;
+@property (strong,nonatomic) LineChartView *lineChartView;
+@property (strong,nonatomic) UILabel *timeLabel;
+
 @end
