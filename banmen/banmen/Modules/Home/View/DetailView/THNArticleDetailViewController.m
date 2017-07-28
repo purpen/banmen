@@ -12,7 +12,7 @@
 @interface THNArticleDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (strong, nonatomic) UIWebView *mwebView;
+@property (copy, nonatomic) NSString *htmlStr;
 
 @end
 
@@ -20,21 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view addSubview:self.mwebView];
+    self.navigationItem.title = @"文章素材";
+    self.webView.backgroundColor = [UIColor whiteColor];
+    [self.webView loadHTMLString:self.htmlStr baseURL:[NSURL URLWithString:@"http://baidu.com"]];
 }
 
 -(void)setContent:(NSString *)content{
     NSError  *error;
     NSString *markdown = content;
-    NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:markdown error:&error];
-    [self.mwebView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://baidu.com"]];
+    self.htmlStr = [MMMarkdown HTMLStringWithMarkdown:markdown error:&error];
 }
 
--(UIWebView *)mwebView{
-    if (!_mwebView) {
-        _mwebView = [[UIWebView alloc] initWithFrame:self.view.frame];
-    }
-    return _mwebView;
-}
+
 
 @end

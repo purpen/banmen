@@ -84,7 +84,7 @@
     THNGoodsArticleModel *model = self.modelAry[indexPath.row];
     THNArticleDetailViewController *vc = [[THNArticleDetailViewController alloc] init];
     vc.content = model.content;
-    [self.controller presentViewController:vc animated:YES completion:nil];
+    [self.controller.navigationController pushViewController:vc animated:YES];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
