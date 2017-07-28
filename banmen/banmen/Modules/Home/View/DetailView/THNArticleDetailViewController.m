@@ -7,7 +7,7 @@
 //
 
 #import "THNArticleDetailViewController.h"
-#import <MMMarkdown/MMMarkdown.h>
+#import "MMMarkdown.h"
 
 @interface THNArticleDetailViewController ()
 

@@ -90,6 +90,7 @@
 		D8D5EB501F29D41500980933 /* THNPosterImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D5EB4F1F29D41500980933 /* THNPosterImageView.m */; };
 		D8D664FB1F0C8E7900C53DEB /* THNEditToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D664FA1F0C8E7900C53DEB /* THNEditToolButton.m */; };
 		D8D664FE1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D664FD1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m */; };
+		D8D6D5241F2B2D21003B0AB5 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E5FCF81F2B211000F66BC9 /* MMMarkdown.framework */; };
 		D8D9C2471EF278C5000688C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9C2461EF278C5000688C6 /* main.m */; };
 		D8D9C24A1EF278C5000688C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9C2491EF278C5000688C6 /* AppDelegate.m */; };
 		D8D9C24D1EF278C5000688C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9C24C1EF278C5000688C6 /* ViewController.m */; };
@@ -537,6 +538,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8D6D5241F2B2D21003B0AB5 /* MMMarkdown.framework in Frameworks */,
 				C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
