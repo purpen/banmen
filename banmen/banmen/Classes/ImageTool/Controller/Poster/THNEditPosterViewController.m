@@ -17,6 +17,7 @@
 #import "THNPosterImageView.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "THNDoneImageViewController.h"
+#import <YYImage/YYImage.h>
 
 @interface THNEditPosterViewController () <THNImageToolNavigationBarItemsDelegate, THNPosterInfoViewDelegate, THNPhotoListViewDelegate> {
     NSInteger _imageViewTag;
@@ -46,6 +47,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navRightItem.alpha = 0;
     
     [self thn_getPhotoAlbumData];
     [self thn_setControllerViewUI];
@@ -80,8 +82,8 @@
 #pragma mark - 海报制作视图
 - (THNPosterInfoView *)posterView {
     if (!_posterView) {
-        _posterView = [[THNPosterInfoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        _posterView.delegate = self;
+        _posterView = [[THNPosterInfoView alloc] initWithFrame:CGRectMake(30, 64, SCREEN_WIDTH - 60, SCREEN_HEIGHT - 94)];
+        _posterView.tap_delegate = self;
         _posterView.alpha = 0;
     }
     return _posterView;
@@ -115,17 +117,15 @@
     
     self.dataModel = [[THNPosterModelData alloc] initWithDictionary:[styleDict valueForKey:@"data"]];
     [self.posterView thn_setPosterStyleInfoData:self.dataModel];
-    [self thn_scalePosterEidtViewWidth:self.dataModel.size.width height:self.dataModel.size.height scale:YES];
+    [self thn_showEditPosterView:YES];
+    
+//    [self thn_scalePosterEidtViewScale:YES];
 }
 
 //  缩放海报视图
-- (void)thn_scalePosterEidtViewWidth:(CGFloat)width height:(CGFloat)height scale:(BOOL)scale {
-    self.posterView.frame = CGRectMake(0, 0, width, height);
-    
-    CGFloat scaleNum = SCREEN_WIDTH / width;
-    
-    CGFloat scaleX = scale ? (scaleNum * 0.8) : scaleNum;
-    CGFloat scaleY = scale ? (scaleNum * 0.8) : scaleNum;
+- (void)thn_scalePosterEidtViewScale:(BOOL)scale {
+    CGFloat scaleX = scale ? 0.8 : 1;
+    CGFloat scaleY = scale ? 0.8 : 1;
     CGFloat pointY = scale ? SCREEN_HEIGHT / 2 : SCREEN_HEIGHT / 2;
     CGPoint scalePoint = CGPointMake(self.view.center.x, pointY);
     
@@ -253,7 +253,6 @@
 - (void)thn_setNavViewUI {
     [self thn_addNavCloseButton];
     [self thn_addBarItemRightBarButton:@"保存" image:nil];
-    self.navRightItem.alpha = 0;
     self.delegate = self;
 }
 
@@ -272,9 +271,9 @@
     UIImageWriteToSavedPhotosAlbum(resuleImage, self, @selector(imageSavedToPhotosAlbum: didFinishSavingWithError: contextInfo:), nil);
 }
 
-- (UIImage *)cutImageWithView:(THNPosterInfoView *)posterView {
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.dataModel.size.width, self.dataModel.size.height), NO, [UIScreen mainScreen].scale);
-    [posterView.layer renderInContext:UIGraphicsGetCurrentContext()];
+- (UIImage *)cutImageWithView:(THNPosterInfoView *)contentView {
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.dataModel.size.width, self.dataModel.size.height), NO, 1.0);
+    [contentView.controlView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;

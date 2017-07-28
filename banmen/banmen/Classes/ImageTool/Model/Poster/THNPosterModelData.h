@@ -17,6 +17,7 @@
 @property (nonatomic, strong) THNPosterModelSize *size;
 @property (nonatomic, strong) NSArray *text;
 @property (nonatomic, strong) NSArray *image;
+@property (nonatomic, strong) NSString *backgroundColor;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

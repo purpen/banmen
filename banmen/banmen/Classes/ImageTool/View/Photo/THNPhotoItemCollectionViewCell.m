@@ -13,6 +13,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
         [self thn_setCollecitonCellViewUI];
     }
     return self;
@@ -31,9 +32,13 @@
     options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
     
     CGSize imageSize = CGSizeMake(100, 100);
-    [imageManager requestImageForAsset:asset targetSize:imageSize contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-        self.photoImageView.image = result;
-    }];
+    [imageManager requestImageForAsset:asset
+                            targetSize:imageSize
+                           contentMode:PHImageContentModeAspectFill
+                               options:options
+                         resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                             self.photoImageView.image = result;
+                         }];
 }
 
 #pragma mark - 设置界面控件
@@ -58,6 +63,7 @@
         _photoImageView.contentMode = UIViewContentModeScaleAspectFill;
         _photoImageView.center = self.contentView.center;
         _photoImageView.clipsToBounds = YES;
+        _photoImageView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
     }
     return _photoImageView;
 }

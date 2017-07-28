@@ -16,7 +16,7 @@
 @property (nonatomic, assign) NSInteger zindex;
 @property (nonatomic, strong) NSString *color;
 @property (nonatomic, assign) CGFloat fontSize;
-@property (nonatomic, assign) NSInteger fontBold;
+@property (nonatomic, assign) CGFloat weight;
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
 @property (nonatomic, strong) NSString *background;

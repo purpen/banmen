@@ -13,7 +13,7 @@ NSString *const kPosterModelTextContent = @"content";
 NSString *const kPosterModelTextZindex = @"zindex";
 NSString *const kPosterModelTextColor = @"color";
 NSString *const kPosterModelTextFontSize = @"fontSize";
-NSString *const kPosterModelTextFontBold = @"fontBold";
+NSString *const kPosterModelTextWeight = @"weight";
 NSString *const kPosterModelTextWidth = @"width";
 NSString *const kPosterModelTextHeight = @"height";
 NSString *const kPosterModelTextPosition = @"position";
@@ -48,8 +48,8 @@ NSString *const kPosterModelTextBackground = @"background";
         self.fontSize = [dictionary[kPosterModelTextFontSize] floatValue];
     }
     
-    if (![dictionary[kPosterModelTextFontBold] isKindOfClass:[NSNull class]]) {
-        self.fontBold = [dictionary[kPosterModelTextFontBold] integerValue];
+    if (![dictionary[kPosterModelTextWeight] isKindOfClass:[NSNull class]]) {
+        self.weight = [dictionary[kPosterModelTextWeight] floatValue];
     }
     
     if (![dictionary[kPosterModelTextWidth] isKindOfClass:[NSNull class]]) {

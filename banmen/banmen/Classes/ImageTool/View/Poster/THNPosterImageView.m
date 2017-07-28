@@ -9,6 +9,7 @@
 #import "THNPosterImageView.h"
 #import "UIColor+Extension.h"
 #import "MainMacro.h"
+#import <YYImage/YYImage.h>
 
 @implementation THNPosterImageView
 
@@ -72,7 +73,7 @@
 }
 
 - (void)thn_setImageViewData:(UIImage *)imageData {
-    _loadImageView.image = imageData;
+    self.loadImageView.image = imageData;
     
     if (imageData == nil) {
         return;
