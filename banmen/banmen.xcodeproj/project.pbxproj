@@ -185,41 +185,40 @@
 		F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */; };
 		F5E5FBDC1F29F9D000F66BC9 /* THNArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */; };
 		F5E5FBDD1F29F9D000F66BC9 /* THNArticleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */; };
-		F5E5FCB11F2A016700F66BC9 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E5FCA81F2A014700F66BC9 /* MMMarkdown.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F5E5FCA71F2A014700F66BC9 /* PBXContainerItemProxy */ = {
+		F5E5FCF71F2B211000F66BC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+			containerPortal = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BED7620F1B37810000687B36;
 			remoteInfo = "MMMarkdown (iOS)";
 		};
-		F5E5FCA91F2A014700F66BC9 /* PBXContainerItemProxy */ = {
+		F5E5FCF91F2B211000F66BC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+			containerPortal = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BED761571B374D6700687B36;
 			remoteInfo = "MMMarkdown (OS X)";
 		};
-		F5E5FCAB1F2A014700F66BC9 /* PBXContainerItemProxy */ = {
+		F5E5FCFB1F2B211000F66BC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+			containerPortal = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BE23E8F41C0CF3EF0087F587;
 			remoteInfo = "MMMarkdown (tvOS)";
 		};
-		F5E5FCAD1F2A014700F66BC9 /* PBXContainerItemProxy */ = {
+		F5E5FCFD1F2B211000F66BC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+			containerPortal = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BE23E9131C0CF77D0087F587;
 			remoteInfo = "MMMarkdown (watchOS)";
 		};
-		F5E5FCAF1F2A014700F66BC9 /* PBXContainerItemProxy */ = {
+		F5E5FCFF1F2B211000F66BC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+			containerPortal = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BED761611B374D6700687B36;
 			remoteInfo = MMMarkdownTests;
@@ -529,7 +528,7 @@
 		F5E5FBD91F29F9D000F66BC9 /* THNArticleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNArticleDetailViewController.h; sourceTree = "<group>"; };
 		F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNArticleDetailViewController.m; sourceTree = "<group>"; };
 		F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THNArticleDetailViewController.xib; sourceTree = "<group>"; };
-		F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "../../../../../Downloads/MMMarkdown-master-2/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
+		F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MMMarkdown.xcodeproj; sourceTree = "<group>"; };
 		F5E98CE11F28A5F700308804 /* banmen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = banmen.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -538,7 +537,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5E5FCB11F2A016700F66BC9 /* MMMarkdown.framework in Frameworks */,
 				C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1109,7 +1107,7 @@
 		D8B0710F1EF8F415005CC051 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */,
+				F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -1440,14 +1438,14 @@
 			path = Joint;
 			sourceTree = "<group>";
 		};
-		F5E5FCA01F2A014700F66BC9 /* Products */ = {
+		F5E5FCF01F2B211000F66BC9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F5E5FCA81F2A014700F66BC9 /* MMMarkdown.framework */,
-				F5E5FCAA1F2A014700F66BC9 /* MMMarkdown.framework */,
-				F5E5FCAC1F2A014700F66BC9 /* MMMarkdown.framework */,
-				F5E5FCAE1F2A014700F66BC9 /* MMMarkdown.framework */,
-				F5E5FCB01F2A014700F66BC9 /* MMMarkdownTests.xctest */,
+				F5E5FCF81F2B211000F66BC9 /* MMMarkdown.framework */,
+				F5E5FCFA1F2B211000F66BC9 /* MMMarkdown.framework */,
+				F5E5FCFC1F2B211000F66BC9 /* MMMarkdown.framework */,
+				F5E5FCFE1F2B211000F66BC9 /* MMMarkdown.framework */,
+				F5E5FD001F2B211000F66BC9 /* MMMarkdownTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1511,8 +1509,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F5E5FCA01F2A014700F66BC9 /* Products */;
-					ProjectRef = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+					ProductGroup = F5E5FCF01F2B211000F66BC9 /* Products */;
+					ProjectRef = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1523,39 +1521,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F5E5FCA81F2A014700F66BC9 /* MMMarkdown.framework */ = {
+		F5E5FCF81F2B211000F66BC9 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = F5E5FCA71F2A014700F66BC9 /* PBXContainerItemProxy */;
+			remoteRef = F5E5FCF71F2B211000F66BC9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F5E5FCAA1F2A014700F66BC9 /* MMMarkdown.framework */ = {
+		F5E5FCFA1F2B211000F66BC9 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = F5E5FCA91F2A014700F66BC9 /* PBXContainerItemProxy */;
+			remoteRef = F5E5FCF91F2B211000F66BC9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F5E5FCAC1F2A014700F66BC9 /* MMMarkdown.framework */ = {
+		F5E5FCFC1F2B211000F66BC9 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = F5E5FCAB1F2A014700F66BC9 /* PBXContainerItemProxy */;
+			remoteRef = F5E5FCFB1F2B211000F66BC9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F5E5FCAE1F2A014700F66BC9 /* MMMarkdown.framework */ = {
+		F5E5FCFE1F2B211000F66BC9 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = F5E5FCAD1F2A014700F66BC9 /* PBXContainerItemProxy */;
+			remoteRef = F5E5FCFD1F2B211000F66BC9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F5E5FCB01F2A014700F66BC9 /* MMMarkdownTests.xctest */ = {
+		F5E5FD001F2B211000F66BC9 /* MMMarkdownTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = MMMarkdownTests.xctest;
-			remoteRef = F5E5FCAF1F2A014700F66BC9 /* PBXContainerItemProxy */;
+			remoteRef = F5E5FCFF1F2B211000F66BC9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
