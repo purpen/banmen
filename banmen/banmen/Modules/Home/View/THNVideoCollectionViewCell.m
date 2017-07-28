@@ -36,6 +36,7 @@
         [_discribeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.contentView.mas_top).mas_offset(10);
             make.left.mas_equalTo(self.goodsImageView.mas_right).mas_offset(10);
+            make.width.mas_lessThanOrEqualTo(150);
         }];
         
         [self.contentView addSubview:self.timeLabel];
@@ -51,31 +52,31 @@
     _model = model;
     [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:model.video_image] placeholderImage:[UIImage imageNamed:@"goodsImagDefault"]];
     self.discribeLabel.text = model.describe;
-    NSInteger second = [self durationWithVideo:[NSURL URLWithString:model.video]];
-    
-    NSString *str;
-    if (second > 60) {
-        NSInteger minutes = second / 60;
-        NSString *str2;
-        if (minutes >= 10) {
-            str2 = [NSString stringWithFormat:@"%ld",minutes];
-        } else {
-            str2 = [NSString stringWithFormat:@"0%ld",minutes];
-        }
-        NSInteger seconds = second - minutes * 60;
-        if (seconds >= 10) {
-            str = [NSString stringWithFormat:@"%@:%ld",str2 ,seconds];
-        } else {
-            str = [NSString stringWithFormat:@"%@:0%ld",str2 ,seconds];
-        }
-    } else {
-        if (second >= 10) {
-            str = [NSString stringWithFormat:@"00:%ld",second];
-        } else {
-            str = [NSString stringWithFormat:@"00:0%ld",second];
-        }
-    }
-    self.timeLabel.text = str;
+//    NSInteger second = [self durationWithVideo:[NSURL URLWithString:model.video]];
+//    
+//    NSString *str;
+//    if (second > 60) {
+//        NSInteger minutes = second / 60;
+//        NSString *str2;
+//        if (minutes >= 10) {
+//            str2 = [NSString stringWithFormat:@"%ld",minutes];
+//        } else {
+//            str2 = [NSString stringWithFormat:@"0%ld",minutes];
+//        }
+//        NSInteger seconds = second - minutes * 60;
+//        if (seconds >= 10) {
+//            str = [NSString stringWithFormat:@"%@:%ld",str2 ,seconds];
+//        } else {
+//            str = [NSString stringWithFormat:@"%@:0%ld",str2 ,seconds];
+//        }
+//    } else {
+//        if (second >= 10) {
+//            str = [NSString stringWithFormat:@"00:%ld",second];
+//        } else {
+//            str = [NSString stringWithFormat:@"00:0%ld",second];
+//        }
+//    }
+//    self.timeLabel.text = str;
 }
 
 -(NSInteger)durationWithVideo:(NSURL*)videoUrl{

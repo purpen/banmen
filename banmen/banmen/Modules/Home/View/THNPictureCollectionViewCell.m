@@ -35,6 +35,7 @@
         [_discribeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView.mas_centerY).mas_offset(0);
             make.left.mas_equalTo(self.goodsImageView.mas_right).mas_offset(10);
+            make.width.mas_lessThanOrEqualTo(150);
         }];
     }
     return self;

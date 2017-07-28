@@ -46,7 +46,7 @@
         if (self.sender_selected) {
             layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
         } else {
-            layout.sectionInset = UIEdgeInsetsMake(15, 15, 0, 15);
+            layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
         }
         _collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
@@ -83,31 +83,31 @@
         make.right.bottom.mas_equalTo(cell.contentView).mas_offset(-5);
     }];
     
-    NSInteger second = [self durationWithVideo:[NSURL URLWithString:model.video]];
-    
-    NSString *str;
-    if (second > 60) {
-        NSInteger minutes = second / 60;
-        NSString *str2;
-        if (minutes >= 10) {
-            str2 = [NSString stringWithFormat:@"%ld",minutes];
-        } else {
-            str2 = [NSString stringWithFormat:@"0%ld",minutes];
-        }
-        NSInteger seconds = second - minutes * 60;
-        if (seconds >= 10) {
-            str = [NSString stringWithFormat:@"%@:%ld",str2 ,seconds];
-        } else {
-            str = [NSString stringWithFormat:@"%@:0%ld",str2 ,seconds];
-        }
-    } else {
-        if (second >= 10) {
-            str = [NSString stringWithFormat:@"00:%ld",second];
-        } else {
-            str = [NSString stringWithFormat:@"00:0%ld",second];
-        }
-    }
-    label.text = str;
+//    NSInteger second = [self durationWithVideo:[NSURL URLWithString:model.video]];
+//
+//    NSString *str;
+//    if (second > 60) {
+//        NSInteger minutes = second / 60;
+//        NSString *str2;
+//        if (minutes >= 10) {
+//            str2 = [NSString stringWithFormat:@"%ld",minutes];
+//        } else {
+//            str2 = [NSString stringWithFormat:@"0%ld",minutes];
+//        }
+//        NSInteger seconds = second - minutes * 60;
+//        if (seconds >= 10) {
+//            str = [NSString stringWithFormat:@"%@:%ld",str2 ,seconds];
+//        } else {
+//            str = [NSString stringWithFormat:@"%@:0%ld",str2 ,seconds];
+//        }
+//    } else {
+//        if (second >= 10) {
+//            str = [NSString stringWithFormat:@"00:%ld",second];
+//        } else {
+//            str = [NSString stringWithFormat:@"00:0%ld",second];
+//        }
+//    }
+//    label.text = str;
     return cell;
 }
 
@@ -123,7 +123,7 @@
     if (self.sender_selected) {
         return CGSizeMake(SCREEN_WIDTH, 51);
     }
-    return CGSizeMake((SCREEN_WIDTH-45)/2, (SCREEN_WIDTH-45)/2);
+    return CGSizeMake((SCREEN_WIDTH-45)/2+2.5, (SCREEN_WIDTH-45)/2);
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
