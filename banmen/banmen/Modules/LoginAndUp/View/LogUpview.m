@@ -66,7 +66,6 @@
         _logUpBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _logUpBtn.backgroundColor = [UIColor colorWithHexString:@"#be8914"];
         [_logUpBtn setTitle:@"注册" forState:(UIControlStateNormal)];
-        _logUpBtn.font = [UIFont systemFontOfSize:16];
         _logUpBtn.layer.masksToBounds = YES;
         _logUpBtn.layer.cornerRadius = 2;
     }

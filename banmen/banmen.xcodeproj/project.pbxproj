@@ -85,6 +85,7 @@
 		D8B071201EF8FB38005CC051 /* THNImageToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B0711F1EF8FB38005CC051 /* THNImageToolViewController.m */; };
 		D8B071231EF8FB80005CC051 /* THNLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B071221EF8FB80005CC051 /* THNLayoutViewController.m */; };
 		D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B369451EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m */; };
+		D8B463F21F2B327000D93314 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B463E91F2B326300D93314 /* MMMarkdown.framework */; };
 		D8D378DD1EFA4C8500C89889 /* THNPhotoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */; };
 		D8D378E01EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D378DF1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m */; };
 		D8D5EB501F29D41500980933 /* THNPosterImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D5EB4F1F29D41500980933 /* THNPosterImageView.m */; };
@@ -186,6 +187,44 @@
 		F5E5FBDC1F29F9D000F66BC9 /* THNArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */; };
 		F5E5FBDD1F29F9D000F66BC9 /* THNArticleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D8B463E81F2B326300D93314 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED7620F1B37810000687B36;
+			remoteInfo = "MMMarkdown (iOS)";
+		};
+		D8B463EA1F2B326300D93314 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED761571B374D6700687B36;
+			remoteInfo = "MMMarkdown (OS X)";
+		};
+		D8B463EC1F2B326300D93314 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE23E8F41C0CF3EF0087F587;
+			remoteInfo = "MMMarkdown (tvOS)";
+		};
+		D8B463EE1F2B326300D93314 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE23E9131C0CF77D0087F587;
+			remoteInfo = "MMMarkdown (watchOS)";
+		};
+		D8B463F01F2B326300D93314 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED761611B374D6700687B36;
+			remoteInfo = MMMarkdownTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		093B00529CC62D5B0A9C39F7 /* Pods-banmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-banmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-banmen/Pods-banmen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -322,6 +361,7 @@
 		D8B071221EF8FB80005CC051 /* THNLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNLayoutViewController.m; sourceTree = "<group>"; };
 		D8B369441EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPhotoItemCollectionViewCell.h; sourceTree = "<group>"; };
 		D8B369451EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPhotoItemCollectionViewCell.m; sourceTree = "<group>"; };
+		D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "MMMarkdown-master/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
 		D8D378DB1EFA4C8500C89889 /* THNPhotoListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPhotoListView.h; sourceTree = "<group>"; };
 		D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPhotoListView.m; sourceTree = "<group>"; };
 		D8D378DE1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPhotoAlbumTableViewCell.h; sourceTree = "<group>"; };
@@ -498,6 +538,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8B463F21F2B327000D93314 /* MMMarkdown.framework in Frameworks */,
 				C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1068,6 +1109,7 @@
 		D8B0710F1EF8F415005CC051 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -1140,6 +1182,18 @@
 				D8B0711F1EF8FB38005CC051 /* THNImageToolViewController.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		D8B463E11F2B326300D93314 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D8B463E91F2B326300D93314 /* MMMarkdown.framework */,
+				D8B463EB1F2B326300D93314 /* MMMarkdown.framework */,
+				D8B463ED1F2B326300D93314 /* MMMarkdown.framework */,
+				D8B463EF1F2B326300D93314 /* MMMarkdown.framework */,
+				D8B463F11F2B326300D93314 /* MMMarkdownTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D8D5EB511F29E4EC00980933 /* ToolHome */ = {
@@ -1455,12 +1509,56 @@
 			mainGroup = D8D9C2391EF278C5000688C6;
 			productRefGroup = D8D9C2431EF278C5000688C6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D8B463E11F2B326300D93314 /* Products */;
+					ProjectRef = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D8D9C2411EF278C5000688C6 /* banmen */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D8B463E91F2B326300D93314 /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = D8B463E81F2B326300D93314 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D8B463EB1F2B326300D93314 /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = D8B463EA1F2B326300D93314 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D8B463ED1F2B326300D93314 /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = D8B463EC1F2B326300D93314 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D8B463EF1F2B326300D93314 /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = D8B463EE1F2B326300D93314 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D8B463F11F2B326300D93314 /* MMMarkdownTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MMMarkdownTests.xctest;
+			remoteRef = D8B463F01F2B326300D93314 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D8D9C2401EF278C5000688C6 /* Resources */ = {
