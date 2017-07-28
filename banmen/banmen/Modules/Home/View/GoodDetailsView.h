@@ -22,10 +22,10 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) GoodsDetailModel *model;
 @property(nonatomic,weak) id <GoodDetailsViewDelegate> delegate;
-@property (nonatomic, strong) NSArray *modelAry;
-@property (nonatomic, strong) NSArray *articleModelAry;
-@property (nonatomic, strong) NSArray *pictureModelAry;
-@property (nonatomic, strong) NSArray *videoModelAry;
+@property (nonatomic, strong) NSMutableArray *modelAry;
+@property (nonatomic, strong) NSMutableArray *articleModelAry;
+@property (nonatomic, strong) NSMutableArray *pictureModelAry;
+@property (nonatomic, strong) NSMutableArray *videoModelAry;
 @property (nonatomic, assign) NSInteger category;
 @property (nonatomic, assign) BOOL sender_selected;
 @property (nonatomic, strong) UIViewController *controller;

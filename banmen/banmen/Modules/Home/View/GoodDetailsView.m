@@ -30,22 +30,22 @@
     return self;
 }
 
--(void)setModelAry:(NSArray *)modelAry{
+-(void)setModelAry:(NSMutableArray *)modelAry{
     _modelAry = modelAry;
     [self.tableView reloadData];
 }
 
--(void)setArticleModelAry:(NSArray *)articleModelAry{
+-(void)setArticleModelAry:(NSMutableArray *)articleModelAry{
     _articleModelAry = articleModelAry;
     [self.tableView reloadData];
 }
 
--(void)setVideoModelAry:(NSArray *)videoModelAry{
+-(void)setVideoModelAry:(NSMutableArray *)videoModelAry{
     _videoModelAry = videoModelAry;
     [self.tableView reloadData];
 }
 
--(void)setPictureModelAry:(NSArray *)pictureModelAry{
+-(void)setPictureModelAry:(NSMutableArray *)pictureModelAry{
     _pictureModelAry = pictureModelAry;
     [self.tableView reloadData];
 }
@@ -65,6 +65,8 @@
         [_tableView registerClass:[MaterialTableViewCell class] forCellReuseIdentifier:@"MaterialTableViewCell"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.estimatedRowHeight = 438/2+5;
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.showsHorizontalScrollIndicator = NO;
     }
     return _tableView;
 }
@@ -82,12 +84,12 @@
                 //文字素材
             {
                 if (self.sender_selected) {
-                    return 190/2+(112+15)*(self.modelAry.count)+30;
+                    return 190/2+(112+15)*(self.modelAry.count)+50;
                 } else {
                     if (self.modelAry.count % 2 == 0) {
-                        return 190/2+(361/2+15)*(self.modelAry.count/2)+30;
+                        return 190/2+(361/2+15)*(self.modelAry.count/2)+50;
                     }
-                    return 190/2+(361/2+15)*(self.modelAry.count/2+1)+30;
+                    return 190/2+(361/2+15)*(self.modelAry.count/2+1)+50;
                 }
             }
                 break;
@@ -95,12 +97,12 @@
                 //文章
             {
                 if (self.sender_selected) {
-                    return 190/2+(112+15)*(self.articleModelAry.count)+30;
+                    return 190/2+(112+15)*(self.articleModelAry.count)+50;
                 } else {
                     if (self.articleModelAry.count % 2 == 0) {
-                        return 190/2+(361/2+15)*(self.articleModelAry.count/2)+30;
+                        return 190/2+(361/2+15)*(self.articleModelAry.count/2)+50;
                     }
-                    return 190/2+(361/2+15)*(self.articleModelAry.count/2+1)+30;
+                    return 190/2+(361/2+15)*(self.articleModelAry.count/2+1)+50;
                 }
             }
                 break;
@@ -108,12 +110,12 @@
                 //图片
             {
                 if (self.sender_selected) {
-                    return 190/2+(51+15)*(self.pictureModelAry.count)+30;
+                    return 190/2+(51+15)*(self.pictureModelAry.count)+50;
                 } else {
                     if (self.pictureModelAry.count % 4 == 0) {
-                        return 190/2+((SCREEN_WIDTH-3)/4+15)*(self.pictureModelAry.count/4)+30;
+                        return 190/2+((SCREEN_WIDTH-3)/4+15)*(self.pictureModelAry.count/4)+50;
                     }
-                    return 190/2+((SCREEN_WIDTH-3)/4+15)*(self.pictureModelAry.count/4+1)+30;
+                    return 190/2+((SCREEN_WIDTH-3)/4+15)*(self.pictureModelAry.count/4+1)+50;
                 }
             }
                 break;
@@ -121,12 +123,12 @@
                 //视频
             {
                 if (self.sender_selected) {
-                    return 190/2+(51+15)*(self.videoModelAry.count)+30;
+                    return 190/2+(51+15)*(self.videoModelAry.count)+50;
                 } else {
                     if (self.videoModelAry.count % 2 == 0) {
-                        return 190/2+((SCREEN_WIDTH-45)/2+15)*(self.videoModelAry.count/2)+30;
+                        return 190/2+((SCREEN_WIDTH-45)/2+15)*(self.videoModelAry.count/2)+50;
                     }
-                    return 190/2+((SCREEN_WIDTH-45)/2+15)*(self.videoModelAry.count/2+1)+30;
+                    return 190/2+((SCREEN_WIDTH-45)/2+15)*(self.videoModelAry.count/2+1)+50;
                 }
             }
                 break;

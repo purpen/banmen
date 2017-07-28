@@ -103,6 +103,7 @@
         THNGoodsArticleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsArticleCollectionViewCell" forIndexPath:indexPath];
         cell.modelAry = self.articleModelAry;
         cell.sender_selected = self.switchingArrangementBtn.selected;
+        cell.controller = self.controller;
         return cell;
     } else if (indexPath.row == 2) {
         THNGoodsPictureCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNGoodsPictureCollectionViewCell" forIndexPath:indexPath];

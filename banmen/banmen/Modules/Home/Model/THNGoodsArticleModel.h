@@ -19,8 +19,10 @@
 @interface THNGoodsArticleModel : NSObject
 
 @property(nonatomic, copy) NSString *type;
+@property(nonatomic, copy) NSString *content;
 @property(nonatomic, copy) NSString *product_number;
 @property(nonatomic, copy) NSString *article_describe;
+@property(nonatomic, copy) NSString *describe;
 @property(nonatomic,weak) id <THNGoodsArticleModelDelegate> delegate;
 @property(nonatomic,assign) NSInteger current_page;
 @property(nonatomic,assign) NSInteger total_pages;

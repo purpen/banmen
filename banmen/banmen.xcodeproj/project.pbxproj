@@ -183,7 +183,48 @@
 		F5B30B6D1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */; };
 		F5C8EBED1F21EB83009FC203 /* GoodsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */; };
 		F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */; };
+		F5E5FBDC1F29F9D000F66BC9 /* THNArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */; };
+		F5E5FBDD1F29F9D000F66BC9 /* THNArticleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */; };
+		F5E5FCB11F2A016700F66BC9 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E5FCA81F2A014700F66BC9 /* MMMarkdown.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F5E5FCA71F2A014700F66BC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED7620F1B37810000687B36;
+			remoteInfo = "MMMarkdown (iOS)";
+		};
+		F5E5FCA91F2A014700F66BC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED761571B374D6700687B36;
+			remoteInfo = "MMMarkdown (OS X)";
+		};
+		F5E5FCAB1F2A014700F66BC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE23E8F41C0CF3EF0087F587;
+			remoteInfo = "MMMarkdown (tvOS)";
+		};
+		F5E5FCAD1F2A014700F66BC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE23E9131C0CF77D0087F587;
+			remoteInfo = "MMMarkdown (watchOS)";
+		};
+		F5E5FCAF1F2A014700F66BC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED761611B374D6700687B36;
+			remoteInfo = MMMarkdownTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		093B00529CC62D5B0A9C39F7 /* Pods-banmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-banmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-banmen/Pods-banmen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -485,6 +526,10 @@
 		F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailTableViewCell.m; sourceTree = "<group>"; };
 		F5C8EBEE1F21F032009FC203 /* GoodsDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailModel.h; sourceTree = "<group>"; };
 		F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailModel.m; sourceTree = "<group>"; };
+		F5E5FBD91F29F9D000F66BC9 /* THNArticleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNArticleDetailViewController.h; sourceTree = "<group>"; };
+		F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNArticleDetailViewController.m; sourceTree = "<group>"; };
+		F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THNArticleDetailViewController.xib; sourceTree = "<group>"; };
+		F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "../../../../../Downloads/MMMarkdown-master-2/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
 		F5E98CE11F28A5F700308804 /* banmen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = banmen.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -493,6 +538,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5E5FCB11F2A016700F66BC9 /* MMMarkdown.framework in Frameworks */,
 				C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1063,6 +1109,7 @@
 		D8B0710F1EF8F415005CC051 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -1375,6 +1422,9 @@
 				F51AE7971F29D9B30093D9EB /* THNWordDetailViewController.h */,
 				F51AE7981F29D9B30093D9EB /* THNWordDetailViewController.m */,
 				F51AE7991F29D9B30093D9EB /* THNWordDetailViewController.xib */,
+				F5E5FBD91F29F9D000F66BC9 /* THNArticleDetailViewController.h */,
+				F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */,
+				F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -1388,6 +1438,18 @@
 				F58DE8ED1F20B05800C80ECF /* THNJointContentView.m */,
 			);
 			path = Joint;
+			sourceTree = "<group>";
+		};
+		F5E5FCA01F2A014700F66BC9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5E5FCA81F2A014700F66BC9 /* MMMarkdown.framework */,
+				F5E5FCAA1F2A014700F66BC9 /* MMMarkdown.framework */,
+				F5E5FCAC1F2A014700F66BC9 /* MMMarkdown.framework */,
+				F5E5FCAE1F2A014700F66BC9 /* MMMarkdown.framework */,
+				F5E5FCB01F2A014700F66BC9 /* MMMarkdownTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1447,12 +1509,56 @@
 			mainGroup = D8D9C2391EF278C5000688C6;
 			productRefGroup = D8D9C2431EF278C5000688C6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F5E5FCA01F2A014700F66BC9 /* Products */;
+					ProjectRef = F5E5FC9F1F2A014700F66BC9 /* MMMarkdown.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D8D9C2411EF278C5000688C6 /* banmen */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F5E5FCA81F2A014700F66BC9 /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = F5E5FCA71F2A014700F66BC9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F5E5FCAA1F2A014700F66BC9 /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = F5E5FCA91F2A014700F66BC9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F5E5FCAC1F2A014700F66BC9 /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = F5E5FCAB1F2A014700F66BC9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F5E5FCAE1F2A014700F66BC9 /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = F5E5FCAD1F2A014700F66BC9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F5E5FCB01F2A014700F66BC9 /* MMMarkdownTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MMMarkdownTests.xctest;
+			remoteRef = F5E5FCAF1F2A014700F66BC9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D8D9C2401EF278C5000688C6 /* Resources */ = {
@@ -1512,6 +1618,7 @@
 				D8736A961F04890500BF9F33 /* three_style_106.plist in Resources */,
 				D8736A971F04890500BF9F33 /* three_style_107.plist in Resources */,
 				D8736A981F04890500BF9F33 /* three_style_108.plist in Resources */,
+				F5E5FBDD1F29F9D000F66BC9 /* THNArticleDetailViewController.xib in Resources */,
 				D8736A991F04890500BF9F33 /* two_style_100.plist in Resources */,
 				D8736A9A1F04890500BF9F33 /* two_style_101.plist in Resources */,
 				D8736A9B1F04890500BF9F33 /* two_style_104.plist in Resources */,
@@ -1677,6 +1784,7 @@
 				D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */,
 				F523A8161F1F76F300DD5C8B /* UserView.m in Sources */,
 				F523A8131F1F694C00DD5C8B /* RecommendedModel.m in Sources */,
+				F5E5FBDC1F29F9D000F66BC9 /* THNArticleDetailViewController.m in Sources */,
 				F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */,
 				F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */,
 				F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */,
@@ -1840,6 +1948,14 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/TYAlertController\"",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/JCore\"",
+					"\"${PODS_ROOT}/Headers/Public/JPush\"",
+					"\"${PODS_ROOT}/Headers/Public/UMengUShare\"",
+					"$(CONFIGURATION_BUILD_DIR)/MMMarkdown-iOS/public/",
+				);
 				INFOPLIST_FILE = banmen/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1908,6 +2024,14 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SDWebImage\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/TYAlertController\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/JCore\"",
+					"\"${PODS_ROOT}/Headers/Public/JPush\"",
+					"\"${PODS_ROOT}/Headers/Public/UMengUShare\"",
+					"$(CONFIGURATION_BUILD_DIR)/MMMarkdown-iOS/public/",
 				);
 				INFOPLIST_FILE = banmen/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

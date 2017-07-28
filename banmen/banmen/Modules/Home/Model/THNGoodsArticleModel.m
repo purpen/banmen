@@ -24,7 +24,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"per_page"] = @(10);
+    params[@"per_page"] = @(30);
     params[@"page"] = @(self.current_page);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     params[@"token"] = [defaults objectForKey:@"token"];
@@ -46,7 +46,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"per_page"] = @(10);
+    params[@"per_page"] = @(30);
     params[@"page"] = @(current_page);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     params[@"token"] = [defaults objectForKey:@"token"];

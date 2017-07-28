@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>app想访问您的相册</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleExecutable</key>
@@ -65,6 +63,10 @@
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>wechat</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wxf380e849b0380d92</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
@@ -125,6 +127,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>app想访问您的相册</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>挑选您的照片</string>
 	<key>UILaunchStoryboardName</key>

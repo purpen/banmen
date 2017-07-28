@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "THNwordCollectionViewCell.h"
 #import "UIView+FSExtension.h"
+#import "THNArticleDetailViewController.h"
 
 @interface THNGoodsArticleCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -71,12 +72,19 @@
     if (self.sender_selected) {
         return CGSizeMake((SCREEN_WIDTH-20), 112);
     } else {
-        return CGSizeMake((SCREEN_WIDTH-45)/2, 361/2);
+        return CGSizeMake((SCREEN_WIDTH-45)/2+2.5, 361/2);
     }
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.modelAry.count;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    THNGoodsArticleModel *model = self.modelAry[indexPath.row];
+    THNArticleDetailViewController *vc = [[THNArticleDetailViewController alloc] init];
+    vc.content = model.content;
+    [self.controller.navigationController pushViewController:vc animated:YES];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{

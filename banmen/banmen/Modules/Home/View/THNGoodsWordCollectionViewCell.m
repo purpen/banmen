@@ -17,7 +17,6 @@
 
 @interface THNGoodsWordCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-
 @end
 
 @implementation THNGoodsWordCollectionViewCell
@@ -72,7 +71,7 @@
     if (self.sender_selected) {
         return CGSizeMake((SCREEN_WIDTH-20), 112);
     } else {
-        return CGSizeMake((SCREEN_WIDTH-45)/2, 361/2);
+        return CGSizeMake((SCREEN_WIDTH-45)/2+2.5, 361/2);
     }
 }
 
@@ -80,6 +79,8 @@
     THNGoodsWorld *model = self.modelAry[indexPath.row];
     THNWordDetailViewController *vc = [[THNWordDetailViewController alloc] init];
     vc.word = model.describe;
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    self.controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.controller presentViewController:vc animated:YES completion:nil];
 }
 
