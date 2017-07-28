@@ -30,22 +30,22 @@
     return self;
 }
 
--(void)setModelAry:(NSArray *)modelAry{
+-(void)setModelAry:(NSMutableArray *)modelAry{
     _modelAry = modelAry;
     [self.tableView reloadData];
 }
 
--(void)setArticleModelAry:(NSArray *)articleModelAry{
+-(void)setArticleModelAry:(NSMutableArray *)articleModelAry{
     _articleModelAry = articleModelAry;
     [self.tableView reloadData];
 }
 
--(void)setVideoModelAry:(NSArray *)videoModelAry{
+-(void)setVideoModelAry:(NSMutableArray *)videoModelAry{
     _videoModelAry = videoModelAry;
     [self.tableView reloadData];
 }
 
--(void)setPictureModelAry:(NSArray *)pictureModelAry{
+-(void)setPictureModelAry:(NSMutableArray *)pictureModelAry{
     _pictureModelAry = pictureModelAry;
     [self.tableView reloadData];
 }

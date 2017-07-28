@@ -166,7 +166,7 @@
 }
 
 -(void)video:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
-    self.goodDetailsView.videoModelAry = modelAry;
+    self.goodDetailsView.videoModelAry = [NSMutableArray arrayWithArray:modelAry];
     self.video_current_page = current_page;
     self.video_total_pages = total_rows;
     [self.goodDetailsView.tableView.mj_header endRefreshing];
@@ -174,16 +174,15 @@
 }
 
 -(void)videoMore:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
-    NSMutableArray *ary = [NSMutableArray arrayWithArray:self.goodDetailsView.modelAry];
-    [ary addObjectsFromArray:modelAry];
-    self.goodDetailsView.videoModelAry = (NSArray*)ary;
+    [self.goodDetailsView.videoModelAry addObjectsFromArray:modelAry];
+    [self.goodDetailsView.tableView reloadData];
     self.video_current_page = current_page;
     self.video_total_pages = total_rows;
     [self checkFooterState];
 }
 
 -(void)picture:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
-    self.goodDetailsView.pictureModelAry = modelAry;
+    self.goodDetailsView.pictureModelAry = [NSMutableArray arrayWithArray:modelAry];
     [self.goodDetailsView.tableView.mj_header endRefreshing];
     self.picture_current_page = current_page;
     self.picture_total_pages = total_rows;
@@ -191,16 +190,15 @@
 }
 
 -(void)pictureMore:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
-    NSMutableArray *ary = [NSMutableArray arrayWithArray:self.goodDetailsView.modelAry];
-    [ary addObjectsFromArray:modelAry];
-    self.goodDetailsView.pictureModelAry = (NSArray*)ary;
+    [self.goodDetailsView.pictureModelAry addObjectsFromArray:modelAry];
+    [self.goodDetailsView.tableView reloadData];
     self.picture_current_page = current_page;
     self.picture_total_pages = total_rows;
     [self checkFooterState];
 }
 
 -(void)article:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
-    self.goodDetailsView.articleModelAry = modelAry;
+    self.goodDetailsView.articleModelAry = [NSMutableArray arrayWithArray:modelAry];
     self.article_current_page = current_page;
     [self.goodDetailsView.tableView.mj_header endRefreshing];
     self.article_total_pages = total_rows;
@@ -208,9 +206,8 @@
 }
 
 -(void)articleMore:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
-    NSMutableArray *ary = [NSMutableArray arrayWithArray:self.goodDetailsView.modelAry];
-    [ary addObjectsFromArray:modelAry];
-    self.goodDetailsView.articleModelAry = (NSArray*)ary;
+    [self.goodDetailsView.articleModelAry addObjectsFromArray:modelAry];
+    [self.goodDetailsView.tableView reloadData];
     self.article_current_page = current_page;
     self.article_total_pages = total_rows;
     [self checkFooterState];
@@ -221,7 +218,7 @@
     self.word_total_pages = total_rows;
     [self.goodDetailsView.tableView.mj_header endRefreshing];
     self.goodsWorldModelAry = modelAry;
-    self.goodDetailsView.modelAry = modelAry;
+    self.goodDetailsView.modelAry = [NSMutableArray arrayWithArray:modelAry];
     [self checkFooterState];
 }
 
@@ -229,9 +226,8 @@
     self.word_current_page = current_page;
     self.word_total_pages = total_rows;
     self.goodsWorldModelAry = modelAry;
-    NSMutableArray *ary = [NSMutableArray arrayWithArray:self.goodDetailsView.modelAry];
-    [ary addObjectsFromArray:modelAry];
-    self.goodDetailsView.modelAry = (NSArray*)ary;
+    [self.goodDetailsView.modelAry addObjectsFromArray:modelAry];
+    [self.goodDetailsView.tableView reloadData];
     [self checkFooterState];
 }
 

@@ -32,10 +32,6 @@
 
 -(void)setWord:(NSString *)word{
     self.textView.text = word;
-    [_wordView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(500);
-    }];
-    NSLog(@"wdaas %f", self.wordView.height);
 }
 
 - (IBAction)cancel:(id)sender {

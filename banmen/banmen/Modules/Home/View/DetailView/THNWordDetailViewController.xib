@@ -22,14 +22,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="48q-YF-hUy">
-                    <rect key="frame" x="15" y="269.5" width="345" height="128"/>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48q-YF-hUy">
+                    <rect key="frame" x="15" y="178.5" width="345" height="310"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uRb-vP-xD6">
-                            <rect key="frame" x="5" y="5" width="335" height="118"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uRb-vP-xD6">
+                            <rect key="frame" x="5" y="5" width="335" height="300"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="Bof-cw-YYn"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="bmN-nj-OzC"/>
                             </constraints>
                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -41,12 +41,11 @@
                         <constraint firstItem="uRb-vP-xD6" firstAttribute="top" secondItem="48q-YF-hUy" secondAttribute="top" constant="5" id="38N-a9-9Th"/>
                         <constraint firstAttribute="bottom" secondItem="uRb-vP-xD6" secondAttribute="bottom" constant="5" id="89H-r9-98W"/>
                         <constraint firstAttribute="trailing" secondItem="uRb-vP-xD6" secondAttribute="trailing" constant="5" id="8yd-u5-hoA"/>
-                        <constraint firstAttribute="height" constant="128" id="RoQ-DT-YPL"/>
                         <constraint firstItem="uRb-vP-xD6" firstAttribute="leading" secondItem="48q-YF-hUy" secondAttribute="leading" constant="5" id="kLq-ta-nmj"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptp-9A-7I1">
-                    <rect key="frame" x="164" y="427.5" width="46" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptp-9A-7I1">
+                    <rect key="frame" x="164" y="518.5" width="46" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="0Ev-lv-UYT"/>
                         <constraint firstAttribute="width" constant="46" id="gdu-gu-Ngl"/>

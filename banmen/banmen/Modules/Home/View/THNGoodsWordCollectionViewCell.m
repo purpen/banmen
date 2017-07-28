@@ -72,7 +72,7 @@
     if (self.sender_selected) {
         return CGSizeMake((SCREEN_WIDTH-20), 112);
     } else {
-        return CGSizeMake((SCREEN_WIDTH-45)/2, 361/2);
+        return CGSizeMake((SCREEN_WIDTH-45)/2+2.5, 361/2);
     }
 }
 
