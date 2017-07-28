@@ -17,7 +17,6 @@
 
 @interface THNGoodsWordCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-
 @end
 
 @implementation THNGoodsWordCollectionViewCell
@@ -80,6 +79,8 @@
     THNGoodsWorld *model = self.modelAry[indexPath.row];
     THNWordDetailViewController *vc = [[THNWordDetailViewController alloc] init];
     vc.word = model.describe;
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    self.controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.controller presentViewController:vc animated:YES completion:nil];
 }
 
