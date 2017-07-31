@@ -26,8 +26,13 @@
     for (int i = 0; i<model.skus.count; i++) {
         NSDictionary *dict = model.skus[i];
         NSString *str1 = dict[@"mode"];
-        NSString *str2 = [NSString stringWithFormat:@"/%@", str1];
-        [str stringByAppendingString:str2];
+        NSString *str2;
+        if (i == 0) {
+            str2 = [NSString stringWithFormat:@"%@", str1];
+        } else {
+            str2 = [NSString stringWithFormat:@"/%@", str1];
+        }
+        str = [str stringByAppendingString:str2];
     }
     self.skuLabel.text = str;
     if (model.status == 1) {
@@ -101,6 +106,8 @@
         [_editPicturesMaterialBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.relationshipBtn.mas_right).mas_offset(8);
             make.centerY.mas_equalTo(self.relationshipBtn.mas_centerY).mas_offset(0);
+            make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-15/SCREEN_HEIGHT*667.0);
+            make.width.mas_equalTo(self.relationshipBtn.mas_width);
         }];
     }
     return self;

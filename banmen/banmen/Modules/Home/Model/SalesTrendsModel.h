@@ -20,8 +20,6 @@
 @property(nonatomic, copy) NSString *sum_money;
 @property(nonatomic, copy) NSString *time;
 @property(nonatomic,weak) id <SalesTrendsModelDelegate> sDelegate;
-@property(nonatomic,assign) NSInteger current_page;
-@property(nonatomic,assign) NSInteger total_rows;
 @property(nonatomic,strong) NSArray *modelAry;
 
 -(void)getSalesTrendsModelItemList:(NSString*)startTime andEndTime:(NSString*)endTime;

@@ -186,6 +186,7 @@
 		F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */; };
 		F5E5FBDC1F29F9D000F66BC9 /* THNArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */; };
 		F5E5FBDD1F29F9D000F66BC9 /* THNArticleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */; };
+		F5F5EC4A1F2F2C0C002235BB /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F5EC491F2F2C0C002235BB /* DateValueFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -531,6 +532,8 @@
 		F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNArticleDetailViewController.m; sourceTree = "<group>"; };
 		F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THNArticleDetailViewController.xib; sourceTree = "<group>"; };
 		F5E98CE11F28A5F700308804 /* banmen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = banmen.entitlements; sourceTree = "<group>"; };
+		F5F5EC481F2F2C0C002235BB /* DateValueFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateValueFormatter.h; sourceTree = "<group>"; };
+		F5F5EC491F2F2C0C002235BB /* DateValueFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateValueFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -679,6 +682,8 @@
 			isa = PBXGroup;
 			children = (
 				D886F8381F21A0EE009382C3 /* HotelCalendar */,
+				F5F5EC481F2F2C0C002235BB /* DateValueFormatter.h */,
+				F5F5EC491F2F2C0C002235BB /* DateValueFormatter.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1774,6 +1779,7 @@
 				D8ED5D9A1EF906060046642C /* UIView+Size.m in Sources */,
 				D8D664FB1F0C8E7900C53DEB /* THNEditToolButton.m in Sources */,
 				D8D378DD1EFA4C8500C89889 /* THNPhotoListView.m in Sources */,
+				F5F5EC4A1F2F2C0C002235BB /* DateValueFormatter.m in Sources */,
 				D8B071201EF8FB38005CC051 /* THNImageToolViewController.m in Sources */,
 				D840C6C21EFB99320021B83E /* THNPreviewPuzzleView.m in Sources */,
 				D8B0711D1EF8F92D005CC051 /* THNImageToolNavigationController.m in Sources */,
@@ -1875,6 +1881,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_MODULE_NAME = banmen;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1922,6 +1929,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_MODULE_NAME = banmen;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1932,11 +1940,13 @@
 			baseConfigurationReference = 093B00529CC62D5B0A9C39F7 /* Pods-banmen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 7ET6PJMCHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1948,6 +1958,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/TYAlertController\"",
 				);
+				GCC_OPTIMIZATION_LEVEL = 1;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -1994,6 +2005,7 @@
 					"\"TYAlertController\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
+				PRODUCT_MODULE_NAME = banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2009,11 +2021,13 @@
 			baseConfigurationReference = 239D47117F03E1BB587C0396 /* Pods-banmen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 7ET6PJMCHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2025,6 +2039,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/TYAlertController\"",
 				);
+				GCC_OPTIMIZATION_LEVEL = 1;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -2071,6 +2086,7 @@
 					"\"TYAlertController\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
+				PRODUCT_MODULE_NAME = banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

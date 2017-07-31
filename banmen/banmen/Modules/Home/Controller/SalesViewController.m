@@ -39,10 +39,10 @@
     [date_formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
     NSTimeInterval  oneDay = 24*60*60*1;
-    NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
+    NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*30*12 sinceDate:[NSDate date]];
     NSString *the_date_str = [date_formatter stringFromDate:theDate];
     self.s.sDelegate = self;
-    [self.s getSalesTrendsModelItemList:current_date_str andEndTime:the_date_str];
+    [self.s getSalesTrendsModelItemList:the_date_str andEndTime:current_date_str];
 }
 
 -(void)getSalesTrendsModel:(NSArray*)modelAry{
@@ -72,9 +72,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SaleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SaleTableViewCell"];
-    if (self.modelAry.count != 0) {
-        cell.modelAry = self.modelAry;
-    }
+    cell.modelAry = self.modelAry;
     [cell.dateSelectBtn addTarget:self action:@selector(dateSelect:) forControlEvents:(UIControlEventTouchUpInside)];
     return cell;
 }
