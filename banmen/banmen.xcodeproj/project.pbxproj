@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9959F7C22A2F1793FD74BF /* Pods_banmen.framework */; };
+		C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9959F7C22A2F1793FD74BF /* Pods_banmen.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */; };
 		D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */; };
 		D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D840C6BE1EFB54A00021B83E /* THNOpenAlbumButton.m */; };
@@ -185,45 +185,60 @@
 		F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */; };
 		F5E5FBDC1F29F9D000F66BC9 /* THNArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */; };
 		F5E5FBDD1F29F9D000F66BC9 /* THNArticleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */; };
+		F5E5FD851F2B2F2000F66BC9 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E5FD7C1F2B2F1600F66BC9 /* MMMarkdown.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		F5E5FD871F2B458700F66BC9 /* MMMarkdown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E5FD7C1F2B2F1600F66BC9 /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F5E5FCF71F2B211000F66BC9 /* PBXContainerItemProxy */ = {
+		F5E5FD7B1F2B2F1600F66BC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
+			containerPortal = F5E5FD731F2B2F1600F66BC9 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BED7620F1B37810000687B36;
 			remoteInfo = "MMMarkdown (iOS)";
 		};
-		F5E5FCF91F2B211000F66BC9 /* PBXContainerItemProxy */ = {
+		F5E5FD7D1F2B2F1600F66BC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
+			containerPortal = F5E5FD731F2B2F1600F66BC9 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BED761571B374D6700687B36;
 			remoteInfo = "MMMarkdown (OS X)";
 		};
-		F5E5FCFB1F2B211000F66BC9 /* PBXContainerItemProxy */ = {
+		F5E5FD7F1F2B2F1600F66BC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
+			containerPortal = F5E5FD731F2B2F1600F66BC9 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BE23E8F41C0CF3EF0087F587;
 			remoteInfo = "MMMarkdown (tvOS)";
 		};
-		F5E5FCFD1F2B211000F66BC9 /* PBXContainerItemProxy */ = {
+		F5E5FD811F2B2F1600F66BC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
+			containerPortal = F5E5FD731F2B2F1600F66BC9 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BE23E9131C0CF77D0087F587;
 			remoteInfo = "MMMarkdown (watchOS)";
 		};
-		F5E5FCFF1F2B211000F66BC9 /* PBXContainerItemProxy */ = {
+		F5E5FD831F2B2F1600F66BC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
+			containerPortal = F5E5FD731F2B2F1600F66BC9 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BED761611B374D6700687B36;
 			remoteInfo = MMMarkdownTests;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F5E5FD861F2B453C00F66BC9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F5E5FD871F2B458700F66BC9 /* MMMarkdown.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		093B00529CC62D5B0A9C39F7 /* Pods-banmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-banmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-banmen/Pods-banmen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -528,7 +543,7 @@
 		F5E5FBD91F29F9D000F66BC9 /* THNArticleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNArticleDetailViewController.h; sourceTree = "<group>"; };
 		F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNArticleDetailViewController.m; sourceTree = "<group>"; };
 		F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THNArticleDetailViewController.xib; sourceTree = "<group>"; };
-		F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MMMarkdown.xcodeproj; sourceTree = "<group>"; };
+		F5E5FD731F2B2F1600F66BC9 /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "../../../../../Downloads/MMMarkdown-master/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
 		F5E98CE11F28A5F700308804 /* banmen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = banmen.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -537,6 +552,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5E5FD851F2B2F2000F66BC9 /* MMMarkdown.framework in Frameworks */,
 				C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1107,7 +1123,7 @@
 		D8B0710F1EF8F415005CC051 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */,
+				F5E5FD731F2B2F1600F66BC9 /* MMMarkdown.xcodeproj */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -1438,14 +1454,14 @@
 			path = Joint;
 			sourceTree = "<group>";
 		};
-		F5E5FCF01F2B211000F66BC9 /* Products */ = {
+		F5E5FD741F2B2F1600F66BC9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F5E5FCF81F2B211000F66BC9 /* MMMarkdown.framework */,
-				F5E5FCFA1F2B211000F66BC9 /* MMMarkdown.framework */,
-				F5E5FCFC1F2B211000F66BC9 /* MMMarkdown.framework */,
-				F5E5FCFE1F2B211000F66BC9 /* MMMarkdown.framework */,
-				F5E5FD001F2B211000F66BC9 /* MMMarkdownTests.xctest */,
+				F5E5FD7C1F2B2F1600F66BC9 /* MMMarkdown.framework */,
+				F5E5FD7E1F2B2F1600F66BC9 /* MMMarkdown.framework */,
+				F5E5FD801F2B2F1600F66BC9 /* MMMarkdown.framework */,
+				F5E5FD821F2B2F1600F66BC9 /* MMMarkdown.framework */,
+				F5E5FD841F2B2F1600F66BC9 /* MMMarkdownTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1463,6 +1479,7 @@
 				D8D9C2401EF278C5000688C6 /* Resources */,
 				F78268D3EF2D656F0CE9CB48 /* [CP] Embed Pods Frameworks */,
 				274380754098306F8549A928 /* [CP] Copy Pods Resources */,
+				F5E5FD861F2B453C00F66BC9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1509,8 +1526,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F5E5FCF01F2B211000F66BC9 /* Products */;
-					ProjectRef = F5E5FCEF1F2B211000F66BC9 /* MMMarkdown.xcodeproj */;
+					ProductGroup = F5E5FD741F2B2F1600F66BC9 /* Products */;
+					ProjectRef = F5E5FD731F2B2F1600F66BC9 /* MMMarkdown.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1521,39 +1538,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F5E5FCF81F2B211000F66BC9 /* MMMarkdown.framework */ = {
+		F5E5FD7C1F2B2F1600F66BC9 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = F5E5FCF71F2B211000F66BC9 /* PBXContainerItemProxy */;
+			remoteRef = F5E5FD7B1F2B2F1600F66BC9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F5E5FCFA1F2B211000F66BC9 /* MMMarkdown.framework */ = {
+		F5E5FD7E1F2B2F1600F66BC9 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = F5E5FCF91F2B211000F66BC9 /* PBXContainerItemProxy */;
+			remoteRef = F5E5FD7D1F2B2F1600F66BC9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F5E5FCFC1F2B211000F66BC9 /* MMMarkdown.framework */ = {
+		F5E5FD801F2B2F1600F66BC9 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = F5E5FCFB1F2B211000F66BC9 /* PBXContainerItemProxy */;
+			remoteRef = F5E5FD7F1F2B2F1600F66BC9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F5E5FCFE1F2B211000F66BC9 /* MMMarkdown.framework */ = {
+		F5E5FD821F2B2F1600F66BC9 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = F5E5FCFD1F2B211000F66BC9 /* PBXContainerItemProxy */;
+			remoteRef = F5E5FD811F2B2F1600F66BC9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F5E5FD001F2B211000F66BC9 /* MMMarkdownTests.xctest */ = {
+		F5E5FD841F2B2F1600F66BC9 /* MMMarkdownTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = MMMarkdownTests.xctest;
-			remoteRef = F5E5FCFF1F2B211000F66BC9 /* PBXContainerItemProxy */;
+			remoteRef = F5E5FD831F2B2F1600F66BC9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
