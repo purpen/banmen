@@ -12,6 +12,7 @@ NSString *const kPosterModelText = @"text";
 NSString *const kPosterModelSize = @"size";
 NSString *const kPosterModelImage = @"image";
 NSString *const kPosterModelidField = @"idField";
+NSString *const kPosterModelbackgroundColor = @"background_color";
 
 @implementation THNPosterModelData
 
@@ -20,6 +21,10 @@ NSString *const kPosterModelidField = @"idField";
     
     if (![dictionary[kPosterModelidField] isKindOfClass:[NSNull class]]) {
         self.idField = dictionary[kPosterModelidField];
+    }
+    
+    if (![dictionary[kPosterModelbackgroundColor] isKindOfClass:[NSNull class]]) {
+        self.backgroundColor = dictionary[kPosterModelbackgroundColor];
     }
     
     if (![dictionary[kPosterModelSize] isKindOfClass:[NSNull class]]) {

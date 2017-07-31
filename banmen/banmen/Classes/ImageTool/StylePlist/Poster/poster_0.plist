@@ -4,6 +4,8 @@
 <dict>
 	<key>data</key>
 	<dict>
+		<key>background_color</key>
+		<string>#FFFFFF</string>
 		<key>idField</key>
 		<string>1000</string>
 		<key>size</key>
@@ -44,9 +46,9 @@
 				<key>imageUrl</key>
 				<string></string>
 				<key>width</key>
-				<string>120</string>
+				<string>150</string>
 				<key>height</key>
-				<string>120</string>
+				<string>150</string>
 				<key>zindex</key>
 				<string>9</string>
 				<key>type</key>
@@ -56,22 +58,22 @@
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-223</string>
+					<string>-210</string>
 					<key>left</key>
-					<string>407</string>
+					<string>390</string>
 					<key>bottom</key>
-					<string>-131</string>
+					<string>-100</string>
 					<key>top</key>
-					<string>1083</string>
+					<string>1084</string>
 				</dict>
 			</dict>
 			<dict>
 				<key>imageUrl</key>
 				<string></string>
 				<key>width</key>
-				<string>120</string>
+				<string>150</string>
 				<key>height</key>
-				<string>120</string>
+				<string>150</string>
 				<key>zindex</key>
 				<string>10</string>
 				<key>type</key>
@@ -81,25 +83,27 @@
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-407</string>
+					<string>-390</string>
 					<key>left</key>
-					<string>223</string>
+					<string>210</string>
 					<key>bottom</key>
-					<string>-131</string>
+					<string>-100</string>
 					<key>top</key>
-					<string>1083</string>
+					<string>1084</string>
 				</dict>
 			</dict>
 		</array>
 		<key>text</key>
 		<array>
 			<dict>
+				<key>weight</key>
+				<string>4</string>
 				<key>background</key>
 				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
-				<string>56</string>
+				<string>100</string>
 				<key>zindex</key>
 				<string>1</string>
 				<key>align</key>
@@ -111,26 +115,26 @@
 					<key>left</key>
 					<string>70</string>
 					<key>bottom</key>
-					<string>-1138</string>
+					<string>-1117</string>
 					<key>top</key>
-					<string>140</string>
+					<string>117</string>
 				</dict>
 				<key>content</key>
 				<string>2017 HOOEASY</string>
 				<key>fontSize</key>
-				<string>56</string>
-				<key>fontBold</key>
-				<string>0</string>
+				<string>72</string>
 				<key>color</key>
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>weight</key>
+				<string>4</string>
 				<key>background</key>
 				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
-				<string>50</string>
+				<string>81</string>
 				<key>zindex</key>
 				<string>2</string>
 				<key>align</key>
@@ -142,26 +146,26 @@
 					<key>left</key>
 					<string>70</string>
 					<key>bottom</key>
-					<string>-1072</string>
+					<string>-1057</string>
 					<key>top</key>
-					<string>212</string>
+					<string>196</string>
 				</dict>
 				<key>content</key>
 				<string>NEW PEODUCT</string>
 				<key>fontSize</key>
-				<string>50</string>
-				<key>fontBold</key>
-				<string>0</string>
+				<string>58</string>
 				<key>color</key>
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>weight</key>
+				<string>0</string>
 				<key>background</key>
 				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
-				<string>46</string>
+				<string>67</string>
 				<key>zindex</key>
 				<string>3</string>
 				<key>align</key>
@@ -173,26 +177,26 @@
 					<key>left</key>
 					<string>70</string>
 					<key>bottom</key>
-					<string>-1010</string>
+					<string>-1003</string>
 					<key>top</key>
-					<string>278</string>
+					<string>264</string>
 				</dict>
 				<key>content</key>
 				<string>LAUNCH德智衣护无界</string>
 				<key>fontSize</key>
-				<string>46</string>
-				<key>fontBold</key>
-				<string>0</string>
+				<string>48</string>
 				<key>color</key>
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>weight</key>
+				<string>4</string>
 				<key>background</key>
 				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
-				<string>70</string>
+				<string>103</string>
 				<key>zindex</key>
 				<string>4</string>
 				<key>align</key>
@@ -204,26 +208,26 @@
 					<key>left</key>
 					<string>70</string>
 					<key>bottom</key>
-					<string>-918</string>
+					<string>-901</string>
 					<key>top</key>
-					<string>346</string>
+					<string>330</string>
 				</dict>
 				<key>content</key>
 				<string>好易点新品发布会</string>
 				<key>fontSize</key>
-				<string>70</string>
-				<key>fontBold</key>
-				<string>1</string>
+				<string>74</string>
 				<key>color</key>
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>weight</key>
+				<string>0</string>
 				<key>background</key>
 				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
-				<string>50</string>
+				<string>67</string>
 				<key>zindex</key>
 				<string>5</string>
 				<key>align</key>
@@ -235,26 +239,26 @@
 					<key>left</key>
 					<string>70</string>
 					<key>bottom</key>
-					<string>-487</string>
+					<string>-464</string>
 					<key>top</key>
-					<string>797</string>
+					<string>803</string>
 				</dict>
 				<key>content</key>
 				<string>诚邀莅临</string>
 				<key>fontSize</key>
-				<string>50</string>
-				<key>fontBold</key>
-				<string>0</string>
+				<string>48</string>
 				<key>color</key>
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>weight</key>
+				<string>2</string>
 				<key>background</key>
 				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
-				<string>35</string>
+				<string>56</string>
 				<key>zindex</key>
 				<string>6</string>
 				<key>align</key>
@@ -266,26 +270,26 @@
 					<key>left</key>
 					<string>70</string>
 					<key>bottom</key>
-					<string>-431</string>
+					<string>-400</string>
 					<key>top</key>
-					<string>868</string>
+					<string>878</string>
 				</dict>
 				<key>content</key>
 				<string>2017.07.27    13:30</string>
 				<key>fontSize</key>
-				<string>35</string>
-				<key>fontBold</key>
-				<string>0</string>
+				<string>40</string>
 				<key>color</key>
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>weight</key>
+				<string>0</string>
 				<key>background</key>
 				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
-				<string>35</string>
+				<string>45</string>
 				<key>zindex</key>
 				<string>7</string>
 				<key>align</key>
@@ -297,26 +301,26 @@
 					<key>left</key>
 					<string>70</string>
 					<key>bottom</key>
-					<string>-378</string>
+					<string>-352</string>
 					<key>top</key>
-					<string>921</string>
+					<string>937</string>
 				</dict>
 				<key>content</key>
 				<string>广东会展馆珠江散步道4.1-8.1中间会场</string>
 				<key>fontSize</key>
-				<string>35</string>
-				<key>fontBold</key>
-				<string>0</string>
+				<string>32</string>
 				<key>color</key>
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>weight</key>
+				<string>0</string>
 				<key>background</key>
 				<string>#</string>
 				<key>width</key>
 				<string>610</string>
 				<key>height</key>
-				<string>30</string>
+				<string>40</string>
 				<key>zindex</key>
 				<string>8</string>
 				<key>align</key>
@@ -328,16 +332,14 @@
 					<key>left</key>
 					<string>70</string>
 					<key>bottom</key>
-					<string>-321</string>
+					<string>-295</string>
 					<key>top</key>
-					<string>983</string>
+					<string>999</string>
 				</dict>
 				<key>content</key>
 				<string>中国·广州</string>
 				<key>fontSize</key>
-				<string>30</string>
-				<key>fontBold</key>
-				<string>0</string>
+				<string>28</string>
 				<key>color</key>
 				<string>#FFFFFF</string>
 			</dict>

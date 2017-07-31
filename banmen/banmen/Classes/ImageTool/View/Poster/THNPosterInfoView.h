@@ -17,9 +17,10 @@
 
 @end
 
-@interface THNPosterInfoView : UIView
+@interface THNPosterInfoView : UIScrollView <UIScrollViewDelegate>
 
-@property (nonatomic, weak) id <THNPosterInfoViewDelegate> delegate;
+@property (nonatomic, strong) UIView *controlView;
+@property (nonatomic, weak) id <THNPosterInfoViewDelegate> tap_delegate;
 
 - (void)thn_allTextViewResignFirstResponder;
 

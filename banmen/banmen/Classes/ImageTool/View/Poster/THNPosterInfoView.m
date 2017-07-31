@@ -9,12 +9,12 @@
 #import "THNPosterInfoView.h"
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
-#import <IQKeyboardManager/IQKeyboardManager.h>
+#import <YYText/YYText.h>
 
 static NSInteger const textViewTag = 3521;
 static NSInteger const imageViewTag = 3821;
 
-@interface THNPosterInfoView () <UITextViewDelegate> {
+@interface THNPosterInfoView () <YYTextViewDelegate> {
     THNPosterImageView *_selectImageView;
 }
 
@@ -28,11 +28,17 @@ static NSInteger const imageViewTag = 3821;
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithHexString:kColorBlack];
-        
-        [self thn_setIQKeyboardManager];
+        self.delegate = self;
+        self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = NO;
+        self.backgroundColor = [UIColor colorWithHexString:kColorBlack alpha:0];
     }
     return self;
+}
+
+#pragma mark - delegate
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return _controlView;
 }
 
 #pragma mark - 选择了图片进行加载
@@ -53,9 +59,32 @@ static NSInteger const imageViewTag = 3821;
 }
 
 #pragma mark - 添加海报默认信息
+- (UIView *)controlView {
+    if (!_controlView) {
+        _controlView = [[UIView alloc] init];
+    }
+    return _controlView;
+}
+
 - (void)thn_setPosterStyleInfoData:(THNPosterModelData *)data {
+    self.contentSize = CGSizeMake(data.size.width, data.size.height);
+    
+    self.controlView.frame = CGRectMake(0, 0, data.size.width, data.size.height);
+    self.controlView.backgroundColor = [UIColor colorWithHexString:data.backgroundColor];
+    
+    [self addSubview:self.controlView];
+    [_controlView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(data.size.width, data.size.height));
+        make.top.left.equalTo(self).with.offset(0);
+    }];
+    
     [self thn_setImageViewLoadImageInfo:data.image];
     [self thn_setTextViewLoadTextInfo:data.text];
+    
+    CGFloat minScale = self.bounds.size.width / data.size.width;
+    self.minimumZoomScale = minScale;
+    self.maximumZoomScale = minScale;
+    [self setZoomScale:1 animated:NO];
 }
 
 #pragma mark 设置文字
@@ -63,31 +92,22 @@ static NSInteger const imageViewTag = 3821;
     if (textArray.count == 0) {
         return;
     }
-    
     for (NSInteger idx = 0; idx < textArray.count; ++ idx) {
         THNPosterModelText *model = textArray[idx];
         
-        UITextView *textView = [[UITextView alloc] init];
-        textView.text = model.content;
-        if (model.fontBold == 1) {
-            textView.font = [UIFont boldSystemFontOfSize:model.fontSize];
-        } else {
-            textView.font = [UIFont systemFontOfSize:model.fontSize];
-        }
-        textView.textAlignment = model.align;
-        textView.textColor = [UIColor colorWithHexString:model.color];
-        textView.contentInset = UIEdgeInsetsMake(-13, 0, 0, 0);
+        YYTextView *textView = [[YYTextView alloc] initWithFrame:CGRectMake(model.position.left, model.position.top, model.width, model.height)];
+        
+        NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:model.content];
+        text.yy_color = [UIColor colorWithHexString:model.color];
+        text.yy_font = [UIFont systemFontOfSize:model.fontSize weight:[self thn_getTextViewFontWeight:model.weight]];
+        text.yy_alignment = model.align;
+        textView.attributedText = text;
+
         textView.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0];
         textView.tag = textViewTag + idx;
         textView.delegate = self;
         
-        [self addSubview:textView];
-        [textView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.mas_top).with.offset(model.position.top);
-            make.left.equalTo(self.mas_left).with.offset(model.position.left);
-            make.right.equalTo(self.mas_right).with.offset(model.position.right);
-            make.bottom.equalTo(self.mas_bottom).with.offset(model.position.bottom);
-        }];
+        [self.controlView addSubview:textView];
         
         [self thn_loadFlashingAnimationOfView:textView flash:YES];
         
@@ -96,26 +116,50 @@ static NSInteger const imageViewTag = 3821;
 }
 
 #pragma mark textViewDelegate
-- (void)textViewDidBeginEditing:(UITextView *)textView {
-    
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView {
-    
+- (void)textViewDidBeginEditing:(YYTextView *)textView {
+    [self thn_addTextViewBorder:textView];
 }
 
 //  编辑时给textView添加边框
-- (void)thn_addTextViewBorder:(UITextView *)textView {
-    CAShapeLayer *borderLayer = [CAShapeLayer layer];
-    borderLayer.bounds = textView.bounds;
-    borderLayer.position = CGPointMake(CGRectGetMidX(textView.bounds), CGRectGetMidY(textView.bounds));
-    borderLayer.path = [UIBezierPath bezierPathWithRoundedRect:borderLayer.bounds cornerRadius:0].CGPath;
-    borderLayer.lineWidth = 2;
-    //  虚线边框
-    borderLayer.lineDashPattern = @[@10, @10];
-    borderLayer.fillColor = [UIColor colorWithHexString:kColorRed alpha:0].CGColor;
-    borderLayer.strokeColor = [UIColor colorWithHexString:kColorRed alpha:1].CGColor;
-    [textView.layer addSublayer:borderLayer];
+- (void)thn_addTextViewBorder:(YYTextView *)textView {
+    
+}
+
+//  获取字体的粗细等样式
+- (UIFontWeight)thn_getTextViewFontWeight:(NSInteger)weight {
+    switch (weight) {
+        case 0:
+            return UIFontWeightRegular;
+            break;
+        case 1:
+            return UIFontWeightUltraLight;
+            break;
+        case 2:
+            return UIFontWeightThin;
+            break;
+        case 3:
+            return UIFontWeightLight;
+            break;
+        case 4:
+            return UIFontWeightMedium;
+            break;
+        case 5:
+            return UIFontWeightSemibold;
+            break;
+        case 6:
+            return UIFontWeightBold;
+            break;
+        case 7:
+            return UIFontWeightHeavy;
+            break;
+        case 8:
+            return UIFontWeightBlack;
+            break;
+        default:
+            return UIFontWeightRegular;
+            break;
+    }
+    return UIFontWeightRegular;
 }
 
 //  控件闪烁提示
@@ -150,19 +194,14 @@ static NSInteger const imageViewTag = 3821;
     
     for (NSInteger idx = 0; idx < imageArray.count; ++ idx) {
         THNPosterModelImage *model = imageArray[idx];
-        THNPosterImageView *imageView = [[THNPosterImageView alloc] initWithFrame:CGRectMake(0, 0, model.width, model.height)];
+        
+        THNPosterImageView *imageView = [[THNPosterImageView alloc] initWithFrame:CGRectMake(model.position.left, model.position.top, model.width, model.height)];
         [imageView thn_setImageViewData:[UIImage imageNamed:[NSString stringWithFormat:@"poster_add_%@", model.name]]];
         imageView.tag = imageViewTag + idx;
         
         [self thn_imageViewAddTapGestureRecognizer:imageView];
         
-        [self addSubview:imageView];
-        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.mas_top).with.offset(model.position.top);
-            make.left.equalTo(self.mas_left).with.offset(model.position.left);
-            make.right.equalTo(self.mas_right).with.offset(model.position.right);
-            make.bottom.equalTo(self.mas_bottom).with.offset(model.position.bottom);
-        }];
+        [self.controlView addSubview:imageView];
         
         [self.imageViewArray addObject:imageView];
     }
@@ -176,18 +215,9 @@ static NSInteger const imageViewTag = 3821;
 }
 
 - (void)handleTapGesture:(UITapGestureRecognizer *)tapGesture {
-    if ([self.delegate respondsToSelector:@selector(thn_tapWithImageViewAndSelectPhoto:)]) {
-        [self.delegate thn_tapWithImageViewAndSelectPhoto:tapGesture.view.tag];
+    if ([self.tap_delegate respondsToSelector:@selector(thn_tapWithImageViewAndSelectPhoto:)]) {
+        [self.tap_delegate thn_tapWithImageViewAndSelectPhoto:tapGesture.view.tag];
     }
-}
-
-#pragma mark -
-- (void)thn_setIQKeyboardManager {
-    //  键盘弹起模式
-    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
-    manager.enable = YES;
-    manager.shouldResignOnTouchOutside = YES;
-    manager.enableAutoToolbar = NO;
 }
 
 #pragma mark - initArray
