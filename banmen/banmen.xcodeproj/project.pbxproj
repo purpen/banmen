@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9959F7C22A2F1793FD74BF /* Pods_banmen.framework */; };
+		D805C5C21F30216F00354A47 /* THNShareActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D805C5C11F30216F00354A47 /* THNShareActionView.m */; };
+		D805C5D01F3034F700354A47 /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D805C5C91F3034CC00354A47 /* DateValueFormatter.m */; };
 		D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */; };
 		D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */; };
 		D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D840C6BE1EFB54A00021B83E /* THNOpenAlbumButton.m */; };
@@ -80,12 +82,13 @@
 		D886F8421F21A102009382C3 /* HotelCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D886F83C1F21A0EE009382C3 /* HotelCalendarViewController.m */; };
 		D886F8431F21A102009382C3 /* MonthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D886F83E1F21A0EE009382C3 /* MonthModel.m */; };
 		D886F8441F21A102009382C3 /* MonthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D886F8401F21A0EE009382C3 /* MonthTableViewCell.m */; };
+		D890F1D31F2B463000E2C623 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D890F1CA1F2B461900E2C623 /* MMMarkdown.framework */; };
+		D890F1D51F2B463D00E2C623 /* MMMarkdown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D890F1CA1F2B461900E2C623 /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D89DBBA71F259246001A8C56 /* THNPosterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D89DBBA61F259246001A8C56 /* THNPosterListViewController.m */; };
 		D8B0711D1EF8F92D005CC051 /* THNImageToolNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B0711C1EF8F92D005CC051 /* THNImageToolNavigationController.m */; };
 		D8B071201EF8FB38005CC051 /* THNImageToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B0711F1EF8FB38005CC051 /* THNImageToolViewController.m */; };
 		D8B071231EF8FB80005CC051 /* THNLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B071221EF8FB80005CC051 /* THNLayoutViewController.m */; };
 		D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B369451EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m */; };
-		D8B463F21F2B327000D93314 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B463E91F2B326300D93314 /* MMMarkdown.framework */; };
 		D8D378DD1EFA4C8500C89889 /* THNPhotoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */; };
 		D8D378E01EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D378DF1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m */; };
 		D8D5EB501F29D41500980933 /* THNPosterImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D5EB4F1F29D41500980933 /* THNPosterImageView.m */; };
@@ -193,51 +196,67 @@
 		F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */; };
 		F5E5FBDC1F29F9D000F66BC9 /* THNArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */; };
 		F5E5FBDD1F29F9D000F66BC9 /* THNArticleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */; };
-		F5F5EC4A1F2F2C0C002235BB /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F5EC491F2F2C0C002235BB /* DateValueFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D8B463E81F2B326300D93314 /* PBXContainerItemProxy */ = {
+		D890F1C91F2B461900E2C623 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+			containerPortal = D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BED7620F1B37810000687B36;
 			remoteInfo = "MMMarkdown (iOS)";
 		};
-		D8B463EA1F2B326300D93314 /* PBXContainerItemProxy */ = {
+		D890F1CB1F2B461900E2C623 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+			containerPortal = D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BED761571B374D6700687B36;
 			remoteInfo = "MMMarkdown (OS X)";
 		};
-		D8B463EC1F2B326300D93314 /* PBXContainerItemProxy */ = {
+		D890F1CD1F2B461900E2C623 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+			containerPortal = D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BE23E8F41C0CF3EF0087F587;
 			remoteInfo = "MMMarkdown (tvOS)";
 		};
-		D8B463EE1F2B326300D93314 /* PBXContainerItemProxy */ = {
+		D890F1CF1F2B461900E2C623 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+			containerPortal = D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BE23E9131C0CF77D0087F587;
 			remoteInfo = "MMMarkdown (watchOS)";
 		};
-		D8B463F01F2B326300D93314 /* PBXContainerItemProxy */ = {
+		D890F1D11F2B461900E2C623 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+			containerPortal = D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BED761611B374D6700687B36;
 			remoteInfo = MMMarkdownTests;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D890F1C01F2B45C300E2C623 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D890F1D51F2B463D00E2C623 /* MMMarkdown.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		093B00529CC62D5B0A9C39F7 /* Pods-banmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-banmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-banmen/Pods-banmen.debug.xcconfig"; sourceTree = "<group>"; };
 		239D47117F03E1BB587C0396 /* Pods-banmen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-banmen.release.xcconfig"; path = "Pods/Target Support Files/Pods-banmen/Pods-banmen.release.xcconfig"; sourceTree = "<group>"; };
 		CA9959F7C22A2F1793FD74BF /* Pods_banmen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_banmen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D805C5C01F30216F00354A47 /* THNShareActionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNShareActionView.h; sourceTree = "<group>"; };
+		D805C5C11F30216F00354A47 /* THNShareActionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNShareActionView.m; sourceTree = "<group>"; };
+		D805C5C91F3034CC00354A47 /* DateValueFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateValueFormatter.m; sourceTree = "<group>"; };
+		D805C5CA1F3034CC00354A47 /* DateValueFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateValueFormatter.h; sourceTree = "<group>"; };
 		D83689E81EFA68DB005B0709 /* THNPhotoTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoTableViewModel.h; sourceTree = "<group>"; };
 		D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTableViewModel.m; sourceTree = "<group>"; };
 		D83689EB1EFA6900005B0709 /* THNPhotoCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoCellViewModel.h; sourceTree = "<group>"; };
@@ -356,6 +375,7 @@
 		D886F83E1F21A0EE009382C3 /* MonthModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonthModel.m; sourceTree = "<group>"; };
 		D886F83F1F21A0EE009382C3 /* MonthTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonthTableViewCell.h; sourceTree = "<group>"; };
 		D886F8401F21A0EE009382C3 /* MonthTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonthTableViewCell.m; sourceTree = "<group>"; };
+		D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "MMMarkdown-master/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
 		D89DBBA51F259246001A8C56 /* THNPosterListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterListViewController.h; sourceTree = "<group>"; };
 		D89DBBA61F259246001A8C56 /* THNPosterListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPosterListViewController.m; sourceTree = "<group>"; };
 		D8B071151EF8F43D005CC051 /* ColorMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorMacro.h; sourceTree = "<group>"; };
@@ -369,7 +389,6 @@
 		D8B071221EF8FB80005CC051 /* THNLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNLayoutViewController.m; sourceTree = "<group>"; };
 		D8B369441EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPhotoItemCollectionViewCell.h; sourceTree = "<group>"; };
 		D8B369451EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPhotoItemCollectionViewCell.m; sourceTree = "<group>"; };
-		D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "MMMarkdown-master/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
 		D8D378DB1EFA4C8500C89889 /* THNPhotoListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPhotoListView.h; sourceTree = "<group>"; };
 		D8D378DC1EFA4C8500C89889 /* THNPhotoListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPhotoListView.m; sourceTree = "<group>"; };
 		D8D378DE1EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPhotoAlbumTableViewCell.h; sourceTree = "<group>"; };
@@ -553,8 +572,6 @@
 		F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNArticleDetailViewController.m; sourceTree = "<group>"; };
 		F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THNArticleDetailViewController.xib; sourceTree = "<group>"; };
 		F5E98CE11F28A5F700308804 /* banmen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = banmen.entitlements; sourceTree = "<group>"; };
-		F5F5EC481F2F2C0C002235BB /* DateValueFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateValueFormatter.h; sourceTree = "<group>"; };
-		F5F5EC491F2F2C0C002235BB /* DateValueFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateValueFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -562,7 +579,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8B463F21F2B327000D93314 /* MMMarkdown.framework in Frameworks */,
+				D890F1D31F2B463000E2C623 /* MMMarkdown.framework in Frameworks */,
 				C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -701,9 +718,9 @@
 		D847DE541F00C1DA007E301E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				D805C5CA1F3034CC00354A47 /* DateValueFormatter.h */,
+				D805C5C91F3034CC00354A47 /* DateValueFormatter.m */,
 				D886F8381F21A0EE009382C3 /* HotelCalendar */,
-				F5F5EC481F2F2C0C002235BB /* DateValueFormatter.h */,
-				F5F5EC491F2F2C0C002235BB /* DateValueFormatter.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1039,9 +1056,23 @@
 			path = HotelCalendar;
 			sourceTree = "<group>";
 		};
+		D890F1C21F2B461900E2C623 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D890F1CA1F2B461900E2C623 /* MMMarkdown.framework */,
+				D890F1CC1F2B461900E2C623 /* MMMarkdown.framework */,
+				D890F1CE1F2B461900E2C623 /* MMMarkdown.framework */,
+				D890F1D01F2B461900E2C623 /* MMMarkdown.framework */,
+				D890F1D21F2B461900E2C623 /* MMMarkdownTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D89DBBA21F258BFA001A8C56 /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				D805C5C01F30216F00354A47 /* THNShareActionView.h */,
+				D805C5C11F30216F00354A47 /* THNShareActionView.m */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -1133,7 +1164,7 @@
 		D8B0710F1EF8F415005CC051 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */,
+				D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -1206,18 +1237,6 @@
 				D8B0711F1EF8FB38005CC051 /* THNImageToolViewController.m */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		D8B463E11F2B326300D93314 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D8B463E91F2B326300D93314 /* MMMarkdown.framework */,
-				D8B463EB1F2B326300D93314 /* MMMarkdown.framework */,
-				D8B463ED1F2B326300D93314 /* MMMarkdown.framework */,
-				D8B463EF1F2B326300D93314 /* MMMarkdown.framework */,
-				D8B463F11F2B326300D93314 /* MMMarkdownTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		D8D5EB511F29E4EC00980933 /* ToolHome */ = {
@@ -1521,6 +1540,7 @@
 				D8D9C2401EF278C5000688C6 /* Resources */,
 				F78268D3EF2D656F0CE9CB48 /* [CP] Embed Pods Frameworks */,
 				274380754098306F8549A928 /* [CP] Copy Pods Resources */,
+				D890F1C01F2B45C300E2C623 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1545,7 +1565,7 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 7ET6PJMCHV;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1567,8 +1587,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = D8B463E11F2B326300D93314 /* Products */;
-					ProjectRef = D8B463E01F2B326300D93314 /* MMMarkdown.xcodeproj */;
+					ProductGroup = D890F1C21F2B461900E2C623 /* Products */;
+					ProjectRef = D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1579,39 +1599,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		D8B463E91F2B326300D93314 /* MMMarkdown.framework */ = {
+		D890F1CA1F2B461900E2C623 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = D8B463E81F2B326300D93314 /* PBXContainerItemProxy */;
+			remoteRef = D890F1C91F2B461900E2C623 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D8B463EB1F2B326300D93314 /* MMMarkdown.framework */ = {
+		D890F1CC1F2B461900E2C623 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = D8B463EA1F2B326300D93314 /* PBXContainerItemProxy */;
+			remoteRef = D890F1CB1F2B461900E2C623 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D8B463ED1F2B326300D93314 /* MMMarkdown.framework */ = {
+		D890F1CE1F2B461900E2C623 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = D8B463EC1F2B326300D93314 /* PBXContainerItemProxy */;
+			remoteRef = D890F1CD1F2B461900E2C623 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D8B463EF1F2B326300D93314 /* MMMarkdown.framework */ = {
+		D890F1D01F2B461900E2C623 /* MMMarkdown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MMMarkdown.framework;
-			remoteRef = D8B463EE1F2B326300D93314 /* PBXContainerItemProxy */;
+			remoteRef = D890F1CF1F2B461900E2C623 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D8B463F11F2B326300D93314 /* MMMarkdownTests.xctest */ = {
+		D890F1D21F2B461900E2C623 /* MMMarkdownTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = MMMarkdownTests.xctest;
-			remoteRef = D8B463F01F2B326300D93314 /* PBXContainerItemProxy */;
+			remoteRef = D890F1D11F2B461900E2C623 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1740,6 +1760,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D805C5D01F3034F700354A47 /* DateValueFormatter.m in Sources */,
 				F57139D51F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.m in Sources */,
 				D886F8411F21A102009382C3 /* DayCollectionViewCell.m in Sources */,
 				D8E957EF1F288E1F003F9A29 /* THNPosterModelData.m in Sources */,
@@ -1816,6 +1837,7 @@
 				F58DE8C41F20AF1300C80ECF /* THNJointImageViewController.m in Sources */,
 				D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */,
 				D8DCAD3E1F135E48009A8A1F /* THNEditChildView.m in Sources */,
+				D805C5C21F30216F00354A47 /* THNShareActionView.m in Sources */,
 				D8E957FE1F289350003F9A29 /* THNPosterModelTextPosition.m in Sources */,
 				F53C28E31F1C8C7C004DB319 /* UserModel.m in Sources */,
 				D869B3F61F26FFE10074C37B /* THNPosterListCollectionViewCell.m in Sources */,
@@ -1835,7 +1857,6 @@
 				D8ED5D9A1EF906060046642C /* UIView+Size.m in Sources */,
 				D8D664FB1F0C8E7900C53DEB /* THNEditToolButton.m in Sources */,
 				D8D378DD1EFA4C8500C89889 /* THNPhotoListView.m in Sources */,
-				F5F5EC4A1F2F2C0C002235BB /* DateValueFormatter.m in Sources */,
 				D8B071201EF8FB38005CC051 /* THNImageToolViewController.m in Sources */,
 				D840C6C21EFB99320021B83E /* THNPreviewPuzzleView.m in Sources */,
 				D8B0711D1EF8F92D005CC051 /* THNImageToolNavigationController.m in Sources */,
@@ -1939,7 +1960,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_MODULE_NAME = banmen;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1987,7 +2007,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_MODULE_NAME = banmen;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1998,14 +2017,13 @@
 			baseConfigurationReference = 093B00529CC62D5B0A9C39F7 /* Pods-banmen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7ET6PJMCHV;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
@@ -2016,7 +2034,6 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/TYAlertController\"",
 				);
-				GCC_OPTIMIZATION_LEVEL = 1;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -2063,10 +2080,9 @@
 					"\"TYAlertController\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
-				PRODUCT_MODULE_NAME = banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "51851379-c5a3-4e0d-b4b0-6478fbc3ba33";
+				PROVISIONING_PROFILE_SPECIFIER = banmen;
 				SWIFT_OBJC_BRIDGING_HEADER = "banmen/Modules/Home/View/banmen-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2079,14 +2095,13 @@
 			baseConfigurationReference = 239D47117F03E1BB587C0396 /* Pods-banmen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7ET6PJMCHV;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
@@ -2097,7 +2112,6 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/TYAlertController\"",
 				);
-				GCC_OPTIMIZATION_LEVEL = 1;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -2144,10 +2158,9 @@
 					"\"TYAlertController\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
-				PRODUCT_MODULE_NAME = banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "23cf2777-95e7-4f04-a0e1-a630fd01d205";
+				PROVISIONING_PROFILE_SPECIFIER = banmen_release;
 				SWIFT_OBJC_BRIDGING_HEADER = "banmen/Modules/Home/View/banmen-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -62,6 +62,7 @@ static NSInteger const imageViewTag = 3821;
 - (UIView *)controlView {
     if (!_controlView) {
         _controlView = [[UIView alloc] init];
+        _controlView.clipsToBounds = YES;
     }
     return _controlView;
 }
@@ -126,7 +127,7 @@ static NSInteger const imageViewTag = 3821;
 }
 
 //  获取字体的粗细等样式
-- (UIFontWeight)thn_getTextViewFontWeight:(NSInteger)weight {
+- (CGFloat)thn_getTextViewFontWeight:(NSInteger)weight {
     switch (weight) {
         case 0:
             return UIFontWeightRegular;
