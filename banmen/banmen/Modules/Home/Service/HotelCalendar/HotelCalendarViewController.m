@@ -22,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"仿酒店入住时间";
+    self.navigationItem.title = @"日期选择";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(selectedCheckDate)];
     [self.view addSubview:self.weekView];
     [self.view addSubview:self.tableView];
@@ -46,7 +46,7 @@
 #pragma mark - 创建星期视图
 -(UIView *)weekView{
     if (!_weekView) {
-        _weekView = [[UIView alloc]initWithFrame:CGRectMake(-1, 63, self.view.bounds.size.width+2, 40)];
+        _weekView = [[UIView alloc]initWithFrame:CGRectMake(-1, 0, self.view.bounds.size.width+2, 40)];
         NSArray *title = @[@"一",@"二",@"三",@"四",@"五",@"六",@"日"];
         for (int i =0 ; i < 7 ; i++) {
             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(self.view.bounds.size.width/7*i+1, 0, self.view.bounds.size.width/7, _weekView.bounds.size.height)];
@@ -197,7 +197,9 @@
 -(NSMutableArray *)dataArray{
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        NSDate *nowdate = [NSDate date];
+//        NSDate *nowdate = [NSDate date];
+        NSTimeInterval  oneDay = 24*60*60*1;
+        NSDate *nowdate = [NSDate dateWithTimeInterval:-oneDay*30*12 sinceDate:[NSDate date]];
         NSInteger toYear = [self getDataFromDate:nowdate type:@"year"];
         NSInteger toMonth = [self getDataFromDate:nowdate type:@"month"];
         for (int i = 0; i<13; i++) {

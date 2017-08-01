@@ -131,6 +131,13 @@
 		F523A8101F1F64D300DD5C8B /* RepositoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F523A80F1F1F64D300DD5C8B /* RepositoryView.m */; };
 		F523A8131F1F694C00DD5C8B /* RecommendedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F523A8121F1F694C00DD5C8B /* RecommendedModel.m */; };
 		F523A8161F1F76F300DD5C8B /* UserView.m in Sources */ = {isa = PBXBuildFile; fileRef = F523A8151F1F76F300DD5C8B /* UserView.m */; };
+		F52AD5B91F3023610098282A /* THNSalesOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5B81F3023610098282A /* THNSalesOrderTableViewCell.m */; };
+		F52AD5C31F302F6D0098282A /* THNSuccessfulOrderHoursAdayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5C21F302F6D0098282A /* THNSuccessfulOrderHoursAdayTableViewCell.m */; };
+		F52AD5C71F3031510098282A /* THNHourOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5C61F3031510098282A /* THNHourOrderModel.m */; };
+		F52AD5CA1F3052870098282A /* THNSalesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5C91F3052870098282A /* THNSalesListTableViewCell.m */; };
+		F52AD5CD1F3052F60098282A /* THNSalesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5CC1F3052F60098282A /* THNSalesListModel.m */; };
+		F52AD5D21F305F770098282A /* THNListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5D11F305F770098282A /* THNListTableViewCell.m */; };
+		F52AD5DA1F30821D0098282A /* THNListTopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5D91F30821D0098282A /* THNListTopTableViewCell.m */; };
 		F53C28D71F18673E004DB319 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D61F18673E004DB319 /* LogInViewController.m */; };
 		F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D91F1867CB004DB319 /* LogInView.m */; };
 		F53C28DD1F18BA31004DB319 /* LogUpview.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28DC1F18BA31004DB319 /* LogUpview.m */; };
@@ -422,6 +429,20 @@
 		F523A8121F1F694C00DD5C8B /* RecommendedModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendedModel.m; sourceTree = "<group>"; };
 		F523A8141F1F76F300DD5C8B /* UserView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserView.h; sourceTree = "<group>"; };
 		F523A8151F1F76F300DD5C8B /* UserView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserView.m; sourceTree = "<group>"; };
+		F52AD5B71F3023610098282A /* THNSalesOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNSalesOrderTableViewCell.h; sourceTree = "<group>"; };
+		F52AD5B81F3023610098282A /* THNSalesOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNSalesOrderTableViewCell.m; sourceTree = "<group>"; };
+		F52AD5C11F302F6D0098282A /* THNSuccessfulOrderHoursAdayTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNSuccessfulOrderHoursAdayTableViewCell.h; sourceTree = "<group>"; };
+		F52AD5C21F302F6D0098282A /* THNSuccessfulOrderHoursAdayTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNSuccessfulOrderHoursAdayTableViewCell.m; sourceTree = "<group>"; };
+		F52AD5C51F3031510098282A /* THNHourOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNHourOrderModel.h; sourceTree = "<group>"; };
+		F52AD5C61F3031510098282A /* THNHourOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNHourOrderModel.m; sourceTree = "<group>"; };
+		F52AD5C81F3052870098282A /* THNSalesListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNSalesListTableViewCell.h; sourceTree = "<group>"; };
+		F52AD5C91F3052870098282A /* THNSalesListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNSalesListTableViewCell.m; sourceTree = "<group>"; };
+		F52AD5CB1F3052F60098282A /* THNSalesListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNSalesListModel.h; sourceTree = "<group>"; };
+		F52AD5CC1F3052F60098282A /* THNSalesListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNSalesListModel.m; sourceTree = "<group>"; };
+		F52AD5D01F305F770098282A /* THNListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNListTableViewCell.h; sourceTree = "<group>"; };
+		F52AD5D11F305F770098282A /* THNListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNListTableViewCell.m; sourceTree = "<group>"; };
+		F52AD5D81F30821D0098282A /* THNListTopTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNListTopTableViewCell.h; sourceTree = "<group>"; };
+		F52AD5D91F30821D0098282A /* THNListTopTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNListTopTableViewCell.m; sourceTree = "<group>"; };
 		F53C28D51F18673E004DB319 /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		F53C28D61F18673E004DB319 /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		F53C28D81F1867CB004DB319 /* LogInView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInView.h; sourceTree = "<group>"; };
@@ -656,10 +677,9 @@
 		D847DE531F00C1DA007E301E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F52AD5C41F3030F80098282A /* SalesModel */,
 				F595FE0F1F1CC762006F4E46 /* Cooperation.h */,
 				F595FE101F1CC762006F4E46 /* Cooperation.m */,
-				F595FE121F1DAB0D006F4E46 /* SalesTrendsModel.h */,
-				F595FE131F1DAB0D006F4E46 /* SalesTrendsModel.m */,
 				F595FE251F1E1068006F4E46 /* SalesChannelsModel.h */,
 				F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */,
 				F5ADCD941F1F3882001FC5DD /* UnitPriceModel.h */,
@@ -691,10 +711,9 @@
 		D847DE551F00C1DA007E301E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F52AD5C01F3023CA0098282A /* SalesCell */,
 				F56C76D91F29C2B400DAC486 /* DetailView */,
 				F55DD8131F04D55C004915E3 /* BezierCurvcLineTool */,
-				F55DD8101F04AE92004915E3 /* SaleTableViewCell.h */,
-				F55DD8111F04AE92004915E3 /* SaleTableViewCell.m */,
 				F55DD8191F04DDBE004915E3 /* UnitPriceTableViewCell.h */,
 				F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */,
 				F50EFF101F04E4CD0044762F /* AreaTableViewCell.h */,
@@ -1381,6 +1400,38 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F52AD5C01F3023CA0098282A /* SalesCell */ = {
+			isa = PBXGroup;
+			children = (
+				F52AD5B71F3023610098282A /* THNSalesOrderTableViewCell.h */,
+				F52AD5B81F3023610098282A /* THNSalesOrderTableViewCell.m */,
+				F55DD8101F04AE92004915E3 /* SaleTableViewCell.h */,
+				F55DD8111F04AE92004915E3 /* SaleTableViewCell.m */,
+				F52AD5C11F302F6D0098282A /* THNSuccessfulOrderHoursAdayTableViewCell.h */,
+				F52AD5C21F302F6D0098282A /* THNSuccessfulOrderHoursAdayTableViewCell.m */,
+				F52AD5C81F3052870098282A /* THNSalesListTableViewCell.h */,
+				F52AD5C91F3052870098282A /* THNSalesListTableViewCell.m */,
+				F52AD5D01F305F770098282A /* THNListTableViewCell.h */,
+				F52AD5D11F305F770098282A /* THNListTableViewCell.m */,
+				F52AD5D81F30821D0098282A /* THNListTopTableViewCell.h */,
+				F52AD5D91F30821D0098282A /* THNListTopTableViewCell.m */,
+			);
+			path = SalesCell;
+			sourceTree = "<group>";
+		};
+		F52AD5C41F3030F80098282A /* SalesModel */ = {
+			isa = PBXGroup;
+			children = (
+				F595FE121F1DAB0D006F4E46 /* SalesTrendsModel.h */,
+				F595FE131F1DAB0D006F4E46 /* SalesTrendsModel.m */,
+				F52AD5C51F3031510098282A /* THNHourOrderModel.h */,
+				F52AD5C61F3031510098282A /* THNHourOrderModel.m */,
+				F52AD5CB1F3052F60098282A /* THNSalesListModel.h */,
+				F52AD5CC1F3052F60098282A /* THNSalesListModel.m */,
+			);
+			path = SalesModel;
+			sourceTree = "<group>";
+		};
 		F53C28B81F18658A004DB319 /* LoginAndUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1700,9 +1751,11 @@
 				D8D664FE1F0C94FF00C53DEB /* THNEditToolCollectionViewCell.m in Sources */,
 				D8DCAD411F135E5B009A8A1F /* THNEditContentView.m in Sources */,
 				F55DD7F31F039EFB004915E3 /* AppDelegate+Guide.m in Sources */,
+				F52AD5CA1F3052870098282A /* THNSalesListTableViewCell.m in Sources */,
 				F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */,
 				F57139E41F272A0A00C1A62B /* THNGoodsPictureModel.m in Sources */,
 				D847DE6C1F00C1DA007E301E /* BaseTarBarViewController.m in Sources */,
+				F52AD5B91F3023610098282A /* THNSalesOrderTableViewCell.m in Sources */,
 				D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */,
 				F57139DB1F27186800C1A62B /* THNGoodsArticleCollectionViewCell.m in Sources */,
 				F58DE8F51F218DC400C80ECF /* ForgetPsdViewController.m in Sources */,
@@ -1743,9 +1796,11 @@
 				F58DE8EE1F20B05800C80ECF /* THNJointChildView.m in Sources */,
 				D8ED5D901EF906060046642C /* UIImage+Helper.m in Sources */,
 				D8E957F51F288F3E003F9A29 /* THNPosterModelImage.m in Sources */,
+				F52AD5D21F305F770098282A /* THNListTableViewCell.m in Sources */,
 				F595FE141F1DAB0D006F4E46 /* SalesTrendsModel.m in Sources */,
 				D8ED5D921EF906060046642C /* UIImage+QRCode.m in Sources */,
 				F57139DE1F27193E00C1A62B /* THNGoodsArticleModel.m in Sources */,
+				F52AD5CD1F3052F60098282A /* THNSalesListModel.m in Sources */,
 				D8ED5D941EF906060046642C /* UIImageView+SDWedImage.m in Sources */,
 				F55DD7FC1F03B2B7004915E3 /* BaseViewController.m in Sources */,
 				D847DE6F1F00C1DA007E301E /* PostersViewController.m in Sources */,
@@ -1755,6 +1810,7 @@
 				D847DE711F00C1DA007E301E /* UserViewController.m in Sources */,
 				F5A42CDF1F207F4F006687D8 /* EditUserView.m in Sources */,
 				F57139ED1F2840A800C1A62B /* THNPictureCollectionViewCell.m in Sources */,
+				F52AD5C71F3031510098282A /* THNHourOrderModel.m in Sources */,
 				F595FE0B1F1CA18D006F4E46 /* CooperationView.m in Sources */,
 				F58DE8F21F20B15400C80ECF /* GoodDetailsView.m in Sources */,
 				F58DE8C41F20AF1300C80ECF /* THNJointImageViewController.m in Sources */,
@@ -1790,11 +1846,13 @@
 				D8ED5DA41EFA13540046642C /* THNPhotoTool.m in Sources */,
 				F523A8161F1F76F300DD5C8B /* UserView.m in Sources */,
 				F523A8131F1F694C00DD5C8B /* RecommendedModel.m in Sources */,
+				F52AD5C31F302F6D0098282A /* THNSuccessfulOrderHoursAdayTableViewCell.m in Sources */,
 				F5E5FBDC1F29F9D000F66BC9 /* THNArticleDetailViewController.m in Sources */,
 				F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */,
 				F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */,
 				F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */,
 				F595FE0E1F1CA382006F4E46 /* CooperationCollectionViewCell.m in Sources */,
+				F52AD5DA1F30821D0098282A /* THNListTopTableViewCell.m in Sources */,
 				F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */,
 				D8E957E21F2724A7003F9A29 /* THNPosterInfoView.m in Sources */,
 				D8D9C2471EF278C5000688C6 /* main.m in Sources */,

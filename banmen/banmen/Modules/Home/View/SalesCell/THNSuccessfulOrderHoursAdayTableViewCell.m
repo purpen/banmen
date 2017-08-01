@@ -1,12 +1,12 @@
 //
-//  SaleTableViewCell.m
+//  THNSuccessfulOrderHoursAdayTableViewCell.m
 //  banmen
 //
-//  Created by dong on 2017/6/29.
+//  Created by dong on 2017/8/1.
 //  Copyright © 2017年 banmen. All rights reserved.
 //
 
-#import "SaleTableViewCell.h"
+#import "THNSuccessfulOrderHoursAdayTableViewCell.h"
 #import "Masonry.h"
 #import "UIColor+Extension.h"
 #import "BezierCurveView.h"
@@ -14,7 +14,7 @@
 #import "UIView+FSExtension.h"
 #import "DateValueFormatter.h"
 
-@interface SaleTableViewCell()
+@interface THNSuccessfulOrderHoursAdayTableViewCell()
 
 @property(nonatomic, strong) UILabel *salesLabel;
 @property(nonatomic, strong) UILabel *topLeftTwoLabel;
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation SaleTableViewCell
+@implementation THNSuccessfulOrderHoursAdayTableViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -62,7 +62,7 @@
         [self.contentView addSubview:self.timeLabel];
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.dateSelectBtn.mas_right).mas_offset(0);
-            make.centerY.mas_equalTo(self.topLeftTwoLabel.centerY).mas_offset(0);
+            make.top.mas_equalTo(self.salesLabel.mas_bottom).mas_offset(10);
         }];
         
         [self.contentView addSubview:self.lineChartView];
@@ -106,11 +106,15 @@
 
 -(void)setModelAry:(NSArray *)modelAry{
     _modelAry = modelAry;
-    SalesTrendsModel *model = modelAry[0];
+    
+    THNHourOrderModel *model = modelAry[0];
+    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%@", model.sum_money];
+    self.timeLabel.text = model.time;
+    
     CGFloat maxMoney = [model.sum_money floatValue];
     CGFloat minMoney = [model.sum_money floatValue];
     for (int i = 0; i < modelAry.count; i++) {
-        SalesTrendsModel *model = modelAry[i];
+        THNHourOrderModel *model = modelAry[i];
         if ([model.sum_money floatValue] > maxMoney) {
             maxMoney = [model.sum_money floatValue];
         }
@@ -127,7 +131,7 @@
     
     for (int i = 0; i < modelAry.count; i++)
     {
-        SalesTrendsModel *model = modelAry[i];
+        THNHourOrderModel *model = modelAry[i];
         CGFloat val = [model.sum_money floatValue];
         [values addObject:[[ChartDataEntry alloc] initWithX:i y:val icon: [UIImage imageNamed:@"icon"]]];
     }
@@ -136,10 +140,7 @@
     //X轴上面需要显示的数据
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
     for (int i = 0; i < xVals_count; i++) {
-        SalesTrendsModel *model = modelAry[i];
-//        if (i == (xVals_count/6)) {
-//            [xVals addObject:model.time];
-//        }
+        THNHourOrderModel *model = modelAry[i];
         [xVals addObject:model.time];
     }
     self.lineChartView.xAxis.valueFormatter = [[DateValueFormatter alloc] initWithArr:xVals];
@@ -192,6 +193,7 @@
         LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
         
         _lineChartView.data = data;
+        _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
     }
 }
 
@@ -228,7 +230,7 @@
 -(UILabel *)salesLabel{
     if (!_salesLabel) {
         _salesLabel = [[UILabel alloc] init];
-        _salesLabel.text = @"销售额";
+        _salesLabel.text = @"24小时成功下单";
         _salesLabel.textColor = [UIColor colorWithHexString:@"#2f2f2f"];
         _salesLabel.font = [UIFont systemFontOfSize:13];
     }
@@ -247,7 +249,6 @@
 -(UILabel *)topLeftTwoLabel{
     if (!_topLeftTwoLabel) {
         _topLeftTwoLabel = [[UILabel alloc] init];
-//        _topLeftTwoLabel.text = @"销售额：123232312";
         _topLeftTwoLabel.textColor = [UIColor colorWithHexString:@"#2f2f2f"];
         _topLeftTwoLabel.font = [UIFont systemFontOfSize:10];
     }
@@ -258,7 +259,9 @@
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
-    NSLog(@"chartValueSelected");
+    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%.2f", entry.y];
+    THNHourOrderModel *model = self.modelAry[(NSInteger)entry.x];
+    self.timeLabel.text = model.time;
 }
 
 - (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView

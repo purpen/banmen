@@ -48,9 +48,9 @@
         self.backgroundColor = NormalColor;
     }else{
         if (model.isToday) {//是今天
-            self.gregorianCalendarLabel.text = @"今天";
-            self.lunarCalendarLabel.textColor = [UIColor redColor];
-            self.gregorianCalendarLabel.textColor = [UIColor redColor];
+            self.gregorianCalendarLabel.text = [NSString stringWithFormat:@"%02ld",model.day];
+//            self.lunarCalendarLabel.textColor = [UIColor redColor];
+//            self.gregorianCalendarLabel.textColor = [UIColor redColor];
             NSString *string = [self getJieJiaRiWithMonth:model.month Day:model.day];
             if (string.length) {
                 self.lunarCalendarLabel.text = string;
@@ -87,14 +87,14 @@
             case DayModelStateStart:{
                 self.backgroundColor = StartAndEndColor;
                 self.lunarCalendarLabel.textColor = [UIColor whiteColor];
-                self.gregorianCalendarLabel.text = @"入住";
+                self.gregorianCalendarLabel.text = @"开始";
                 self.gregorianCalendarLabel.textColor = [UIColor whiteColor];
                 break;
             }
             case DayModelStateEnd:{
                 self.backgroundColor = StartAndEndColor;
                 self.lunarCalendarLabel.textColor = [UIColor whiteColor];
-                self.gregorianCalendarLabel.text = @"离店";
+                self.gregorianCalendarLabel.text = @"结束";
                 self.gregorianCalendarLabel.textColor = [UIColor whiteColor];
                 break;
             }

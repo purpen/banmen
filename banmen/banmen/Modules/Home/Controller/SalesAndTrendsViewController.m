@@ -148,7 +148,7 @@
     
     UIScrollView *contentView = [[UIScrollView alloc] init];
     contentView.scrollEnabled = NO;
-    contentView.frame = CGRectMake(0, self.titlesView.y+self.titlesView.height, SCREEN_WIDTH, SCREEN_HEIGHT-contentView.y-49);
+    contentView.frame = CGRectMake(0, self.titlesView.y+self.titlesView.height, SCREEN_WIDTH, SCREEN_HEIGHT-contentView.y+30);
     contentView.delegate = self;
     contentView.pagingEnabled = YES;
     [self.view insertSubview:contentView atIndex:0];

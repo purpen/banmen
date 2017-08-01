@@ -11,15 +11,26 @@
 #import "SalesTrendsModel.h"
 #import "HotelCalendarViewController.h"
 #import "BaseNavController.h"
+#import "THNSalesOrderTableViewCell.h"
+#import "THNHourOrderModel.h"
+#import "THNSuccessfulOrderHoursAdayTableViewCell.h"
+#import "THNSalesListModel.h"
+#import "THNSalesListTableViewCell.h"
 
-@interface SalesViewController () <UITableViewDelegate,UITableViewDataSource, SalesTrendsModelDelegate>
+@interface SalesViewController () <UITableViewDelegate,UITableViewDataSource, SalesTrendsModelDelegate, THNHourOrderModelDelegate, THNSalesListModelDelegate>
 /**  */
 @property (nonatomic, strong) UITableView *contenTableView;
 @property (nonatomic, strong) SalesTrendsModel *s;
+@property (nonatomic, strong) THNHourOrderModel *h;
+@property (nonatomic, strong) THNSalesListModel *l;
 @property (nonatomic, copy) NSString *startTimeStr;
 @property (nonatomic, copy) NSString *endTimeStr;
 @property (nonatomic, copy) NSString *numStr;
 @property (nonatomic, strong) NSArray *modelAry;
+@property (nonatomic, strong) NSArray *hourModelAry;
+@property (nonatomic, strong) NSArray *listModelAry;
+@property (nonatomic, assign) NSInteger rowNum;
+@property (nonatomic, assign) BOOL reloadFlag;
 @end
 
 @implementation SalesViewController
@@ -29,6 +40,20 @@
         _s = [SalesTrendsModel new];
     }
     return _s;
+}
+
+-(THNHourOrderModel *)h{
+    if (!_h) {
+        _h = [THNHourOrderModel new];
+    }
+    return _h;
+}
+
+-(THNSalesListModel *)l{
+    if (!_l) {
+        _l = [THNSalesListModel new];
+    }
+    return _l;
 }
 
 - (void)viewDidLoad {
@@ -43,17 +68,37 @@
     NSString *the_date_str = [date_formatter stringFromDate:theDate];
     self.s.sDelegate = self;
     [self.s getSalesTrendsModelItemList:the_date_str andEndTime:current_date_str];
+    self.rowNum = 0;
+    self.reloadFlag = YES;
+    self.h.delegate = self;
+    [self.h hourOrderModel:the_date_str andEndTime:current_date_str];
+    self.l.delegate = self;
+    [self.l salesListModel:the_date_str andEndTime:current_date_str];
+}
+
+-(void)salesListModel:(NSArray *)modelAry{
+    _listModelAry = modelAry;
+    [self.contenTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+-(void)hourOrderModel:(NSArray *)modelAry{
+    _hourModelAry = modelAry;
+    [self.contenTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 -(void)getSalesTrendsModel:(NSArray*)modelAry{
     self.modelAry = modelAry;
-    [self.contenTableView reloadData];
+    if (self.reloadFlag) {
+        [self.contenTableView reloadData];
+    } else {
+        [self.contenTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.rowNum inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 -(UITableView *)contenTableView{
     if (!_contenTableView) {
         self.automaticallyAdjustsScrollViewInsets = NO;
-        _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 1-44-35) style:UITableViewStyleGrouped];
+        _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 1-44-35-20) style:UITableViewStyleGrouped];
         _contenTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _contenTableView.showsVerticalScrollIndicator = NO;
         _contenTableView.backgroundColor = [UIColor colorWithHexString:@"#f8f8f8"];
@@ -62,6 +107,9 @@
         _contenTableView.contentInset = UIEdgeInsetsMake(-30, 0, 0, 0);
         _contenTableView.rowHeight = 245;
         [_contenTableView registerClass:[SaleTableViewCell class] forCellReuseIdentifier:@"SaleTableViewCell"];
+        [_contenTableView registerClass:[THNSalesOrderTableViewCell class] forCellReuseIdentifier:@"THNSalesOrderTableViewCell"];
+        [_contenTableView registerClass:[THNSuccessfulOrderHoursAdayTableViewCell class] forCellReuseIdentifier:@"THNSuccessfulOrderHoursAdayTableViewCell"];
+        [_contenTableView registerClass:[THNSalesListTableViewCell class] forCellReuseIdentifier:@"THNSalesListTableViewCell"];
     }
     return _contenTableView;
 }
@@ -71,21 +119,60 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SaleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SaleTableViewCell"];
-    cell.modelAry = self.modelAry;
-    [cell.dateSelectBtn addTarget:self action:@selector(dateSelect:) forControlEvents:(UIControlEventTouchUpInside)];
-    return cell;
+    if (indexPath.row == 0) {
+        SaleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SaleTableViewCell"];
+        cell.modelAry = self.modelAry;
+        cell.dateSelectBtn.tag = indexPath.row;
+        [cell.dateSelectBtn addTarget:self action:@selector(dateSelect:) forControlEvents:(UIControlEventTouchUpInside)];
+        return cell;
+    } else if (indexPath.row == 1) {
+        THNSalesOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"THNSalesOrderTableViewCell"];
+        cell.modelAry = self.modelAry;
+        cell.dateSelectBtn.tag = indexPath.row;
+        [cell.dateSelectBtn addTarget:self action:@selector(dateSelect:) forControlEvents:(UIControlEventTouchUpInside)];
+        return cell;
+    } else if (indexPath.row == 2) {
+        THNSuccessfulOrderHoursAdayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"THNSuccessfulOrderHoursAdayTableViewCell"];
+        cell.modelAry = self.hourModelAry;
+        [cell.dateSelectBtn addTarget:self action:@selector(dateSelectHour:) forControlEvents:(UIControlEventTouchUpInside)];
+        return cell;
+    } else {
+        THNSalesListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"THNSalesListTableViewCell"];
+        cell.modelAry = self.listModelAry;
+        [cell.dateSelectBtn addTarget:self action:@selector(dateSelectList:) forControlEvents:(UIControlEventTouchUpInside)];
+        return cell;
+    }
+}
+
+-(void)dateSelectList:(UIButton *)sender{
+    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
+    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
+        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
+        [self.l salesListModel:(startDateStr) andEndTime:endDateStr];
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)dateSelectHour:(UIButton *)sender{
+    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
+    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
+        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
+        [self.h hourOrderModel:startDateStr andEndTime:endDateStr];
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)dateSelect:(UIButton*)sender{
+    self.rowNum = sender.tag;
+    self.reloadFlag = NO;
     HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
     __weak typeof(self) weakSelf = self;
     [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
         weakSelf.startTimeStr = startDateStr;
         weakSelf.endTimeStr = endDateStr;
         weakSelf.numStr = daysStr;
-        SaleTableViewCell *cell = [self.contenTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-//        [cell.lineChart setXLabels:@[startDateStr,endDateStr]];
+        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
+        [self.s getSalesTrendsModelItemList:startDateStr andEndTime:endDateStr];
     }];
     [self.navigationController pushViewController:vc animated:YES];
 }
