@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9959F7C22A2F1793FD74BF /* Pods_banmen.framework */; };
 		D805C5C21F30216F00354A47 /* THNShareActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D805C5C11F30216F00354A47 /* THNShareActionView.m */; };
+		D805C5D01F3034F700354A47 /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D805C5C91F3034CC00354A47 /* DateValueFormatter.m */; };
 		D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */; };
 		D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */; };
 		D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D840C6BE1EFB54A00021B83E /* THNOpenAlbumButton.m */; };
@@ -247,6 +248,8 @@
 		CA9959F7C22A2F1793FD74BF /* Pods_banmen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_banmen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D805C5C01F30216F00354A47 /* THNShareActionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNShareActionView.h; sourceTree = "<group>"; };
 		D805C5C11F30216F00354A47 /* THNShareActionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNShareActionView.m; sourceTree = "<group>"; };
+		D805C5C91F3034CC00354A47 /* DateValueFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateValueFormatter.m; sourceTree = "<group>"; };
+		D805C5CA1F3034CC00354A47 /* DateValueFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateValueFormatter.h; sourceTree = "<group>"; };
 		D83689E81EFA68DB005B0709 /* THNPhotoTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoTableViewModel.h; sourceTree = "<group>"; };
 		D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTableViewModel.m; sourceTree = "<group>"; };
 		D83689EB1EFA6900005B0709 /* THNPhotoCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoCellViewModel.h; sourceTree = "<group>"; };
@@ -695,6 +698,8 @@
 		D847DE541F00C1DA007E301E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				D805C5CA1F3034CC00354A47 /* DateValueFormatter.h */,
+				D805C5C91F3034CC00354A47 /* DateValueFormatter.m */,
 				D886F8381F21A0EE009382C3 /* HotelCalendar */,
 			);
 			path = Service;
@@ -1704,6 +1709,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D805C5D01F3034F700354A47 /* DateValueFormatter.m in Sources */,
 				F57139D51F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.m in Sources */,
 				D886F8411F21A102009382C3 /* DayCollectionViewCell.m in Sources */,
 				D8E957EF1F288E1F003F9A29 /* THNPosterModelData.m in Sources */,

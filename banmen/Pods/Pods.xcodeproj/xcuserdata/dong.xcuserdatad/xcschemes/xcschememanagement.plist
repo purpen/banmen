@@ -8,96 +8,144 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
 		<key>Charts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>DACircularProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>HMSegmentedControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>JKDBModel-JDBR.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>MJExtension.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 		<key>MXPagerView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>MXParallaxHeader.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 		<key>MXSegmentedPager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>13</integer>
 		</dict>
 		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>PYPhotoBrowser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>15</integer>
 		</dict>
 		<key>Pods-banmen.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>14</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>16</integer>
 		</dict>
 		<key>SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>17</integer>
 		</dict>
 		<key>TYAlertController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
+		<key>YYImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>19</integer>
+		</dict>
+		<key>YYText.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -108,6 +156,11 @@
 			<true/>
 		</dict>
 		<key>17CEAD1B3EC4E80098DF5F8AA00BE966</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1F9A0DC0FACFC7ECE204BE7B75D9DC3E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -123,6 +176,11 @@
 			<true/>
 		</dict>
 		<key>28546100F97BDD9F1D3D863522625D5B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>34B9F680982319A499E36E3924034DB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,12 +205,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>90FCD3E527D4BFB4076A18E19B0E2F70</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B840AEE1B981E83C9DE57BF7A032EF36</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>BA95CF2A6EEF11BA9355670D22ED4FCD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0DAAC9F7985BB469E0129314CF0530A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -182,6 +250,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>DBA08BAB3065425003D817794BA9F566</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E14A62900910444707A5504D25EC98DC</key>
 		<dict>
 			<key>primary</key>
@@ -192,7 +265,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>EC6FE65875D076A66CBE30098683B2AD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F307B842FF76B2DE6C55DB67C0885325</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FCDDE565EC8626D5F40EF532167B5AF3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

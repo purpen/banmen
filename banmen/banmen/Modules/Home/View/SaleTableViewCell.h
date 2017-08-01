@@ -13,7 +13,7 @@
 @interface SaleTableViewCell : UITableViewCell <ChartViewDelegate>
 
 @property (strong,nonatomic)UIButton *dateSelectBtn;
-@property (strong,nonatomic)NSArray *modelAry;
+@property (strong,nonatomic) NSArray *modelAry;
 @property (strong,nonatomic) LineChartView *lineChartView;
 @property (strong,nonatomic) UILabel *timeLabel;
 

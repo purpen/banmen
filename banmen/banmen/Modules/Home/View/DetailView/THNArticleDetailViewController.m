@@ -26,11 +26,10 @@
 }
 
 -(void)setContent:(NSString *)content{
+    _content = content;
     NSError  *error;
     NSString *markdown = content;
     self.htmlStr = [MMMarkdown HTMLStringWithMarkdown:markdown error:&error];
 }
-
-
 
 @end
