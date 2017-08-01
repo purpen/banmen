@@ -10,6 +10,7 @@
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "THNShareActionView.h"
 
 @interface THNDoneImageViewController ()
 
@@ -17,7 +18,7 @@
 @property (nonatomic, strong) UIButton *hintText;
 @property (nonatomic, strong) UIButton *backHomeButton;
 @property (nonatomic, strong) UIButton *againButton;
-@property (nonatomic, strong) UIButton *shareButton;
+@property (nonatomic, strong) THNShareActionView *shareView;
 
 @end
 
@@ -49,7 +50,7 @@
     [_hintText mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(130, 25));
         make.centerX.equalTo(self.view);
-        make.top.equalTo(_previewImageView.mas_bottom).with.offset(15);
+        make.top.equalTo(_previewImageView.mas_bottom).with.offset(30);
     }];
     
     [self.view addSubview:self.againButton];
@@ -66,9 +67,9 @@
         make.top.equalTo(self.view.mas_top).with.offset(20);
     }];
     
-    [self.view addSubview:self.shareButton];
-    [_shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 50));
+    [self.view addSubview:self.shareView];
+    [_shareView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 130));
         make.bottom.equalTo(self.view.mas_bottom).with.offset(0);
         make.centerX.equalTo(self.view);
     }];
@@ -154,25 +155,21 @@
 }
 
 #pragma mark - 分享
-- (UIButton *)shareButton {
-    if (!_shareButton) {
-        _shareButton = [[UIButton alloc] init];
-        [_shareButton setTitle:@"分享" forState:(UIControlStateNormal)];
-        [_shareButton setTitleColor:[UIColor colorWithHexString:kColorWhite] forState:(UIControlStateNormal)];
-        _shareButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-        _shareButton.backgroundColor = [UIColor colorWithHexString:kColorGreen];
-        [_shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+- (THNShareActionView *)shareView {
+    if (!_shareView) {
+        _shareView = [[THNShareActionView alloc] init];
+        [_shareView thn_showShareViewController:self messageObject:[self shareMessageObject] shareImage:self.doneImage];
     }
-    return _shareButton;
+    return _shareView;
 }
 
-- (void)shareButtonClick:(UIButton *)button {
-    [self systemShareWithImage:self.doneImage];
-}
-
-- (void)systemShareWithImage:(UIImage *)image {
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:image, nil] applicationActivities:nil];
-    [self presentViewController:activityController animated:true completion:nil];
+#pragma mark - 创建分享消息对象
+- (UMSocialMessageObject *)shareMessageObject {
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
+    shareObject.shareImage = self.doneImage;
+    messageObject.shareObject = shareObject;
+    return messageObject;
 }
 
 #pragma mark - 设置Nav

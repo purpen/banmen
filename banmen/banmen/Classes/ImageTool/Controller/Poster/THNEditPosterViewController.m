@@ -18,6 +18,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "THNDoneImageViewController.h"
 #import <YYImage/YYImage.h>
+#import "NSString+JSON.h"
 
 @interface THNEditPosterViewController () <THNImageToolNavigationBarItemsDelegate, THNPosterInfoViewDelegate, THNPhotoListViewDelegate> {
     NSInteger _imageViewTag;
@@ -115,6 +116,8 @@
         return;
     }
     
+    NSLog(@"海报配置信息：%@", [NSString jsonStringWithObject:styleDict]);
+    
     self.dataModel = [[THNPosterModelData alloc] initWithDictionary:[styleDict valueForKey:@"data"]];
     [self.posterView thn_setPosterStyleInfoData:self.dataModel];
     [self thn_showEditPosterView:YES];
@@ -196,7 +199,7 @@
     option.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
     
     [[PHImageManager defaultManager] requestImageForAsset:item.asset
-                                               targetSize:CGSizeMake(item.asset.pixelWidth, item.asset.pixelHeight)
+                                               targetSize:PHImageManagerMaximumSize
                                               contentMode:PHImageContentModeAspectFill
                                                   options:option
                                             resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {

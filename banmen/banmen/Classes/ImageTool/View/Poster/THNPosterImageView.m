@@ -16,7 +16,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
+//        self.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
         self.clipsToBounds = NO;
         self.layer.masksToBounds = NO;
         [self thn_setViewUI];
@@ -41,7 +41,6 @@
         _loadImageView = [[UIImageView alloc] initWithFrame:self.bounds];
         _loadImageView.userInteractionEnabled = YES;
         _loadImageView.contentMode = UIViewContentModeScaleAspectFill;
-        _loadImageView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
     }
     return _loadImageView;
 }
@@ -52,7 +51,7 @@
         _contentView.delegate = self;
         _contentView.showsHorizontalScrollIndicator = NO;
         _contentView.showsVerticalScrollIndicator = NO;
-        _contentView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
+//        _contentView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
     }
     return _contentView;
 }

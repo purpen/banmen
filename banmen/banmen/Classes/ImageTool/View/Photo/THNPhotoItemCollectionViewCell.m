@@ -13,7 +13,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
+        self.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:1];
         [self thn_setCollecitonCellViewUI];
     }
     return self;
@@ -29,9 +29,9 @@
 - (void)thn_getPhotoAsset:(PHAsset *)asset {
     PHImageManager *imageManager = [PHImageManager defaultManager];
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
     
-    CGSize imageSize = CGSizeMake(100, 100);
+    CGSize imageSize = CGSizeMake(150, 150);
     [imageManager requestImageForAsset:asset
                             targetSize:imageSize
                            contentMode:PHImageContentModeAspectFill
@@ -63,7 +63,6 @@
         _photoImageView.contentMode = UIViewContentModeScaleAspectFill;
         _photoImageView.center = self.contentView.center;
         _photoImageView.clipsToBounds = YES;
-        _photoImageView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
     }
     return _photoImageView;
 }

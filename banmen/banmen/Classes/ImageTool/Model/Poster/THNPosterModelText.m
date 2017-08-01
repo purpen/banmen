@@ -49,7 +49,7 @@ NSString *const kPosterModelTextBackground = @"background";
     }
     
     if (![dictionary[kPosterModelTextWeight] isKindOfClass:[NSNull class]]) {
-        self.weight = [dictionary[kPosterModelTextWeight] floatValue];
+        self.weight = [dictionary[kPosterModelTextWeight] integerValue];
     }
     
     if (![dictionary[kPosterModelTextWidth] isKindOfClass:[NSNull class]]) {
