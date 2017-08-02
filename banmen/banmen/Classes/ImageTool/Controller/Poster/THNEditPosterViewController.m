@@ -17,7 +17,6 @@
 #import "THNPosterImageView.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "THNDoneImageViewController.h"
-#import <YYImage/YYImage.h>
 #import "NSString+JSON.h"
 
 @interface THNEditPosterViewController () <THNImageToolNavigationBarItemsDelegate, THNPosterInfoViewDelegate, THNPhotoListViewDelegate> {

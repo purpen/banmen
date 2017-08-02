@@ -18,6 +18,4 @@ target "banmen" do
  pod ‘UMengUShare/Social/ReducedWeChat'
  pod 'JPush'
  pod "PYPhotoBrowser"
- pod 'YYText'
- pod 'YYImage'
 end
