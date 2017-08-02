@@ -143,6 +143,8 @@
 		F52AD5DA1F30821D0098282A /* THNListTopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5D91F30821D0098282A /* THNListTopTableViewCell.m */; };
 		F52AD5E41F31A95C0098282A /* THNRepeatPurchaseRateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5E31F31A95C0098282A /* THNRepeatPurchaseRateTableViewCell.m */; };
 		F52AD5E81F31A9E20098282A /* THNRepeatBuyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5E71F31A9E20098282A /* THNRepeatBuyModel.m */; };
+		F52AD5EC1F31C3410098282A /* THNOrderAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5EB1F31C3410098282A /* THNOrderAreaModel.m */; };
+		F52AD5FE1F31D94E0098282A /* RMMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5FB1F31D7C20098282A /* RMMapper.m */; };
 		F53C28D71F18673E004DB319 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D61F18673E004DB319 /* LogInViewController.m */; };
 		F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D91F1867CB004DB319 /* LogInView.m */; };
 		F53C28DD1F18BA31004DB319 /* LogUpview.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28DC1F18BA31004DB319 /* LogUpview.m */; };
@@ -468,6 +470,16 @@
 		F52AD5E31F31A95C0098282A /* THNRepeatPurchaseRateTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNRepeatPurchaseRateTableViewCell.m; sourceTree = "<group>"; };
 		F52AD5E61F31A9E20098282A /* THNRepeatBuyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNRepeatBuyModel.h; sourceTree = "<group>"; };
 		F52AD5E71F31A9E20098282A /* THNRepeatBuyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNRepeatBuyModel.m; sourceTree = "<group>"; };
+		F52AD5EA1F31C3410098282A /* THNOrderAreaModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNOrderAreaModel.h; sourceTree = "<group>"; };
+		F52AD5EB1F31C3410098282A /* THNOrderAreaModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNOrderAreaModel.m; sourceTree = "<group>"; };
+		F52AD5F41F31D7C20098282A /* NSObject+RMArchivable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+RMArchivable.h"; sourceTree = "<group>"; };
+		F52AD5F51F31D7C20098282A /* NSObject+RMArchivable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RMArchivable.m"; sourceTree = "<group>"; };
+		F52AD5F61F31D7C20098282A /* NSObject+RMCopyable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+RMCopyable.h"; sourceTree = "<group>"; };
+		F52AD5F71F31D7C20098282A /* NSObject+RMCopyable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RMCopyable.m"; sourceTree = "<group>"; };
+		F52AD5F81F31D7C20098282A /* NSUserDefaults+RMSaveCustomObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+RMSaveCustomObject.h"; sourceTree = "<group>"; };
+		F52AD5F91F31D7C20098282A /* NSUserDefaults+RMSaveCustomObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+RMSaveCustomObject.m"; sourceTree = "<group>"; };
+		F52AD5FA1F31D7C20098282A /* RMMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMapper.h; sourceTree = "<group>"; };
+		F52AD5FB1F31D7C20098282A /* RMMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMMapper.m; sourceTree = "<group>"; };
 		F53C28D51F18673E004DB319 /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		F53C28D61F18673E004DB319 /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		F53C28D81F1867CB004DB319 /* LogInView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInView.h; sourceTree = "<group>"; };
@@ -716,6 +728,8 @@
 				F57139E31F272A0A00C1A62B /* THNGoodsPictureModel.m */,
 				F57139E81F274C7900C1A62B /* THNGoodsVideoModel.h */,
 				F57139E91F274C7900C1A62B /* THNGoodsVideoModel.m */,
+				F52AD5EA1F31C3410098282A /* THNOrderAreaModel.h */,
+				F52AD5EB1F31C3410098282A /* THNOrderAreaModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -733,12 +747,11 @@
 		D847DE551F00C1DA007E301E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F52AD5F21F31CCD00098282A /* AreaView */,
 				F52AD5DC1F31742E0098282A /* SalesUnitPriceCell */,
 				F52AD5C01F3023CA0098282A /* SalesCell */,
 				F56C76D91F29C2B400DAC486 /* DetailView */,
 				F55DD8131F04D55C004915E3 /* BezierCurvcLineTool */,
-				F50EFF101F04E4CD0044762F /* AreaTableViewCell.h */,
-				F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */,
 				F595FE091F1CA18D006F4E46 /* CooperationView.h */,
 				F595FE0A1F1CA18D006F4E46 /* CooperationView.m */,
 				F595FE0C1F1CA382006F4E46 /* CooperationCollectionViewCell.h */,
@@ -1168,6 +1181,7 @@
 		D8B0710F1EF8F415005CC051 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				F52AD5F31F31D7C20098282A /* RMMapper */,
 				D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */,
 			);
 			path = Vendors;
@@ -1475,6 +1489,30 @@
 				F52AD5E71F31A9E20098282A /* THNRepeatBuyModel.m */,
 			);
 			path = SalesUnitPriceModel;
+			sourceTree = "<group>";
+		};
+		F52AD5F21F31CCD00098282A /* AreaView */ = {
+			isa = PBXGroup;
+			children = (
+				F50EFF101F04E4CD0044762F /* AreaTableViewCell.h */,
+				F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */,
+			);
+			path = AreaView;
+			sourceTree = "<group>";
+		};
+		F52AD5F31F31D7C20098282A /* RMMapper */ = {
+			isa = PBXGroup;
+			children = (
+				F52AD5F41F31D7C20098282A /* NSObject+RMArchivable.h */,
+				F52AD5F51F31D7C20098282A /* NSObject+RMArchivable.m */,
+				F52AD5F61F31D7C20098282A /* NSObject+RMCopyable.h */,
+				F52AD5F71F31D7C20098282A /* NSObject+RMCopyable.m */,
+				F52AD5F81F31D7C20098282A /* NSUserDefaults+RMSaveCustomObject.h */,
+				F52AD5F91F31D7C20098282A /* NSUserDefaults+RMSaveCustomObject.m */,
+				F52AD5FA1F31D7C20098282A /* RMMapper.h */,
+				F52AD5FB1F31D7C20098282A /* RMMapper.m */,
+			);
+			path = RMMapper;
 			sourceTree = "<group>";
 		};
 		F53C28B81F18658A004DB319 /* LoginAndUp */ = {
@@ -1786,6 +1824,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F52AD5FE1F31D94E0098282A /* RMMapper.m in Sources */,
 				D805C5D01F3034F700354A47 /* DateValueFormatter.m in Sources */,
 				F57139D51F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.m in Sources */,
 				D886F8411F21A102009382C3 /* DayCollectionViewCell.m in Sources */,
@@ -1912,6 +1951,7 @@
 				D847DE6E1F00C1DA007E301E /* HomeViewController.m in Sources */,
 				D8E957F21F288F36003F9A29 /* THNPosterModelText.m in Sources */,
 				D8D378E01EFA4D4900C89889 /* THNPhotoAlbumTableViewCell.m in Sources */,
+				F52AD5EC1F31C3410098282A /* THNOrderAreaModel.m in Sources */,
 				F58DE8EF1F20B05800C80ECF /* THNJointContentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,4 +10,6 @@
 
 @interface AreaTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) NSArray *modelAry;
+
 @end

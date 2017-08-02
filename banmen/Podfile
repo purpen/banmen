@@ -20,4 +20,5 @@ target "banmen" do
  pod "PYPhotoBrowser"
  pod 'YYText'
  pod 'YYImage'
+ pod 'iOS-Echarts'
 end
