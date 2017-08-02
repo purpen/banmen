@@ -70,7 +70,7 @@
             make.left.mas_equalTo(self.salesLabel.mas_left).mas_offset(0);
             make.top.mas_equalTo(self.topLeftTwoLabel.mas_bottom).mas_offset(5);
             make.right.mas_equalTo(self.dateSelectBtn.mas_right).mas_offset(0);
-            make.bottom.mas_equalTo(self.contentView.mas_bottom).mas_offset(13);
+            make.bottom.mas_equalTo(self.contentView.mas_bottom).mas_offset(-10);
         }];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -220,7 +220,7 @@
         
         _lineChartView.rightAxis.enabled = NO;
         
-        _lineChartView.legend.form = ChartLegendFormLine;
+        _lineChartView.legend.enabled = NO;
         
         [_lineChartView animateWithXAxisDuration:2.5];
     }

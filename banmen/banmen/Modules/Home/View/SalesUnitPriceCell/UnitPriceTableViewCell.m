@@ -71,93 +71,97 @@
     return self;
 }
 
+
 -(void)setModelAry:(NSArray *)modelAry{
     _modelAry = modelAry;
-    int xVals_count = (int)modelAry.count;//X轴上要显示多少条数据
-    double maxYVal = 0;//Y轴的最大值
-    for (int i = 0; i < modelAry.count; i++) {
-        UnitPriceModel *model = modelAry[i];
-        if (maxYVal < [model.count doubleValue]) {
-            maxYVal = [model.count doubleValue];
-        }
-    }
-    
-    ChartXAxis *xAxis = _barChartView.xAxis;
-    xAxis.labelPosition = XAxisLabelPositionBottom;//X轴的显示位置
-    xAxis.drawGridLinesEnabled = NO;//绘制网格
-    xAxis.labelFont = [UIFont systemFontOfSize:10.0f];//x数值字体大小
-    xAxis.labelTextColor = [UIColor blackColor];//数值字体颜色
-    xAxis.axisLineWidth = 1;//设置X轴线宽
-    
-    NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];//坐标数值样式
-    leftAxisFormatter.maximumFractionDigits = 1;//Y轴坐标最多为1位小数
-    ChartYAxis *leftAxis = _barChartView.leftAxis;
-    leftAxis.drawZeroLineEnabled = YES;//从0开始绘画
-    leftAxis.axisMaximum = maxYVal+50;//最大值
-    leftAxis.axisMinimum = 0;//最小值
-    leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:leftAxisFormatter];
-    leftAxis.labelFont = [UIFont systemFontOfSize:10.f];//字体大小
-    leftAxis.labelPosition = YAxisLabelPositionOutsideChart;//坐标数值的位置
-    leftAxis.labelCount = 8;//数值分割个数
-    leftAxis.labelTextColor = [UIColor blackColor];//坐标数值字体颜色
-    leftAxis.spaceTop = 0.15;//最大值到顶部的范围比
-    leftAxis.drawGridLinesEnabled = NO;//是否绘制网格
-    leftAxis.axisLineWidth = 1;//Y轴线宽
-    leftAxis.axisLineColor = [UIColor blackColor];//Y轴颜色
-    
-    ChartYAxis *right = _barChartView.rightAxis;
-    right.drawLabelsEnabled = NO;//是否显示Y轴坐标
-    right.drawGridLinesEnabled = NO;//不绘制网格
+    UnitPriceModel *model0 = modelAry[0];
+    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"客单价%@：%@%%", model0.range, model0.proportion];
     
     //X轴上面需要显示的数据
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
-    for (int i = 0; i < xVals_count; i++) {
+    for (int i = 0; i < modelAry.count; i++) {
         UnitPriceModel *model = modelAry[i];
         [xVals addObject:model.range];
     }
-    //对应Y轴上面需要显示的数据
+    
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
-    for (int i = 0; i < xVals_count; i++) {
+    
+    for (int i = 0; i < modelAry.count; i++)
+    {
         UnitPriceModel *model = modelAry[i];
-        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:i y:[model.count doubleValue]];
-        [yVals addObject:entry];
+        CGFloat val = [model.proportion floatValue];
+        [yVals addObject:[[BarChartDataEntry alloc] initWithX:i y:val]];
     }
-    BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@"DataSet"];
-    [set1 setColor:[UIColor colorWithHexString:@"#ff3266"]];//bar的颜色
-    [set1 setValueTextColor: [UIColor lightGrayColor]];
-    [set1 setDrawValuesEnabled:YES];//是否在bar上显示数值
-    [set1 setHighlightEnabled:NO];//是否点击有高亮效果，为NO是不会显示marker的效果
     
-    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-    [dataSets addObject:set1];
-    
-    
-    BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
-    [data setValueFont:[UIFont systemFontOfSize:10]];
-    self.barChartView.data = data;
-    [self.barChartView notifyDataSetChanged];
+    BarChartDataSet *set1 = nil;
+    if (_barChartView.data.dataSetCount > 0)
+    {
+        set1 = (BarChartDataSet *)_barChartView.data.dataSets[0];
+        set1.values = yVals;
+        [_barChartView.data notifyDataChanged];
+        [_barChartView notifyDataSetChanged];
+    }
+    else
+    {
+        set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@"The year 2017"];
+        [set1 setColors:ChartColorTemplates.material];
+        set1.drawIconsEnabled = NO;
+        [set1 setColor:[UIColor colorWithHexString:@"#ff3266"]];//设置柱形图颜色
+        
+        NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+        [dataSets addObject:set1];
+        
+        BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
+        [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.f]];
+        
+        data.barWidth = 0.9f;
+        
+        _barChartView.data = data;
+    }
 }
 
 -(BarChartView *)barChartView{
     if (!_barChartView) {
         _barChartView = [[BarChartView alloc] init];
-        _barChartView.delegate = self;//设置代理
-        _barChartView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
-        _barChartView.noDataText = @"暂无数据";//没有数据时的文字提示
-        _barChartView.drawValueAboveBarEnabled = YES;//数值显示在柱形的上面还是下面
-        _barChartView.drawBarShadowEnabled = YES;//是否绘制柱形的阴影背景
+        _barChartView.delegate = self;
+        
+        _barChartView.descriptionText = @"";//不显示，就设为空字符串即可
+        
+        _barChartView.drawBarShadowEnabled = NO;
+        _barChartView.drawValueAboveBarEnabled = YES;
         _barChartView.scaleYEnabled = NO;//取消Y轴缩放
         _barChartView.doubleTapToZoomEnabled = NO;//取消双击缩放
         _barChartView.dragEnabled = YES;//启用拖拽图表
-        _barChartView.dragDecelerationEnabled = YES;//拖拽后是否有惯性效果
-        _barChartView.dragDecelerationFrictionCoef = 0.9;//拖拽后惯性效果的摩擦系数(0~1)，数值越小，惯性越不明显
-        _barChartView.descriptionText = @"";
+        
+        _barChartView.maxVisibleCount = 60;
+        
+        ChartXAxis *xAxis = _barChartView.xAxis;
+        xAxis.labelPosition = XAxisLabelPositionBottom;
+        xAxis.labelFont = [UIFont systemFontOfSize:10.f];
+        xAxis.drawGridLinesEnabled = NO;
+        xAxis.granularity = 1.0; // only intervals of 1 day
+        xAxis.labelCount = 7;
+        xAxis.axisLineWidth = 1;//设置X轴线宽
+        
+        
+        NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
+        leftAxisFormatter.minimumFractionDigits = 0;
+        leftAxisFormatter.maximumFractionDigits = 1;
+        
+        _barChartView.rightAxis.enabled = NO;//不绘制右边轴
+        
+        ChartYAxis *leftAxis = _barChartView.leftAxis;
+        leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
+        leftAxis.labelCount = 8;
+        leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:leftAxisFormatter];
+        leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
+        leftAxis.spaceTop = 0.15;
+        leftAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
+        leftAxis.drawGridLinesEnabled = NO;
+        
+        _barChartView.legend.enabled = NO;//不显示图例说明
     }
     return _barChartView;
-}
-
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight{
-    NSLog(@"chartValueSelected");
 }
 
 -(UIButton *)dateSelectBtn{
@@ -190,7 +194,7 @@
     if (!_salesLabel) {
         _salesLabel = [[UILabel alloc] init];
         _salesLabel.text = @"销售客单价";
-        _salesLabel.textColor = [UIColor colorWithHexString:@"#0f7efe"];
+        _salesLabel.textColor = [UIColor colorWithHexString:@"#2f2f2f"];
         _salesLabel.font = [UIFont systemFontOfSize:13];
     }
     return _salesLabel;
@@ -200,10 +204,22 @@
     if (!_topLeftTwoLabel) {
         _topLeftTwoLabel = [[UILabel alloc] init];
         _topLeftTwoLabel.text = @"销售额：123232312";
-        _topLeftTwoLabel.textColor = [UIColor colorWithHexString:@"#0f7efe"];
+        _topLeftTwoLabel.textColor = [UIColor colorWithHexString:@"#2f2f2f"];
         _topLeftTwoLabel.font = [UIFont systemFontOfSize:10];
     }
     return _topLeftTwoLabel;
+}
+
+#pragma mark - ChartViewDelegate
+
+- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+{
+    NSLog(@"chartValueSelected");
+}
+
+- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+{
+    NSLog(@"chartValueNothingSelected");
 }
 
 

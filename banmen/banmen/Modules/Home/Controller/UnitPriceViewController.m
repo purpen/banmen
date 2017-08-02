@@ -9,6 +9,7 @@
 #import "UnitPriceViewController.h"
 #import "UnitPriceTableViewCell.h"
 #import "UnitPriceModel.h"
+#import "HotelCalendarViewController.h"
 
 @interface UnitPriceViewController ()<UITableViewDelegate,UITableViewDataSource, UnitPriceModelDelegate>
 
@@ -70,7 +71,17 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UnitPriceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UnitPriceTableViewCell"];
     cell.modelAry = self.modelAry;
+    [cell.dateSelectBtn addTarget:self action:@selector(dateSelect:) forControlEvents:(UIControlEventTouchUpInside)];
     return cell;
+}
+
+-(void)dateSelect:(UIButton *)sender{
+    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
+    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
+        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
+        [self.u NetGetUnitPriceModel:startDateStr andEndTime:endDateStr];
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

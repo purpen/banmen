@@ -728,11 +728,10 @@
 		D847DE551F00C1DA007E301E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F52AD5DC1F31742E0098282A /* SalesUnitPriceCell */,
 				F52AD5C01F3023CA0098282A /* SalesCell */,
 				F56C76D91F29C2B400DAC486 /* DetailView */,
 				F55DD8131F04D55C004915E3 /* BezierCurvcLineTool */,
-				F55DD8191F04DDBE004915E3 /* UnitPriceTableViewCell.h */,
-				F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */,
 				F50EFF101F04E4CD0044762F /* AreaTableViewCell.h */,
 				F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */,
 				F595FE091F1CA18D006F4E46 /* CooperationView.h */,
@@ -1449,6 +1448,15 @@
 				F52AD5CC1F3052F60098282A /* THNSalesListModel.m */,
 			);
 			path = SalesModel;
+			sourceTree = "<group>";
+		};
+		F52AD5DC1F31742E0098282A /* SalesUnitPriceCell */ = {
+			isa = PBXGroup;
+			children = (
+				F55DD8191F04DDBE004915E3 /* UnitPriceTableViewCell.h */,
+				F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */,
+			);
+			path = SalesUnitPriceCell;
 			sourceTree = "<group>";
 		};
 		F53C28B81F18658A004DB319 /* LoginAndUp */ = {
