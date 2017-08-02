@@ -14,5 +14,6 @@
 @property (nonatomic, strong) PieChartView *pieChartView;
 @property (nonatomic, strong) NSArray *modelAry;
 @property (nonatomic, strong) UITableView *tableView;
+@property (strong,nonatomic) UIButton *dateSelectBtn;
 
 @end

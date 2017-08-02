@@ -36,7 +36,7 @@
         
         [self.contentView addSubview:self.idLabel];
         [_idLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(30/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(35/SCREEN_HEIGHT*667.0);
             make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10/SCREEN_HEIGHT*667.0);
         }];
         
@@ -44,18 +44,18 @@
         [_goodsNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).mas_offset(110/SCREEN_HEIGHT*667.0);
             make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10/SCREEN_HEIGHT*667.0);
-            make.width.mas_lessThanOrEqualTo(100/SCREEN_HEIGHT*667.0);
+            make.width.mas_lessThanOrEqualTo(80/SCREEN_HEIGHT*667.0);
         }];
         
         [self.contentView addSubview:self.salesNumLabel];
         [_salesNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(220/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(200/SCREEN_HEIGHT*667.0);
             make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10/SCREEN_HEIGHT*667.0);
         }];
         
         [self.contentView addSubview:self.salesLabel];
         [_salesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(250/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(245/SCREEN_HEIGHT*667.0);
             make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10/SCREEN_HEIGHT*667.0);
         }];
         

@@ -70,6 +70,7 @@
         _percentageLael = [[UILabel alloc] init];
         _percentageLael.font = [UIFont systemFontOfSize:14];
         _percentageLael.textColor = [UIColor colorWithHexString:@"#222222"];
+        _percentageLael.textAlignment = NSTextAlignmentLeft;
     }
     return _percentageLael;
 }
@@ -79,6 +80,7 @@
         _salesLael = [[UILabel alloc] init];
         _salesLael.font = [UIFont systemFontOfSize:14];
         _salesLael.textColor = [UIColor colorWithHexString:@"#222222"];
+        _salesLael.textAlignment = NSTextAlignmentLeft;
     }
     return _salesLael;
 }
@@ -88,6 +90,7 @@
         _areaLael = [[UILabel alloc] init];
         _areaLael.font = [UIFont systemFontOfSize:14];
         _areaLael.textColor = [UIColor colorWithHexString:@"#222222"];
+        _areaLael.textAlignment = NSTextAlignmentLeft;
     }
     return _areaLael;
 }
@@ -97,6 +100,7 @@
         _serialNumberLael = [[UILabel alloc] init];
         _serialNumberLael.font = [UIFont systemFontOfSize:14];
         _serialNumberLael.textColor = [UIColor colorWithHexString:@"#222222"];
+        _serialNumberLael.textAlignment = NSTextAlignmentLeft;
     }
     return _serialNumberLael;
 }
