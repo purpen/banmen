@@ -145,6 +145,8 @@
 		F52AD5CD1F3052F60098282A /* THNSalesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5CC1F3052F60098282A /* THNSalesListModel.m */; };
 		F52AD5D21F305F770098282A /* THNListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5D11F305F770098282A /* THNListTableViewCell.m */; };
 		F52AD5DA1F30821D0098282A /* THNListTopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5D91F30821D0098282A /* THNListTopTableViewCell.m */; };
+		F52AD5E41F31A95C0098282A /* THNRepeatPurchaseRateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5E31F31A95C0098282A /* THNRepeatPurchaseRateTableViewCell.m */; };
+		F52AD5E81F31A9E20098282A /* THNRepeatBuyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5E71F31A9E20098282A /* THNRepeatBuyModel.m */; };
 		F53C28D71F18673E004DB319 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D61F18673E004DB319 /* LogInViewController.m */; };
 		F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D91F1867CB004DB319 /* LogInView.m */; };
 		F53C28DD1F18BA31004DB319 /* LogUpview.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28DC1F18BA31004DB319 /* LogUpview.m */; };
@@ -471,6 +473,10 @@
 		F52AD5D11F305F770098282A /* THNListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNListTableViewCell.m; sourceTree = "<group>"; };
 		F52AD5D81F30821D0098282A /* THNListTopTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNListTopTableViewCell.h; sourceTree = "<group>"; };
 		F52AD5D91F30821D0098282A /* THNListTopTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNListTopTableViewCell.m; sourceTree = "<group>"; };
+		F52AD5E21F31A95C0098282A /* THNRepeatPurchaseRateTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNRepeatPurchaseRateTableViewCell.h; sourceTree = "<group>"; };
+		F52AD5E31F31A95C0098282A /* THNRepeatPurchaseRateTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNRepeatPurchaseRateTableViewCell.m; sourceTree = "<group>"; };
+		F52AD5E61F31A9E20098282A /* THNRepeatBuyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNRepeatBuyModel.h; sourceTree = "<group>"; };
+		F52AD5E71F31A9E20098282A /* THNRepeatBuyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNRepeatBuyModel.m; sourceTree = "<group>"; };
 		F53C28D51F18673E004DB319 /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		F53C28D61F18673E004DB319 /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		F53C28D81F1867CB004DB319 /* LogInView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInView.h; sourceTree = "<group>"; };
@@ -703,13 +709,12 @@
 		D847DE531F00C1DA007E301E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F52AD5E51F31A9B50098282A /* SalesUnitPriceModel */,
 				F52AD5C41F3030F80098282A /* SalesModel */,
 				F595FE0F1F1CC762006F4E46 /* Cooperation.h */,
 				F595FE101F1CC762006F4E46 /* Cooperation.m */,
 				F595FE251F1E1068006F4E46 /* SalesChannelsModel.h */,
 				F595FE261F1E1068006F4E46 /* SalesChannelsModel.m */,
-				F5ADCD941F1F3882001FC5DD /* UnitPriceModel.h */,
-				F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */,
 				F5C8EBEE1F21F032009FC203 /* GoodsDetailModel.h */,
 				F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */,
 				F57139D01F25DFC100C1A62B /* THNGoodsWorld.h */,
@@ -737,11 +742,10 @@
 		D847DE551F00C1DA007E301E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F52AD5DC1F31742E0098282A /* SalesUnitPriceCell */,
 				F52AD5C01F3023CA0098282A /* SalesCell */,
 				F56C76D91F29C2B400DAC486 /* DetailView */,
 				F55DD8131F04D55C004915E3 /* BezierCurvcLineTool */,
-				F55DD8191F04DDBE004915E3 /* UnitPriceTableViewCell.h */,
-				F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */,
 				F50EFF101F04E4CD0044762F /* AreaTableViewCell.h */,
 				F50EFF111F04E4CD0044762F /* AreaTableViewCell.m */,
 				F595FE091F1CA18D006F4E46 /* CooperationView.h */,
@@ -1465,6 +1469,28 @@
 			path = SalesModel;
 			sourceTree = "<group>";
 		};
+		F52AD5DC1F31742E0098282A /* SalesUnitPriceCell */ = {
+			isa = PBXGroup;
+			children = (
+				F55DD8191F04DDBE004915E3 /* UnitPriceTableViewCell.h */,
+				F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */,
+				F52AD5E21F31A95C0098282A /* THNRepeatPurchaseRateTableViewCell.h */,
+				F52AD5E31F31A95C0098282A /* THNRepeatPurchaseRateTableViewCell.m */,
+			);
+			path = SalesUnitPriceCell;
+			sourceTree = "<group>";
+		};
+		F52AD5E51F31A9B50098282A /* SalesUnitPriceModel */ = {
+			isa = PBXGroup;
+			children = (
+				F5ADCD941F1F3882001FC5DD /* UnitPriceModel.h */,
+				F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */,
+				F52AD5E61F31A9E20098282A /* THNRepeatBuyModel.h */,
+				F52AD5E71F31A9E20098282A /* THNRepeatBuyModel.m */,
+			);
+			path = SalesUnitPriceModel;
+			sourceTree = "<group>";
+		};
 		F53C28B81F18658A004DB319 /* LoginAndUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1805,6 +1831,7 @@
 				D8ED5D821EF906060046642C /* NSString+FBMD5.m in Sources */,
 				D8D5EB501F29D41500980933 /* THNPosterImageView.m in Sources */,
 				F50EFF121F04E4CD0044762F /* AreaTableViewCell.m in Sources */,
+				F52AD5E41F31A95C0098282A /* THNRepeatPurchaseRateTableViewCell.m in Sources */,
 				F55DD8091F04A3BE004915E3 /* UnitPriceViewController.m in Sources */,
 				D8ED5D9D1EF90CDD0046642C /* THNEditImageViewController.m in Sources */,
 				F53C28DD1F18BA31004DB319 /* LogUpview.m in Sources */,
@@ -1856,6 +1883,7 @@
 				D8DCAD3E1F135E48009A8A1F /* THNEditChildView.m in Sources */,
 				D805C5C21F30216F00354A47 /* THNShareActionView.m in Sources */,
 				D8E957FE1F289350003F9A29 /* THNPosterModelTextPosition.m in Sources */,
+				F52AD5E81F31A9E20098282A /* THNRepeatBuyModel.m in Sources */,
 				F53C28E31F1C8C7C004DB319 /* UserModel.m in Sources */,
 				D869B3F61F26FFE10074C37B /* THNPosterListCollectionViewCell.m in Sources */,
 				F58DE8C11F20AD2100C80ECF /* GoodDetailsViewController.m in Sources */,

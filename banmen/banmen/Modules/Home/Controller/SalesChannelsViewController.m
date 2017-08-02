@@ -9,6 +9,7 @@
 #import "SalesChannelsViewController.h"
 #import "SalesChannelsModel.h"
 #import "SalesChannelsView.h"
+#import "HotelCalendarViewController.h"
 
 @interface SalesChannelsViewController () <SalesChannelsModelDelegate>
 @property (nonatomic, strong) SalesChannelsModel *s;
@@ -36,8 +37,18 @@
 -(SalesChannelsView *)channelView{
     if (!_channelView) {
         _channelView = [[SalesChannelsView alloc] initWithFrame:self.view.frame];
+        [_channelView.dateSelectBtn addTarget:self action:@selector(dateSelect:) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _channelView;
+}
+
+-(void)dateSelect:(UIButton *)sender{
+    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
+    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
+        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
+        [self.s getSalesChannelsModelItem:startDateStr andEndTime:endDateStr];
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)updateSalesChannelsModel:(NSArray *)modelAry{

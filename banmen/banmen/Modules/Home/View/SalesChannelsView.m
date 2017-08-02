@@ -14,6 +14,7 @@
 
 @interface SalesChannelsView () <UITableViewDelegate, UITableViewDataSource>
 
+
 @end
 
 @implementation SalesChannelsView
@@ -47,9 +48,20 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
         [cell.contentView addSubview:self.pieChartView];
         [_pieChartView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.top.bottom.mas_equalTo(cell.contentView).mas_offset(0);
+            make.left.bottom.top.mas_equalTo(cell.contentView).mas_offset(0);
+            make.right.mas_equalTo(cell.contentView.mas_right).mas_offset(-80);
         }];
+        
+        [cell.contentView addSubview:self.dateSelectBtn];
+        [_dateSelectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(cell.contentView.mas_right).mas_offset(-10);
+            make.top.mas_equalTo(cell.contentView.mas_top).mas_offset(10);
+            make.height.mas_equalTo(46/2);
+            make.width.mas_equalTo(288/2);
+        }];
+        
         cell.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else {
         SalesChannelsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SalesChannelsTableViewCell"];
@@ -66,6 +78,24 @@
     }
 }
 
+-(UIButton *)dateSelectBtn{
+    if (!_dateSelectBtn) {
+        _dateSelectBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _dateSelectBtn.layer.borderColor = [UIColor colorWithHexString:@"#e9e9e9"].CGColor;
+        _dateSelectBtn.layer.borderWidth = 1;
+        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+        [date_formatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
+        NSTimeInterval  oneDay = 24*60*60*1;
+        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
+        NSString *the_date_str = [date_formatter stringFromDate:theDate];
+        [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
+        _dateSelectBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+        [_dateSelectBtn setTitleColor:[UIColor colorWithHexString:@"#7d7d7d"] forState:(UIControlStateNormal)];
+    }
+    return _dateSelectBtn;
+}
+
 -(void)setModelAry:(NSArray *)modelAry{
     _modelAry = modelAry;
     [self.tableView reloadData];
@@ -80,7 +110,7 @@
     if (values.count > 0) {
         //dataSet
         PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@""];
-        dataSet.drawValuesEnabled = YES;//是否绘制显示数据
+        dataSet.drawValuesEnabled = NO;//是否绘制显示数据
         NSMutableArray *colors = [[NSMutableArray alloc] init];
         [colors addObjectsFromArray:ChartColorTemplates.vordiplom];
         [colors addObjectsFromArray:ChartColorTemplates.joyful];
@@ -97,7 +127,7 @@
         dataSet.valueLinePart1OffsetPercentage = 0.85;//折线中第一段起始位置相对于区块的偏移量, 数值越大, 折线距离区块越远
         dataSet.valueLinePart1Length = 0.5;//折线中第一段长度占比
         dataSet.valueLinePart2Length = 0.4;//折线中第二段长度最大占比
-        dataSet.valueLineWidth = 1;//折线的粗细
+        dataSet.valueLineWidth = 0;//折线的粗细
         dataSet.valueLineColor = [UIColor brownColor];//折线颜色
         //data
         PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
@@ -132,9 +162,9 @@
         _pieChartView.legend.font = [UIFont systemFontOfSize:10];//字体大小
         _pieChartView.legend.textColor = [UIColor grayColor];//字体颜色
         _pieChartView.legend.position = ChartLegendPositionBelowChartCenter;//图例在饼状图中的位置
-        _pieChartView.legend.form = ChartLegendFormCircle;//图示样式: 方形、线条、圆形
+        _pieChartView.legend.form = ChartLegendFormSquare;//图示样式: 方形、线条、圆形
         _pieChartView.legend.formSize = 12;//图示大小
-        _pieChartView.descriptionText = @"一年销售渠道图表";
+        _pieChartView.descriptionText = @"";
     }
     return _pieChartView;
 }
