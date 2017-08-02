@@ -1,21 +1,21 @@
 //
-//  UnitPriceTableViewCell.m
+//  THNRepeatPurchaseRateTableViewCell.m
 //  banmen
 //
-//  Created by dong on 2017/6/29.
+//  Created by dong on 2017/8/2.
 //  Copyright © 2017年 banmen. All rights reserved.
 //
 
-#import "UnitPriceTableViewCell.h"
+#import "THNRepeatPurchaseRateTableViewCell.h"
 #import "Masonry.h"
 #import "UIColor+Extension.h"
 #import "OtherMacro.h"
 #import "UIView+FSExtension.h"
 #import "ChartsSwift.h"
-#import "UnitPriceModel.h"
 #import "DateValueFormatter.h"
+#import "THNRepeatBuyModel.h"
 
-@interface UnitPriceTableViewCell() <ChartViewDelegate>
+@interface THNRepeatPurchaseRateTableViewCell() <ChartViewDelegate>
 
 @property(nonatomic, strong) UILabel *salesLabel;
 @property(nonatomic, strong) UILabel *topLeftTwoLabel;
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation UnitPriceTableViewCell
+@implementation THNRepeatPurchaseRateTableViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -75,14 +75,14 @@
 
 -(void)setModelAry:(NSArray *)modelAry{
     _modelAry = modelAry;
-    UnitPriceModel *model0 = modelAry[0];
-    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"客单价%@：%@%%", model0.range, model0.proportion];
+    THNRepeatBuyModel *model0 = modelAry[0];
+    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"重复购买%.@次：%@%%", model0.count, model0.proportion];
     
     //X轴上面需要显示的数据
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
     for (int i = 0; i < modelAry.count; i++) {
-        UnitPriceModel *model = modelAry[i];
-        [xVals addObject:model.range];
+        THNRepeatBuyModel *model = modelAry[i];
+        [xVals addObject:model.count];
     }
     _barChartView.xAxis.valueFormatter = [[DateValueFormatter alloc] initWithArr:xVals];
     
@@ -90,7 +90,7 @@
     
     for (int i = 0; i < modelAry.count; i++)
     {
-        UnitPriceModel *model = modelAry[i];
+        THNRepeatBuyModel *model = modelAry[i];
         CGFloat val = [model.proportion floatValue];
         [yVals addObject:[[BarChartDataEntry alloc] initWithX:i y:val]];
     }
@@ -196,7 +196,7 @@
 -(UILabel *)salesLabel{
     if (!_salesLabel) {
         _salesLabel = [[UILabel alloc] init];
-        _salesLabel.text = @"销售客单价";
+        _salesLabel.text = @"重复购买率";
         _salesLabel.textColor = [UIColor colorWithHexString:@"#2f2f2f"];
         _salesLabel.font = [UIFont systemFontOfSize:13];
     }
@@ -206,7 +206,6 @@
 -(UILabel *)topLeftTwoLabel{
     if (!_topLeftTwoLabel) {
         _topLeftTwoLabel = [[UILabel alloc] init];
-        _topLeftTwoLabel.text = @"销售额：123232312";
         _topLeftTwoLabel.textColor = [UIColor colorWithHexString:@"#2f2f2f"];
         _topLeftTwoLabel.font = [UIFont systemFontOfSize:10];
     }
@@ -217,14 +216,13 @@
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
-    UnitPriceModel *model = self.modelAry[(NSInteger)entry.x];
-    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"客单价%@：%@%%", model.range, model.proportion];
+    THNRepeatBuyModel *model = self.modelAry[(NSInteger)entry.x];
+    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"重复购买%.@次：%@%%", model.count, model.proportion];
 }
 
 - (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }
-
 
 @end
