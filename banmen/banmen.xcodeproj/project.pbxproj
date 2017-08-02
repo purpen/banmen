@@ -10,9 +10,9 @@
 		C1322B6CB130FF300203A4F1 /* Pods_banmen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9959F7C22A2F1793FD74BF /* Pods_banmen.framework */; };
 		D805C5C21F30216F00354A47 /* THNShareActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D805C5C11F30216F00354A47 /* THNShareActionView.m */; };
 		D805C5D01F3034F700354A47 /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D805C5C91F3034CC00354A47 /* DateValueFormatter.m */; };
-		D805C5D31F3168BD00354A47 /* poster_1.plist in Resources */ = {isa = PBXBuildFile; fileRef = D805C5D21F3168BD00354A47 /* poster_1.plist */; };
-		D805C5DA1F3168C800354A47 /* poster_2.plist in Resources */ = {isa = PBXBuildFile; fileRef = D805C5D91F3168C800354A47 /* poster_2.plist */; };
-		D805C5DC1F3168CD00354A47 /* poster_3.plist in Resources */ = {isa = PBXBuildFile; fileRef = D805C5DB1F3168CD00354A47 /* poster_3.plist */; };
+		D805C5D31F3168BD00354A47 /* poster_style_1.plist in Resources */ = {isa = PBXBuildFile; fileRef = D805C5D21F3168BD00354A47 /* poster_style_1.plist */; };
+		D805C5DA1F3168C800354A47 /* poster_style_2.plist in Resources */ = {isa = PBXBuildFile; fileRef = D805C5D91F3168C800354A47 /* poster_style_2.plist */; };
+		D805C5DC1F3168CD00354A47 /* poster_style_3.plist in Resources */ = {isa = PBXBuildFile; fileRef = D805C5DB1F3168CD00354A47 /* poster_style_3.plist */; };
 		D805C5E01F317DD200354A47 /* THNKeyboardToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = D805C5DF1F317DD200354A47 /* THNKeyboardToolView.m */; };
 		D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */; };
 		D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */; };
@@ -108,7 +108,7 @@
 		D8DCAD411F135E5B009A8A1F /* THNEditContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DCAD401F135E5B009A8A1F /* THNEditContentView.m */; };
 		D8E957DE1F271BC6003F9A29 /* THNEditPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E957DD1F271BC6003F9A29 /* THNEditPosterViewController.m */; };
 		D8E957E21F2724A7003F9A29 /* THNPosterInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E957E11F2724A7003F9A29 /* THNPosterInfoView.m */; };
-		D8E957E51F287387003F9A29 /* poster_0.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8E957E41F287387003F9A29 /* poster_0.plist */; };
+		D8E957E51F287387003F9A29 /* poster_style_0.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8E957E41F287387003F9A29 /* poster_style_0.plist */; };
 		D8E957E91F288DDD003F9A29 /* THNPosterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E957E81F288DDD003F9A29 /* THNPosterModel.m */; };
 		D8E957EF1F288E1F003F9A29 /* THNPosterModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E957EE1F288E1F003F9A29 /* THNPosterModelData.m */; };
 		D8E957F21F288F36003F9A29 /* THNPosterModelText.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E957F11F288F36003F9A29 /* THNPosterModelText.m */; };
@@ -261,9 +261,9 @@
 		D805C5C11F30216F00354A47 /* THNShareActionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNShareActionView.m; sourceTree = "<group>"; };
 		D805C5C91F3034CC00354A47 /* DateValueFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateValueFormatter.m; sourceTree = "<group>"; };
 		D805C5CA1F3034CC00354A47 /* DateValueFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateValueFormatter.h; sourceTree = "<group>"; };
-		D805C5D21F3168BD00354A47 /* poster_1.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_1.plist; sourceTree = "<group>"; };
-		D805C5D91F3168C800354A47 /* poster_2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_2.plist; sourceTree = "<group>"; };
-		D805C5DB1F3168CD00354A47 /* poster_3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_3.plist; sourceTree = "<group>"; };
+		D805C5D21F3168BD00354A47 /* poster_style_1.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_1.plist; sourceTree = "<group>"; };
+		D805C5D91F3168C800354A47 /* poster_style_2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_2.plist; sourceTree = "<group>"; };
+		D805C5DB1F3168CD00354A47 /* poster_style_3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_3.plist; sourceTree = "<group>"; };
 		D805C5DE1F317DD200354A47 /* THNKeyboardToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNKeyboardToolView.h; sourceTree = "<group>"; };
 		D805C5DF1F317DD200354A47 /* THNKeyboardToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNKeyboardToolView.m; sourceTree = "<group>"; };
 		D83689E81EFA68DB005B0709 /* THNPhotoTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoTableViewModel.h; sourceTree = "<group>"; };
@@ -425,7 +425,7 @@
 		D8E957DD1F271BC6003F9A29 /* THNEditPosterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNEditPosterViewController.m; sourceTree = "<group>"; };
 		D8E957E01F2724A7003F9A29 /* THNPosterInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterInfoView.h; sourceTree = "<group>"; };
 		D8E957E11F2724A7003F9A29 /* THNPosterInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPosterInfoView.m; sourceTree = "<group>"; };
-		D8E957E41F287387003F9A29 /* poster_0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_0.plist; sourceTree = "<group>"; };
+		D8E957E41F287387003F9A29 /* poster_style_0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_0.plist; sourceTree = "<group>"; };
 		D8E957E71F288DDD003F9A29 /* THNPosterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterModel.h; sourceTree = "<group>"; };
 		D8E957E81F288DDD003F9A29 /* THNPosterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPosterModel.m; sourceTree = "<group>"; };
 		D8E957ED1F288E1F003F9A29 /* THNPosterModelData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterModelData.h; sourceTree = "<group>"; };
@@ -1386,10 +1386,10 @@
 		D8E957E31F287342003F9A29 /* Poster */ = {
 			isa = PBXGroup;
 			children = (
-				D8E957E41F287387003F9A29 /* poster_0.plist */,
-				D805C5D21F3168BD00354A47 /* poster_1.plist */,
-				D805C5D91F3168C800354A47 /* poster_2.plist */,
-				D805C5DB1F3168CD00354A47 /* poster_3.plist */,
+				D8E957E41F287387003F9A29 /* poster_style_0.plist */,
+				D805C5D21F3168BD00354A47 /* poster_style_1.plist */,
+				D805C5D91F3168C800354A47 /* poster_style_2.plist */,
+				D805C5DB1F3168CD00354A47 /* poster_style_3.plist */,
 			);
 			path = Poster;
 			sourceTree = "<group>";
@@ -1678,7 +1678,7 @@
 				D8736A7A1F04890500BF9F33 /* four_style_114.plist in Resources */,
 				D8736A7B1F04890500BF9F33 /* nine_style_141.plist in Resources */,
 				D8736A7C1F04890500BF9F33 /* nine_style_142.plist in Resources */,
-				D805C5DC1F3168CD00354A47 /* poster_3.plist in Resources */,
+				D805C5DC1F3168CD00354A47 /* poster_style_3.plist in Resources */,
 				D8736A7D1F04890500BF9F33 /* nine_style_143.plist in Resources */,
 				D8736A7E1F04890500BF9F33 /* nine_style_144.plist in Resources */,
 				D8736A7F1F04890500BF9F33 /* nine_style_145.plist in Resources */,
@@ -1693,12 +1693,12 @@
 				D8736A871F04890500BF9F33 /* seven_style_129.plist in Resources */,
 				D8736A881F04890500BF9F33 /* seven_style_130.plist in Resources */,
 				D8736A891F04890500BF9F33 /* seven_style_131.plist in Resources */,
-				D8E957E51F287387003F9A29 /* poster_0.plist in Resources */,
+				D8E957E51F287387003F9A29 /* poster_style_0.plist in Resources */,
 				D8736A8A1F04890500BF9F33 /* seven_style_132.plist in Resources */,
 				D8736A8B1F04890500BF9F33 /* seven_style_133.plist in Resources */,
 				D8736A8C1F04890500BF9F33 /* seven_style_134.plist in Resources */,
-				D805C5DA1F3168C800354A47 /* poster_2.plist in Resources */,
-				D805C5D31F3168BD00354A47 /* poster_1.plist in Resources */,
+				D805C5DA1F3168C800354A47 /* poster_style_2.plist in Resources */,
+				D805C5D31F3168BD00354A47 /* poster_style_1.plist in Resources */,
 				D8736A8D1F04890500BF9F33 /* six_style_122.plist in Resources */,
 				D8736A8E1F04890500BF9F33 /* six_style_123.plist in Resources */,
 				D8736A8F1F04890500BF9F33 /* six_style_124.plist in Resources */,

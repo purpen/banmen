@@ -10,6 +10,6 @@
 
 @interface THNEditPosterViewController : THNImageToolViewController
 
-- (void)thn_setPreviewPosterImage:(UIImage *)image styleTag:(NSInteger)styleTag;
+- (void)thn_setPreviewPosterImage:(UIImage *)image style:(NSString *)style;
 
 @end

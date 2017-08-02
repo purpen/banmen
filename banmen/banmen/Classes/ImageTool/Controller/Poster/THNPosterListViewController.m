@@ -21,6 +21,9 @@ static NSString *const PosterListCollectionViewCellId = @"THNPosterListCollectio
 
 @property (nonatomic, strong) MXSegmentedPager *segmentedPager;
 @property (nonatomic, strong) UICollectionView *posterCollectionView;
+@property (nonatomic, strong) NSMutableArray *collectionArray;
+@property (nonatomic, strong) NSMutableArray *imageArray;
+@property (nonatomic, strong) NSMutableArray *titleArray;
 
 @end
 
@@ -35,50 +38,65 @@ static NSString *const PosterListCollectionViewCellId = @"THNPosterListCollectio
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.imageArray = [NSMutableArray arrayWithArray:@[@[@"poster_style_1", @"poster_style_2", @"poster_style_3"],
+                                                       @[@"poster_style_0"]]];
+    self.titleArray = [NSMutableArray arrayWithArray:@[@"活动", @"邀请函"]];
+    
     [self thn_setControllerViewUI];
 }
 
 - (void)thn_setControllerViewUI {
+    if (self.titleArray.count == 0 ) {
+        return;
+    }
+    
+    [self thn_creatPosterCollectionViewWithTitle:self.titleArray];
+    
     [self.view addSubview:self.segmentedPager];
 }
 
 #pragma mark - 加载海报模版视图
-- (UICollectionView *)posterCollectionView {
-    if (!_posterCollectionView) {
+- (void)thn_creatPosterCollectionViewWithTitle:(NSArray *)titleArray {
+    for (NSInteger index = 0; index < titleArray.count; ++ index) {
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         flowLayout.itemSize = CGSizeMake((SCREEN_WIDTH - 3) / 2, ((SCREEN_WIDTH - 3) / 2) * 1.77);
         flowLayout.minimumLineSpacing = 3;
         flowLayout.minimumInteritemSpacing = 3;
         
-        _posterCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
-        _posterCollectionView.delegate = self;
-        _posterCollectionView.dataSource = self;
-        _posterCollectionView.backgroundColor = [UIColor colorWithHexString:kColorWhite];
-        _posterCollectionView.showsVerticalScrollIndicator = NO;
-        [_posterCollectionView registerClass:[THNPosterListCollectionViewCell class] forCellWithReuseIdentifier:PosterListCollectionViewCellId];
+        UICollectionView *posterCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+        posterCollectionView.delegate = self;
+        posterCollectionView.dataSource = self;
+        posterCollectionView.backgroundColor = [UIColor colorWithHexString:kColorWhite];
+        posterCollectionView.showsVerticalScrollIndicator = NO;
+        [posterCollectionView registerClass:[THNPosterListCollectionViewCell class] forCellWithReuseIdentifier:PosterListCollectionViewCellId];
+        
+        [self.collectionArray addObject:posterCollectionView];
     }
-    return _posterCollectionView;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    NSInteger index = [self.collectionArray indexOfObject:collectionView];
+    return [(NSArray *)self.imageArray[index] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger index = [self.collectionArray indexOfObject:collectionView];
+    
     THNPosterListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PosterListCollectionViewCellId
                                                                                       forIndexPath:indexPath];
-    cell.posterImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"poster_style_%zi", indexPath.row]];
+    cell.posterImageView.image = [UIImage imageNamed:self.imageArray[index][indexPath.row]];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self thn_openEditPosterImageController:[UIImage imageNamed:[NSString stringWithFormat:@"poster_style_%zi", indexPath.row]] index:indexPath.row];
+    NSInteger index = [self.collectionArray indexOfObject:collectionView];
+    [self thn_openEditPosterImageController:self.imageArray[index][indexPath.row]];
 }
 
 #pragma mark - 跳转编辑海报
-- (void)thn_openEditPosterImageController:(UIImage *)image index:(NSInteger)index {
+- (void)thn_openEditPosterImageController:(NSString *)image {
     THNEditPosterViewController *editPosterVC = [[THNEditPosterViewController alloc] init];
-    [editPosterVC thn_setPreviewPosterImage:image styleTag:index];
+    [editPosterVC thn_setPreviewPosterImage:[UIImage imageNamed:image] style:image];
     THNImageToolNavigationController *imageToolNavController = [[THNImageToolNavigationController alloc] initWithRootViewController:editPosterVC];
     [self presentViewController:imageToolNavController animated:YES completion:nil];
     
@@ -105,20 +123,41 @@ static NSString *const PosterListCollectionViewCellId = @"THNPosterListCollectio
 }
 
 - (NSString *)segmentedPager:(MXSegmentedPager *)segmentedPager titleForSectionAtIndex:(NSInteger)index {
-    return [@[@"活动", @"邀请函"] objectAtIndex:index];
+    return self.titleArray[index];
 }
 
 - (UIView *)segmentedPager:(MXSegmentedPager *)segmentedPager viewForPageAtIndex:(NSInteger)index {
-    if (index == 0) {
-        return self.posterCollectionView;
-    }
-    return [UIView new];
+    return self.collectionArray[index];
 }
 
 - (void)segmentedPager:(MXSegmentedPager *)segmentedPager didSelectViewWithTitle:(NSString *)title {
     NSLog(@"%@", title);
 }
 
+- (void)segmentedPager:(MXSegmentedPager *)segmentedPager didSelectViewWithIndex:(NSInteger)index {
+    
+}
 
+#pragma mark - Array
+- (NSMutableArray *)imageArray {
+    if (!_imageArray) {
+        _imageArray = [NSMutableArray array];
+    }
+    return _imageArray;
+}
+
+- (NSMutableArray *)titleArray {
+    if (!_titleArray) {
+        _titleArray = [NSMutableArray array];
+    }
+    return _titleArray;
+}
+
+- (NSMutableArray *)collectionArray {
+    if (!_collectionArray) {
+        _collectionArray = [NSMutableArray array];
+    }
+    return _collectionArray;
+}
 
 @end
