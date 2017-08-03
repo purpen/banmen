@@ -17,12 +17,11 @@
 #import "THNPosterImageView.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "THNDoneImageViewController.h"
-#import <YYImage/YYImage.h>
 #import "NSString+JSON.h"
 
 @interface THNEditPosterViewController () <THNImageToolNavigationBarItemsDelegate, THNPosterInfoViewDelegate, THNPhotoListViewDelegate> {
     NSInteger _imageViewTag;
-    NSInteger _posterStyleTag;
+    NSString *_posterStyle;
 }
 
 @property (nonatomic, strong) UIImageView *previewImageView;
@@ -55,9 +54,9 @@
 }
 
 #pragma mark - 选择的海报样式
-- (void)thn_setPreviewPosterImage:(UIImage *)image styleTag:(NSInteger)styleTag {
+- (void)thn_setPreviewPosterImage:(UIImage *)image style:(NSString *)style {
     self.previewImageView.image = image;
-    _posterStyleTag = styleTag;
+    _posterStyle = style;
 }
 
 #pragma mark - 设置视图
@@ -109,7 +108,7 @@
 
 #pragma mark 加载海报样式数据
 - (void)thn_loadPosterStyleInfoData {
-    NSString *pathResource = [NSString stringWithFormat:@"poster_%zi", _posterStyleTag];
+    NSString *pathResource = [NSString stringWithFormat:@"%@", _posterStyle];
     NSDictionary *styleDict = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:pathResource ofType:@"plist"]];
     if ([[styleDict valueForKey:@"data"] isKindOfClass:[NSNull class]] || styleDict == nil) {
         [SVProgressHUD showInfoWithStatus:@"请换个其他海报模版试试吧"];

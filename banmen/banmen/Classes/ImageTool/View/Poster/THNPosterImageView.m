@@ -9,14 +9,12 @@
 #import "THNPosterImageView.h"
 #import "UIColor+Extension.h"
 #import "MainMacro.h"
-#import <YYImage/YYImage.h>
 
 @implementation THNPosterImageView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-//        self.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
         self.clipsToBounds = NO;
         self.layer.masksToBounds = NO;
         [self thn_setViewUI];
@@ -30,7 +28,7 @@
     [self.contentView addSubview:self.loadImageView];
     
     CGFloat minimumScale = self.frame.size.width / self.loadImageView.frame.size.width;
-    self.contentView.minimumZoomScale = 1.0;
+    self.contentView.minimumZoomScale = 1;
     self.contentView.maximumZoomScale = 3.0;
     self.contentView.zoomScale = minimumScale;
 }
@@ -51,7 +49,6 @@
         _contentView.delegate = self;
         _contentView.showsHorizontalScrollIndicator = NO;
         _contentView.showsVerticalScrollIndicator = NO;
-//        _contentView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
     }
     return _contentView;
 }

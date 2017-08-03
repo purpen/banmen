@@ -9,15 +9,19 @@
 #import "THNPosterInfoView.h"
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
-#import <YYText/YYText.h>
+#import "THNKeyboardToolView.h"
 
 static NSInteger const textViewTag = 3521;
 static NSInteger const imageViewTag = 3821;
 
-@interface THNPosterInfoView () <YYTextViewDelegate> {
+@interface THNPosterInfoView () <UITextViewDelegate, THNKeyboardToolViewDelegate> {
     THNPosterImageView *_selectImageView;
 }
 
+/**
+ 键盘工具栏
+ */
+@property (nonatomic, strong) THNKeyboardToolView *keyboardView;
 @property (nonatomic, strong) NSMutableArray *textViewArray;
 @property (nonatomic, strong) NSMutableArray *imageViewArray;
 
@@ -51,6 +55,10 @@ static NSInteger const imageViewTag = 3821;
 }
 
 - (void)thn_allTextViewResignFirstResponder {
+    [self thn_resignFirstResponder];
+}
+
+- (void)thn_resignFirstResponder {
     for (UITextView *textView in self.textViewArray) {
         if ([textView isFirstResponder]) {
             [textView resignFirstResponder];
@@ -96,34 +104,32 @@ static NSInteger const imageViewTag = 3821;
     for (NSInteger idx = 0; idx < textArray.count; ++ idx) {
         THNPosterModelText *model = textArray[idx];
         
-        YYTextView *textView = [[YYTextView alloc] initWithFrame:CGRectMake(model.position.left, model.position.top, model.width, model.height)];
-        
-        NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:model.content];
-        text.yy_color = [UIColor colorWithHexString:model.color];
-        text.yy_font = [UIFont systemFontOfSize:model.fontSize weight:[self thn_getTextViewFontWeight:model.weight]];
-        text.yy_alignment = model.align;
-        textView.attributedText = text;
-
-        textView.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0];
+        UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(model.position.left, model.position.top, model.width, model.height)];
+        textView.textColor = [UIColor colorWithHexString:model.color];
+        textView.font = [UIFont systemFontOfSize:model.fontSize weight:[self thn_getTextViewFontWeight:model.weight]];
+        textView.textAlignment =  (NSTextAlignment)model.align;
+        textView.returnKeyType = UIReturnKeyDone;
         textView.tag = textViewTag + idx;
+        textView.text = model.content;
         textView.delegate = self;
+        textView.inputAccessoryView = self.keyboardView;
+        textView.keyboardAppearance = UIKeyboardAppearanceDark;
+        textView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         
         [self.controlView addSubview:textView];
         
-        [self thn_loadFlashingAnimationOfView:textView flash:YES];
+        [self thn_loadFlashingAnimationOfView:textView background:model.background flash:YES];
         
         [self.textViewArray addObject:textView];
     }
 }
 
 #pragma mark textViewDelegate
-- (void)textViewDidBeginEditing:(YYTextView *)textView {
-    [self thn_addTextViewBorder:textView];
-}
-
-//  编辑时给textView添加边框
-- (void)thn_addTextViewBorder:(YYTextView *)textView {
-    
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+    }
+    return YES;
 }
 
 //  获取字体的粗细等样式
@@ -164,7 +170,7 @@ static NSInteger const imageViewTag = 3821;
 }
 
 //  控件闪烁提示
-- (void)thn_loadFlashingAnimationOfView:(UIView *)view flash:(BOOL)flash {
+- (void)thn_loadFlashingAnimationOfView:(UIView *)view background:(NSString *)background flash:(BOOL)flash {
     if (flash == NO) {
         view.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0];
         return;
@@ -179,8 +185,17 @@ static NSInteger const imageViewTag = 3821;
             [UIView animateWithDuration:0.5 animations:^{
                 view.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:1];
             } completion:^(BOOL finished) {
+                
                 [UIView animateWithDuration:0.5 animations:^{
                     view.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0];
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.5 animations:^{
+                        if (background.length > 1) {
+                            view.backgroundColor = [UIColor colorWithHexString:background alpha:1];
+                        } else {
+                            view.backgroundColor = [UIColor colorWithHexString:kColorWhite alpha:0];
+                        }
+                    }];
                 }];
             }];
         }];
@@ -219,6 +234,25 @@ static NSInteger const imageViewTag = 3821;
     if ([self.tap_delegate respondsToSelector:@selector(thn_tapWithImageViewAndSelectPhoto:)]) {
         [self.tap_delegate thn_tapWithImageViewAndSelectPhoto:tapGesture.view.tag];
     }
+}
+
+#pragma mark - 键盘工具操作
+- (THNKeyboardToolView *)keyboardView {
+    if (!_keyboardView) {
+        _keyboardView = [[THNKeyboardToolView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
+        _keyboardView.delegate = self;
+    }
+    return _keyboardView;
+}
+
+//  取消键盘响应
+- (void)thn_writeInputBoxResignFirstResponder {
+    [self thn_resignFirstResponder];
+}
+
+//  改变字体颜色工具视图
+- (void)thn_writeInputBoxChangeTextColor {
+    
 }
 
 #pragma mark - initArray
