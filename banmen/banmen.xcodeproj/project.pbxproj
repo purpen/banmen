@@ -188,6 +188,7 @@
 		F58DE8F21F20B15400C80ECF /* GoodDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8F11F20B15400C80ECF /* GoodDetailsView.m */; };
 		F58DE8F51F218DC400C80ECF /* ForgetPsdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8F41F218DC400C80ECF /* ForgetPsdViewController.m */; };
 		F58DE8F81F218E0900C80ECF /* ForgetPsdView.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8F71F218E0900C80ECF /* ForgetPsdView.m */; };
+		F58EBD201F3328DF00146754 /* THNArticleListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD1F1F3328DF00146754 /* THNArticleListTableViewCell.m */; };
 		F595FE0B1F1CA18D006F4E46 /* CooperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0A1F1CA18D006F4E46 /* CooperationView.m */; };
 		F595FE0E1F1CA382006F4E46 /* CooperationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0D1F1CA382006F4E46 /* CooperationCollectionViewCell.m */; };
 		F595FE111F1CC762006F4E46 /* Cooperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE101F1CC762006F4E46 /* Cooperation.m */; };
@@ -567,6 +568,8 @@
 		F58DE8F41F218DC400C80ECF /* ForgetPsdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPsdViewController.m; sourceTree = "<group>"; };
 		F58DE8F61F218E0900C80ECF /* ForgetPsdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPsdView.h; sourceTree = "<group>"; };
 		F58DE8F71F218E0900C80ECF /* ForgetPsdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPsdView.m; sourceTree = "<group>"; };
+		F58EBD1E1F3328DF00146754 /* THNArticleListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNArticleListTableViewCell.h; sourceTree = "<group>"; };
+		F58EBD1F1F3328DF00146754 /* THNArticleListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNArticleListTableViewCell.m; sourceTree = "<group>"; };
 		F595FE091F1CA18D006F4E46 /* CooperationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CooperationView.h; sourceTree = "<group>"; };
 		F595FE0A1F1CA18D006F4E46 /* CooperationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CooperationView.m; sourceTree = "<group>"; };
 		F595FE0C1F1CA382006F4E46 /* CooperationCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CooperationCollectionViewCell.h; sourceTree = "<group>"; };
@@ -759,6 +762,7 @@
 		D847DE551F00C1DA007E301E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F58EBD151F33288000146754 /* ArticleView */,
 				F52AD5F21F31CCD00098282A /* AreaView */,
 				F52AD5DC1F31742E0098282A /* SalesUnitPriceCell */,
 				F52AD5C01F3023CA0098282A /* SalesCell */,
@@ -1618,6 +1622,15 @@
 			path = Joint;
 			sourceTree = "<group>";
 		};
+		F58EBD151F33288000146754 /* ArticleView */ = {
+			isa = PBXGroup;
+			children = (
+				F58EBD1E1F3328DF00146754 /* THNArticleListTableViewCell.h */,
+				F58EBD1F1F3328DF00146754 /* THNArticleListTableViewCell.m */,
+			);
+			path = ArticleView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1931,6 +1944,7 @@
 				F52AD5C71F3031510098282A /* THNHourOrderModel.m in Sources */,
 				F595FE0B1F1CA18D006F4E46 /* CooperationView.m in Sources */,
 				F58DE8F21F20B15400C80ECF /* GoodDetailsView.m in Sources */,
+				F58EBD201F3328DF00146754 /* THNArticleListTableViewCell.m in Sources */,
 				F58DE8C41F20AF1300C80ECF /* THNJointImageViewController.m in Sources */,
 				D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */,
 				D8DCAD3E1F135E48009A8A1F /* THNEditChildView.m in Sources */,
