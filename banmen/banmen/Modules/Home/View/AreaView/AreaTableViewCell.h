@@ -2,7 +2,7 @@
 //  AreaTableViewCell.h
 //  banmen
 //
-//  Created by dong on 2017/6/29.
+//  Created by dong on 2017/8/3.
 //  Copyright © 2017年 banmen. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 
 @interface AreaTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) NSArray *modelAry;
+@property (strong,nonatomic) UITableView *tableView;
+@property (strong,nonatomic) NSArray *modelAry;
 
 @end

@@ -23,7 +23,8 @@
         var shine = defaultTheme;
     </script>
     <!-- 主题引入 -->
-    <script src="theme/macarons.js"></script>
+    <script src="theme/macarons.js">
+    </script>
     <script src="theme/blue.js"></script>
     <script src="theme/dark.js"></script>
     <script src="theme/gray.js"></script>
@@ -122,7 +123,7 @@
     function initEchartView(initParams) {
         // 基于准备好的dom，初始化echarts图表
         if (initParams == null || initParams == 'undefined') {
-            myChart = echarts.init(document.getElementById('main'));
+            myChart = echarts.init(document.getElementById('main'),'macarons');
             //alert('myChart:' + myChart);
         } else {
             myChart = echarts.init(document.getElementById('main'), initParams);

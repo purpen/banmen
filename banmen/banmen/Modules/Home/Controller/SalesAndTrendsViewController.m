@@ -95,18 +95,16 @@
     [self.view addSubview:titlesView];
     self.titlesView = titlesView;
     
-    NSArray *tittleAry = @[@"销售额",@"销售渠道", @"销售客单价", @"地域分布", @"TOP20标签"];
-    
     // 内部的子标签
-    CGFloat width = titlesView.width / tittleAry.count;
+    CGFloat width = titlesView.width / self.childViewControllers.count;
     CGFloat height = titlesView.height;
-    for (NSInteger i = 0; i<tittleAry.count; i++) {
+    for (NSInteger i = 0; i<self.childViewControllers.count; i++) {
         UIButton *button = [[UIButton alloc] init];
         button.tag = i;
         button.height = height;
         button.width = width;
         button.x = i * width;
-        [button setTitle:tittleAry[i] forState:UIControlStateNormal];
+        [button setTitle:self.childViewControllers[i].title forState:UIControlStateNormal];
         //        [button layoutIfNeeded]; // 强制布局(强制更新子控件的frame)
         [button setTitleColor:[UIColor colorWithHexString:@"#686868"] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor colorWithHexString:@"#686868"] forState:UIControlStateDisabled];
@@ -148,7 +146,7 @@
     
     UIScrollView *contentView = [[UIScrollView alloc] init];
     contentView.scrollEnabled = NO;
-    contentView.frame = CGRectMake(0, self.titlesView.y+self.titlesView.height, SCREEN_WIDTH, SCREEN_HEIGHT-contentView.y+30);
+    contentView.frame = CGRectMake(0, self.titlesView.y+self.titlesView.height, SCREEN_WIDTH, SCREEN_HEIGHT-contentView.y-30);
     contentView.delegate = self;
     contentView.pagingEnabled = YES;
     [self.view insertSubview:contentView atIndex:0];

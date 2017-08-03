@@ -60,9 +60,17 @@
 }
 
 -(void)setModel:(SalesChannelsModel *)model{
+    _model = model;
     self.areaLael.text = model.name;
     self.salesLael.text = model.price;
     self.percentageLael.text = [NSString stringWithFormat:@"%@%%", model.proportion];
+}
+
+-(void)setAreaModel:(THNOrderAreaModel *)areaModel{
+    _areaModel = areaModel;
+    self.areaLael.text = areaModel.buyer_province;
+    self.salesLael.text = areaModel.sum_money;
+    self.percentageLael.text = [NSString stringWithFormat:@"%@%%", areaModel.proportion];
 }
 
 -(UILabel *)percentageLael{

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SalesChannelsModel.h"
+#import "THNOrderAreaModel.h"
 
 @interface ChannelsItemTableViewCell : UITableViewCell
 
@@ -16,6 +17,7 @@
 @property (strong,nonatomic) UILabel *salesLael;
 @property (strong,nonatomic) UILabel *percentageLael;
 @property (strong,nonatomic) SalesChannelsModel *model;
+@property (strong,nonatomic) THNOrderAreaModel *areaModel;
 @property (strong,nonatomic) UIView *lineView;
 
 @end

@@ -12,6 +12,7 @@
 #import "Masonry.h"
 #import "iOS-Echarts.h"
 #import "RMMapper.h"
+#import "HotelCalendarViewController.h"
 
 @interface AreaViewController ()<UITableViewDelegate,UITableViewDataSource, THNOrderAreaModelDelegate>
 
@@ -44,6 +45,7 @@
     if (!_mapView) {
         _mapView  =[[PYEchartsView alloc] init];
         _mapView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
+        _mapView.userInteractionEnabled = NO;
     }
     return _mapView;
 }
@@ -73,7 +75,7 @@
 -(UITableView *)contenTableView{
     if (!_contenTableView) {
         self.automaticallyAdjustsScrollViewInsets = NO;
-        _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 1-44-35) style:UITableViewStyleGrouped];
+        _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 1-44-35-50) style:UITableViewStyleGrouped];
         _contenTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _contenTableView.showsVerticalScrollIndicator = NO;
         _contenTableView.backgroundColor = [UIColor colorWithHexString:@"#f8f8f8"];
@@ -100,8 +102,18 @@
         [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
         _dateSelectBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         [_dateSelectBtn setTitleColor:[UIColor colorWithHexString:@"#7d7d7d"] forState:(UIControlStateNormal)];
+        [_dateSelectBtn addTarget:self action:@selector(dateSelect:) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _dateSelectBtn;
+}
+
+-(void)dateSelect:(UIButton*)sender{
+    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
+    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
+        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
+        [self.a orderAreaModel:startDateStr andEndTime:endDateStr];
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -112,7 +124,7 @@
     if (indexPath.row == 0) {
         return 245+50;
     }
-    return 245;
+    return (self.modelAry.count*30+50);
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -140,18 +152,23 @@
             make.top.mas_equalTo(cell.contentView.mas_top).mas_offset(10);
         }];
         
-        NSString *json = @"{\"tooltip\":{\"trigger\":\"item\",\"formatter\":\"{b}\"},\"series\":[{\"name\":\"中国\",\"type\":\"map\",\"mapType\":\"china\",\"selectedMode\":\"multiple\",\"itemStyle\":{\"normal\":{\"label\":{\"show\":true}},\"emphasis\":{\"label\":{\"show\":true}}},\"data\":[{\"name\":\"广东\",\"selected\":true}]}]}";
-        NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-        PYOption *option = [RMMapper objectWithClass:[PYOption class] fromDictionary:jsonDic];
-        [self.mapView setOption:option];
-        [self.mapView loadEcharts];
+        for (int i = 0; i<self.modelAry.count; i++) {
+            THNOrderAreaModel *model = self.modelAry[i];
+            NSString *str = model.buyer_province;
+            NSString *jsonStr = [NSString stringWithFormat:@"{\"tooltip\":{\"trigger\":\"item\",\"formatter\":\"{b}\"},\"series\":[{\"name\":\"中国\",\"type\":\"map\",\"mapType\":\"china\",\"selectedMode\":\"multiple\",\"itemStyle\":{\"normal\":{\"label\":{\"show\":true}},\"emphasis\":{\"label\":{\"show\":true}}},\"data\":[{\"name\":\"%@\",\"selected\":true}]}]}", str];
+            NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+            PYOption *option = [RMMapper objectWithClass:[PYOption class] fromDictionary:jsonDic];
+            [self.mapView setOption:option];
+            [self.mapView loadEcharts];
+        }
         
         cell.backgroundColor = [UIColor whiteColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else {
         AreaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AreaTableViewCell"];
+        cell.modelAry = self.modelAry;
         return cell;
     }
 }
