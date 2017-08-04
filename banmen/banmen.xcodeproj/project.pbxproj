@@ -27,6 +27,9 @@
 		D847DE6F1F00C1DA007E301E /* PostersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D847DE591F00C1DA007E301E /* PostersViewController.m */; };
 		D847DE701F00C1DA007E301E /* RepositoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D847DE601F00C1DA007E301E /* RepositoryViewController.m */; };
 		D847DE711F00C1DA007E301E /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D847DE671F00C1DA007E301E /* UserViewController.m */; };
+		D85DE6811F341EB700A0E480 /* poster_style_4.plist in Resources */ = {isa = PBXBuildFile; fileRef = D85DE6801F341EB700A0E480 /* poster_style_4.plist */; };
+		D85DE6881F3446A800A0E480 /* poster_style_5.plist in Resources */ = {isa = PBXBuildFile; fileRef = D85DE6871F3446A800A0E480 /* poster_style_5.plist */; };
+		D85DE68A1F344EDE00A0E480 /* poster_style_6.plist in Resources */ = {isa = PBXBuildFile; fileRef = D85DE6891F344EDE00A0E480 /* poster_style_6.plist */; };
 		D869B3F61F26FFE10074C37B /* THNPosterListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D869B3F51F26FFE10074C37B /* THNPosterListCollectionViewCell.m */; };
 		D8736A671F04890500BF9F33 /* eight_style_135.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A2A1F0488E800BF9F33 /* eight_style_135.plist */; };
 		D8736A681F04890500BF9F33 /* eight_style_136.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A2B1F0488E800BF9F33 /* eight_style_136.plist */; };
@@ -299,6 +302,9 @@
 		D847DE601F00C1DA007E301E /* RepositoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryViewController.m; sourceTree = "<group>"; };
 		D847DE661F00C1DA007E301E /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		D847DE671F00C1DA007E301E /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
+		D85DE6801F341EB700A0E480 /* poster_style_4.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_4.plist; sourceTree = "<group>"; };
+		D85DE6871F3446A800A0E480 /* poster_style_5.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_5.plist; sourceTree = "<group>"; };
+		D85DE6891F344EDE00A0E480 /* poster_style_6.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_6.plist; sourceTree = "<group>"; };
 		D86074091EF9026A00AB6F53 /* UIImage+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
 		D860740A1EF9026A00AB6F53 /* UIBarButtonItem+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Helper.h"; sourceTree = "<group>"; };
 		D860740B1EF9026A00AB6F53 /* UIColor+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
@@ -1416,6 +1422,9 @@
 				D805C5D21F3168BD00354A47 /* poster_style_1.plist */,
 				D805C5D91F3168C800354A47 /* poster_style_2.plist */,
 				D805C5DB1F3168CD00354A47 /* poster_style_3.plist */,
+				D85DE6801F341EB700A0E480 /* poster_style_4.plist */,
+				D85DE6871F3446A800A0E480 /* poster_style_5.plist */,
+				D85DE6891F344EDE00A0E480 /* poster_style_6.plist */,
 			);
 			path = Poster;
 			sourceTree = "<group>";
@@ -1777,6 +1786,7 @@
 				D8736A821F04890500BF9F33 /* one_style_100.plist in Resources */,
 				D8736A831F04890500BF9F33 /* one_style_101.plist in Resources */,
 				D8736A841F04890500BF9F33 /* one_style_102.plist in Resources */,
+				D85DE6811F341EB700A0E480 /* poster_style_4.plist in Resources */,
 				D8736A851F04890500BF9F33 /* one_style_103.plist in Resources */,
 				F51AE79B1F29D9B30093D9EB /* THNWordDetailViewController.xib in Resources */,
 				D8736A861F04890500BF9F33 /* seven_style_128.plist in Resources */,
@@ -1785,9 +1795,11 @@
 				D8736A891F04890500BF9F33 /* seven_style_131.plist in Resources */,
 				D8E957E51F287387003F9A29 /* poster_style_0.plist in Resources */,
 				D8736A8A1F04890500BF9F33 /* seven_style_132.plist in Resources */,
+				D85DE6881F3446A800A0E480 /* poster_style_5.plist in Resources */,
 				D8736A8B1F04890500BF9F33 /* seven_style_133.plist in Resources */,
 				D8736A8C1F04890500BF9F33 /* seven_style_134.plist in Resources */,
 				D805C5DA1F3168C800354A47 /* poster_style_2.plist in Resources */,
+				D85DE68A1F344EDE00A0E480 /* poster_style_6.plist in Resources */,
 				D805C5D31F3168BD00354A47 /* poster_style_1.plist in Resources */,
 				D8736A8D1F04890500BF9F33 /* six_style_122.plist in Resources */,
 				D8736A8E1F04890500BF9F33 /* six_style_123.plist in Resources */,
