@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C41EFB5DE752A205062260278AFEEB92'
-               BlueprintName = 'PYPhotoBrowser'
+               BlueprintIdentifier = 'D8E0E97295C0DF2AA71B27E8D4726F69'
+               BlueprintName = 'iOS-Echarts-iOS-Echarts'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'PYPhotoBrowser.framework'>
+               BuildableName = 'iOS-Echarts.bundle'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
