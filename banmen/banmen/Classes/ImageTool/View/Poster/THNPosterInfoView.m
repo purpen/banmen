@@ -215,6 +215,12 @@ static NSInteger const imageViewTag = 3821;
         [imageView thn_setImageViewData:[UIImage imageNamed:[NSString stringWithFormat:@"poster_add_%@", model.name]]];
         imageView.tag = imageViewTag + idx;
         
+        if (model.editType == 1) {
+            imageView.userInteractionEnabled = YES;
+        } else if (model.editType == 0) {
+            imageView.userInteractionEnabled = NO;
+        }
+        
         [self thn_imageViewAddTapGestureRecognizer:imageView];
         
         [self.controlView addSubview:imageView];
@@ -241,6 +247,7 @@ static NSInteger const imageViewTag = 3821;
     if (!_keyboardView) {
         _keyboardView = [[THNKeyboardToolView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
         _keyboardView.delegate = self;
+        [_keyboardView thn_setHiddenExtendingFunction:YES];
     }
     return _keyboardView;
 }

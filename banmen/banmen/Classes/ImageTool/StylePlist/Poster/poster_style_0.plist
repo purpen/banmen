@@ -18,6 +18,8 @@
 		<key>image</key>
 		<array>
 			<dict>
+				<key>editType</key>
+				<string>1</string>
 				<key>imageUrl</key>
 				<string></string>
 				<key>width</key>
@@ -43,6 +45,8 @@
 				</dict>
 			</dict>
 			<dict>
+				<key>editType</key>
+				<string>1</string>
 				<key>imageUrl</key>
 				<string></string>
 				<key>width</key>
@@ -68,6 +72,8 @@
 				</dict>
 			</dict>
 			<dict>
+				<key>editType</key>
+				<string>1</string>
 				<key>imageUrl</key>
 				<string></string>
 				<key>width</key>
@@ -96,6 +102,8 @@
 		<key>text</key>
 		<array>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>4</string>
 				<key>background</key>
@@ -127,6 +135,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>4</string>
 				<key>background</key>
@@ -158,6 +168,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>0</string>
 				<key>background</key>
@@ -189,6 +201,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>4</string>
 				<key>background</key>
@@ -220,6 +234,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>0</string>
 				<key>background</key>
@@ -251,6 +267,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>2</string>
 				<key>background</key>
@@ -282,6 +300,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>0</string>
 				<key>background</key>
@@ -313,6 +333,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>0</string>
 				<key>background</key>

@@ -18,6 +18,8 @@
 		<key>image</key>
 		<array>
 			<dict>
+				<key>editType</key>
+				<string>1</string>
 				<key>imageUrl</key>
 				<string></string>
 				<key>width</key>
@@ -25,7 +27,7 @@
 				<key>height</key>
 				<string>1334</string>
 				<key>zindex</key>
-				<string>9</string>
+				<string>10</string>
 				<key>type</key>
 				<string>97</string>
 				<key>name</key>
@@ -43,6 +45,35 @@
 				</dict>
 			</dict>
 			<dict>
+				<key>editType</key>
+				<string>0</string>
+				<key>imageUrl</key>
+				<string>#</string>
+				<key>width</key>
+				<string>670</string>
+				<key>height</key>
+				<string>1130</string>
+				<key>zindex</key>
+				<string>9</string>
+				<key>type</key>
+				<string>96</string>
+				<key>name</key>
+				<string>border</string>
+				<key>position</key>
+				<dict>
+					<key>right</key>
+					<string>-40</string>
+					<key>left</key>
+					<string>40</string>
+					<key>bottom</key>
+					<string>-44</string>
+					<key>top</key>
+					<string>160</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>editType</key>
+				<string>1</string>
 				<key>imageUrl</key>
 				<string></string>
 				<key>width</key>
@@ -68,6 +99,8 @@
 				</dict>
 			</dict>
 			<dict>
+				<key>editType</key>
+				<string>1</string>
 				<key>imageUrl</key>
 				<string></string>
 				<key>width</key>
@@ -96,6 +129,8 @@
 		<key>text</key>
 		<array>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>0</string>
 				<key>background</key>
@@ -127,6 +162,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>0</string>
 				<key>background</key>
@@ -158,6 +195,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>6</string>
 				<key>background</key>
@@ -189,6 +228,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>20</string>
 				<key>weight</key>
 				<string>4</string>
 				<key>background</key>
@@ -224,6 +265,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>0</string>
 				<key>background</key>
@@ -255,6 +298,8 @@
 				<string>#FFFFFF</string>
 			</dict>
 			<dict>
+				<key>lineHeight</key>
+				<string>10</string>
 				<key>weight</key>
 				<string>0</string>
 				<key>background</key>
