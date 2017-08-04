@@ -18,11 +18,14 @@
 
 @interface THNGoodsArticleModel : NSObject
 
-@property(nonatomic, copy) NSString *type;
+@property(nonatomic, copy) NSString *author;
 @property(nonatomic, copy) NSString *content;
 @property(nonatomic, copy) NSString *product_number;
 @property(nonatomic, copy) NSString *article_describe;
-@property(nonatomic, copy) NSString *describe;
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) NSString *cover_srcfile;
+@property(nonatomic, copy) NSString *site_from;
+@property(nonatomic, copy) NSString *article_time;
 @property(nonatomic,weak) id <THNGoodsArticleModelDelegate> delegate;
 @property(nonatomic,assign) NSInteger current_page;
 @property(nonatomic,assign) NSInteger total_pages;

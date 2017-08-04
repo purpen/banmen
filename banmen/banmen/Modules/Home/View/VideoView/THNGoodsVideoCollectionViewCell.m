@@ -17,6 +17,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "THNVideoCollectionViewCell.h"
  #import <MediaPlayer/MediaPlayer.h>
+#import "THNVideoBlockCollectionViewCell.h"
 
 @interface THNGoodsVideoCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -55,7 +56,7 @@
         _collectionView.scrollEnabled = NO;
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.dataSource = self;
-        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
+        [_collectionView registerClass:[THNVideoBlockCollectionViewCell class] forCellWithReuseIdentifier:@"THNVideoBlockCollectionViewCell"];
         [_collectionView registerClass:[THNVideoCollectionViewCell class] forCellWithReuseIdentifier:@"THNVideoCollectionViewCell"];
     }
     return _collectionView;
@@ -68,46 +69,8 @@
         cell.model = model;
         return cell;
     }
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCell" forIndexPath:indexPath];
-    UIImageView *imageView = [[UIImageView alloc] init];
-    [cell.contentView addSubview:imageView];
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.bottom.mas_equalTo(cell.contentView).mas_offset(0);
-    }];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:model.video_image] placeholderImage:[UIImage imageNamed:@"goodsImagDefault"]];
-    UILabel *label = [[UILabel alloc] init];
-    label.textColor = [UIColor whiteColor];
-    label.font = [UIFont systemFontOfSize:10];
-    [cell.contentView addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.bottom.mas_equalTo(cell.contentView).mas_offset(-5);
-    }];
-    
-//    NSInteger second = [self durationWithVideo:[NSURL URLWithString:model.video]];
-//
-//    NSString *str;
-//    if (second > 60) {
-//        NSInteger minutes = second / 60;
-//        NSString *str2;
-//        if (minutes >= 10) {
-//            str2 = [NSString stringWithFormat:@"%ld",minutes];
-//        } else {
-//            str2 = [NSString stringWithFormat:@"0%ld",minutes];
-//        }
-//        NSInteger seconds = second - minutes * 60;
-//        if (seconds >= 10) {
-//            str = [NSString stringWithFormat:@"%@:%ld",str2 ,seconds];
-//        } else {
-//            str = [NSString stringWithFormat:@"%@:0%ld",str2 ,seconds];
-//        }
-//    } else {
-//        if (second >= 10) {
-//            str = [NSString stringWithFormat:@"00:%ld",second];
-//        } else {
-//            str = [NSString stringWithFormat:@"00:0%ld",second];
-//        }
-//    }
-//    label.text = str;
+    THNVideoBlockCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNVideoBlockCollectionViewCell" forIndexPath:indexPath];
+    cell.model = model;
     return cell;
 }
 
@@ -121,7 +84,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.sender_selected) {
-        return CGSizeMake(SCREEN_WIDTH, 51);
+        return CGSizeMake(SCREEN_WIDTH, 142/2+20);
     }
     return CGSizeMake((SCREEN_WIDTH-45)/2+2.5, (SCREEN_WIDTH-45)/2);
 }

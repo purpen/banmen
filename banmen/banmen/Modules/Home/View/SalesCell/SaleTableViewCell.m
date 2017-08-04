@@ -89,7 +89,7 @@
         NSTimeInterval  oneDay = 24*60*60*1;
         NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
         NSString *the_date_str = [date_formatter stringFromDate:theDate];
-        [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
+        
         _dateSelectBtn.font = [UIFont systemFontOfSize:10];
         [_dateSelectBtn setTitleColor:[UIColor colorWithHexString:@"#7d7d7d"] forState:(UIControlStateNormal)];
     }
@@ -150,6 +150,7 @@
     {
         set1 = (LineChartDataSet *)_lineChartView.data.dataSets[0];
         set1.values = values;
+        self.lineChartView.maxVisibleCount = 6;
         [_lineChartView.data notifyDataChanged];
         [_lineChartView notifyDataSetChanged];
     }
@@ -193,13 +194,16 @@
         LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
         
         _lineChartView.data = data;
-        _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
+        self.lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
     }
+    SalesTrendsModel *modelLast = modelAry.lastObject;
+    [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", model.time, modelLast.time] forState:(UIControlStateNormal)];
 }
 
 -(LineChartView *)lineChartView{
     if (!_lineChartView) {
         _lineChartView = [[LineChartView alloc] init];
+        _lineChartView.noDataText = @"暂无数据";
         _lineChartView.delegate = self;
         _lineChartView.chartDescription.enabled = NO;
         _lineChartView.dragEnabled = YES;
@@ -211,6 +215,7 @@
         _lineChartView.xAxis.gridLineDashPhase = 0.f;
         _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
         _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
+        _lineChartView.xAxis.labelFont = [UIFont systemFontOfSize:7];
         
         ChartYAxis *leftAxis = _lineChartView.leftAxis;
         [leftAxis removeAllLimitLines];

@@ -83,13 +83,6 @@
         _dateSelectBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _dateSelectBtn.layer.borderColor = [UIColor colorWithHexString:@"#e9e9e9"].CGColor;
         _dateSelectBtn.layer.borderWidth = 1;
-        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
-        [date_formatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
-        NSTimeInterval  oneDay = 24*60*60*1;
-        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
-        NSString *the_date_str = [date_formatter stringFromDate:theDate];
-        [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
         _dateSelectBtn.font = [UIFont systemFontOfSize:10];
         [_dateSelectBtn setTitleColor:[UIColor colorWithHexString:@"#7d7d7d"] forState:(UIControlStateNormal)];
     }
@@ -195,6 +188,8 @@
         _lineChartView.data = data;
         _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
     }
+    THNHourOrderModel *modelLast = modelAry.lastObject;
+    [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", model.time, modelLast.time] forState:(UIControlStateNormal)];
 }
 
 -(LineChartView *)lineChartView{
@@ -211,6 +206,7 @@
         _lineChartView.xAxis.gridLineDashPhase = 0.f;
         _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
         _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
+        _lineChartView.xAxis.labelFont = [UIFont systemFontOfSize:7];
         
         ChartYAxis *leftAxis = _lineChartView.leftAxis;
         [leftAxis removeAllLimitLines];

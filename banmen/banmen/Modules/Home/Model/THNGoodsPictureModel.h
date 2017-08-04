@@ -19,6 +19,8 @@
 
 @property(nonatomic, copy) NSString *image;
 @property(nonatomic, copy) NSString *describe;
+@property(nonatomic, copy) NSString *image_created;
+@property(nonatomic, copy) NSString *image_size;
 @property(nonatomic,weak) id <THNGoodsPictureModelDelegate> delegate;
 @property(nonatomic,assign) NSInteger current_page;
 @property(nonatomic,assign) NSInteger total_pages;

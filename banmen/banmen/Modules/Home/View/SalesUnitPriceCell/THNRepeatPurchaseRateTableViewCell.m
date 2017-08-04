@@ -72,6 +72,20 @@
     return self;
 }
 
+-(void)setTimeAry2:(NSArray *)timeAry2{
+    _timeAry2 = timeAry2;
+    [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", timeAry2[0], timeAry2[1]] forState:(UIControlStateNormal)];
+    if (timeAry2.count == 0) {
+        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+        [date_formatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
+        NSTimeInterval  oneDay = 24*60*60*1;
+        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
+        NSString *the_date_str = [date_formatter stringFromDate:theDate];
+        [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
+    }
+}
+
 
 -(void)setModelAry:(NSArray *)modelAry{
     _modelAry = modelAry;

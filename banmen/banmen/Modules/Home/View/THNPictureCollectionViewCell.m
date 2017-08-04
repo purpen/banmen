@@ -33,9 +33,16 @@
         
         [self.contentView addSubview:self.discribeLabel];
         [_discribeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(self.contentView.mas_centerY).mas_offset(0);
             make.left.mas_equalTo(self.goodsImageView.mas_right).mas_offset(10);
-            make.width.mas_lessThanOrEqualTo(150);
+            make.top.mas_equalTo(self.goodsImageView.mas_top).mas_offset(5);
+            make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-20);
+        }];
+        
+        [self.contentView addSubview:self.detailLabel];
+        [_detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.goodsImageView.mas_right).mas_offset(10);
+            make.top.mas_equalTo(self.discribeLabel.mas_bottom).mas_offset(10);
+            make.width.mas_lessThanOrEqualTo(200*SCREEN_HEIGHT/667.0);
         }];
     }
     return self;
@@ -45,6 +52,7 @@
     _model = model;
     [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:[UIImage imageNamed:@"goodsImagDefault"]];
     self.discribeLabel.text = model.describe;
+    self.detailLabel.text = [NSString stringWithFormat:@"%.0fkb  %@", [model.image_size floatValue]/1024, model.image_created];
 }
 
 -(UILabel *)discribeLabel{
@@ -54,6 +62,15 @@
         _discribeLabel.textColor = [UIColor colorWithHexString:@"#545454"];
     }
     return _discribeLabel;
+}
+
+-(UILabel *)detailLabel{
+    if (!_detailLabel) {
+        _detailLabel = [[UILabel alloc] init];
+        _detailLabel.font = [UIFont systemFontOfSize:10];
+        _detailLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+    }
+    return _detailLabel;
 }
 
 -(UIImageView *)goodsImageView{

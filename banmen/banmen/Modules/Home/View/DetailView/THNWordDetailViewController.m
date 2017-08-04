@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIView *wordView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *cnacelBtn;
+@property (weak, nonatomic) IBOutlet UIButton *cBtn;
+
 @end
 
 @implementation THNWordDetailViewController
@@ -24,8 +26,14 @@
     [super viewWillAppear:animated];
 }
 
+- (IBAction)cBtn:(id)sender {
+    self.textView.text = [UIPasteboard generalPasteboard].string;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.cBtn.layer.masksToBounds = YES;
+    self.cBtn.layer.cornerRadius = 3;
     self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
     
     self.textView.editable = NO;

@@ -14,6 +14,8 @@
 #import "THNwordCollectionViewCell.h"
 #import "UIView+FSExtension.h"
 #import "THNArticleDetailViewController.h"
+#import "THNArticleListTableViewCell.h"
+#import "THNArticleBlockCollectionViewCell.h"
 
 @interface THNGoodsArticleCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -57,20 +59,27 @@
         _collectionView.scrollEnabled = NO;
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.dataSource = self;
-        [_collectionView registerClass:[THNwordCollectionViewCell class] forCellWithReuseIdentifier:@"THNwordCollectionViewCell"];
+        [_collectionView registerClass:[THNArticleListTableViewCell class] forCellWithReuseIdentifier:@"THNArticleListTableViewCell"];
+        [_collectionView registerClass:[THNArticleBlockCollectionViewCell class] forCellWithReuseIdentifier:@"THNArticleBlockCollectionViewCell"];
     }
     return _collectionView;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    THNwordCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNwordCollectionViewCell" forIndexPath:indexPath];
-    cell.goodsArticleModel = self.modelAry[indexPath.row];
-    return cell;
+    if (self.sender_selected) {
+        THNArticleBlockCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNArticleBlockCollectionViewCell" forIndexPath:indexPath];
+        cell.goodsArticleModel = self.modelAry[indexPath.row];
+        return cell;
+    } else {
+        THNArticleListTableViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"THNArticleListTableViewCell" forIndexPath:indexPath];
+        cell.goodsArticleModel = self.modelAry[indexPath.row];
+        return cell;
+    }
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.sender_selected) {
-        return CGSizeMake((SCREEN_WIDTH-20), 112);
+        return CGSizeMake(SCREEN_WIDTH, 142/2+20);
     } else {
         return CGSizeMake((SCREEN_WIDTH-45)/2+2.5, 361/2);
     }

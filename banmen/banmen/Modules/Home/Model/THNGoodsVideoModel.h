@@ -20,7 +20,9 @@
 @property(nonatomic, copy) NSString *video;
 @property(nonatomic, copy) NSString *describe;
 @property(nonatomic, copy) NSString *video_size;
+@property(nonatomic, copy) NSString *video_length;
 @property(nonatomic, copy) NSString *video_image;
+@property(nonatomic, copy) NSString *video_created;
 @property(nonatomic,weak) id <THNGoodsVideoModelDelegate> delegate;
 @property(nonatomic,assign) NSInteger current_page;
 @property(nonatomic,assign) NSInteger total_pages;

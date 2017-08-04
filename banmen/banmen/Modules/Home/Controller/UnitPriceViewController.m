@@ -19,6 +19,8 @@
 @property (nonatomic, strong) UnitPriceModel *u;
 @property (nonatomic, strong) THNRepeatBuyModel *r;
 @property (nonatomic, strong) NSArray *modelAry;
+@property (nonatomic, strong) NSArray *timeAry;
+@property (nonatomic, strong) NSArray *timeAry2;
 @property (nonatomic, strong) NSArray *repeatModelAry;
 
 @end
@@ -91,11 +93,13 @@
     if (indexPath.row == 0) {
         UnitPriceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UnitPriceTableViewCell"];
         cell.modelAry = self.modelAry;
+        cell.timeAry = self.timeAry;
         [cell.dateSelectBtn addTarget:self action:@selector(dateSelect:) forControlEvents:(UIControlEventTouchUpInside)];
         return cell;
     }
     THNRepeatPurchaseRateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"THNRepeatPurchaseRateTableViewCell"];
     cell.modelAry = self.repeatModelAry;
+    cell.timeAry2 = self.timeAry2;
     [cell.dateSelectBtn addTarget:self action:@selector(dateSelectR:) forControlEvents:(UIControlEventTouchUpInside)];
     return cell;
 }
@@ -103,6 +107,7 @@
 -(void)dateSelectR:(UIButton *)sender{
     HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
     [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
+        self.timeAry2 = @[startDateStr, endDateStr];
         [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
         [self.r repeatBuyModel:startDateStr andEndTime:endDateStr];
     }];
@@ -112,6 +117,7 @@
 -(void)dateSelect:(UIButton *)sender{
     HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
     [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
+        self.timeAry = @[startDateStr, endDateStr];
         [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
         [self.u NetGetUnitPriceModel:startDateStr andEndTime:endDateStr];
     }];

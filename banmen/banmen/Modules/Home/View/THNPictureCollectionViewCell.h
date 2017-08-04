@@ -15,5 +15,6 @@
 @property (nonatomic, strong) UILabel *discribeLabel;
 @property (nonatomic, strong) UIView *lineView;
 @property (nonatomic, strong) THNGoodsPictureModel *model;
+@property (nonatomic, strong) UILabel *detailLabel;
 
 @end

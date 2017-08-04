@@ -13,5 +13,6 @@
 @property (strong,nonatomic) UIButton *dateSelectBtn;
 @property (strong,nonatomic) NSArray *modelAry;
 @property (strong,nonatomic) UILabel *timeLabel;
+@property (strong,nonatomic) NSArray *timeAry;
 
 @end

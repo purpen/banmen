@@ -15,6 +15,7 @@
 @property (nonatomic, strong) SalesChannelsModel *s;
 @property (nonatomic, strong) SalesChannelsView *channelView;
 @property (nonatomic, strong) NSArray *modelAry;
+@property (nonatomic, strong) NSArray *timeAry;
 @end
 
 @implementation SalesChannelsViewController
@@ -45,6 +46,7 @@
 -(void)dateSelect:(UIButton *)sender{
     HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
     [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
+        self.timeAry = @[startDateStr, endDateStr];
         [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
         [self.s getSalesChannelsModelItem:startDateStr andEndTime:endDateStr];
     }];
@@ -54,6 +56,7 @@
 -(void)updateSalesChannelsModel:(NSArray *)modelAry{
     self.modelAry = modelAry;
     self.channelView.modelAry = modelAry;
+    self.channelView.timeAry = self.timeAry;
 }
 
 -(SalesChannelsModel *)s{
