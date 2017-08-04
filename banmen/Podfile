@@ -14,11 +14,9 @@ target "banmen" do
  pod 'Charts'
  pod 'MXSegmentedPager'
  pod 'IQKeyboardManager'
- pod ‘UMengUShare/Social/ReducedSina'
- pod ‘UMengUShare/Social/ReducedWeChat'
+ pod 'UMengUShare/Social/ReducedSina'
+ pod 'UMengUShare/Social/ReducedWeChat'
  pod 'JPush'
- pod "PYPhotoBrowser"
- pod 'YYText'
- pod 'YYImage'
+ pod 'PYPhotoBrowser'
  pod 'iOS-Echarts'
 end

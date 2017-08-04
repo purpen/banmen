@@ -34,6 +34,9 @@
 @property (nonatomic, strong) THNPhotoAlbumList *selectedPhotoAblum;
 @property (nonatomic, strong) THNPhotoListView *photoListView;
 @property (nonatomic, strong) UIView *maskView;
+//  预览按钮
+@property (nonatomic, strong) UIButton *previewButton;
+@property (nonatomic, strong) UIImageView *previewPosterView;
 
 @end
 
@@ -61,6 +64,8 @@
 
 #pragma mark - 设置视图
 - (void)thn_setControllerViewUI {
+    [self.view addSubview:self.previewButton];
+    
     [self.view addSubview:self.previewImageView];
     [_previewImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).with.offset(64);
@@ -77,6 +82,7 @@
     }];
     
     [self.view addSubview:self.posterView];
+    [self.view addSubview:self.previewPosterView];
 }
 
 #pragma mark - 海报制作视图
@@ -120,23 +126,6 @@
     self.dataModel = [[THNPosterModelData alloc] initWithDictionary:[styleDict valueForKey:@"data"]];
     [self.posterView thn_setPosterStyleInfoData:self.dataModel];
     [self thn_showEditPosterView:YES];
-    
-//    [self thn_scalePosterEidtViewScale:YES];
-}
-
-//  缩放海报视图
-- (void)thn_scalePosterEidtViewScale:(BOOL)scale {
-    CGFloat scaleX = scale ? 0.8 : 1;
-    CGFloat scaleY = scale ? 0.8 : 1;
-    CGFloat pointY = scale ? SCREEN_HEIGHT / 2 : SCREEN_HEIGHT / 2;
-    CGPoint scalePoint = CGPointMake(self.view.center.x, pointY);
-    
-    [UIView animateWithDuration:0 animations:^{
-        self.posterView.transform = CGAffineTransformMakeScale(scaleX, scaleY);
-        self.posterView.center = scalePoint;
-    } completion:^(BOOL finished) {
-        [self thn_showEditPosterView:YES];
-    }];
 }
 
 - (void)thn_showEditPosterView:(BOOL)show {
@@ -145,6 +134,7 @@
         self.hintInfoView.hidden = YES;
         self.posterView.alpha = 1;
         self.navRightItem.alpha = 1;
+        self.previewButton.alpha = 1;
     }];
 }
 
@@ -249,6 +239,64 @@
         [_hintInfoView thn_showHintInfoViewWithText:@"点击海报进行编辑" fontOfSize:14 color:@"#999999"];
     }
     return _hintInfoView;
+}
+
+#pragma mark - 预览按钮
+- (UIButton *)previewButton {
+    if (!_previewButton) {
+        _previewButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 103, 20, 44, 44)];
+        [_previewButton addTarget:self action:@selector(previewButtonAction:) forControlEvents:(UIControlEventTouchUpInside)];
+        [_previewButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+        _previewButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        [_previewButton setContentHorizontalAlignment:(UIControlContentHorizontalAlignmentRight)];
+        [_previewButton setTitle:@"预览" forState:(UIControlStateNormal)];
+        _previewButton.alpha = 0;
+    }
+    return _previewButton;
+}
+
+- (void)previewButtonAction:(UIButton *)button {
+    self.previewPosterView.image = [self cutImageWithView:self.posterView];
+    [self thn_scalePosterEidtView:self.previewPosterView Scale:YES];
+}
+
+#pragma mark 预览海报
+- (UIImageView *)previewPosterView {
+    if (!_previewPosterView) {
+        _previewPosterView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _previewPosterView.contentMode = UIViewContentModeScaleAspectFill;
+        _previewPosterView.clipsToBounds = YES;
+        _previewPosterView.userInteractionEnabled = YES;
+        _previewPosterView.alpha = 0;
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(previewPosterViewHandleTapGesture:)];
+        [_previewPosterView addGestureRecognizer:tapGesture];
+    }
+    return _previewPosterView;
+}
+
+- (void)previewPosterViewHandleTapGesture:(UITapGestureRecognizer *)tapGesture {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.previewPosterView.alpha = 0;
+    }];
+//    [self thn_scalePosterEidtView:self.previewPosterView Scale:NO];
+}
+
+//  缩放视图
+- (void)thn_scalePosterEidtView:(UIImageView *)view Scale:(BOOL)scale {
+    CGFloat scaleX = scale ? 1 : 1;
+    CGFloat scaleY = scale ? 1 : 1;
+    CGFloat pointY = scale ? SCREEN_HEIGHT / 2 : SCREEN_HEIGHT / 2;
+    CGPoint scalePoint = CGPointMake(self.view.center.x, pointY);
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        view.transform = CGAffineTransformMakeScale(scaleX, scaleY);
+        view.center = scalePoint;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3 animations:^{
+            view.alpha = scale ? 1 : 0;
+        }];
+    }];
 }
 
 #pragma mark - 设置Nav

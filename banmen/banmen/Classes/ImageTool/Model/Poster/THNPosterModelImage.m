@@ -15,11 +15,16 @@ NSString *const kPosterModelImageWidth = @"width";
 NSString *const kPosterModelImageHeight = @"height";
 NSString *const kPosterModelImagePosition = @"position";
 NSString *const kPosterModelImageImageUrl = @"imageUrl";
+NSString *const kPosterModelImageEditType = @"editType";
 
 @implementation THNPosterModelImage
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
+    
+    if (![dictionary[kPosterModelImageEditType] isKindOfClass:[NSNull class]]) {
+        self.editType = [dictionary[kPosterModelImageEditType] integerValue];
+    }
     
     if (![dictionary[kPosterModelImageZindex] isKindOfClass:[NSNull class]]) {
         self.zindex = [dictionary[kPosterModelImageZindex] integerValue];

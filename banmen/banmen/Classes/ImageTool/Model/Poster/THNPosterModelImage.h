@@ -11,6 +11,7 @@
 
 @interface THNPosterModelImage : NSObject
 
+@property (nonatomic, assign) NSInteger editType;
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
 @property (nonatomic, assign) NSInteger zindex;
