@@ -9,7 +9,7 @@
 #import "THNArticleDetailViewController.h"
 #import <MMMarkdown/MMMarkdown.h>
 
-@interface THNArticleDetailViewController ()
+@interface THNArticleDetailViewController () <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (copy, nonatomic) NSString *htmlStr;
@@ -29,12 +29,19 @@
     self.navigationItem.rightBarButtonItem = shareB;
     
     self.webView.backgroundColor = [UIColor whiteColor];
+    self.webView.delegate = self;
     [self.webView loadHTMLString:self.htmlStr baseURL:[NSURL URLWithString:@"http://baidu.com"]];
 }
 
 -(void)share{
     
 }
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+}
+    
 
 -(void)setContent:(NSString *)content{
     _content = content;

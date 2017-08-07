@@ -196,6 +196,8 @@
     if (!_lineChartView) {
         _lineChartView = [[LineChartView alloc] init];
         _lineChartView.delegate = self;
+        _lineChartView.noDataText = @"暂无数据";
+        _lineChartView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
         _lineChartView.chartDescription.enabled = NO;
         _lineChartView.dragEnabled = YES;
         [_lineChartView setScaleEnabled:NO];

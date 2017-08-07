@@ -120,7 +120,7 @@
     else
     {
         set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@"The year 2017"];
-        set1.highlightEnabled = NO;//点击选中柱形图是否有高亮效果，（双击空白处取消选中）
+        set1.highlightEnabled = YES;//点击选中柱形图是否有高亮效果，（双击空白处取消选中）
         [set1 setColors:ChartColorTemplates.material];
         set1.drawIconsEnabled = NO;
         [set1 setColor:[UIColor colorWithHexString:@"#ff3266"]];//设置柱形图颜色
@@ -141,6 +141,8 @@
     if (!_barChartView) {
         _barChartView = [[BarChartView alloc] init];
         _barChartView.delegate = self;
+        _barChartView.noDataText = @"暂无数据";
+        _barChartView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
         
         _barChartView.descriptionText = @"";//不显示，就设为空字符串即可
         

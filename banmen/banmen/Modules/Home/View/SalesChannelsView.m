@@ -155,6 +155,7 @@
 -(PieChartView *)pieChartView{
     if (!_pieChartView) {
         _pieChartView = [[PieChartView alloc] init];
+        _pieChartView.noDataText = @"暂无数据";
         _pieChartView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
         [_pieChartView setExtraOffsetsWithLeft:30 top:0 right:30 bottom:0];//饼状图距离边缘的间隙
         _pieChartView.usePercentValuesEnabled = YES;//是否根据所提供的数据, 将显示数据转换为百分比格式

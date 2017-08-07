@@ -14,7 +14,7 @@
 #import "UIView+FSExtension.h"
 #import "DateValueFormatter.h"
 
-@interface THNSuccessfulOrderHoursAdayTableViewCell()
+@interface THNSuccessfulOrderHoursAdayTableViewCell() <ChartViewDelegate>
 
 @property(nonatomic, strong) UILabel *salesLabel;
 @property(nonatomic, strong) UILabel *topLeftTwoLabel;
@@ -196,6 +196,8 @@
     if (!_lineChartView) {
         _lineChartView = [[LineChartView alloc] init];
         _lineChartView.delegate = self;
+        _lineChartView.noDataText = @"暂无数据";
+        _lineChartView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
         _lineChartView.chartDescription.enabled = NO;
         _lineChartView.dragEnabled = YES;
         [_lineChartView setScaleEnabled:NO];
