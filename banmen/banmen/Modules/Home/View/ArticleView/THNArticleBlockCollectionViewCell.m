@@ -71,6 +71,13 @@
     self.timeLabel.text = goodsArticleModel.article_time;
     self.contentLabel.text = goodsArticleModel.article_describe;
     self.wordLabel.text = goodsArticleModel.title;
+    if (goodsArticleModel.cover_srcfile.length == 0) {
+        self.imageView.hidden = YES;
+        [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(0);
+        }];
+        [self.contentView layoutIfNeeded];
+    }
 }
 
 -(UILabel *)contentLabel{

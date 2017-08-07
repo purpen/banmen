@@ -194,6 +194,9 @@
 		F58EBD201F3328DF00146754 /* THNArticleListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD1F1F3328DF00146754 /* THNArticleListTableViewCell.m */; };
 		F58EBD231F3412F600146754 /* THNArticleBlockCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD221F3412F600146754 /* THNArticleBlockCollectionViewCell.m */; };
 		F58EBD2A1F3441D100146754 /* THNVideoBlockCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD291F3441D100146754 /* THNVideoBlockCollectionViewCell.m */; };
+		F58EBD3D1F38116E00146754 /* EZImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD301F380F3000146754 /* EZImageBrowser.m */; };
+		F58EBD3E1F38117700146754 /* EZImageBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD321F380F3000146754 /* EZImageBrowserCell.m */; };
+		F58EBD3F1F38118A00146754 /* EZImageBrowserLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD351F380F3000146754 /* EZImageBrowserLoading.m */; };
 		F595FE0B1F1CA18D006F4E46 /* CooperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0A1F1CA18D006F4E46 /* CooperationView.m */; };
 		F595FE0E1F1CA382006F4E46 /* CooperationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0D1F1CA382006F4E46 /* CooperationCollectionViewCell.m */; };
 		F595FE111F1CC762006F4E46 /* Cooperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE101F1CC762006F4E46 /* Cooperation.m */; };
@@ -582,6 +585,13 @@
 		F58EBD221F3412F600146754 /* THNArticleBlockCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNArticleBlockCollectionViewCell.m; sourceTree = "<group>"; };
 		F58EBD281F3441D100146754 /* THNVideoBlockCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNVideoBlockCollectionViewCell.h; sourceTree = "<group>"; };
 		F58EBD291F3441D100146754 /* THNVideoBlockCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNVideoBlockCollectionViewCell.m; sourceTree = "<group>"; };
+		F58EBD2F1F380F3000146754 /* EZImageBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZImageBrowser.h; sourceTree = "<group>"; };
+		F58EBD301F380F3000146754 /* EZImageBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZImageBrowser.m; sourceTree = "<group>"; };
+		F58EBD311F380F3000146754 /* EZImageBrowserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZImageBrowserCell.h; sourceTree = "<group>"; };
+		F58EBD321F380F3000146754 /* EZImageBrowserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZImageBrowserCell.m; sourceTree = "<group>"; };
+		F58EBD341F380F3000146754 /* EZImageBrowserLoading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZImageBrowserLoading.h; sourceTree = "<group>"; };
+		F58EBD351F380F3000146754 /* EZImageBrowserLoading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZImageBrowserLoading.m; sourceTree = "<group>"; };
+		F58EBD361F380F3000146754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F595FE091F1CA18D006F4E46 /* CooperationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CooperationView.h; sourceTree = "<group>"; };
 		F595FE0A1F1CA18D006F4E46 /* CooperationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CooperationView.m; sourceTree = "<group>"; };
 		F595FE0C1F1CA382006F4E46 /* CooperationCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CooperationCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1204,6 +1214,7 @@
 		D8B0710F1EF8F415005CC051 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				F58EBD2E1F380F3000146754 /* EZImageBrowserKit */,
 				F5107D441F330D2E00B81111 /* RTagCloudView */,
 				F52AD5F31F31D7C20098282A /* RMMapper */,
 				D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */,
@@ -1658,6 +1669,20 @@
 			path = VideoView;
 			sourceTree = "<group>";
 		};
+		F58EBD2E1F380F3000146754 /* EZImageBrowserKit */ = {
+			isa = PBXGroup;
+			children = (
+				F58EBD2F1F380F3000146754 /* EZImageBrowser.h */,
+				F58EBD301F380F3000146754 /* EZImageBrowser.m */,
+				F58EBD311F380F3000146754 /* EZImageBrowserCell.h */,
+				F58EBD321F380F3000146754 /* EZImageBrowserCell.m */,
+				F58EBD341F380F3000146754 /* EZImageBrowserLoading.h */,
+				F58EBD351F380F3000146754 /* EZImageBrowserLoading.m */,
+				F58EBD361F380F3000146754 /* Info.plist */,
+			);
+			path = EZImageBrowserKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1897,6 +1922,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58EBD3F1F38118A00146754 /* EZImageBrowserLoading.m in Sources */,
+				F58EBD3E1F38117700146754 /* EZImageBrowserCell.m in Sources */,
+				F58EBD3D1F38116E00146754 /* EZImageBrowser.m in Sources */,
 				F576F7121F330EB0000DEE58 /* RTagCloudView.m in Sources */,
 				F52AD5FE1F31D94E0098282A /* RMMapper.m in Sources */,
 				D805C5D01F3034F700354A47 /* DateValueFormatter.m in Sources */,

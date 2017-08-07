@@ -15,10 +15,15 @@
 #import "UIView+FSExtension.h"
 #import "THNGoodsPictureModel.h"
 #import "THNPictureCollectionViewCell.h"
-#import "PYPhotoBrowser.h"
+#import "EZImageBrowser.h"
+#import "EZImageBrowserCell.h"
+#import "EZImageBrowserLoading.h"
+#import "SDWebImageManager.h"
+#import "SDImageCache.h"
+#import "SVProgressHUD.h"
 
-@interface THNGoodsPictureCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
-
+@interface THNGoodsPictureCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource, EZImageBrowserDelegate>
+@property (nonatomic, strong) EZImageBrowser *browser;
 
 @end
 
@@ -94,17 +99,10 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    PYPhotoBrowseView *photoBroseView = [[PYPhotoBrowseView alloc] init];
-    NSMutableArray *imageViews = [NSMutableArray array];
-    for (int i = 0; i<self.modelAry.count; i++) {
-        THNGoodsPictureModel *model = self.modelAry[i];
-        [imageViews addObject:model.image];
-    }
-    photoBroseView.frameFormWindow = CGRectMake(500, 200, 100, 100);
-    photoBroseView.frameToWindow = CGRectMake(500, 200, 100, 100);
-    photoBroseView.imagesURL = (NSArray*)imageViews;
-    photoBroseView.currentIndex = indexPath.row;
-    [photoBroseView show];
+    self.browser = [[EZImageBrowser alloc] init];
+    [_browser setDelegate:self];
+    [_browser showWithCurrentIndex:indexPath.row  completion:nil];
+    [_browser.downBtn addTarget:self action:@selector(down:) forControlEvents:(UIControlEventTouchUpInside)];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -114,5 +112,71 @@
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
+
+#pragma mark - EZImageBrowserDelegate
+- (NSInteger)numberOfCellsInImageBrowser:(EZImageBrowser *)imageBrowser{
+    return self.modelAry.count;
+}
+
+- (EZImageBrowserCell *)imageBrowser:(EZImageBrowser *)imageBrowser cellForRowAtIndex:(NSInteger )index{
+    EZImageBrowserCell *cell = [imageBrowser dequeueReusableCell];
+    if (!cell) {
+        cell = [[EZImageBrowserCell alloc] init];
+    }
+    THNGoodsPictureModel *model = self.modelAry[index];
+    cell.loadingView.hidden = YES ;
+    [cell.imageView sd_setImageWithURL:[[NSURL alloc] initWithString:model.image] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        CGFloat progress = (CGFloat)receivedSize / expectedSize ;
+        [cell.loadingView showAnimateByPropress:progress];
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        cell.loadingView.hidden = YES ;
+        //        cell.imageViewSize = image.size;//可以显示图片大小
+    }];
+    
+    return cell;
+}
+
+-(void)down:(UIButton *)sender{
+    NSRange range = [_browser.pageTextLabel.text rangeOfString:@" /"];
+    NSString *subStr = [_browser.pageTextLabel.text substringToIndex:range.location];
+    NSInteger num = [subStr integerValue]-1;
+    THNGoodsPictureModel *model = self.modelAry[num];
+    NSString* strUrl = model.image;
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    NSString* key = [manager cacheKeyForURL:[NSURL URLWithString:strUrl]];
+    SDImageCache* cache = [SDImageCache sharedImageCache];
+    //此方法会先从memory中取。
+    UIImage *image = [cache imageFromDiskCacheForKey:key];
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error == nil) {
+        [SVProgressHUD showSuccessWithStatus:@"图片保存至相册"];
+    } else {
+        [SVProgressHUD showInfoWithStatus:@"图片保存失败"];
+    }
+}
+
+- (CGSize)imageBrowser:(EZImageBrowser *)imageBrowser  imageViewSizeForItemAtIndex:(NSInteger)index{
+    CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width);
+    return size;
+}
+
+- (void)imageBrowser:(EZImageBrowser *)imageBrowser didDisplayingCell:(EZImageBrowserCell *)cell atIndex:(NSInteger)index{
+//    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+//    [[self collectionView] scrollToRowAtIndexPath:scrollIndexPath
+//                            atScrollPosition:UITableViewScrollPositionTop animated:NO];
+//    NSLog(@"didDisplayingCell index = %ld", (long)index);
+}
+
+//- (UIView *)imageBrowser:(EZImageBrowser *)imageBrowser fromViewForItemAtIndex:(NSInteger)index{
+////    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+////    UITableViewCell *cell =   [self.collectionView cellForRowAtIndexPath:scrollIndexPath];
+////    return cell;
+//    re
+//}
+
 
 @end

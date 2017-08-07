@@ -21,8 +21,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"文章素材";
+    UIButton *shareBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [shareBtn setImage:[UIImage imageNamed:@"share"] forState:(UIControlStateNormal)];
+    shareBtn.size = shareBtn.currentImage.size;
+    [shareBtn addTarget:self action:@selector(share) forControlEvents:(UIControlEventTouchUpInside)];
+    UIBarButtonItem *shareB = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
+    self.navigationItem.rightBarButtonItem = shareB;
+    
     self.webView.backgroundColor = [UIColor whiteColor];
     [self.webView loadHTMLString:self.htmlStr baseURL:[NSURL URLWithString:@"http://baidu.com"]];
+}
+
+-(void)share{
+    
 }
 
 -(void)setContent:(NSString *)content{
