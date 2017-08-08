@@ -23,46 +23,40 @@
         [self.contentView addSubview:self.underLineView];
         [_underLineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView.mas_centerY).mas_offset(0);
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(10/SCREEN_HEIGHT*667.0);
-            make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-10/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(10*SCREEN_HEIGHT/667.0);
+            make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-10*SCREEN_HEIGHT/667.0);
             make.height.mas_equalTo(1);
         }];
         
         [self.contentView addSubview:self.serialNumberLabel];
         [_serialNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(10/SCREEN_HEIGHT*667.0);
-            make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10/SCREEN_HEIGHT*667.0);
-        }];
-        
-        [self.contentView addSubview:self.idLabel];
-        [_idLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(35/SCREEN_HEIGHT*667.0);
-            make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(10*SCREEN_HEIGHT/667.0);
+            make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10*SCREEN_HEIGHT/667.0);
         }];
         
         [self.contentView addSubview:self.goodsNameLabel];
         [_goodsNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(110/SCREEN_HEIGHT*667.0);
-            make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10/SCREEN_HEIGHT*667.0);
-            make.width.mas_lessThanOrEqualTo(80/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(50*SCREEN_HEIGHT/667.0);
+            make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10*SCREEN_HEIGHT/667.0);
+            make.width.mas_lessThanOrEqualTo(80*SCREEN_HEIGHT/667.0);
         }];
         
         [self.contentView addSubview:self.salesNumLabel];
         [_salesNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(200/SCREEN_HEIGHT*667.0);
-            make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(180*SCREEN_HEIGHT/667.0);
+            make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10*SCREEN_HEIGHT/667.0);
         }];
         
         [self.contentView addSubview:self.salesLabel];
         [_salesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(245/SCREEN_HEIGHT*667.0);
-            make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(225*SCREEN_HEIGHT/667.0);
+            make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10*SCREEN_HEIGHT/667.0);
         }];
         
         [self.contentView addSubview:self.percentLabel];
         [_percentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(self.contentView.mas_left).mas_offset(340/SCREEN_HEIGHT*667.0);
-            make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10/SCREEN_HEIGHT*667.0);
+            make.right.mas_equalTo(self.contentView.mas_left).mas_offset(330*SCREEN_HEIGHT/667.0);
+            make.top.mas_equalTo(self.underLineView.mas_bottom).mas_offset(10*SCREEN_HEIGHT/667.0);
         }];
         
         
@@ -147,17 +141,5 @@
     }
     return _goodsNameLabel;
 }
-
--(UILabel *)idLabel{
-    if (!_idLabel) {
-        _idLabel = [[UILabel alloc] init];
-        _idLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:10];
-        _idLabel.textColor = [UIColor colorWithHexString:@"#676769"];
-        _idLabel.textAlignment = NSTextAlignmentLeft;
-        _idLabel.text = @"ID";
-    }
-    return _idLabel;
-}
-
 
 @end

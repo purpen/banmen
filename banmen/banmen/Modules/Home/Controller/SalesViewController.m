@@ -16,19 +16,24 @@
 #import "THNSuccessfulOrderHoursAdayTableViewCell.h"
 #import "THNSalesListModel.h"
 #import "THNSalesListTableViewCell.h"
+#import "THNDateSelectViewController.h"
 
-@interface SalesViewController () <UITableViewDelegate,UITableViewDataSource, SalesTrendsModelDelegate, THNHourOrderModelDelegate, THNSalesListModelDelegate>
+@interface SalesViewController () <UITableViewDelegate,UITableViewDataSource, SalesTrendsModelDelegate, THNHourOrderModelDelegate, THNSalesListModelDelegate, THNDateSelectViewControllerDelegate>
 /**  */
 @property (nonatomic, strong) UITableView *contenTableView;
 @property (nonatomic, strong) SalesTrendsModel *s;
 @property (nonatomic, strong) THNHourOrderModel *h;
 @property (nonatomic, strong) THNSalesListModel *l;
+@property (nonatomic, assign) BOOL sFlag;
+@property (nonatomic, assign) BOOL hFlag;
+@property (nonatomic, assign) BOOL lFlag;
 @property (nonatomic, copy) NSString *startTimeStr;
 @property (nonatomic, copy) NSString *endTimeStr;
 @property (nonatomic, copy) NSString *numStr;
 @property (nonatomic, strong) NSArray *modelAry;
 @property (nonatomic, strong) NSArray *hourModelAry;
 @property (nonatomic, strong) NSArray *listModelAry;
+@property (nonatomic, strong) NSArray *hourTimeAry;
 @property (nonatomic, assign) NSInteger rowNum;
 @property (nonatomic, assign) BOOL reloadFlag;
 @end
@@ -66,6 +71,7 @@
     NSTimeInterval  oneDay = 24*60*60*1;
     NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*30*12 sinceDate:[NSDate date]];
     NSString *the_date_str = [date_formatter stringFromDate:theDate];
+    self.hourTimeAry = @[the_date_str, current_date_str];
     self.s.sDelegate = self;
     [self.s getSalesTrendsModelItemList:the_date_str andEndTime:current_date_str];
     self.rowNum = 0;
@@ -134,6 +140,7 @@
     } else if (indexPath.row == 2) {
         THNSuccessfulOrderHoursAdayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"THNSuccessfulOrderHoursAdayTableViewCell"];
         cell.modelAry = self.hourModelAry;
+        cell.timeAry = self.hourTimeAry;
         [cell.dateSelectBtn addTarget:self action:@selector(dateSelectHour:) forControlEvents:(UIControlEventTouchUpInside)];
         return cell;
     } else {
@@ -145,36 +152,58 @@
 }
 
 -(void)dateSelectList:(UIButton *)sender{
-    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
-    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
-        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
-        [self.l salesListModel:(startDateStr) andEndTime:endDateStr];
-    }];
+    self.sFlag = NO;
+    self.lFlag = YES;
+    self.hFlag = NO;
+    THNDateSelectViewController *vc = [[THNDateSelectViewController alloc] init];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)dateSelectHour:(UIButton *)sender{
-    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
-    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
-        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
-        [self.h hourOrderModel:startDateStr andEndTime:endDateStr];
-    }];
+    self.sFlag = NO;
+    self.lFlag = NO;
+    self.hFlag = YES;
+    THNDateSelectViewController *vc = [[THNDateSelectViewController alloc] init];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)dateSelect:(UIButton*)sender{
     self.rowNum = sender.tag;
     self.reloadFlag = NO;
-    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
-    __weak typeof(self) weakSelf = self;
-    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
-        weakSelf.startTimeStr = startDateStr;
-        weakSelf.endTimeStr = endDateStr;
-        weakSelf.numStr = daysStr;
-        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
-        [self.s getSalesTrendsModelItemList:startDateStr andEndTime:endDateStr];
-    }];
+    self.sFlag = YES;
+    self.lFlag = NO;
+    self.hFlag = NO;
+//    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
+//    __weak typeof(self) weakSelf = self;
+//    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
+//        weakSelf.startTimeStr = startDateStr;
+//        weakSelf.endTimeStr = endDateStr;
+//        weakSelf.numStr = daysStr;
+//        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
+//        [self.s getSalesTrendsModelItemList:startDateStr andEndTime:endDateStr];
+//    }];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    THNDateSelectViewController *vc = [[THNDateSelectViewController alloc] init];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)getDate:(NSDate *)startDate andEnd:(NSDate *)endDate{
+    NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+    [date_formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *startstr = [date_formatter stringFromDate:startDate];
+    NSString *endStr = [date_formatter stringFromDate:endDate];
+    if (self.hFlag) {
+        [self.h hourOrderModel:startstr andEndTime:endStr];
+    } else if (self.sFlag) {
+        [self.s getSalesTrendsModelItemList:startstr andEndTime:endStr];
+    } else if (self.hFlag) {
+        self.hourTimeAry = @[startstr, endStr];
+        [self.l salesListModel:startstr andEndTime:endStr];
+    }
 }
 
 @end

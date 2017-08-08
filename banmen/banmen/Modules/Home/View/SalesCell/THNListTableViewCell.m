@@ -22,38 +22,32 @@
         
         [self.contentView addSubview:self.serialNumberLabel];
         [_serialNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(10/SCREEN_HEIGHT*667.0);
-            make.centerY.mas_equalTo(self.contentView.centerY).mas_offset(0);
-        }];
-        
-        [self.contentView addSubview:self.idLabel];
-        [_idLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(35/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(10*SCREEN_HEIGHT/667.0);
             make.centerY.mas_equalTo(self.contentView.centerY).mas_offset(0);
         }];
         
         [self.contentView addSubview:self.goodsNameLabel];
         [_goodsNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(110/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(50*SCREEN_HEIGHT/667.0);
             make.centerY.mas_equalTo(self.contentView.centerY).mas_offset(0);
-            make.width.mas_lessThanOrEqualTo(80/SCREEN_HEIGHT*667.0);
+            make.width.mas_lessThanOrEqualTo(110*SCREEN_HEIGHT/667.0);
         }];
         
         [self.contentView addSubview:self.salesNumLabel];
         [_salesNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(200/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(180*SCREEN_HEIGHT/667.0);
             make.centerY.mas_equalTo(self.contentView.centerY).mas_offset(0);
         }];
         
         [self.contentView addSubview:self.salesLabel];
         [_salesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(245/SCREEN_HEIGHT*667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(225*SCREEN_HEIGHT/667.0);
             make.centerY.mas_equalTo(self.contentView.centerY).mas_offset(0);
         }];
         
         [self.contentView addSubview:self.percentLabel];
         [_percentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(self.contentView.mas_left).mas_offset(340/SCREEN_HEIGHT*667.0);
+            make.right.mas_equalTo(self.contentView.mas_left).mas_offset(330*SCREEN_HEIGHT/667.0);
             make.centerY.mas_equalTo(self.contentView.centerY).mas_offset(0);
         }];
         
@@ -127,19 +121,8 @@
     return _goodsNameLabel;
 }
 
--(UILabel *)idLabel{
-    if (!_idLabel) {
-        _idLabel = [[UILabel alloc] init];
-        _idLabel.font = [UIFont systemFontOfSize:10];
-        _idLabel.textColor = [UIColor colorWithHexString:@"#676769"];
-        _idLabel.textAlignment = NSTextAlignmentLeft;
-    }
-    return _idLabel;
-}
-
 -(void)setModel:(THNSalesListModel *)model{
     _model = model;
-    self.idLabel.text = model.sku_number;
     self.goodsNameLabel.text = model.sku_name;
     self.salesNumLabel.text = model.sales_quantity;
     self.salesLabel.text = [NSString stringWithFormat:@"%.0f", [model.sum_money floatValue]];

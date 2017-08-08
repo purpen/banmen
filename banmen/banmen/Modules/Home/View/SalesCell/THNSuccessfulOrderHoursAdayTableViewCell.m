@@ -101,8 +101,16 @@
     _modelAry = modelAry;
     
     THNHourOrderModel *model = modelAry[0];
-    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%@", model.sum_money];
-    self.timeLabel.text = model.time;
+    if (model.sum_money == NULL) {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：0"];
+    } else {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%@", model.sum_money];
+    }
+    if (model.time == NULL) {
+        self.timeLabel.text = @" ";
+    } else {
+        self.timeLabel.text = model.time;
+    }
     
     CGFloat maxMoney = [model.sum_money floatValue];
     CGFloat minMoney = [model.sum_money floatValue];
@@ -188,8 +196,11 @@
         _lineChartView.data = data;
         _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
     }
-    THNHourOrderModel *modelLast = modelAry.lastObject;
-    [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", model.time, modelLast.time] forState:(UIControlStateNormal)];
+}
+
+-(void)setTimeAry:(NSArray *)timeAry{
+    _timeAry = timeAry;
+    [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", timeAry[0], timeAry[1]] forState:(UIControlStateNormal)];
 }
 
 -(LineChartView *)lineChartView{
@@ -209,12 +220,14 @@
         _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
         _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
         _lineChartView.xAxis.labelFont = [UIFont systemFontOfSize:7];
+        _lineChartView.xAxis.gridColor = [UIColor colorWithHexString:@"#e7e7e7"];
         
         ChartYAxis *leftAxis = _lineChartView.leftAxis;
         [leftAxis removeAllLimitLines];
         leftAxis.gridLineDashLengths = @[@5.f, @5.f];
         leftAxis.drawZeroLineEnabled = NO;
         leftAxis.drawLimitLinesBehindDataEnabled = YES;
+        leftAxis.gridColor = [UIColor colorWithHexString:@"#e7e7e7"];
         
         _lineChartView.rightAxis.enabled = NO;
         

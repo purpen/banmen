@@ -20,6 +20,7 @@ PODS:
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
+  - FSCalendar (2.7.9)
   - HMSegmentedControl (1.5.3)
   - iOS-Echarts (1.4.4)
   - IQKeyboardManager (4.0.10)
@@ -53,6 +54,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - Charts
+  - FSCalendar
   - iOS-Echarts
   - IQKeyboardManager
   - JKDBModel-JDBR (~> 0.0.1)
@@ -80,6 +82,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
   iOS-Echarts: dbc7423d861e5eedee78906a39d205b5c4da9a13
   IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
@@ -97,6 +100,6 @@ SPEC CHECKSUMS:
   TYAlertController: 502d3dbc5d007e68559400b509c736f60ebc2cc1
   UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
 
-PODFILE CHECKSUM: c0ca68b8fcf027130abc028bdd896910f4de14a4
+PODFILE CHECKSUM: d552ff723868b32c454e65842c41c842e8553c6b
 
 COCOAPODS: 1.2.1

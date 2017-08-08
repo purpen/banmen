@@ -18,4 +18,5 @@ target "banmen" do
  pod 'UMengUShare/Social/ReducedWeChat'
  pod 'JPush'
  pod 'iOS-Echarts'
+ pod 'FSCalendar'
 end

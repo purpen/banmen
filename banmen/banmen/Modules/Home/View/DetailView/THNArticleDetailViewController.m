@@ -8,11 +8,14 @@
 
 #import "THNArticleDetailViewController.h"
 #import <MMMarkdown/MMMarkdown.h>
+#import "THNShareActionView.h"
+#import "UIView+FSExtension.h"
 
 @interface THNArticleDetailViewController () <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (copy, nonatomic) NSString *htmlStr;
+@property (strong, nonatomic) THNShareActionView *shareView;
 
 @end
 
@@ -31,10 +34,16 @@
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.delegate = self;
     [self.webView loadHTMLString:self.htmlStr baseURL:[NSURL URLWithString:@"http://baidu.com"]];
+    
+//    self.shareView = [[THNShareActionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 300)];
+//    [self.view addSubview:self.shareView];
+//    [self.shareView thn_showShareViewController:self messageObject:[self shareMessageObject] shareImage:self.doneImage];
 }
 
 -(void)share{
-    
+//    [UIView animateWithDuration:0.25 animations:^{
+//        self.shareView.y = SCREEN_HEIGHT-self.shareView.height;
+//    }];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView

@@ -108,8 +108,16 @@
     _modelAry = modelAry;
     
     SalesTrendsModel *model = modelAry[0];
-    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%@", model.sum_money];
-    self.timeLabel.text = model.time;
+    if (model.sum_money == NULL) {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：0"];
+    } else {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%@", model.sum_money];
+    }
+    if (model.time == NULL) {
+        self.timeLabel.text = @"0";
+    } else {
+        self.timeLabel.text = model.time;
+    }
     
     CGFloat maxMoney = [model.sum_money floatValue];
     CGFloat minMoney = [model.sum_money floatValue];
@@ -197,7 +205,11 @@
         self.lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
     }
     SalesTrendsModel *modelLast = modelAry.lastObject;
-    [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", model.time, modelLast.time] forState:(UIControlStateNormal)];
+    if (model.time == NULL) {
+        [self.dateSelectBtn setTitle:[NSString stringWithFormat:@" "] forState:(UIControlStateNormal)];
+    } else {
+        [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", model.time, modelLast.time] forState:(UIControlStateNormal)];
+    }
 }
 
 -(LineChartView *)lineChartView{
@@ -217,10 +229,12 @@
         _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
         _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
         _lineChartView.xAxis.labelFont = [UIFont systemFontOfSize:7];
+        _lineChartView.xAxis.gridColor = [UIColor colorWithHexString:@"#E7E7E7"];
         
         ChartYAxis *leftAxis = _lineChartView.leftAxis;
         [leftAxis removeAllLimitLines];
-        leftAxis.gridLineDashLengths = @[@5.f, @5.f];
+        leftAxis.gridLineDashLengths = @[@1.f, @1.f];
+        leftAxis.gridColor = [UIColor colorWithHexString:@"#E7E7E7"];
         leftAxis.drawZeroLineEnabled = NO;
         leftAxis.drawLimitLinesBehindDataEnabled = YES;
         
@@ -269,6 +283,7 @@
     self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%.2f", entry.y];
     SalesTrendsModel *model = self.modelAry[(NSInteger)entry.x];
     self.timeLabel.text = model.time;
+    [self.lineChartView centerViewToAnimatedWithXValue:entry.x yValue:entry.y axis:[self.lineChartView.data getDataSetByIndex:highlight.dataSetIndex].axisDependency duration:1.0];
 }
 
 - (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView

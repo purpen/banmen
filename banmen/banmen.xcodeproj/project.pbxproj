@@ -197,6 +197,8 @@
 		F58EBD3D1F38116E00146754 /* EZImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD301F380F3000146754 /* EZImageBrowser.m */; };
 		F58EBD3E1F38117700146754 /* EZImageBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD321F380F3000146754 /* EZImageBrowserCell.m */; };
 		F58EBD3F1F38118A00146754 /* EZImageBrowserLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD351F380F3000146754 /* EZImageBrowserLoading.m */; };
+		F58EBD7B1F39556400146754 /* THNDateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD7A1F3952A300146754 /* THNDateSelectViewController.m */; };
+		F58EBD7C1F3955BA00146754 /* RangePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F58EBD781F3952A300146754 /* RangePickerCell.m */; };
 		F595FE0B1F1CA18D006F4E46 /* CooperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0A1F1CA18D006F4E46 /* CooperationView.m */; };
 		F595FE0E1F1CA382006F4E46 /* CooperationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE0D1F1CA382006F4E46 /* CooperationCollectionViewCell.m */; };
 		F595FE111F1CC762006F4E46 /* Cooperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE101F1CC762006F4E46 /* Cooperation.m */; };
@@ -592,6 +594,10 @@
 		F58EBD341F380F3000146754 /* EZImageBrowserLoading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZImageBrowserLoading.h; sourceTree = "<group>"; };
 		F58EBD351F380F3000146754 /* EZImageBrowserLoading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZImageBrowserLoading.m; sourceTree = "<group>"; };
 		F58EBD361F380F3000146754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F58EBD771F3952A300146754 /* RangePickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangePickerCell.h; sourceTree = "<group>"; };
+		F58EBD781F3952A300146754 /* RangePickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RangePickerCell.m; sourceTree = "<group>"; };
+		F58EBD791F3952A300146754 /* THNDateSelectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNDateSelectViewController.h; sourceTree = "<group>"; };
+		F58EBD7A1F3952A300146754 /* THNDateSelectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNDateSelectViewController.m; sourceTree = "<group>"; };
 		F595FE091F1CA18D006F4E46 /* CooperationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CooperationView.h; sourceTree = "<group>"; };
 		F595FE0A1F1CA18D006F4E46 /* CooperationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CooperationView.m; sourceTree = "<group>"; };
 		F595FE0C1F1CA382006F4E46 /* CooperationCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CooperationCollectionViewCell.h; sourceTree = "<group>"; };
@@ -623,6 +629,8 @@
 		F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailModel.m; sourceTree = "<group>"; };
 		F5CE62031F32C6EC0049AA9E /* AreaTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AreaTableViewCell.h; sourceTree = "<group>"; };
 		F5CE62041F32C6EC0049AA9E /* AreaTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AreaTableViewCell.m; sourceTree = "<group>"; };
+		F5E2CD201F39A65C009C8B77 /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		F5E2CD241F39A848009C8B77 /* banmen-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "banmen-Bridging-Header.h"; sourceTree = "<group>"; };
 		F5E5FBD91F29F9D000F66BC9 /* THNArticleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNArticleDetailViewController.h; sourceTree = "<group>"; };
 		F5E5FBDA1F29F9D000F66BC9 /* THNArticleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNArticleDetailViewController.m; sourceTree = "<group>"; };
 		F5E5FBDB1F29F9D000F66BC9 /* THNArticleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THNArticleDetailViewController.xib; sourceTree = "<group>"; };
@@ -774,6 +782,7 @@
 		D847DE541F00C1DA007E301E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F58EBD761F3952A300146754 /* DateSelect */,
 				D805C5CA1F3034CC00354A47 /* DateValueFormatter.h */,
 				D805C5C91F3034CC00354A47 /* DateValueFormatter.m */,
 				D886F8381F21A0EE009382C3 /* HotelCalendar */,
@@ -816,6 +825,7 @@
 				F57139E01F2724D600C1A62B /* THNGoodsPictureCollectionViewCell.m */,
 				F57139EB1F2840A800C1A62B /* THNPictureCollectionViewCell.h */,
 				F57139EC1F2840A800C1A62B /* THNPictureCollectionViewCell.m */,
+				F5E2CD241F39A848009C8B77 /* banmen-Bridging-Header.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1492,6 +1502,7 @@
 		F52AD5C01F3023CA0098282A /* SalesCell */ = {
 			isa = PBXGroup;
 			children = (
+				F5E2CD201F39A65C009C8B77 /* BalloonMarker.swift */,
 				F52AD5B71F3023610098282A /* THNSalesOrderTableViewCell.h */,
 				F52AD5B81F3023610098282A /* THNSalesOrderTableViewCell.m */,
 				F55DD8101F04AE92004915E3 /* SaleTableViewCell.h */,
@@ -1683,6 +1694,17 @@
 			path = EZImageBrowserKit;
 			sourceTree = "<group>";
 		};
+		F58EBD761F3952A300146754 /* DateSelect */ = {
+			isa = PBXGroup;
+			children = (
+				F58EBD771F3952A300146754 /* RangePickerCell.h */,
+				F58EBD781F3952A300146754 /* RangePickerCell.m */,
+				F58EBD791F3952A300146754 /* THNDateSelectViewController.h */,
+				F58EBD7A1F3952A300146754 /* THNDateSelectViewController.m */,
+			);
+			path = DateSelect;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1721,7 +1743,7 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 7ET6PJMCHV;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1922,6 +1944,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58EBD7C1F3955BA00146754 /* RangePickerCell.m in Sources */,
+				F58EBD7B1F39556400146754 /* THNDateSelectViewController.m in Sources */,
 				F58EBD3F1F38118A00146754 /* EZImageBrowserLoading.m in Sources */,
 				F58EBD3E1F38117700146754 /* EZImageBrowserCell.m in Sources */,
 				F58EBD3D1F38116E00146754 /* EZImageBrowser.m in Sources */,
@@ -2195,8 +2219,9 @@
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 7ET6PJMCHV;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2254,9 +2279,10 @@
 					"\"TYAlertController\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
+				PRODUCT_MODULE_NAME = banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "51851379-c5a3-4e0d-b4b0-6478fbc3ba33";
-				PROVISIONING_PROFILE_SPECIFIER = banmen;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "banmen/Modules/Home/View/banmen-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2272,9 +2298,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = banmen/banmen.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 7ET6PJMCHV;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2332,9 +2359,10 @@
 					"\"TYAlertController\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taihuoniao.banmen;
+				PRODUCT_MODULE_NAME = banmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23cf2777-95e7-4f04-a0e1-a630fd01d205";
-				PROVISIONING_PROFILE_SPECIFIER = banmen_release;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "banmen/Modules/Home/View/banmen-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
