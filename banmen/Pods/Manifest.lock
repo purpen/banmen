@@ -17,10 +17,10 @@ PODS:
   - Charts (3.0.2):
     - Charts/Core (= 3.0.2)
   - Charts/Core (3.0.2)
-  - DACircularProgress (2.3.1)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
+  - FSCalendar (2.7.9)
   - HMSegmentedControl (1.5.3)
   - iOS-Echarts (1.4.4)
   - IQKeyboardManager (4.0.10)
@@ -30,7 +30,6 @@ PODS:
   - JPush (3.0.6):
     - JCore (~> 1.1.1)
   - Masonry (1.0.2)
-  - MBProgressHUD (1.0.0)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
   - MXPagerView (0.2.1)
@@ -39,10 +38,6 @@ PODS:
     - HMSegmentedControl (= 1.5.3)
     - MXPagerView (= 0.2.1)
     - MXParallaxHeader (= 0.6.1)
-  - PYPhotoBrowser (1.4.0):
-    - DACircularProgress
-    - MBProgressHUD
-    - SDWebImage (~> 3.8.2)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -59,6 +54,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - Charts
+  - FSCalendar
   - iOS-Echarts
   - IQKeyboardManager
   - JKDBModel-JDBR (~> 0.0.1)
@@ -67,7 +63,6 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - MXSegmentedPager
-  - PYPhotoBrowser
   - SDWebImage (~> 3.8)
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - TYAlertController
@@ -86,8 +81,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
-  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
   iOS-Echarts: dbc7423d861e5eedee78906a39d205b5c4da9a13
   IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
@@ -95,18 +90,16 @@ SPEC CHECKSUMS:
   JKDBModel-JDBR: 432c379e4bbba54ee4068aed8aac08f9ebde5c1b
   JPush: c41be50eb1a574a66aeb68d237f00a4ec6ec3a82
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
-  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   MXPagerView: ede184b5191b2ed689ccf05a750a9978cce42414
   MXParallaxHeader: 858c403532ed933b381556a81ce333d7065ad182
   MXSegmentedPager: a35ebaf939e1629f24db3bb26653c1c557362f59
-  PYPhotoBrowser: 9b0655bf9b62faa96d94b06f7a452017e730ba4c
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   SVProgressHUD: d65371a8e4482380deddb9fe60e14e59ddb30eb3
   TYAlertController: 502d3dbc5d007e68559400b509c736f60ebc2cc1
   UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
 
-PODFILE CHECKSUM: 27e8b903d6cf477f088c5f7701244c751b98e6c2
+PODFILE CHECKSUM: d552ff723868b32c454e65842c41c842e8553c6b
 
 COCOAPODS: 1.2.1

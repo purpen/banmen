@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="THNWordDetailViewController">
             <connections>
+                <outlet property="cBtn" destination="w8J-el-Tmz" id="ceZ-t2-aNS"/>
                 <outlet property="cnacelBtn" destination="ptp-9A-7I1" id="XiN-d2-bRe"/>
                 <outlet property="textView" destination="uRb-vP-xD6" id="Jdc-mL-xgI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -46,12 +47,28 @@
                         <action selector="cancel:" destination="-1" eventType="touchUpInside" id="XSu-ws-PnM"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8J-el-Tmz">
+                    <rect key="frame" x="299" y="468" width="60" height="30"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="lgZ-m8-2aQ"/>
+                        <constraint firstAttribute="width" constant="60" id="srK-eb-UYg"/>
+                    </constraints>
+                    <state key="normal" title="复制">
+                        <color key="titleColor" red="1" green="0.35294117650000001" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cBtn:" destination="-1" eventType="touchUpInside" id="MI5-Dn-uLv"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="ptp-9A-7I1" firstAttribute="centerY" secondItem="w8J-el-Tmz" secondAttribute="centerY" id="DL1-zh-XTM"/>
                 <constraint firstItem="48q-YF-hUy" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="VNX-o6-70N"/>
                 <constraint firstItem="48q-YF-hUy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="W98-O2-H7h"/>
                 <constraint firstItem="ptp-9A-7I1" firstAttribute="top" secondItem="48q-YF-hUy" secondAttribute="bottom" constant="30" id="XXR-Mn-dOR"/>
+                <constraint firstAttribute="trailing" secondItem="w8J-el-Tmz" secondAttribute="trailing" constant="16" id="ZTq-Uw-jSC"/>
                 <constraint firstItem="ptp-9A-7I1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qJx-Qi-i5f"/>
                 <constraint firstItem="48q-YF-hUy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tYu-TK-2ym"/>
                 <constraint firstAttribute="trailing" secondItem="48q-YF-hUy" secondAttribute="trailing" constant="15" id="va8-lY-m54"/>

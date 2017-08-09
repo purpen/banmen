@@ -83,13 +83,6 @@
         _dateSelectBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _dateSelectBtn.layer.borderColor = [UIColor colorWithHexString:@"#e9e9e9"].CGColor;
         _dateSelectBtn.layer.borderWidth = 1;
-        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
-        [date_formatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
-        NSTimeInterval  oneDay = 24*60*60*1;
-        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
-        NSString *the_date_str = [date_formatter stringFromDate:theDate];
-        [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
         _dateSelectBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         [_dateSelectBtn setTitleColor:[UIColor colorWithHexString:@"#7d7d7d"] forState:(UIControlStateNormal)];
     }
@@ -112,9 +105,9 @@
         PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@""];
         dataSet.drawValuesEnabled = NO;//是否绘制显示数据
         NSMutableArray *colors = [[NSMutableArray alloc] init];
-        [colors addObjectsFromArray:ChartColorTemplates.vordiplom];
-        [colors addObjectsFromArray:ChartColorTemplates.joyful];
-        [colors addObjectsFromArray:ChartColorTemplates.colorful];
+        [colors addObject:[UIColor colorWithHexString:@"#00CBCB"]];
+        [colors addObject:[UIColor colorWithHexString:@"#30B3F5"]];
+        [colors addObject:[UIColor colorWithHexString:@"#BAA0E2"]];
         [colors addObjectsFromArray:ChartColorTemplates.liberty];
         [colors addObjectsFromArray:ChartColorTemplates.pastel];
         [colors addObject:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
@@ -142,11 +135,27 @@
         //设置动画效果
         [self.pieChartView animateWithXAxisDuration:1.0f easingOption:ChartEasingOptionEaseOutExpo];
     }
+    
+}
+
+-(void)setTimeAry:(NSArray *)timeAry{
+    _timeAry = timeAry;
+    [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", timeAry[0], timeAry[1]] forState:(UIControlStateNormal)];
+    if (timeAry.count == 0) {
+        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+        [date_formatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
+        NSTimeInterval  oneDay = 24*60*60*1;
+        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
+        NSString *the_date_str = [date_formatter stringFromDate:theDate];
+        [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
+    }
 }
 
 -(PieChartView *)pieChartView{
     if (!_pieChartView) {
         _pieChartView = [[PieChartView alloc] init];
+        _pieChartView.noDataText = @"暂无数据";
         _pieChartView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
         [_pieChartView setExtraOffsetsWithLeft:30 top:0 right:30 bottom:0];//饼状图距离边缘的间隙
         _pieChartView.usePercentValuesEnabled = YES;//是否根据所提供的数据, 将显示数据转换为百分比格式

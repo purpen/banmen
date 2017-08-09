@@ -13,6 +13,13 @@
 
 @implementation THNGoodsVideoModel
 
++(NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{
+             @"video_image" : @"asset.video",
+             @"video" : @"asset.srcfile"
+             };
+}
+
 -(void)netGetVideo:(NSString *)productId{
     self.current_page = 1;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

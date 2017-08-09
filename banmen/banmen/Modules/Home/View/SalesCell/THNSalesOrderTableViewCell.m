@@ -83,13 +83,6 @@
         _dateSelectBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _dateSelectBtn.layer.borderColor = [UIColor colorWithHexString:@"#e9e9e9"].CGColor;
         _dateSelectBtn.layer.borderWidth = 1;
-        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
-        [date_formatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
-        NSTimeInterval  oneDay = 24*60*60*1;
-        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
-        NSString *the_date_str = [date_formatter stringFromDate:theDate];
-        [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
         _dateSelectBtn.font = [UIFont systemFontOfSize:10];
         [_dateSelectBtn setTitleColor:[UIColor colorWithHexString:@"#7d7d7d"] forState:(UIControlStateNormal)];
     }
@@ -108,8 +101,16 @@
     _modelAry = modelAry;
     
     SalesTrendsModel *model = modelAry[0];
-    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"订单数：%@", model.order_count];
-    self.timeLabel.text = model.time;
+    if (model.order_count == NULL) {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"订单数：0"];
+    } else {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"订单数：%@", model.order_count];
+    }
+    if (model.time == NULL) {
+        self.timeLabel.text = @"0";
+    } else {
+        self.timeLabel.text = model.time;
+    }
     
     CGFloat maxMoney = [model.sum_money floatValue];
     CGFloat minMoney = [model.sum_money floatValue];
@@ -195,12 +196,20 @@
         _lineChartView.data = data;
         _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
     }
+    SalesTrendsModel *modelLast = modelAry.lastObject;
+    if (model.time == NULL) {
+        [self.dateSelectBtn setTitle:[NSString stringWithFormat:@" "] forState:(UIControlStateNormal)];
+    } else {
+        [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", model.time, modelLast.time] forState:(UIControlStateNormal)];
+    }
 }
 
 -(LineChartView *)lineChartView{
     if (!_lineChartView) {
         _lineChartView = [[LineChartView alloc] init];
         _lineChartView.delegate = self;
+        _lineChartView.noDataText = @"暂无数据";
+        _lineChartView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
         _lineChartView.chartDescription.enabled = NO;
         _lineChartView.dragEnabled = YES;
         [_lineChartView setScaleEnabled:NO];
@@ -211,12 +220,15 @@
         _lineChartView.xAxis.gridLineDashPhase = 0.f;
         _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
         _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
+        _lineChartView.xAxis.labelFont = [UIFont systemFontOfSize:7];
+        _lineChartView.xAxis.gridColor = [UIColor colorWithHexString:@"#e7e7e7"];
         
         ChartYAxis *leftAxis = _lineChartView.leftAxis;
         [leftAxis removeAllLimitLines];
         leftAxis.gridLineDashLengths = @[@5.f, @5.f];
         leftAxis.drawZeroLineEnabled = NO;
         leftAxis.drawLimitLinesBehindDataEnabled = YES;
+        leftAxis.gridColor = [UIColor colorWithHexString:@"#e7e7e7"];
         
         _lineChartView.rightAxis.enabled = NO;
         

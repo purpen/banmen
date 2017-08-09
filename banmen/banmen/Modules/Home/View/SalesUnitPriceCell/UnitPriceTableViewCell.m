@@ -106,7 +106,7 @@
     else
     {
         set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@"The year 2017"];
-        set1.highlightEnabled = NO;//点击选中柱形图是否有高亮效果，（双击空白处取消选中）
+        set1.highlightEnabled = YES;//点击选中柱形图是否有高亮效果，（双击空白处取消选中）
         [set1 setColors:ChartColorTemplates.material];
         set1.drawIconsEnabled = NO;
         [set1 setColor:[UIColor colorWithHexString:@"#ff3266"]];//设置柱形图颜色
@@ -123,10 +123,26 @@
     }
 }
 
+-(void)setTimeAry:(NSArray *)timeAry{
+    _timeAry = timeAry;
+    [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", timeAry[0], timeAry[1]] forState:(UIControlStateNormal)];
+    if (timeAry.count == 0) {
+        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+        [date_formatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
+        NSTimeInterval  oneDay = 24*60*60*1;
+        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
+        NSString *the_date_str = [date_formatter stringFromDate:theDate];
+        [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
+    }
+}
+
 -(BarChartView *)barChartView{
     if (!_barChartView) {
         _barChartView = [[BarChartView alloc] init];
         _barChartView.delegate = self;
+        _barChartView.noDataText = @"暂无数据";
+        _barChartView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
         
         _barChartView.descriptionText = @"";//不显示，就设为空字符串即可
         
@@ -134,13 +150,12 @@
         _barChartView.drawValueAboveBarEnabled = YES;
         _barChartView.scaleYEnabled = NO;//取消Y轴缩放
         _barChartView.doubleTapToZoomEnabled = NO;//取消双击缩放
-        _barChartView.dragEnabled = NO;//启用拖拽图表
         
         _barChartView.maxVisibleCount = 60;
         
         ChartXAxis *xAxis = _barChartView.xAxis;
         xAxis.labelPosition = XAxisLabelPositionBottom;
-        xAxis.labelFont = [UIFont systemFontOfSize:8.f];
+        xAxis.labelFont = [UIFont systemFontOfSize:5.f];
         xAxis.drawGridLinesEnabled = NO;
         xAxis.granularity = 1.0; // only intervals of 1 day
         xAxis.labelCount = 7;
@@ -172,14 +187,7 @@
         _dateSelectBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _dateSelectBtn.layer.borderColor = [UIColor colorWithHexString:@"#e9e9e9"].CGColor;
         _dateSelectBtn.layer.borderWidth = 1;
-        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
-        [date_formatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
-        NSTimeInterval  oneDay = 24*60*60*1;
-        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
-        NSString *the_date_str = [date_formatter stringFromDate:theDate];
-        [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
-        _dateSelectBtn.font = [UIFont systemFontOfSize:10];
+        _dateSelectBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         [_dateSelectBtn setTitleColor:[UIColor colorWithHexString:@"#7d7d7d"] forState:(UIControlStateNormal)];
     }
     return _dateSelectBtn;
@@ -214,9 +222,7 @@
 }
 
 #pragma mark - ChartViewDelegate
-
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
-{
+-(void)chartValueSelected:(ChartViewBase *)chartView entry:(ChartDataEntry *)entry highlight:(ChartHighlight *)highlight{
     UnitPriceModel *model = self.modelAry[(NSInteger)entry.x];
     self.topLeftTwoLabel.text = [NSString stringWithFormat:@"客单价%@：%@%%", model.range, model.proportion];
 }

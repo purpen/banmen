@@ -10,11 +10,13 @@
 #import "SalesChannelsModel.h"
 #import "SalesChannelsView.h"
 #import "HotelCalendarViewController.h"
+#import "THNDateSelectViewController.h"
 
-@interface SalesChannelsViewController () <SalesChannelsModelDelegate>
+@interface SalesChannelsViewController () <SalesChannelsModelDelegate, THNDateSelectViewControllerDelegate>
 @property (nonatomic, strong) SalesChannelsModel *s;
 @property (nonatomic, strong) SalesChannelsView *channelView;
 @property (nonatomic, strong) NSArray *modelAry;
+@property (nonatomic, strong) NSArray *timeAry;
 @end
 
 @implementation SalesChannelsViewController
@@ -43,17 +45,32 @@
 }
 
 -(void)dateSelect:(UIButton *)sender{
-    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
-    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
-        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
-        [self.s getSalesChannelsModelItem:startDateStr andEndTime:endDateStr];
-    }];
+//    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
+//    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
+//        self.timeAry = @[startDateStr, endDateStr];
+//        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
+//        [self.s getSalesChannelsModelItem:startDateStr andEndTime:endDateStr];
+//    }];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    THNDateSelectViewController *vc = [[THNDateSelectViewController alloc] init];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)getDate:(NSDate *)startDate andEnd:(NSDate *)endDate{
+    NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+    [date_formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *startstr = [date_formatter stringFromDate:startDate];
+    NSString *endStr = [date_formatter stringFromDate:endDate];
+    self.timeAry = @[startstr, endStr];
+    [self.s getSalesChannelsModelItem:startstr andEndTime:endStr];
 }
 
 -(void)updateSalesChannelsModel:(NSArray *)modelAry{
     self.modelAry = modelAry;
     self.channelView.modelAry = modelAry;
+    self.channelView.timeAry = self.timeAry;
 }
 
 -(SalesChannelsModel *)s{

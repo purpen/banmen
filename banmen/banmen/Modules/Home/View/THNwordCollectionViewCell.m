@@ -11,7 +11,6 @@
 #import "UIColor+Extension.h"
 #import "OtherMacro.h"
 #import "UIImageView+WebCache.h"
-#import "THNwordCollectionViewCell.h"
 #import "UIView+FSExtension.h"
 
 @implementation THNwordCollectionViewCell

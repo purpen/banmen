@@ -10,12 +10,15 @@
 #import "UIView+FSExtension.h"
 #import "Masonry.h"
 #import "OtherMacro.h"
+#import "SVProgressHUD.h"
 
 @interface THNWordDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *wordView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *cnacelBtn;
+@property (weak, nonatomic) IBOutlet UIButton *cBtn;
+
 @end
 
 @implementation THNWordDetailViewController
@@ -24,9 +27,32 @@
     [super viewWillAppear:animated];
 }
 
+- (IBAction)cBtn:(id)sender {
+    UIPasteboard *pab = [UIPasteboard generalPasteboard];
+    
+    NSString *string = self.textView.text;
+    
+    [pab setString:string];
+    
+    if (pab == nil) {
+        [SVProgressHUD showErrorWithStatus:@"复制失败"];
+        
+    }else
+    {
+        [SVProgressHUD showSuccessWithStatus:@"已复制"];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+    self.cBtn.layer.masksToBounds = YES;
+    self.cBtn.layer.cornerRadius = 3;
+    self.view.backgroundColor = [UIColor clearColor];
+    
+    UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    [self.view insertSubview:effectView belowSubview:self.wordView];
     
     self.textView.editable = NO;
     self.wordView.layer.masksToBounds = YES;

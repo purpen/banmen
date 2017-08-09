@@ -22,6 +22,7 @@
 @property (nonatomic, strong) PYEchartsView *mapView;
 @property (strong,nonatomic) UIButton *dateSelectBtn;
 @property (strong,nonatomic) UILabel *tipLabel;
+@property (strong,nonatomic) NSArray *timeAry;
 
 @end
 
@@ -93,13 +94,6 @@
         _dateSelectBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _dateSelectBtn.layer.borderColor = [UIColor colorWithHexString:@"#e9e9e9"].CGColor;
         _dateSelectBtn.layer.borderWidth = 1;
-        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
-        [date_formatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
-        NSTimeInterval  oneDay = 24*60*60*1;
-        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
-        NSString *the_date_str = [date_formatter stringFromDate:theDate];
-        [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
         _dateSelectBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         [_dateSelectBtn setTitleColor:[UIColor colorWithHexString:@"#7d7d7d"] forState:(UIControlStateNormal)];
         [_dateSelectBtn addTarget:self action:@selector(dateSelect:) forControlEvents:(UIControlEventTouchUpInside)];
@@ -110,6 +104,7 @@
 -(void)dateSelect:(UIButton*)sender{
     HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
     [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
+        self.timeAry = @[startDateStr, endDateStr];
         [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
         [self.a orderAreaModel:startDateStr andEndTime:endDateStr];
     }];
@@ -161,6 +156,17 @@
             PYOption *option = [RMMapper objectWithClass:[PYOption class] fromDictionary:jsonDic];
             [self.mapView setOption:option];
             [self.mapView loadEcharts];
+        }
+        
+        [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", self.timeAry[0], self.timeAry[1]] forState:(UIControlStateNormal)];
+        if (self.timeAry.count == 0) {
+            NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+            [date_formatter setDateFormat:@"yyyy-MM-dd"];
+            NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
+            NSTimeInterval  oneDay = 24*60*60*1;
+            NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
+            NSString *the_date_str = [date_formatter stringFromDate:theDate];
+            [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
         }
         
         cell.backgroundColor = [UIColor whiteColor];

@@ -11,7 +11,6 @@
 @interface THNListTopTableViewCell : UITableViewCell
 
 @property(nonatomic ,strong) UILabel *serialNumberLabel;
-@property(nonatomic ,strong) UILabel *idLabel;
 @property(nonatomic ,strong) UILabel *goodsNameLabel;
 @property(nonatomic ,strong) UILabel *salesNumLabel;
 @property(nonatomic ,strong) UILabel *salesLabel;

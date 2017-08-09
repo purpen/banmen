@@ -70,7 +70,11 @@
     _areaModel = areaModel;
     self.areaLael.text = areaModel.buyer_province;
     self.salesLael.text = areaModel.sum_money;
-    self.percentageLael.text = [NSString stringWithFormat:@"%@%%", areaModel.proportion];
+    if (areaModel.proportion == NULL) {
+        self.percentageLael.text = @"0%";
+    } else {
+        self.percentageLael.text = [NSString stringWithFormat:@"%@%%", areaModel.proportion];
+    }
 }
 
 -(UILabel *)percentageLael{

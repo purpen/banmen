@@ -123,7 +123,7 @@
                 //视频
             {
                 if (self.sender_selected) {
-                    return 190/2+(51+15)*(self.videoModelAry.count)+50;
+                    return (142/2+20)*(self.videoModelAry.count)+50+120;
                 } else {
                     if (self.videoModelAry.count % 2 == 0) {
                         return 190/2+((SCREEN_WIDTH-45)/2+15)*(self.videoModelAry.count/2)+50;
