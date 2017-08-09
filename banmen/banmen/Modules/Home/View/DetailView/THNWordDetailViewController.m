@@ -49,6 +49,11 @@
     self.cBtn.layer.cornerRadius = 3;
     self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
     
+    UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    [self.view insertSubview:effectView belowSubview:self.wordView];
+    
     self.textView.editable = NO;
     self.wordView.layer.masksToBounds = YES;
     self.wordView.layer.cornerRadius = 5;
