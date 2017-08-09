@@ -90,6 +90,8 @@
 #pragma mark - public
 - (void)showWithCurrentIndex:(NSInteger)currentIndex completion:(void (^ __nullable)(void))completion {
     
+     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
     [self addSubview:self.downBtn];
     [self addSubview:self.wordLabel];
     [self addSubview:self.detailInfoLabel];
@@ -163,6 +165,8 @@
     if ([self.delegate respondsToSelector:@selector(imageBrowserWillDisappear:)]) {
         [self.delegate imageBrowserWillDisappear:self];
     }
+    
+     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     // 取到当前显示的 cell
     EZImageBrowserCell *cell = [[self.cells filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"index == %d", _currentIndex]] firstObject];
     

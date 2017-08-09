@@ -12,8 +12,9 @@
 #import "HotelCalendarViewController.h"
 #import "THNRepeatBuyModel.h"
 #import "THNRepeatPurchaseRateTableViewCell.h"
+#import "THNDateSelectViewController.h"
 
-@interface UnitPriceViewController ()<UITableViewDelegate,UITableViewDataSource, UnitPriceModelDelegate, RepeatBuyModelDelegate>
+@interface UnitPriceViewController ()<UITableViewDelegate,UITableViewDataSource, UnitPriceModelDelegate, RepeatBuyModelDelegate, THNDateSelectViewControllerDelegate>
 
 @property (nonatomic, strong) UITableView *contenTableView;
 @property (nonatomic, strong) UnitPriceModel *u;
@@ -22,6 +23,8 @@
 @property (nonatomic, strong) NSArray *timeAry;
 @property (nonatomic, strong) NSArray *timeAry2;
 @property (nonatomic, strong) NSArray *repeatModelAry;
+@property (nonatomic, assign) BOOL flag;
+@property (nonatomic, assign) BOOL rFlag;
 
 @end
 
@@ -105,23 +108,33 @@
 }
 
 -(void)dateSelectR:(UIButton *)sender{
-    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
-    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
-        self.timeAry2 = @[startDateStr, endDateStr];
-        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
-        [self.r repeatBuyModel:startDateStr andEndTime:endDateStr];
-    }];
+    self.flag = NO;
+    self.rFlag = YES;
+    THNDateSelectViewController *vc = [[THNDateSelectViewController alloc] init];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)dateSelect:(UIButton *)sender{
-    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
-    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
-        self.timeAry = @[startDateStr, endDateStr];
-        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
-        [self.u NetGetUnitPriceModel:startDateStr andEndTime:endDateStr];
-    }];
+    self.flag = YES;
+    self.rFlag = NO;
+    THNDateSelectViewController *vc = [[THNDateSelectViewController alloc] init];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)getDate:(NSDate *)startDate andEnd:(NSDate *)endDate{
+    NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+    [date_formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *startstr = [date_formatter stringFromDate:startDate];
+    NSString *endStr = [date_formatter stringFromDate:endDate];
+    if (self.flag) {
+        self.timeAry = @[startstr, endStr];
+        [self.u NetGetUnitPriceModel:startstr andEndTime:endStr];
+    } else if (self.rFlag) {
+        self.timeAry2 = @[startstr, endStr];
+        [self.r repeatBuyModel:startstr andEndTime:endStr];
+    }
 }
 
 @end
