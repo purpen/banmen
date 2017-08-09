@@ -105,9 +105,9 @@
         PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@""];
         dataSet.drawValuesEnabled = NO;//是否绘制显示数据
         NSMutableArray *colors = [[NSMutableArray alloc] init];
-        [colors addObjectsFromArray:ChartColorTemplates.vordiplom];
-        [colors addObjectsFromArray:ChartColorTemplates.joyful];
-        [colors addObjectsFromArray:ChartColorTemplates.colorful];
+        [colors addObject:[UIColor colorWithHexString:@"#00CBCB"]];
+        [colors addObject:[UIColor colorWithHexString:@"#30B3F5"]];
+        [colors addObject:[UIColor colorWithHexString:@"#BAA0E2"]];
         [colors addObjectsFromArray:ChartColorTemplates.liberty];
         [colors addObjectsFromArray:ChartColorTemplates.pastel];
         [colors addObject:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];

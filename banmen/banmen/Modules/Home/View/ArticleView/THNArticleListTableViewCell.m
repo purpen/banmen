@@ -50,13 +50,20 @@
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:goodsArticleModel.cover_srcfile] placeholderImage:[UIImage imageNamed:@"articlePlaceholder"]];
     if (goodsArticleModel.cover_srcfile.length == 0) {
         self.imageView.hidden = YES;
-        [_wordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_wordLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).mas_offset(10);
             make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-10);
-            make.top.mas_equalTo(self.contentView.mas_top).mas_offset(10);
+            make.top.mas_equalTo(self.imageView.mas_bottom).mas_offset(-80/667.0*SCREEN_HEIGHT);
+            make.bottom.mas_equalTo(self.fromLabel.mas_top).mas_offset(-20/667*SCREEN_HEIGHT);
+        }];
+    } else {
+        self.imageView.hidden = NO;
+        [_wordLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(10);
+            make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-10);
+            make.top.mas_equalTo(self.imageView.mas_bottom).mas_offset(10);
             make.bottom.mas_equalTo(self.fromLabel.mas_top).mas_offset(-5);
         }];
-        [self.contentView layoutIfNeeded];
     }
 }
 

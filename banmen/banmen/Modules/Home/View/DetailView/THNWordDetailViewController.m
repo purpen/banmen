@@ -10,6 +10,7 @@
 #import "UIView+FSExtension.h"
 #import "Masonry.h"
 #import "OtherMacro.h"
+#import "SVProgressHUD.h"
 
 @interface THNWordDetailViewController ()
 
@@ -27,7 +28,19 @@
 }
 
 - (IBAction)cBtn:(id)sender {
-    self.textView.text = [UIPasteboard generalPasteboard].string;
+    UIPasteboard *pab = [UIPasteboard generalPasteboard];
+    
+    NSString *string = self.textView.text;
+    
+    [pab setString:string];
+    
+    if (pab == nil) {
+        [SVProgressHUD showErrorWithStatus:@"复制失败"];
+        
+    }else
+    {
+        [SVProgressHUD showSuccessWithStatus:@"已复制"];
+    }
 }
 
 - (void)viewDidLoad {

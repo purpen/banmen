@@ -77,6 +77,11 @@
             make.width.mas_equalTo(0);
         }];
         [self.contentView layoutIfNeeded];
+    } else {
+        self.imageView.hidden = NO;
+        [_imageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(100);
+        }];
     }
 }
 
