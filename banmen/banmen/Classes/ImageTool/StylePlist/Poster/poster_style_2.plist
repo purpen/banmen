@@ -21,7 +21,7 @@
 				<key>editType</key>
 				<string>1</string>
 				<key>imageUrl</key>
-				<string></string>
+				<string>photo</string>
 				<key>width</key>
 				<string>750</string>
 				<key>height</key>
@@ -29,7 +29,7 @@
 				<key>zindex</key>
 				<string>10</string>
 				<key>type</key>
-				<string>97</string>
+				<string>1</string>
 				<key>name</key>
 				<string>photo</string>
 				<key>position</key>
@@ -48,7 +48,7 @@
 				<key>editType</key>
 				<string>0</string>
 				<key>imageUrl</key>
-				<string>#</string>
+				<string>border</string>
 				<key>width</key>
 				<string>670</string>
 				<key>height</key>
@@ -56,7 +56,7 @@
 				<key>zindex</key>
 				<string>9</string>
 				<key>type</key>
-				<string>96</string>
+				<string>4</string>
 				<key>name</key>
 				<string>border</string>
 				<key>position</key>
@@ -75,7 +75,7 @@
 				<key>editType</key>
 				<string>1</string>
 				<key>imageUrl</key>
-				<string></string>
+				<string>qr</string>
 				<key>width</key>
 				<string>170</string>
 				<key>height</key>
@@ -83,7 +83,7 @@
 				<key>zindex</key>
 				<string>7</string>
 				<key>type</key>
-				<string>99</string>
+				<string>3</string>
 				<key>name</key>
 				<string>qr</string>
 				<key>position</key>
@@ -102,7 +102,7 @@
 				<key>editType</key>
 				<string>1</string>
 				<key>imageUrl</key>
-				<string></string>
+				<string>logo</string>
 				<key>width</key>
 				<string>150</string>
 				<key>height</key>
@@ -110,7 +110,7 @@
 				<key>zindex</key>
 				<string>8</string>
 				<key>type</key>
-				<string>98</string>
+				<string>2</string>
 				<key>name</key>
 				<string>logo</string>
 				<key>position</key>
@@ -255,9 +255,11 @@
 				</dict>
 				<key>content</key>
 				<string>温度可视，为了让你远离人肉试温
-温度可视，为了让你远离人肉试温
+
 7小时保温，为了给你持久的温暖
+
 320g轻量杯身，为了你品味慢生活
+
 为了你，我们无限可能</string>
 				<key>fontSize</key>
 				<string>30</string>

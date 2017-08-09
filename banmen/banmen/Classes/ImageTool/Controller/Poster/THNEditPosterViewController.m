@@ -52,8 +52,27 @@
     [super viewDidLoad];
     self.navRightItem.alpha = 0;
     
-    [self thn_getPhotoAlbumData];
     [self thn_setControllerViewUI];
+    
+    [self thn_getPhotoAlbumPermissions];
+}
+
+#pragma mark - 检查相册权限
+- (void)thn_getPhotoAlbumPermissions {
+    PHAuthorizationStatus photoStatus = [PHPhotoLibrary authorizationStatus];
+    if (photoStatus == PHAuthorizationStatusRestricted) {
+        [SVProgressHUD showErrorWithStatus:@"因用户限制，暂无法访问相册"];
+    } else if (photoStatus == PHAuthorizationStatusDenied) {
+        [SVProgressHUD showInfoWithStatus:@"请在「系统设置-隐私-照片」打开此应用的访问开关"];
+    } else if (photoStatus == PHAuthorizationStatusNotDetermined) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                [self thn_getPhotoAlbumData];
+            }
+        }];
+    } else if (photoStatus == PHAuthorizationStatusAuthorized) {
+        [self thn_getPhotoAlbumData];
+    }
 }
 
 #pragma mark - 选择的海报样式

@@ -10,7 +10,8 @@
 
 @interface THNPosterImageView : UIView <UIScrollViewDelegate>
 
-@property (nonatomic, assign) NSInteger imageTag;
+@property (nonatomic, assign) NSInteger imageType;
+@property (nonatomic, strong) NSString *logoType;
 @property (nonatomic, retain) UIScrollView *contentView;
 @property (nonatomic, strong) UIImageView *loadImageView;
 @property (nonatomic, assign) CGFloat imageWidth;

@@ -185,7 +185,6 @@ static NSInteger const imageViewTag = 3821;
             [UIView animateWithDuration:0.5 animations:^{
                 view.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:1];
             } completion:^(BOOL finished) {
-                
                 [UIView animateWithDuration:0.5 animations:^{
                     view.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0];
                 } completion:^(BOOL finished) {
@@ -212,8 +211,10 @@ static NSInteger const imageViewTag = 3821;
         THNPosterModelImage *model = imageArray[idx];
         
         THNPosterImageView *imageView = [[THNPosterImageView alloc] initWithFrame:CGRectMake(model.position.left, model.position.top, model.width, model.height)];
-        [imageView thn_setImageViewData:[UIImage imageNamed:[NSString stringWithFormat:@"poster_add_%@", model.name]]];
+        [imageView thn_setImageViewData:[UIImage imageNamed:[NSString stringWithFormat:@"poster_add_%@", model.imageUrl]]];
         imageView.tag = imageViewTag + idx;
+        imageView.imageType = model.type;
+        imageView.logoType = model.name;
         
         if (model.editType == 1) {
             imageView.userInteractionEnabled = YES;

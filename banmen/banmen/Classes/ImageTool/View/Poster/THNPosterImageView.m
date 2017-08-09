@@ -75,6 +75,14 @@
         return;
     }
     
+    if (self.imageType == 2) {
+        [self thn_setImageViewDataMarkLogo:imageData logoType:self.logoType];
+    } else {
+        [self thn_setImageViewDataMarkWidth:imageData];
+    }
+}
+
+- (void)thn_setImageViewDataMarkWidth:(UIImage *)imageData {
     CGRect rect = CGRectZero;
     CGFloat width = 0.f;
     CGFloat height = 0.f;
@@ -96,6 +104,24 @@
     }
     
     rect.size = CGSizeMake(width, height);
+    
+    @synchronized(self){
+        self.loadImageView.frame = rect;
+        [self.contentView setZoomScale:1 animated:YES];
+        [self setNeedsLayout];
+    }
+}
+
+- (void)thn_setImageViewDataMarkLogo:(UIImage *)imageData logoType:(NSString *)type {
+    CGRect rect = CGRectZero;
+    CGFloat width = self.contentView.frame.size.width;
+    CGFloat height = (width / imageData.size.width) * imageData.size.height;
+    
+    if ([type isEqualToString:@"logo"]) {
+        rect = CGRectMake(0, self.contentView.frame.size.height - height - 5, width, height);
+    } else {
+        rect = CGRectMake(0, 0, width, height);
+    }
     
     @synchronized(self){
         self.loadImageView.frame = rect;
