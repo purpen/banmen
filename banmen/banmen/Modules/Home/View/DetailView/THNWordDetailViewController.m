@@ -47,7 +47,7 @@
     [super viewDidLoad];
     self.cBtn.layer.masksToBounds = YES;
     self.cBtn.layer.cornerRadius = 3;
-    self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+    self.view.backgroundColor = [UIColor clearColor];
     
     UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
