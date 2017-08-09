@@ -101,7 +101,11 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     self.browser = [[EZImageBrowser alloc] init];
     [_browser setDelegate:self];
-    [_browser showWithCurrentIndex:indexPath.row  completion:nil];
+    [_browser setPageTextPosition:(EZImageBrowserPageTextPositionTop)];
+    [_browser showWithCurrentIndex:indexPath.row completion:nil];
+    THNGoodsPictureModel *model = self.modelAry[indexPath.row];
+    self.browser.wordLabel.text = model.describe;
+    self.browser.detailInfoLabel.text = [NSString stringWithFormat:@"%.0fKB %@", [model.image_size floatValue]/1024, model.image_created];
     [_browser.downBtn addTarget:self action:@selector(down:) forControlEvents:(UIControlEventTouchUpInside)];
 }
 
@@ -123,6 +127,7 @@
     if (!cell) {
         cell = [[EZImageBrowserCell alloc] init];
     }
+    
     THNGoodsPictureModel *model = self.modelAry[index];
     cell.loadingView.hidden = YES ;
     [cell.imageView sd_setImageWithURL:[[NSURL alloc] initWithString:model.image] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
@@ -162,6 +167,13 @@
 - (CGSize)imageBrowser:(EZImageBrowser *)imageBrowser  imageViewSizeForItemAtIndex:(NSInteger)index{
     CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width);
     return size;
+}
+
+-(NSString *)imageBrowser:(EZImageBrowser *)imageBrowser pageTextForItemAtIndex:(NSInteger)index count:(NSInteger)count{
+    THNGoodsPictureModel *model = self.modelAry[index];
+    self.browser.wordLabel.text = model.describe;
+    self.browser.detailInfoLabel.text = [NSString stringWithFormat:@"%.0fKB %@", [model.image_size floatValue]/1024, model.image_created];
+    return [NSString stringWithFormat:@"%zd / %zd", index + 1, count];
 }
 
 - (void)imageBrowser:(EZImageBrowser *)imageBrowser didDisplayingCell:(EZImageBrowserCell *)cell atIndex:(NSInteger)index{

@@ -10,6 +10,8 @@
 #import "EZImageBrowser.h"
 #import "EZImageBrowserCell.h"
 #import "OtherMacro.h"
+#import "Masonry.h"
+#import "UIColor+Extension.h"
 
 @interface EZImageBrowser()<UIScrollViewDelegate, EZImageBrowserCellDelegate>
 /// 界面子控件
@@ -57,19 +59,50 @@
 }
 
 
+-(UILabel *)wordLabel{
+    if (!_wordLabel) {
+        _wordLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, SCREEN_HEIGHT-70, SCREEN_WIDTH-30, 20)];
+        _wordLabel.font = [UIFont systemFontOfSize:14];
+        _wordLabel.textColor = [UIColor whiteColor];
+        _wordLabel.numberOfLines = 0;
+    }
+    return _wordLabel;
+}
+
 -(UIButton *)downBtn{
     if (!_downBtn) {
         _downBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         [_downBtn setImage:[UIImage imageNamed:@"download"] forState:(UIControlStateNormal)];
-        _downBtn.frame = CGRectMake(SCREEN_WIDTH-40, SCREEN_HEIGHT-40, 30, 30);
+        _downBtn.frame = CGRectMake(SCREEN_WIDTH-40, 25, 30, 30);
     }
     return _downBtn;
+}
+
+-(UILabel *)detailInfoLabel{
+    if (!_detailInfoLabel) {
+        _detailInfoLabel = [[UILabel alloc] init];
+        _detailInfoLabel.font = [UIFont systemFontOfSize:9];
+        _detailInfoLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
+    }
+    return _detailInfoLabel;
 }
 
 #pragma mark - public
 - (void)showWithCurrentIndex:(NSInteger)currentIndex completion:(void (^ __nullable)(void))completion {
     
     [self addSubview:self.downBtn];
+    [self addSubview:self.wordLabel];
+    [self addSubview:self.detailInfoLabel];
+    [_detailInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.mas_left).mas_offset(15);
+        make.bottom.mas_equalTo(self.mas_bottom).mas_offset(-10);
+    }];
+    [_wordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.mas_left).mas_offset(15);
+        make.right.mas_equalTo(self.mas_right).mas_offset(-15);
+        make.bottom.mas_equalTo(self.detailInfoLabel.mas_top).mas_offset(-10);
+        make.height.mas_equalTo(50);
+    }];
     
     NSAssert(self.delegate != nil, @"Please set up delegate for EZImageBrowser");
     

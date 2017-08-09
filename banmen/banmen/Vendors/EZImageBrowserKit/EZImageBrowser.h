@@ -153,6 +153,8 @@ typedef NS_ENUM(NSInteger, EZImageBrowserPageTextPosition) {
 @property (nonatomic, strong, readonly) UILabel *pageTextLabel;
 
 @property (nonatomic, strong) UIButton *downBtn;
+@property (nonatomic, strong) UILabel *wordLabel;
+@property (nonatomic, strong) UILabel *detailInfoLabel;
 
 //default: EZImageBrowserPageTextPositionBottom
 @property (nonatomic, assign) EZImageBrowserPageTextPosition pageTextPosition;
