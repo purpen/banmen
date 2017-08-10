@@ -12,7 +12,8 @@
 
 @optional
 - (void)thn_writeInputBoxResignFirstResponder;
-- (void)thn_writeInputBoxChangeTextColor;
+- (void)thn_writeInputBoxBeginChangeTextColor;
+- (void)thn_writeInputBoxEndChangeTextColor;
 
 @end
 

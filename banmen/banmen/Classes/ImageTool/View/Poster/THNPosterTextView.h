@@ -31,4 +31,6 @@
 
 - (void)thn_resignFirstResponder;
 
+- (void)thn_becomeFirstResponder;
+
 @end

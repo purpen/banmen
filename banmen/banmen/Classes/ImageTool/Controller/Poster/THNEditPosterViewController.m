@@ -18,8 +18,9 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "THNDoneImageViewController.h"
 #import "NSString+JSON.h"
+#import "THNKeyboardToolView.h"
 
-@interface THNEditPosterViewController () <THNImageToolNavigationBarItemsDelegate, THNPosterInfoViewDelegate, THNPhotoListViewDelegate> {
+@interface THNEditPosterViewController () <THNImageToolNavigationBarItemsDelegate, THNPosterInfoViewDelegate, THNPhotoListViewDelegate, THNKeyboardToolViewDelegate> {
     NSInteger _imageViewTag;
     NSString *_posterStyle;
 }
@@ -37,6 +38,8 @@
 //  预览按钮
 @property (nonatomic, strong) UIButton *previewButton;
 @property (nonatomic, strong) UIImageView *previewPosterView;
+//  键盘工具
+@property (nonatomic, strong) THNKeyboardToolView *keyboardView;
 
 @end
 
@@ -55,6 +58,8 @@
     [self thn_setControllerViewUI];
     
     [self thn_getPhotoAlbumPermissions];
+    
+    [self thn_registerForKeyboardNotifications];
 }
 
 #pragma mark - 检查相册权限
@@ -102,6 +107,7 @@
     
     [self.view addSubview:self.posterView];
     [self.view addSubview:self.previewPosterView];
+    [self.view addSubview:self.keyboardView];
 }
 
 #pragma mark - 海报制作视图
@@ -248,6 +254,7 @@
 }
 
 - (void)previewHandleTapGesture:(UITapGestureRecognizer *)tapGesture {
+    [self.posterView thn_allTextViewResignFirstResponder];
     [self thn_loadPosterStyleInfoData];
 }
 
@@ -361,6 +368,69 @@
     THNDoneImageViewController *doneController = [[THNDoneImageViewController alloc] init];
     doneController.doneImage = [self cutImageWithView:self.posterView];
     [self.navigationController pushViewController:doneController animated:YES];
+}
+
+#pragma mark - 键盘工具操作
+- (THNKeyboardToolView *)keyboardView {
+    if (!_keyboardView) {
+        _keyboardView = [[THNKeyboardToolView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 44)];
+        _keyboardView.delegate = self;
+        [_keyboardView thn_setHiddenExtendingFunction:NO];
+    }
+    return _keyboardView;
+}
+
+- (void)thn_writeInputBoxResignFirstResponder {
+    [self thn_changeKeyboardToolViewHeight:0.0f];
+    [self.posterView thn_allTextViewResignFirstResponder];
+}
+
+- (void)thn_writeInputBoxBeginChangeTextColor {
+    [self.posterView thn_allTextViewResignFirstResponder];
+}
+
+- (void)thn_writeInputBoxEndChangeTextColor {
+    [self.posterView thn_allTextViewBecomeFirstResponder];
+}
+
+#pragma mark - 添加键盘检测
+- (void)thn_registerForKeyboardNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+//  键盘出现
+- (void)keyboardShow:(NSNotification *)aNotification {
+    NSDictionary *info = [aNotification userInfo];
+    CGFloat keyboardHeight = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    [self thn_changeKeyboardToolViewHeight:keyboardHeight];
+}
+
+//  键盘消失
+- (void)keyboardHidden:(NSNotification *)aNotification {
+    if (self.keyboardView.changeTextColor.selected == NO) {
+        [self thn_changeKeyboardToolViewHeight:0.0f];
+    }
+}
+
+//  改变键盘工具的高度
+- (void)thn_changeKeyboardToolViewHeight:(CGFloat)height {
+    CGRect keyboardViewRect = self.keyboardView.frame;
+    keyboardViewRect = CGRectMake(0, SCREEN_HEIGHT - (height), SCREEN_WIDTH, (height));
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.keyboardView.frame = keyboardViewRect;
+    }];
+}
+
+#pragma mark -
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

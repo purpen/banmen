@@ -9,7 +9,6 @@
 #import "THNPosterInfoView.h"
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
-
 #import "THNPosterTextView.h"
 
 static NSInteger const textViewTag = 3521;
@@ -21,6 +20,7 @@ static NSInteger const imageViewTag = 3821;
 
 @property (nonatomic, strong) NSMutableArray *textViewArray;
 @property (nonatomic, strong) NSMutableArray *imageViewArray;
+@property (nonatomic, strong) THNPosterTextView *tempTextView;
 
 @end
 
@@ -52,13 +52,11 @@ static NSInteger const imageViewTag = 3821;
 }
 
 - (void)thn_allTextViewResignFirstResponder {
-    [self thn_resignFirstResponder];
+    [self.tempTextView thn_resignFirstResponder];
 }
 
-- (void)thn_resignFirstResponder {
-    for (THNPosterTextView *textView in self.textViewArray) {
-        [textView thn_resignFirstResponder];
-    }
+- (void)thn_allTextViewBecomeFirstResponder {
+    [self.tempTextView thn_becomeFirstResponder];
 }
 
 #pragma mark - 添加海报默认信息
@@ -108,6 +106,16 @@ static NSInteger const imageViewTag = 3821;
         [self thn_loadFlashingAnimationOfView:textView background:model.background flash:YES];
         [self.textViewArray addObject:textView];
     }
+}
+
+//  开始编辑文字
+- (void)thn_textViewDidBeginEditing:(THNPosterTextView *)textView {
+    self.tempTextView = textView;
+}
+
+//  结束编辑文字
+- (void)thn_textViewDidEndEditing:(THNPosterTextView *)textView {
+    
 }
 
 //  控件闪烁提示
@@ -186,6 +194,7 @@ static NSInteger const imageViewTag = 3821;
         [self.tap_delegate thn_tapWithImageViewAndSelectPhoto:tapGesture.view.tag];
     }
 }
+
 
 #pragma mark - initArray
 - (NSMutableArray *)textViewArray {

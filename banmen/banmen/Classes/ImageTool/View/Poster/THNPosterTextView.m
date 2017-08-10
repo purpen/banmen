@@ -9,14 +9,11 @@
 #import "THNPosterTextView.h"
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
-#import "THNKeyboardToolView.h"
+//#import "THNKeyboardToolView.h"
 
-@interface THNPosterTextView () <UITextViewDelegate, THNKeyboardToolViewDelegate>
+@interface THNPosterTextView () <UITextViewDelegate>
 
-/**
- 键盘工具栏
- */
-@property (nonatomic, strong) THNKeyboardToolView *keyboardView;
+//@property (nonatomic, strong) THNKeyboardToolView *keyboardView;
 @property (nonatomic, strong) UITextView *posterTextView;
 
 @end
@@ -88,7 +85,10 @@
         _posterTextView = [[UITextView alloc] initWithFrame:self.bounds];
         _posterTextView.returnKeyType = UIReturnKeyDone;
         _posterTextView.delegate = self;
-        _posterTextView.inputAccessoryView = self.keyboardView;
+        
+        UIView *keyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
+        keyView.userInteractionEnabled = NO;
+        _posterTextView.inputAccessoryView = keyView;
         _posterTextView.keyboardAppearance = UIKeyboardAppearanceDark;
         _posterTextView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         _posterTextView.backgroundColor = [UIColor colorWithHexString:kColorWhite alpha:0];
@@ -106,34 +106,44 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     [self thn_showPosterTextViewBorder:YES];
+    if ([self.delegate respondsToSelector:@selector(thn_textViewDidBeginEditing:)]) {
+        [self.delegate thn_textViewDidBeginEditing:self];
+    }
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
     [self thn_showPosterTextViewBorder:NO];
-}
-
-#pragma mark - 键盘工具操作
-- (THNKeyboardToolView *)keyboardView {
-    if (!_keyboardView) {
-        _keyboardView = [[THNKeyboardToolView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
-        _keyboardView.delegate = self;
-        [_keyboardView thn_setHiddenExtendingFunction:YES];
+    if ([self.delegate respondsToSelector:@selector(thn_textViewDidBeginEditing:)]) {
+        [self.delegate thn_textViewDidBeginEditing:self];
     }
-    return _keyboardView;
-}
-
-//  取消键盘响应
-- (void)thn_writeInputBoxResignFirstResponder {
-    [self thn_resignFirstResponder];
 }
 
 - (void)thn_resignFirstResponder {
     [self.posterTextView resignFirstResponder];
 }
 
-//  改变字体颜色工具视图
-- (void)thn_writeInputBoxChangeTextColor {
-    
+- (void)thn_becomeFirstResponder {
+    [self.posterTextView becomeFirstResponder];
 }
+
+//#pragma mark - 键盘工具操作
+//- (THNKeyboardToolView *)keyboardView {
+//    if (!_keyboardView) {
+//        _keyboardView = [[THNKeyboardToolView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
+//        _keyboardView.delegate = self;
+//        [_keyboardView thn_setHiddenExtendingFunction:NO];
+//    }
+//    return _keyboardView;
+//}
+//
+////  取消键盘响应
+//- (void)thn_writeInputBoxResignFirstResponder {
+//    [self thn_resignFirstResponder];
+//}
+//
+////  改变字体颜色工具视图
+//- (void)thn_writeInputBoxChangeTextColor {
+//    NSLog(@"改变字体的颜色");
+//}
 
 @end
