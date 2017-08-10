@@ -13,8 +13,9 @@
 #import "iOS-Echarts.h"
 #import "RMMapper.h"
 #import "HotelCalendarViewController.h"
+#import "THNDateSelectViewController.h"
 
-@interface AreaViewController ()<UITableViewDelegate,UITableViewDataSource, THNOrderAreaModelDelegate>
+@interface AreaViewController ()<UITableViewDelegate,UITableViewDataSource, THNOrderAreaModelDelegate, THNDateSelectViewControllerDelegate>
 
 @property (nonatomic, strong) UITableView *contenTableView;
 @property (nonatomic, strong) THNOrderAreaModel *a;
@@ -102,14 +103,20 @@
 }
 
 -(void)dateSelect:(UIButton*)sender{
-    HotelCalendarViewController *vc = [[HotelCalendarViewController alloc] init];
-    [vc setSelectCheckDateBlock:^(NSString *startDateStr, NSString *endDateStr, NSString *daysStr) {
-        self.timeAry = @[startDateStr, endDateStr];
-        [sender setTitle:[NSString stringWithFormat:@"%@至%@", startDateStr, endDateStr] forState:(UIControlStateNormal)];
-        [self.a orderAreaModel:startDateStr andEndTime:endDateStr];
-    }];
+    THNDateSelectViewController *vc = [[THNDateSelectViewController alloc] init];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+-(void)getDate:(NSDate *)startDate andEnd:(NSDate *)endDate{
+    NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+    [date_formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *startstr = [date_formatter stringFromDate:startDate];
+    NSString *endStr = [date_formatter stringFromDate:endDate];
+    self.timeAry = @[startstr, endStr];
+    [self.a orderAreaModel:startstr andEndTime:endStr];
+}
+
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 2;

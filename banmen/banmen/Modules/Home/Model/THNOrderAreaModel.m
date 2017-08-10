@@ -21,7 +21,7 @@
     params[@"end_time"] = endTime;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     params[@"token"] = [defaults objectForKey:@"token"];
-    [manager GET:[kDomainBaseUrl stringByAppendingString:@"survey/salesTrends"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:[kDomainBaseUrl stringByAppendingString:@"survey/orderDistribution"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSArray *rows = responseObject[@"data"];
         self.modelAry = [THNOrderAreaModel mj_objectArrayWithKeyValuesArray:rows];
         if ([self.delegate respondsToSelector:@selector(orderAreaModel:)]) {
