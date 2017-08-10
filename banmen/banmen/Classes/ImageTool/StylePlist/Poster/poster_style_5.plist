@@ -154,7 +154,7 @@
 				<key>width</key>
 				<string>530</string>
 				<key>height</key>
-				<string>42</string>
+				<string>52</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
@@ -187,7 +187,7 @@
 				<key>width</key>
 				<string>530</string>
 				<key>height</key>
-				<string>42</string>
+				<string>52</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
@@ -197,7 +197,7 @@
 					<key>bottom</key>
 					<string>-472</string>
 					<key>top</key>
-					<string>820</string>
+					<string>825</string>
 				</dict>
 			</dict>
 			<dict>
@@ -220,7 +220,7 @@
 				<key>width</key>
 				<string>530</string>
 				<key>height</key>
-				<string>33</string>
+				<string>45</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
@@ -253,7 +253,7 @@
 				<key>width</key>
 				<string>530</string>
 				<key>height</key>
-				<string>33</string>
+				<string>45</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
@@ -286,7 +286,7 @@
 				<key>width</key>
 				<string>530</string>
 				<key>height</key>
-				<string>33</string>
+				<string>45</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
@@ -319,7 +319,7 @@
 				<key>width</key>
 				<string>180</string>
 				<key>height</key>
-				<string>35</string>
+				<string>40</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>

@@ -140,7 +140,7 @@
         return;
     }
     
-    NSLog(@"海报配置信息：%@", [NSString jsonStringWithObject:styleDict]);
+//    NSLog(@"海报配置信息：%@", [NSString jsonStringWithObject:styleDict]);
     
     self.dataModel = [[THNPosterModelData alloc] initWithDictionary:[styleDict valueForKey:@"data"]];
     [self.posterView thn_setPosterStyleInfoData:self.dataModel];

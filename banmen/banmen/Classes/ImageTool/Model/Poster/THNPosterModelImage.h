@@ -19,6 +19,7 @@
 @property (nonatomic, assign) NSInteger type;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *imageUrl;
+@property (nonatomic, assign) CGFloat radius;
 @property (nonatomic, strong) THNPosterModelImagePosition *position;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;

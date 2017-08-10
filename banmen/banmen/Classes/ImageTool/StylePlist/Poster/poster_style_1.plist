@@ -111,7 +111,7 @@
 				<key>width</key>
 				<string>200</string>
 				<key>height</key>
-				<string>40</string>
+				<string>50</string>
 				<key>zindex</key>
 				<string>1</string>
 				<key>align</key>
@@ -119,11 +119,11 @@
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-39</string>
+					<string>0</string>
 					<key>left</key>
 					<string>518</string>
 					<key>bottom</key>
-					<string>-1250</string>
+					<string>0</string>
 					<key>top</key>
 					<string>44</string>
 				</dict>
@@ -144,7 +144,7 @@
 				<key>width</key>
 				<string>200</string>
 				<key>height</key>
-				<string>40</string>
+				<string>50</string>
 				<key>zindex</key>
 				<string>1</string>
 				<key>align</key>
@@ -152,13 +152,13 @@
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-39</string>
+					<string>0</string>
 					<key>left</key>
 					<string>518</string>
 					<key>bottom</key>
-					<string>-1212</string>
+					<string>0</string>
 					<key>top</key>
-					<string>82</string>
+					<string>89</string>
 				</dict>
 				<key>content</key>
 				<string>| 零漏水隐患</string>
@@ -177,7 +177,7 @@
 				<key>width</key>
 				<string>200</string>
 				<key>height</key>
-				<string>40</string>
+				<string>50</string>
 				<key>zindex</key>
 				<string>1</string>
 				<key>align</key>
@@ -185,13 +185,13 @@
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-39</string>
+					<string>0</string>
 					<key>left</key>
 					<string>518</string>
 					<key>bottom</key>
-					<string>-1173</string>
+					<string>0</string>
 					<key>top</key>
-					<string>121</string>
+					<string>134</string>
 				</dict>
 				<key>content</key>
 				<string>| 3年长效RO膜</string>
@@ -210,7 +210,7 @@
 				<key>width</key>
 				<string>200</string>
 				<key>height</key>
-				<string>40</string>
+				<string>50</string>
 				<key>zindex</key>
 				<string>1</string>
 				<key>align</key>
@@ -218,13 +218,13 @@
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-39</string>
+					<string>0</string>
 					<key>left</key>
 					<string>518</string>
 					<key>bottom</key>
-					<string>-1134</string>
+					<string>0</string>
 					<key>top</key>
-					<string>160</string>
+					<string>179</string>
 				</dict>
 				<key>content</key>
 				<string>| 超低废水比</string>
@@ -243,7 +243,7 @@
 				<key>width</key>
 				<string>420</string>
 				<key>height</key>
-				<string>84</string>
+				<string>88</string>
 				<key>zindex</key>
 				<string>5</string>
 				<key>align</key>
@@ -276,7 +276,7 @@
 				<key>width</key>
 				<string>420</string>
 				<key>height</key>
-				<string>33</string>
+				<string>48</string>
 				<key>zindex</key>
 				<string>6</string>
 				<key>align</key>
@@ -309,7 +309,7 @@
 				<key>width</key>
 				<string>300</string>
 				<key>height</key>
-				<string>84</string>
+				<string>88</string>
 				<key>zindex</key>
 				<string>7</string>
 				<key>align</key>
@@ -342,7 +342,7 @@
 				<key>width</key>
 				<string>420</string>
 				<key>height</key>
-				<string>67</string>
+				<string>77</string>
 				<key>zindex</key>
 				<string>8</string>
 				<key>align</key>
@@ -375,7 +375,7 @@
 				<key>width</key>
 				<string>170</string>
 				<key>height</key>
-				<string>33</string>
+				<string>40</string>
 				<key>zindex</key>
 				<string>9</string>
 				<key>align</key>

@@ -14,6 +14,7 @@
 		D805C5DA1F3168C800354A47 /* poster_style_2.plist in Resources */ = {isa = PBXBuildFile; fileRef = D805C5D91F3168C800354A47 /* poster_style_2.plist */; };
 		D805C5DC1F3168CD00354A47 /* poster_style_3.plist in Resources */ = {isa = PBXBuildFile; fileRef = D805C5DB1F3168CD00354A47 /* poster_style_3.plist */; };
 		D805C5E01F317DD200354A47 /* THNKeyboardToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = D805C5DF1F317DD200354A47 /* THNKeyboardToolView.m */; };
+		D822BA711F3C5126009A6FE3 /* invitation_style_1.plist in Resources */ = {isa = PBXBuildFile; fileRef = D822BA701F3C5126009A6FE3 /* invitation_style_1.plist */; };
 		D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */; };
 		D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */; };
 		D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D840C6BE1EFB54A00021B83E /* THNOpenAlbumButton.m */; };
@@ -89,6 +90,10 @@
 		D886F8421F21A102009382C3 /* HotelCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D886F83C1F21A0EE009382C3 /* HotelCalendarViewController.m */; };
 		D886F8431F21A102009382C3 /* MonthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D886F83E1F21A0EE009382C3 /* MonthModel.m */; };
 		D886F8441F21A102009382C3 /* MonthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D886F8401F21A0EE009382C3 /* MonthTableViewCell.m */; };
+		D8906C9C1F3C146400482962 /* poster_style_7.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8906C9B1F3C146400482962 /* poster_style_7.plist */; };
+		D8906CA31F3C146A00482962 /* poster_style_8.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8906CA21F3C146A00482962 /* poster_style_8.plist */; };
+		D8906CA51F3C208C00482962 /* poster_style_9.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8906CA41F3C208C00482962 /* poster_style_9.plist */; };
+		D8906CAA1F3C320E00482962 /* THNPosterTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8906CA91F3C320E00482962 /* THNPosterTextView.m */; };
 		D890F1D31F2B463000E2C623 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D890F1CA1F2B461900E2C623 /* MMMarkdown.framework */; };
 		D890F1D51F2B463D00E2C623 /* MMMarkdown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D890F1CA1F2B461900E2C623 /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D89DBBA71F259246001A8C56 /* THNPosterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D89DBBA61F259246001A8C56 /* THNPosterListViewController.m */; };
@@ -111,7 +116,7 @@
 		D8DCAD411F135E5B009A8A1F /* THNEditContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DCAD401F135E5B009A8A1F /* THNEditContentView.m */; };
 		D8E957DE1F271BC6003F9A29 /* THNEditPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E957DD1F271BC6003F9A29 /* THNEditPosterViewController.m */; };
 		D8E957E21F2724A7003F9A29 /* THNPosterInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E957E11F2724A7003F9A29 /* THNPosterInfoView.m */; };
-		D8E957E51F287387003F9A29 /* poster_style_0.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8E957E41F287387003F9A29 /* poster_style_0.plist */; };
+		D8E957E51F287387003F9A29 /* invitation_style_0.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8E957E41F287387003F9A29 /* invitation_style_0.plist */; };
 		D8E957E91F288DDD003F9A29 /* THNPosterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E957E81F288DDD003F9A29 /* THNPosterModel.m */; };
 		D8E957EF1F288E1F003F9A29 /* THNPosterModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E957EE1F288E1F003F9A29 /* THNPosterModelData.m */; };
 		D8E957F21F288F36003F9A29 /* THNPosterModelText.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E957F11F288F36003F9A29 /* THNPosterModelText.m */; };
@@ -282,6 +287,7 @@
 		D805C5DB1F3168CD00354A47 /* poster_style_3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_3.plist; sourceTree = "<group>"; };
 		D805C5DE1F317DD200354A47 /* THNKeyboardToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNKeyboardToolView.h; sourceTree = "<group>"; };
 		D805C5DF1F317DD200354A47 /* THNKeyboardToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNKeyboardToolView.m; sourceTree = "<group>"; };
+		D822BA701F3C5126009A6FE3 /* invitation_style_1.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = invitation_style_1.plist; sourceTree = "<group>"; };
 		D83689E81EFA68DB005B0709 /* THNPhotoTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoTableViewModel.h; sourceTree = "<group>"; };
 		D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTableViewModel.m; sourceTree = "<group>"; };
 		D83689EB1EFA6900005B0709 /* THNPhotoCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoCellViewModel.h; sourceTree = "<group>"; };
@@ -403,6 +409,11 @@
 		D886F83E1F21A0EE009382C3 /* MonthModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonthModel.m; sourceTree = "<group>"; };
 		D886F83F1F21A0EE009382C3 /* MonthTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonthTableViewCell.h; sourceTree = "<group>"; };
 		D886F8401F21A0EE009382C3 /* MonthTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonthTableViewCell.m; sourceTree = "<group>"; };
+		D8906C9B1F3C146400482962 /* poster_style_7.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_7.plist; sourceTree = "<group>"; };
+		D8906CA21F3C146A00482962 /* poster_style_8.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_8.plist; sourceTree = "<group>"; };
+		D8906CA41F3C208C00482962 /* poster_style_9.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_9.plist; sourceTree = "<group>"; };
+		D8906CA81F3C320E00482962 /* THNPosterTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterTextView.h; sourceTree = "<group>"; };
+		D8906CA91F3C320E00482962 /* THNPosterTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPosterTextView.m; sourceTree = "<group>"; };
 		D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "MMMarkdown-master/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
 		D89DBBA51F259246001A8C56 /* THNPosterListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterListViewController.h; sourceTree = "<group>"; };
 		D89DBBA61F259246001A8C56 /* THNPosterListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPosterListViewController.m; sourceTree = "<group>"; };
@@ -444,7 +455,7 @@
 		D8E957DD1F271BC6003F9A29 /* THNEditPosterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNEditPosterViewController.m; sourceTree = "<group>"; };
 		D8E957E01F2724A7003F9A29 /* THNPosterInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterInfoView.h; sourceTree = "<group>"; };
 		D8E957E11F2724A7003F9A29 /* THNPosterInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPosterInfoView.m; sourceTree = "<group>"; };
-		D8E957E41F287387003F9A29 /* poster_style_0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = poster_style_0.plist; sourceTree = "<group>"; };
+		D8E957E41F287387003F9A29 /* invitation_style_0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = invitation_style_0.plist; sourceTree = "<group>"; };
 		D8E957E71F288DDD003F9A29 /* THNPosterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterModel.h; sourceTree = "<group>"; };
 		D8E957E81F288DDD003F9A29 /* THNPosterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPosterModel.m; sourceTree = "<group>"; };
 		D8E957ED1F288E1F003F9A29 /* THNPosterModelData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterModelData.h; sourceTree = "<group>"; };
@@ -1431,6 +1442,8 @@
 				D8E957E11F2724A7003F9A29 /* THNPosterInfoView.m */,
 				D8D5EB4E1F29D41500980933 /* THNPosterImageView.h */,
 				D8D5EB4F1F29D41500980933 /* THNPosterImageView.m */,
+				D8906CA81F3C320E00482962 /* THNPosterTextView.h */,
+				D8906CA91F3C320E00482962 /* THNPosterTextView.m */,
 				D805C5DE1F317DD200354A47 /* THNKeyboardToolView.h */,
 				D805C5DF1F317DD200354A47 /* THNKeyboardToolView.m */,
 			);
@@ -1440,13 +1453,17 @@
 		D8E957E31F287342003F9A29 /* Poster */ = {
 			isa = PBXGroup;
 			children = (
-				D8E957E41F287387003F9A29 /* poster_style_0.plist */,
+				D8E957E41F287387003F9A29 /* invitation_style_0.plist */,
+				D822BA701F3C5126009A6FE3 /* invitation_style_1.plist */,
 				D805C5D21F3168BD00354A47 /* poster_style_1.plist */,
 				D805C5D91F3168C800354A47 /* poster_style_2.plist */,
 				D805C5DB1F3168CD00354A47 /* poster_style_3.plist */,
 				D85DE6801F341EB700A0E480 /* poster_style_4.plist */,
 				D85DE6871F3446A800A0E480 /* poster_style_5.plist */,
 				D85DE6891F344EDE00A0E480 /* poster_style_6.plist */,
+				D8906C9B1F3C146400482962 /* poster_style_7.plist */,
+				D8906CA21F3C146A00482962 /* poster_style_8.plist */,
+				D8906CA41F3C208C00482962 /* poster_style_9.plist */,
 			);
 			path = Poster;
 			sourceTree = "<group>";
@@ -1823,6 +1840,7 @@
 				D8736A681F04890500BF9F33 /* eight_style_136.plist in Resources */,
 				D8736A691F04890500BF9F33 /* eight_style_137.plist in Resources */,
 				D8736A6A1F04890500BF9F33 /* eight_style_138.plist in Resources */,
+				D822BA711F3C5126009A6FE3 /* invitation_style_1.plist in Resources */,
 				D8736A6B1F04890500BF9F33 /* eight_style_139.plist in Resources */,
 				D8736A6C1F04890500BF9F33 /* eight_style_140.plist in Resources */,
 				D8736A6D1F04890500BF9F33 /* five_style_115.plist in Resources */,
@@ -1856,18 +1874,21 @@
 				F51AE79B1F29D9B30093D9EB /* THNWordDetailViewController.xib in Resources */,
 				D8736A861F04890500BF9F33 /* seven_style_128.plist in Resources */,
 				D8736A871F04890500BF9F33 /* seven_style_129.plist in Resources */,
+				D8906CA31F3C146A00482962 /* poster_style_8.plist in Resources */,
 				D8736A881F04890500BF9F33 /* seven_style_130.plist in Resources */,
 				D8736A891F04890500BF9F33 /* seven_style_131.plist in Resources */,
-				D8E957E51F287387003F9A29 /* poster_style_0.plist in Resources */,
+				D8E957E51F287387003F9A29 /* invitation_style_0.plist in Resources */,
 				D8736A8A1F04890500BF9F33 /* seven_style_132.plist in Resources */,
 				D85DE6881F3446A800A0E480 /* poster_style_5.plist in Resources */,
 				D8736A8B1F04890500BF9F33 /* seven_style_133.plist in Resources */,
 				D8736A8C1F04890500BF9F33 /* seven_style_134.plist in Resources */,
 				D805C5DA1F3168C800354A47 /* poster_style_2.plist in Resources */,
+				D8906C9C1F3C146400482962 /* poster_style_7.plist in Resources */,
 				D85DE68A1F344EDE00A0E480 /* poster_style_6.plist in Resources */,
 				D805C5D31F3168BD00354A47 /* poster_style_1.plist in Resources */,
 				D8736A8D1F04890500BF9F33 /* six_style_122.plist in Resources */,
 				D8736A8E1F04890500BF9F33 /* six_style_123.plist in Resources */,
+				D8906CA51F3C208C00482962 /* poster_style_9.plist in Resources */,
 				D8736A8F1F04890500BF9F33 /* six_style_124.plist in Resources */,
 				D8736A901F04890500BF9F33 /* six_style_125.plist in Resources */,
 				D8736A911F04890500BF9F33 /* six_style_126.plist in Resources */,
@@ -2073,6 +2094,7 @@
 				D805C5E01F317DD200354A47 /* THNKeyboardToolView.m in Sources */,
 				F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */,
 				D8E957E21F2724A7003F9A29 /* THNPosterInfoView.m in Sources */,
+				D8906CAA1F3C320E00482962 /* THNPosterTextView.m in Sources */,
 				D8D9C2471EF278C5000688C6 /* main.m in Sources */,
 				D8B071231EF8FB80005CC051 /* THNLayoutViewController.m in Sources */,
 				D8E957E91F288DDD003F9A29 /* THNPosterModel.m in Sources */,
