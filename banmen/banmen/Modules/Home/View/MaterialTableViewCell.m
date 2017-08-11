@@ -16,6 +16,7 @@
 #import "THNGoodsArticleCollectionViewCell.h"
 #import "THNGoodsPictureCollectionViewCell.h"
 #import "THNGoodsVideoCollectionViewCell.h"
+#import "ColorMacro.h"
 
 @interface MaterialTableViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -146,7 +147,7 @@
         NSArray *items = @[@"文字素材",@"文章",@"图片",@"视频"];
         _segmentedC = [[UISegmentedControl alloc]initWithItems:items];
         _segmentedC.selectedSegmentIndex = 0;
-        _segmentedC.tintColor = [UIColor colorWithHexString:@"#ff5a5f"];
+        _segmentedC.tintColor = [UIColor colorWithHexString:kColorDefalut];
     }
     return _segmentedC;
 }
