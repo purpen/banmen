@@ -26,6 +26,8 @@
 
 - (void)thn_allTextViewBecomeFirstResponder;
 
+- (void)thn_changeTextColor:(NSString *)color;
+
 - (void)thn_setPosterStyleInfoData:(THNPosterModelData *)data;
 
 - (void)thn_setPosterPhotoSelectImage:(UIImage *)image withTag:(NSInteger)tag;

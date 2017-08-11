@@ -9,12 +9,8 @@
 #import "THNPosterTextView.h"
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
-//#import "THNKeyboardToolView.h"
 
 @interface THNPosterTextView () <UITextViewDelegate>
-
-//@property (nonatomic, strong) THNKeyboardToolView *keyboardView;
-@property (nonatomic, strong) UITextView *posterTextView;
 
 @end
 

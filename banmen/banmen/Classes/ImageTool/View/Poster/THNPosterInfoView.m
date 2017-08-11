@@ -59,6 +59,10 @@ static NSInteger const imageViewTag = 3821;
     [self.tempTextView thn_becomeFirstResponder];
 }
 
+- (void)thn_changeTextColor:(NSString *)color {
+    self.tempTextView.posterTextView.textColor = [UIColor colorWithHexString:color];
+}
+
 #pragma mark - 添加海报默认信息
 - (UIView *)controlView {
     if (!_controlView) {

@@ -14,6 +14,7 @@
 - (void)thn_writeInputBoxResignFirstResponder;
 - (void)thn_writeInputBoxBeginChangeTextColor;
 - (void)thn_writeInputBoxEndChangeTextColor;
+- (void)thn_selectColorForChangeTextColor:(NSString *)color;
 
 @end
 
@@ -47,5 +48,7 @@
  @param hidden 开启
  */
 - (void)thn_setHiddenExtendingFunction:(BOOL)hidden;
+
+- (void)thn_refreshColorCollectionData;
 
 @end

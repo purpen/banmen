@@ -21,6 +21,7 @@
 
 @interface THNPosterTextView : UIView
 
+@property (nonatomic, strong) UITextView *posterTextView;
 @property (nonatomic, strong) UIFont *font;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic) NSTextAlignment textAlignment;

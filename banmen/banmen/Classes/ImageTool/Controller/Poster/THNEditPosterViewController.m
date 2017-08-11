@@ -124,6 +124,7 @@
 - (void)thn_tapWithImageViewAndSelectPhoto:(NSInteger)tag {
     _imageViewTag = tag;
     [self.posterView thn_allTextViewResignFirstResponder];
+    [self thn_changeKeyboardToolViewHeight:0.0f];
     [self thn_showPhotoListView:YES];
 }
 
@@ -282,6 +283,7 @@
 }
 
 - (void)previewButtonAction:(UIButton *)button {
+    [self thn_changeKeyboardToolViewHeight:0.0f];
     self.previewPosterView.image = [self cutImageWithView:self.posterView];
     [self thn_scalePosterEidtView:self.previewPosterView Scale:YES];
 }
@@ -393,6 +395,10 @@
     [self.posterView thn_allTextViewBecomeFirstResponder];
 }
 
+- (void)thn_selectColorForChangeTextColor:(NSString *)color {
+    [self.posterView thn_changeTextColor:color];
+}
+
 #pragma mark - 添加键盘检测
 - (void)thn_registerForKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -420,6 +426,12 @@
 
 //  改变键盘工具的高度
 - (void)thn_changeKeyboardToolViewHeight:(CGFloat)height {
+    if (self.keyboardView.changeTextColor.selected == YES) {
+        self.keyboardView.changeTextColor.selected = NO;
+    }
+    
+    [self.keyboardView thn_refreshColorCollectionData];
+    
     CGRect keyboardViewRect = self.keyboardView.frame;
     keyboardViewRect = CGRectMake(0, SCREEN_HEIGHT - (height), SCREEN_WIDTH, (height));
     
