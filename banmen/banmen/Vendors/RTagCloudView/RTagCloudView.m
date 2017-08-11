@@ -7,10 +7,12 @@
 //
 
 #import "RTagCloudView.h"
+#import "THNCustomLabel.h"
+#import "UIView+FSExtension.h"
 
 @interface RTagCloudView ()
 @property (nonatomic, assign) CGPoint startPoint;
-@property (nonatomic, strong) UILabel *selectedLabel;
+@property (nonatomic, strong) THNCustomLabel *selectedLabel;
 - (void)calAngleWithX:(CGFloat)x y:(CGFloat)y z:(CGFloat)z;
 - (void)repositionAll;
 - (void)update;
@@ -59,8 +61,8 @@
     
     UITouch *touch = [touches anyObject];
     self.startPoint = [touch locationInView:self];
-    if ([[touch view] isKindOfClass:[UILabel class]] && [touch view].alpha > 0.8f) {
-        self.selectedLabel = (UILabel*)[touch view];
+    if ([[touch view] isKindOfClass:[THNCustomLabel class]] && [touch view].alpha > 0.8f) {
+        self.selectedLabel = (THNCustomLabel*)[touch view];
         return;
     }
     
@@ -85,7 +87,7 @@
     [super touchesEnded:touches withEvent:event];
     
     UITouch *touch = [touches anyObject];
-    if ([[touch view] isKindOfClass:[UILabel class]] && [touch view].alpha > 0.8f) {
+    if ([[touch view] isKindOfClass:[THNCustomLabel class]] && [touch view].alpha > 0.8f) {
         CGPoint endPoint = [touch locationInView:self];
         CGFloat distance = sqrtf((endPoint.x - self.startPoint.x) * (endPoint.x - self.startPoint.x)
                                  + (endPoint.y - self.startPoint.y) * (endPoint.y - self.startPoint.y));
@@ -146,7 +148,7 @@
         CGFloat tx = _radius*sinf(phi)*cosf(theta);
         CGFloat ty = _radius*sinf(phi)*sinf(theta);
         CGFloat tz = _radius*cosf(phi);
-        UILabel *label = (UILabel*)[_tabLabels objectAtIndex:i];
+        THNCustomLabel *label = (THNCustomLabel*)[_tabLabels objectAtIndex:i];
         label.layer.transform = CATransform3DMakeTranslation(tx, ty, tz);
     }
     [UIView commitAnimations];
@@ -175,7 +177,7 @@
     [self calAngleWithX:a y:b z:0];
     
     for (int i=0; i<_numberOfTags; i++) {
-        UILabel *lable = (UILabel*)[_tabLabels objectAtIndex:i];
+        THNCustomLabel *lable = (THNCustomLabel*)[_tabLabels objectAtIndex:i];
         CATransform3D t = lable.layer.transform;
         CGFloat rx1 = t.m41;
         CGFloat ry1 = t.m42 * ca + t.m43 * (-sa);
@@ -211,7 +213,7 @@
     [UIView animateWithDuration:_tabLabels.count>0?0.35:0.0
                      animations:^{
                          [_tabLabels enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                             UILabel *lable = (UILabel*)obj;
+                             THNCustomLabel *lable = (THNCustomLabel*)obj;
                              lable.alpha = 0;
                              lable.center = center;
                          }];
@@ -221,23 +223,35 @@
                          
                          NSInteger append = _numberOfTags - _tabLabels.count;
                          for (int i=0; i<append; i++) {
-                             UILabel *lbl = [[UILabel alloc] init];
-                             lbl.backgroundColor = [UIColor clearColor];
+                             THNCustomLabel *lbl = [[THNCustomLabel alloc] init];
+                             lbl.textAlignment = NSTextAlignmentCenter;
+//                             lbl.backgroundColor = [UIColor clearColor];
                              [_tabLabels addObject:lbl];
                              [self addSubview:lbl];
                          }
                          
                          for (int i=0; i<_numberOfTags; i++) {
-                             UILabel *label = (UILabel*)[_tabLabels objectAtIndex:i];
+                             THNCustomLabel *label = (THNCustomLabel*)[_tabLabels objectAtIndex:i];
                              label.text = [self.dataSource RTagCloudView:self
                                                           tagNameOfIndex:i];
                              if ([self.dataSource respondsToSelector:@selector(RTagCloudView:tagColorOfIndex:)])
-                                 label.textColor = [self.dataSource RTagCloudView:self
+                                 label.backgroundColor = [self.dataSource RTagCloudView:self
                                                                   tagColorOfIndex:i];
+//                             label.textInsets = UIEdgeInsetsMake(2, 5, 0, 0);
+                             label.alpha = 0.7;
+                             label.textColor = [UIColor whiteColor];
                              if ([self.dataSource respondsToSelector:@selector(RTagCloudView:tagFontOfIndex:)]) {
                                  label.font = [self.dataSource RTagCloudView:self tagFontOfIndex:i];
                              }
-                             [label sizeToFit];
+                             
+                             NSDictionary *dic = @{NSFontAttributeName:label.font};  //指定字号
+                             CGRect rect = [label.text boundingRectWithSize:CGSizeMake(0, 30)/*计算宽度时要确定高度*/ options:NSStringDrawingUsesLineFragmentOrigin |
+                                            NSStringDrawingUsesFontLeading attributes:dic context:nil];
+                             label.width = rect.size.width+20;
+                             label.height = rect.size.height+10;
+                             label.layer.masksToBounds = YES;
+                             label.layer.cornerRadius = 4;
+//                             [label sizeToFit];
                              label.center = center;
                          }
                          

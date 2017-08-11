@@ -47,7 +47,7 @@
     if (!_mapView) {
         _mapView  =[[PYEchartsView alloc] init];
         _mapView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
-        _mapView.userInteractionEnabled = NO;
+        _mapView.userInteractionEnabled = YES;
     }
     return _mapView;
 }
@@ -154,16 +154,25 @@
             make.top.mas_equalTo(cell.contentView.mas_top).mas_offset(10);
         }];
         
+        NSMutableArray *strAry = [NSMutableArray array];
         for (int i = 0; i<self.modelAry.count; i++) {
             THNOrderAreaModel *model = self.modelAry[i];
             NSString *str = model.buyer_province;
-            NSString *jsonStr = [NSString stringWithFormat:@"{\"tooltip\":{\"trigger\":\"item\",\"formatter\":\"{b}\"},\"series\":[{\"name\":\"中国\",\"type\":\"map\",\"mapType\":\"china\",\"selectedMode\":\"multiple\",\"itemStyle\":{\"normal\":{\"label\":{\"show\":true}},\"emphasis\":{\"label\":{\"show\":true}}},\"data\":[{\"name\":\"%@\",\"selected\":true}]}]}", str];
-            NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-            PYOption *option = [RMMapper objectWithClass:[PYOption class] fromDictionary:jsonDic];
-            [self.mapView setOption:option];
-            [self.mapView loadEcharts];
+            CGFloat ahpa = [model.proportion floatValue];
+            NSString *str2 = [NSString stringWithFormat:@"{\"name\":\"%@\",\"selected\":true,\"value\":\"10\",\"itemStyle\":{\"emphasis\":{\"areaStyle\":{\"color\":\"rgba(255,59,107,%f)\"}},\"normal\":{\"borderColor\":\"rgba(100,149,237,1)\",\"borderWidth\":0.5,\"areaStyle\":{\"color\":\"#1b1b1b\"}},\"emphasis\":{\"label\":{\"show\":false}}}}]}", str, ahpa];
+            [strAry addObject:str2];
         }
+        
+        NSString *str3 = [strAry componentsJoinedByString:@","];
+        NSString *str4 = [str3 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+        NSLog(@"sadasdsadsadsaddsa   %@", str4);
+        NSString *jsonStr = [NSString stringWithFormat:@"{\"backgroundColor\":\"#f7f7f9\",\"color\":[\"gold\",\"aqua\",\"lime\"],\"tooltip\":{\"trigger\":\"item\"},\"visualMap\":{\"textStyle\":{\"color\":\"#fff\"}},\"series\":[{\"name\":\"中国\",\"type\":\"map\",\"mapType\":\"china\",\"selectedMode\":\"multiple\",\"itemStyle\":{\"emphasis\":{\"areaStyle\":{\"color\":\"rgba(255,59,107,1)\"}},\"normal\":{\"borderColor\":\"#c19798\",\"borderWidth\":0.5,\"areaStyle\":{\"color\":\"#cccccc\"}},\"emphasis\":{\"label\":{\"show\":false}}},\"data\":[{\"name\":\"云南\",\"selected\":true,\"value\":\"10\",\"itemStyle\":{\"emphasis\":{\"areaStyle\":{\"color\":\"rgba(255,59,107,1.0600)\"}},\"normal\":{\"borderColor\":\"rgba(100,149,237,1)\",\"borderWidth\":0.5,\"areaStyle\":{\"color\":\"#1b1b1b\"}},\"emphasis\":{\"label\":{\"show\":false}}}}]}]}"];
+        NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+        PYOption *option = [RMMapper objectWithClass:[PYOption class] fromDictionary:jsonDic];
+        [self.mapView setOption:option];
+        [self.mapView loadEcharts];
+        
         
         [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", self.timeAry[0], self.timeAry[1]] forState:(UIControlStateNormal)];
         if (self.timeAry.count == 0) {
