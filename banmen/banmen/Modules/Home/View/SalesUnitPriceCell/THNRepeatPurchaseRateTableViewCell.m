@@ -124,6 +124,7 @@
         set1.highlightEnabled = YES;//点击选中柱形图是否有高亮效果，（双击空白处取消选中）
         [set1 setColors:ChartColorTemplates.material];
         set1.drawIconsEnabled = NO;
+        set1.drawValuesEnabled = NO;
         [set1 setColor:[UIColor colorWithHexString:kColorDefalut]];//设置柱形图颜色
         
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
@@ -172,7 +173,7 @@
         
         ChartYAxis *leftAxis = _barChartView.leftAxis;
         leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
-        leftAxis.labelCount = 8;
+        leftAxis.labelCount = 10;
         leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:leftAxisFormatter];
         leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
         leftAxis.spaceTop = 0.15;
