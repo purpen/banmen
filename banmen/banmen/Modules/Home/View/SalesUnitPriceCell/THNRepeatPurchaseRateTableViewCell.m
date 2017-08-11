@@ -14,6 +14,7 @@
 #import "ChartsSwift.h"
 #import "DateValueFormatter.h"
 #import "THNRepeatBuyModel.h"
+#import "ColorMacro.h"
 
 @interface THNRepeatPurchaseRateTableViewCell() <ChartViewDelegate>
 
@@ -123,7 +124,7 @@
         set1.highlightEnabled = YES;//点击选中柱形图是否有高亮效果，（双击空白处取消选中）
         [set1 setColors:ChartColorTemplates.material];
         set1.drawIconsEnabled = NO;
-        [set1 setColor:[UIColor colorWithHexString:@"#ff3266"]];//设置柱形图颜色
+        [set1 setColor:[UIColor colorWithHexString:kColorDefalut]];//设置柱形图颜色
         
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
         [dataSets addObject:set1];

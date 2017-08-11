@@ -9,6 +9,7 @@
 #import "TopViewController.h"
 #import "RTagCloudView.h"
 #import "AFNetworking.h"
+#import "UIColor+Extension.h"
 
 @interface TopViewController () <RTagCloudViewDelegate,RTagCloudViewDatasource>
 
@@ -64,13 +65,13 @@
           tagFontOfIndex:(NSInteger)index
 {
     UIFont *fonts[] = {
+        [UIFont systemFontOfSize:12.f],
         [UIFont systemFontOfSize:14.f],
         [UIFont systemFontOfSize:16.f],
         [UIFont systemFontOfSize:18.f],
         [UIFont systemFontOfSize:20.f],
         [UIFont systemFontOfSize:22.f],
-        [UIFont systemFontOfSize:24.f],
-        [UIFont systemFontOfSize:26.f]
+        [UIFont systemFontOfSize:24.f]
     };
     return fonts[index%7];
 }
@@ -78,13 +79,20 @@
 - (UIColor*)RTagCloudView:(RTagCloudView *)tagCloud tagColorOfIndex:(NSInteger)index
 {
     UIColor *colors[] = {
-        [UIColor redColor],
-        [UIColor yellowColor],
-        [UIColor blueColor],
-        [UIColor orangeColor],
-        [UIColor blackColor],
-        [UIColor purpleColor],
-        [UIColor greenColor]
+        [UIColor colorWithHexString:@"#FFCC00"],
+        [UIColor colorWithHexString:@"#F67700"],
+        [UIColor colorWithHexString:@"#FB3731"],
+        [UIColor colorWithHexString:@"#7B322B"],
+        [UIColor colorWithHexString:@"#27262F"],
+        [UIColor colorWithHexString:@"#5B22A5"],
+        [UIColor colorWithHexString:@"#A652BB"],
+        [UIColor colorWithHexString:@"#FF57B7"],
+        [UIColor colorWithHexString:@"#0090FF"],
+        [UIColor colorWithHexString:@"#50BFEC"],
+        [UIColor colorWithHexString:@"#00CBCB"],
+        [UIColor colorWithHexString:@"#00DAAF"],
+        [UIColor colorWithHexString:@"#00B256"],
+        [UIColor colorWithHexString:@"#00C09A"],
     };
     return colors[index%7];
 }

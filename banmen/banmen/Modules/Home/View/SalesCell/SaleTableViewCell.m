@@ -13,6 +13,7 @@
 #import "OtherMacro.h"
 #import "UIView+FSExtension.h"
 #import "DateValueFormatter.h"
+#import "ColorMacro.h"
 
 @interface SaleTableViewCell()
 
@@ -183,7 +184,7 @@
         set1.formLineDashLengths = @[@5.f, @2.5f];
         set1.formLineWidth = 1.0;
         set1.formSize = 15.0;
-        [set1 setColor:[UIColor colorWithHexString:@"#fb7799"]];//折线颜色
+        [set1 setColor:[UIColor colorWithHexString:kColorDefalut]];//折线颜色
         
         NSArray *gradientColors = @[
                                     (id)[ChartColorTemplates colorFromString:@"#00ff0000"].CGColor,

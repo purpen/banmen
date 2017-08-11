@@ -10,6 +10,7 @@
 #import "OtherMacro.h"
 #import "UIView+FSExtension.h"
 #import "UIColor+Extension.h"
+#import "ColorMacro.h"
 
 @interface BaseViewController : UIViewController
 

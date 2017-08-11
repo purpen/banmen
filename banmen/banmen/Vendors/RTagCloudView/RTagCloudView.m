@@ -238,7 +238,7 @@
                                  label.backgroundColor = [self.dataSource RTagCloudView:self
                                                                   tagColorOfIndex:i];
 //                             label.textInsets = UIEdgeInsetsMake(2, 5, 0, 0);
-                             label.alpha = 0.7;
+                             label.alpha = 0.6;
                              label.textColor = [UIColor whiteColor];
                              if ([self.dataSource respondsToSelector:@selector(RTagCloudView:tagFontOfIndex:)]) {
                                  label.font = [self.dataSource RTagCloudView:self tagFontOfIndex:i];

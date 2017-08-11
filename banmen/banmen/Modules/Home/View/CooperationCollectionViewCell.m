@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "UIColor+Extension.h"
 #import "UIImageView+WebCache.h"
+#import "ColorMacro.h"
 
 @implementation CooperationCollectionViewCell
 
@@ -65,7 +66,7 @@
     if (!_priceLabel) {
         _priceLabel = [[UILabel alloc] init];
         _priceLabel.font = [UIFont systemFontOfSize:11];
-        _priceLabel.textColor = [UIColor colorWithHexString:@"#ff6d71"];
+        _priceLabel.textColor = [UIColor colorWithHexString:kColorDefalut];
     }
     return _priceLabel;
 }
