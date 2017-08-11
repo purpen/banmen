@@ -92,7 +92,8 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     THNGoodsArticleModel *model = self.modelAry[indexPath.row];
     THNArticleDetailViewController *vc = [[THNArticleDetailViewController alloc] init];
-    vc.content = model.content;
+    vc.content = model.share;
+    vc.model = model;
     [self.controller.navigationController pushViewController:vc animated:YES];
 }
 

@@ -7,9 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "THNGoodsArticleModel.h"
 
 @interface THNArticleDetailViewController : BaseViewController
 
 @property (nonatomic, copy) NSString *content;
+@property (nonatomic, strong) THNGoodsArticleModel *model;
 
 @end

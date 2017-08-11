@@ -26,6 +26,7 @@
 @property(nonatomic, copy) NSString *cover_srcfile;
 @property(nonatomic, copy) NSString *site_from;
 @property(nonatomic, copy) NSString *article_time;
+@property(nonatomic, copy) NSString *share;
 @property(nonatomic,weak) id <THNGoodsArticleModelDelegate> delegate;
 @property(nonatomic,assign) NSInteger current_page;
 @property(nonatomic,assign) NSInteger total_pages;

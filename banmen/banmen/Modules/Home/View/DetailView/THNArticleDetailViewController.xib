@@ -32,6 +32,7 @@
                 <constraint firstItem="egc-MW-f7o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="V9Z-Pw-eCm"/>
                 <constraint firstItem="egc-MW-f7o" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="q4F-g9-Yn8"/>
             </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
 </document>

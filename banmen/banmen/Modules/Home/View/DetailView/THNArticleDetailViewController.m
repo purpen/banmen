@@ -10,12 +10,12 @@
 #import <MMMarkdown/MMMarkdown.h>
 #import "THNShareActionView.h"
 #import "UIView+FSExtension.h"
+#import "THNShareViewController.h"
 
 @interface THNArticleDetailViewController () <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (copy, nonatomic) NSString *htmlStr;
-@property (strong, nonatomic) THNShareActionView *shareView;
 
 @end
 
@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"文章素材";
+    
     UIButton *shareBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [shareBtn setImage:[UIImage imageNamed:@"share"] forState:(UIControlStateNormal)];
     shareBtn.size = shareBtn.currentImage.size;
@@ -33,30 +34,22 @@
     
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.delegate = self;
-    [self.webView loadHTMLString:self.htmlStr baseURL:[NSURL URLWithString:@"http://baidu.com"]];
-    
-//    self.shareView = [[THNShareActionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 300)];
-//    [self.view addSubview:self.shareView];
-//    [self.shareView thn_showShareViewController:self messageObject:[self shareMessageObject] shareImage:self.doneImage];
+    NSURL *url = [NSURL URLWithString:self.content];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:request];
 }
 
 -(void)share{
-//    [UIView animateWithDuration:0.25 animations:^{
-//        self.shareView.y = SCREEN_HEIGHT-self.shareView.height;
-//    }];
+    THNShareViewController *vc = [[THNShareViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    vc.model = self.model;
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     
-}
-    
-
--(void)setContent:(NSString *)content{
-    _content = content;
-    NSError  *error;
-    NSString *markdown = content;
-    self.htmlStr = [MMMarkdown HTMLStringWithMarkdown:markdown error:&error];
 }
 
 @end
