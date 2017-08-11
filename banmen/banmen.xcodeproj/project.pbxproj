@@ -96,6 +96,7 @@
 		D8906CAA1F3C320E00482962 /* THNPosterTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8906CA91F3C320E00482962 /* THNPosterTextView.m */; };
 		D890F1D31F2B463000E2C623 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D890F1CA1F2B461900E2C623 /* MMMarkdown.framework */; };
 		D890F1D51F2B463D00E2C623 /* MMMarkdown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D890F1CA1F2B461900E2C623 /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D899A2CC1F3D516D00D79243 /* THNColorCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D899A2CB1F3D516D00D79243 /* THNColorCollectionViewCell.m */; };
 		D89DBBA71F259246001A8C56 /* THNPosterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D89DBBA61F259246001A8C56 /* THNPosterListViewController.m */; };
 		D8B0711D1EF8F92D005CC051 /* THNImageToolNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B0711C1EF8F92D005CC051 /* THNImageToolNavigationController.m */; };
 		D8B071201EF8FB38005CC051 /* THNImageToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B0711F1EF8FB38005CC051 /* THNImageToolViewController.m */; };
@@ -418,6 +419,8 @@
 		D8906CA81F3C320E00482962 /* THNPosterTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterTextView.h; sourceTree = "<group>"; };
 		D8906CA91F3C320E00482962 /* THNPosterTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPosterTextView.m; sourceTree = "<group>"; };
 		D890F1C11F2B461900E2C623 /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "MMMarkdown-master/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
+		D899A2CA1F3D516D00D79243 /* THNColorCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNColorCollectionViewCell.h; sourceTree = "<group>"; };
+		D899A2CB1F3D516D00D79243 /* THNColorCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNColorCollectionViewCell.m; sourceTree = "<group>"; };
 		D89DBBA51F259246001A8C56 /* THNPosterListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterListViewController.h; sourceTree = "<group>"; };
 		D89DBBA61F259246001A8C56 /* THNPosterListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPosterListViewController.m; sourceTree = "<group>"; };
 		D8B071151EF8F43D005CC051 /* ColorMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorMacro.h; sourceTree = "<group>"; };
@@ -1455,6 +1458,8 @@
 				D8906CA91F3C320E00482962 /* THNPosterTextView.m */,
 				D805C5DE1F317DD200354A47 /* THNKeyboardToolView.h */,
 				D805C5DF1F317DD200354A47 /* THNKeyboardToolView.m */,
+				D899A2CA1F3D516D00D79243 /* THNColorCollectionViewCell.h */,
+				D899A2CB1F3D516D00D79243 /* THNColorCollectionViewCell.m */,
 			);
 			path = Poster;
 			sourceTree = "<group>";
@@ -2079,6 +2084,7 @@
 				D8E957FE1F289350003F9A29 /* THNPosterModelTextPosition.m in Sources */,
 				F52AD5E81F31A9E20098282A /* THNRepeatBuyModel.m in Sources */,
 				F53C28E31F1C8C7C004DB319 /* UserModel.m in Sources */,
+				D899A2CC1F3D516D00D79243 /* THNColorCollectionViewCell.m in Sources */,
 				D869B3F61F26FFE10074C37B /* THNPosterListCollectionViewCell.m in Sources */,
 				F58DE8C11F20AD2100C80ECF /* GoodDetailsViewController.m in Sources */,
 				D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */,

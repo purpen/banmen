@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "THNPosterModelData.h"
 #import "THNPosterImageView.h"
+#import "THNPosterTextView.h"
 
 @protocol THNPosterInfoViewDelegate <NSObject>
 
 @optional
 - (void)thn_tapWithImageViewAndSelectPhoto:(NSInteger)tag;
+- (void)thn_didBeginEditingTextView:(THNPosterTextView *)textView;
+- (void)thn_getEditingTextViewFrameMaxY:(CGFloat)maxY;
 
 @end
 
@@ -25,6 +28,8 @@
 - (void)thn_allTextViewResignFirstResponder;
 
 - (void)thn_allTextViewBecomeFirstResponder;
+
+- (void)thn_changeTextColor:(NSString *)color;
 
 - (void)thn_setPosterStyleInfoData:(THNPosterModelData *)data;
 

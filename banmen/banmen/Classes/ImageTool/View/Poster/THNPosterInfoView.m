@@ -9,13 +9,13 @@
 #import "THNPosterInfoView.h"
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
-#import "THNPosterTextView.h"
 
 static NSInteger const textViewTag = 3521;
 static NSInteger const imageViewTag = 3821;
 
 @interface THNPosterInfoView () <UITextViewDelegate, THNPosterTextViewDelegate> {
     THNPosterImageView *_selectImageView;
+    CGFloat _frameHeight;
 }
 
 @property (nonatomic, strong) NSMutableArray *textViewArray;
@@ -59,6 +59,10 @@ static NSInteger const imageViewTag = 3821;
     [self.tempTextView thn_becomeFirstResponder];
 }
 
+- (void)thn_changeTextColor:(NSString *)color {
+    self.tempTextView.posterTextView.textColor = [UIColor colorWithHexString:color];
+}
+
 #pragma mark - 添加海报默认信息
 - (UIView *)controlView {
     if (!_controlView) {
@@ -69,6 +73,8 @@ static NSInteger const imageViewTag = 3821;
 }
 
 - (void)thn_setPosterStyleInfoData:(THNPosterModelData *)data {
+    _frameHeight = data.size.height;
+    
     self.contentSize = CGSizeMake(data.size.width, data.size.height);
     
     self.controlView.frame = CGRectMake(0, 0, data.size.width, data.size.height);
@@ -111,6 +117,13 @@ static NSInteger const imageViewTag = 3821;
 //  开始编辑文字
 - (void)thn_textViewDidBeginEditing:(THNPosterTextView *)textView {
     self.tempTextView = textView;
+    
+    CGFloat frameScale = (SCREEN_HEIGHT - 94) / _frameHeight;
+    CGFloat textViewMaxY = CGRectGetMaxY(textView.frame) * frameScale;
+    
+    if ([self.tap_delegate respondsToSelector:@selector(thn_getEditingTextViewFrameMaxY:)]) {
+        [self.tap_delegate thn_getEditingTextViewFrameMaxY:textViewMaxY];
+    }
 }
 
 //  结束编辑文字
