@@ -46,11 +46,6 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-        [cell.contentView addSubview:self.pieChartView];
-        [_pieChartView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.bottom.top.mas_equalTo(cell.contentView).mas_offset(0);
-            make.right.mas_equalTo(cell.contentView.mas_right).mas_offset(-80);
-        }];
         
         [cell.contentView addSubview:self.dateSelectBtn];
         [_dateSelectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -58,6 +53,13 @@
             make.top.mas_equalTo(cell.contentView.mas_top).mas_offset(10);
             make.height.mas_equalTo(46/2);
             make.width.mas_equalTo(288/2);
+        }];
+        
+        [cell.contentView addSubview:self.pieChartView];
+        [_pieChartView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.mas_equalTo(cell.contentView).mas_offset(0);
+            make.top.mas_equalTo(cell.contentView.mas_top).mas_offset(40);
+            make.right.mas_equalTo(cell.contentView.mas_right).mas_offset(0);
         }];
         
         cell.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
@@ -129,7 +131,7 @@
         formatter.maximumFractionDigits = 0;//小数位数
         formatter.multiplier = @1.f;
         [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:formatter]];//设置显示数据格式
-        [data setValueTextColor:[UIColor brownColor]];
+        [data setValueTextColor:[UIColor whiteColor]];
         [data setValueFont:[UIFont systemFontOfSize:10]];
         self.pieChartView.data = data;
         //设置动画效果

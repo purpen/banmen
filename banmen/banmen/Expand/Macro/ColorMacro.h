@@ -23,4 +23,6 @@
 #define kColorYellow          @"#BE8914"
 #define kColorRed             @"#FF5A5F"
 
+#define kColorDefalut             @"#BE8914"
+
 #endif /* ColorMacro_h */

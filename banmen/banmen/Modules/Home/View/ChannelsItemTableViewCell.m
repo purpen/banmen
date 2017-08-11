@@ -19,25 +19,25 @@
         
         [self.contentView addSubview:self.serialNumberLael];
         [_serialNumberLael mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(20);
+            make.centerX.mas_equalTo(self.contentView.mas_left).mas_offset(30/667.0*SCREEN_HEIGHT);
             make.centerY.mas_equalTo(self.contentView.mas_centerY).mas_offset(0);
         }];
         
         [self.contentView addSubview:self.areaLael];
         [_areaLael mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(self.serialNumberLael.mas_centerX).mas_offset(166/2/SCREEN_HEIGHT*667.0);
+            make.centerX.mas_equalTo(self.contentView.mas_left).mas_offset(110*SCREEN_HEIGHT/667.0);
             make.centerY.mas_equalTo(self.contentView.mas_centerY).mas_offset(0);
         }];
         
         [self.contentView addSubview:self.salesLael];
         [_salesLael mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(self.areaLael.mas_centerX).mas_offset(166/2/SCREEN_HEIGHT*667.0);
+            make.centerX.mas_equalTo(self.contentView.mas_left).mas_offset(200*SCREEN_HEIGHT/667.0);
             make.centerY.mas_equalTo(self.contentView.mas_centerY).mas_offset(0);
         }];
         
         [self.contentView addSubview:self.percentageLael];
         [_percentageLael mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(self.salesLael.mas_centerX).mas_offset(166/2/SCREEN_HEIGHT*667.0);
+            make.centerX.mas_equalTo(self.contentView.mas_left).mas_offset(300*SCREEN_HEIGHT/667.0);
             make.centerY.mas_equalTo(self.contentView.mas_centerY).mas_offset(0);
         }];
         
@@ -80,9 +80,9 @@
 -(UILabel *)percentageLael{
     if (!_percentageLael) {
         _percentageLael = [[UILabel alloc] init];
-        _percentageLael.font = [UIFont systemFontOfSize:14];
+        _percentageLael.font = [UIFont systemFontOfSize:10];
         _percentageLael.textColor = [UIColor colorWithHexString:@"#222222"];
-        _percentageLael.textAlignment = NSTextAlignmentLeft;
+        _percentageLael.textAlignment = NSTextAlignmentCenter;
     }
     return _percentageLael;
 }
@@ -90,9 +90,9 @@
 -(UILabel *)salesLael{
     if (!_salesLael) {
         _salesLael = [[UILabel alloc] init];
-        _salesLael.font = [UIFont systemFontOfSize:14];
+        _salesLael.font = [UIFont systemFontOfSize:10];
         _salesLael.textColor = [UIColor colorWithHexString:@"#222222"];
-        _salesLael.textAlignment = NSTextAlignmentLeft;
+        _salesLael.textAlignment = NSTextAlignmentCenter;
     }
     return _salesLael;
 }
@@ -100,9 +100,9 @@
 -(UILabel *)areaLael{
     if (!_areaLael) {
         _areaLael = [[UILabel alloc] init];
-        _areaLael.font = [UIFont systemFontOfSize:14];
+        _areaLael.font = [UIFont systemFontOfSize:10];
         _areaLael.textColor = [UIColor colorWithHexString:@"#222222"];
-        _areaLael.textAlignment = NSTextAlignmentLeft;
+        _areaLael.textAlignment = NSTextAlignmentCenter;
     }
     return _areaLael;
 }
@@ -110,9 +110,9 @@
 -(UILabel *)serialNumberLael{
     if (!_serialNumberLael) {
         _serialNumberLael = [[UILabel alloc] init];
-        _serialNumberLael.font = [UIFont systemFontOfSize:14];
+        _serialNumberLael.font = [UIFont systemFontOfSize:10];
         _serialNumberLael.textColor = [UIColor colorWithHexString:@"#222222"];
-        _serialNumberLael.textAlignment = NSTextAlignmentLeft;
+        _serialNumberLael.textAlignment = NSTextAlignmentCenter;
     }
     return _serialNumberLael;
 }

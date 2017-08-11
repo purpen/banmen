@@ -74,7 +74,7 @@
         _logOutBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         [_logOutBtn setTitle:@"退出登录" forState:(UIControlStateNormal)];
         _logOutBtn.backgroundColor = [UIColor whiteColor];
-        [_logOutBtn setTitleColor:[UIColor colorWithHexString:@"#fe3824"] forState:(UIControlStateNormal)];
+        [_logOutBtn setTitleColor:[UIColor colorWithHexString:@"#BE8914"] forState:(UIControlStateNormal)];
     }
     return _logOutBtn;
 }

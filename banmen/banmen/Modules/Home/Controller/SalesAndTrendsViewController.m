@@ -107,7 +107,7 @@
         [button setTitle:self.childViewControllers[i].title forState:UIControlStateNormal];
         //        [button layoutIfNeeded]; // 强制布局(强制更新子控件的frame)
         [button setTitleColor:[UIColor colorWithHexString:@"#686868"] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor colorWithHexString:@"#686868"] forState:UIControlStateDisabled];
+        [button setTitleColor:[UIColor colorWithHexString:kColorDefalut] forState:UIControlStateDisabled];
         button.titleLabel.font = [UIFont systemFontOfSize:12];
         [button addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
         [titlesView addSubview:button];
