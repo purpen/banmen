@@ -32,17 +32,17 @@
 - (void)thn_setCellViewUI {
     [self addSubview:self.backView];
     [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(36, 36));
+        make.size.mas_equalTo(CGSizeMake(32, 32));
         make.centerX.centerY.equalTo(self);
     }];
-    self.backView.layer.cornerRadius = 36/2;
+    self.backView.layer.cornerRadius = 32/2;
     
     [self addSubview:self.colorView];
     [_colorView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(30, 30));
+        make.size.mas_equalTo(CGSizeMake(26, 26));
         make.centerX.centerY.equalTo(self);
     }];
-    self.colorView.layer.cornerRadius = 30/2;
+    self.colorView.layer.cornerRadius = 26/2;
 }
 
 - (UIView *)colorView {

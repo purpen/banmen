@@ -66,7 +66,7 @@ static NSString *const colorCellId = @"THNColorCollectionViewCellId";
     [self addSubview:self.colorCollection];
     [_colorCollection mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_top).with.offset(110);
-        make.size.mas_equalTo(CGSizeMake(320, 200));
+        make.size.mas_equalTo(CGSizeMake(300, 160));
         make.centerX.equalTo(self);
     }];
     
@@ -116,9 +116,9 @@ static NSString *const colorCellId = @"THNColorCollectionViewCellId";
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     if (section == 1) {
-        return UIEdgeInsetsMake(0, 33, 15, 0);
+        return UIEdgeInsetsMake(0, 30, 15, 0);
     }
-    return UIEdgeInsetsMake(0, 0, 15, 33);
+    return UIEdgeInsetsMake(0, 0, 15, 30);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

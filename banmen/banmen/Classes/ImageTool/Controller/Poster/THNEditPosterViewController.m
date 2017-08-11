@@ -19,14 +19,17 @@
 #import "THNDoneImageViewController.h"
 #import "NSString+JSON.h"
 #import "THNKeyboardToolView.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface THNEditPosterViewController () <THNImageToolNavigationBarItemsDelegate, THNPosterInfoViewDelegate, THNPhotoListViewDelegate, THNKeyboardToolViewDelegate> {
     NSInteger _imageViewTag;
     NSString *_posterStyle;
+    CGFloat _textViewMaxY;
 }
 
 @property (nonatomic, strong) UIImageView *previewImageView;
 @property (nonatomic, strong) THNHintInfoView *hintInfoView;
+@property (nonatomic, strong) UIScrollView *contentView;
 @property (nonatomic, strong) THNPosterInfoView *posterView;
 @property (nonatomic, strong) THNPosterModelData *dataModel;
 //  相册列表
@@ -48,11 +51,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [[IQKeyboardManager sharedManager] setEnable:NO];
+    
     [self thn_setNavViewUI];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.navRightItem.alpha = 0;
     
     [self thn_setControllerViewUI];
@@ -105,21 +111,38 @@
         make.top.equalTo(_previewImageView.mas_bottom).with.offset(20);
     }];
     
-    [self.view addSubview:self.posterView];
+    [self.contentView addSubview:self.posterView];
+    [self.view addSubview:self.contentView];
     [self.view addSubview:self.previewPosterView];
     [self.view addSubview:self.keyboardView];
 }
 
 #pragma mark - 海报制作视图
+- (UIScrollView *)contentView {
+    if (!_contentView) {
+        _contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(30, 64, SCREEN_WIDTH - 60, SCREEN_HEIGHT - 94)];
+        _contentView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
+        _contentView.contentSize = CGSizeMake(SCREEN_WIDTH - 60, SCREEN_HEIGHT - 94);
+        _contentView.showsVerticalScrollIndicator = NO;
+        _contentView.showsHorizontalScrollIndicator = NO;
+        _contentView.alpha = 0;
+    }
+    return _contentView;
+}
+
 - (THNPosterInfoView *)posterView {
     if (!_posterView) {
-        _posterView = [[THNPosterInfoView alloc] initWithFrame:CGRectMake(30, 64, SCREEN_WIDTH - 60, SCREEN_HEIGHT - 94)];
+        _posterView = [[THNPosterInfoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 60, SCREEN_HEIGHT - 94)];
         _posterView.tap_delegate = self;
         _posterView.alpha = 0;
     }
     return _posterView;
 }
 
+- (void)thn_getEditingTextViewFrameMaxY:(CGFloat)maxY {
+    _textViewMaxY = maxY + 100;
+}
+    
 //  点击选择照片
 - (void)thn_tapWithImageViewAndSelectPhoto:(NSInteger)tag {
     _imageViewTag = tag;
@@ -158,6 +181,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.previewImageView.hidden = YES;
         self.hintInfoView.hidden = YES;
+        self.contentView.alpha = 1;
         self.posterView.alpha = 1;
         self.navRightItem.alpha = 1;
         self.previewButton.alpha = 1;
@@ -284,6 +308,7 @@
 
 - (void)previewButtonAction:(UIButton *)button {
     [self thn_changeKeyboardToolViewHeight:0.0f];
+    [self.posterView thn_allTextViewResignFirstResponder];
     self.previewPosterView.image = [self cutImageWithView:self.posterView];
     [self thn_scalePosterEidtView:self.previewPosterView Scale:YES];
 }
@@ -384,6 +409,8 @@
 
 - (void)thn_writeInputBoxResignFirstResponder {
     [self thn_changeKeyboardToolViewHeight:0.0f];
+    [self thn_changeContentViewHeight:30.0f];
+    [self thn_changeContentViewOffset:0.0f];
     [self.posterView thn_allTextViewResignFirstResponder];
 }
 
@@ -402,25 +429,43 @@
 #pragma mark - 添加键盘检测
 - (void)thn_registerForKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardShow:)
+                                             selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
 }
 
-//  键盘出现
-- (void)keyboardShow:(NSNotification *)aNotification {
+//  键盘将出现
+- (void)keyboardWillShow:(NSNotification *)aNotification {
+    self.navRightItem.hidden = YES;
     NSDictionary *info = [aNotification userInfo];
     CGFloat keyboardHeight = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     [self thn_changeKeyboardToolViewHeight:keyboardHeight];
+    
+    [self thn_changeContentViewHeight:keyboardHeight];
+}
+
+//  键盘出现
+- (void)keyboardDidShow:(NSNotification *)aNotification {
+    if (_textViewMaxY > CGRectGetMaxY(self.contentView.frame)) {
+        [self thn_changeContentViewOffset:_textViewMaxY - CGRectGetMaxY(self.contentView.frame)];
+    }
 }
 
 //  键盘消失
 - (void)keyboardHidden:(NSNotification *)aNotification {
+    self.navRightItem.hidden = NO;
+    
     if (self.keyboardView.changeTextColor.selected == NO) {
         [self thn_changeKeyboardToolViewHeight:0.0f];
+        [self thn_changeContentViewHeight:30.0f];
+        [self thn_changeContentViewOffset:0.0f];
     }
 }
 
@@ -435,8 +480,28 @@
     CGRect keyboardViewRect = self.keyboardView.frame;
     keyboardViewRect = CGRectMake(0, SCREEN_HEIGHT - (height), SCREEN_WIDTH, (height));
     
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         self.keyboardView.frame = keyboardViewRect;
+    }];
+}
+
+//  改变海报的高度
+- (void)thn_changeContentViewHeight:(CGFloat)height {
+    CGRect contentViewRect = self.contentView.frame;
+    contentViewRect = CGRectMake(30, 64, SCREEN_WIDTH - 60, SCREEN_HEIGHT - height - 64);
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.contentView.frame = contentViewRect;
+    }];
+}
+
+//  编辑文字改变海报的偏移量，防止文本框被遮挡
+- (void)thn_changeContentViewOffset:(CGFloat)height {
+    CGPoint contentViewOffset = self.contentView.contentOffset;
+    contentViewOffset = CGPointMake(0, height);
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.contentView.contentOffset = contentViewOffset;
     }];
 }
 
