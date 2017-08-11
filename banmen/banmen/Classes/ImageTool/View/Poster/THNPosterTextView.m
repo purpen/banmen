@@ -122,24 +122,4 @@
     [self.posterTextView becomeFirstResponder];
 }
 
-//#pragma mark - 键盘工具操作
-//- (THNKeyboardToolView *)keyboardView {
-//    if (!_keyboardView) {
-//        _keyboardView = [[THNKeyboardToolView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
-//        _keyboardView.delegate = self;
-//        [_keyboardView thn_setHiddenExtendingFunction:NO];
-//    }
-//    return _keyboardView;
-//}
-//
-////  取消键盘响应
-//- (void)thn_writeInputBoxResignFirstResponder {
-//    [self thn_resignFirstResponder];
-//}
-//
-////  改变字体颜色工具视图
-//- (void)thn_writeInputBoxChangeTextColor {
-//    NSLog(@"改变字体的颜色");
-//}
-
 @end

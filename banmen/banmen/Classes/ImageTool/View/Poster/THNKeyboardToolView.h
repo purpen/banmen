@@ -12,8 +12,8 @@
 
 @optional
 - (void)thn_writeInputBoxResignFirstResponder;
-- (void)thn_writeInputBoxBeginChangeTextColor;
-- (void)thn_writeInputBoxEndChangeTextColor;
+- (void)thn_writeInputBoxBeginEditTextTool;
+- (void)thn_writeInputBoxEndEditTextTool;
 - (void)thn_selectColorForChangeTextColor:(NSString *)color;
 
 @end

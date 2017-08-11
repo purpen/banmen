@@ -148,6 +148,9 @@
     _imageViewTag = tag;
     [self.posterView thn_allTextViewResignFirstResponder];
     [self thn_changeKeyboardToolViewHeight:0.0f];
+    [self thn_changeContentViewHeight:30.0f];
+    [self thn_changeContentViewOffset:0.0f];
+    
     [self thn_showPhotoListView:YES];
 }
 
@@ -414,11 +417,11 @@
     [self.posterView thn_allTextViewResignFirstResponder];
 }
 
-- (void)thn_writeInputBoxBeginChangeTextColor {
+- (void)thn_writeInputBoxBeginEditTextTool {
     [self.posterView thn_allTextViewResignFirstResponder];
 }
 
-- (void)thn_writeInputBoxEndChangeTextColor {
+- (void)thn_writeInputBoxEndEditTextTool {
     [self.posterView thn_allTextViewBecomeFirstResponder];
 }
 
@@ -460,9 +463,8 @@
 
 //  键盘消失
 - (void)keyboardHidden:(NSNotification *)aNotification {
-    self.navRightItem.hidden = NO;
-    
-    if (self.keyboardView.changeTextColor.selected == NO) {
+    if (self.keyboardView.changeTextColor.selected == NO && self.keyboardView.fontSize.selected == NO) {
+        self.navRightItem.hidden = NO;
         [self thn_changeKeyboardToolViewHeight:0.0f];
         [self thn_changeContentViewHeight:30.0f];
         [self thn_changeContentViewOffset:0.0f];

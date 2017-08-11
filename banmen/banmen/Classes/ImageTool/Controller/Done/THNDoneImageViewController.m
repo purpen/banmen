@@ -151,7 +151,7 @@
 }
 
 - (void)againButtonClick:(UIButton *)button {
-    [SVProgressHUD showImage:[UIImage imageNamed:@""] status:@"歇一歇吧～\n\n_(:_」∠)_"];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - 分享
