@@ -17,6 +17,7 @@ NSString *const kPosterModelImagePosition = @"position";
 NSString *const kPosterModelImageImageUrl = @"imageUrl";
 NSString *const kPosterModelImageEditType = @"editType";
 NSString *const kPosterModelImageLogoType = @"logoType";
+NSString *const kPosterModelImageRadius = @"radius";
 
 @implementation THNPosterModelImage
 
@@ -49,6 +50,10 @@ NSString *const kPosterModelImageLogoType = @"logoType";
     
     if (![dictionary[kPosterModelImageWidth] isKindOfClass:[NSNull class]]) {
         self.width = [dictionary[kPosterModelImageWidth] floatValue];
+    }
+    
+    if (![dictionary[kPosterModelImageRadius] isKindOfClass:[NSNull class]]) {
+        self.radius = [dictionary[kPosterModelImageRadius] floatValue];
     }
     
     if (![dictionary[kPosterModelImageHeight] isKindOfClass:[NSNull class]]) {

@@ -38,8 +38,18 @@ static NSString *const PosterListCollectionViewCellId = @"THNPosterListCollectio
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.imageArray = [NSMutableArray arrayWithArray:@[@[@"poster_style_1", @"poster_style_2", @"poster_style_3", @"poster_style_4", @"poster_style_5", @"poster_style_6"],
-                                                       @[@"poster_style_0"]]];
+    self.imageArray = [NSMutableArray arrayWithArray:@[@[@"poster_style_1",
+                                                         @"poster_style_2",
+                                                         @"poster_style_3",
+                                                         @"poster_style_4",
+                                                         @"poster_style_5",
+                                                         @"poster_style_6",
+                                                         @"poster_style_7",
+                                                         @"poster_style_8",
+                                                         @"poster_style_9"]
+                                                       ,
+                                                       @[@"invitation_style_0",
+                                                         @"invitation_style_1"]]];
     self.titleArray = [NSMutableArray arrayWithArray:@[@"活动", @"邀请函"]];
     
     [self thn_setControllerViewUI];

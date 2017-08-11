@@ -30,15 +30,15 @@
 - (void)setViewUI {
     [self addSubview:self.changeTextColor];
     [_changeTextColor mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(self).with.offset(0);
+        make.top.equalTo(self).with.offset(0);
         make.right.equalTo(self.mas_right).with.offset(0);
-        make.width.mas_equalTo(@44);
+        make.size.mas_equalTo(CGSizeMake(44, 44));
     }];
     
     [self addSubview:self.closeKeybord];
     [_closeKeybord mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.left.equalTo(self).with.offset(0);
-        make.width.mas_equalTo(@44);
+        make.top.left.equalTo(self).with.offset(0);
+        make.size.mas_equalTo(CGSizeMake(44, 44));
     }];
 }
 
@@ -62,24 +62,30 @@
     return _closeKeybord;
 }
 
-
+//  显示颜色色板视图
 - (void)changeTextColorClick:(UIButton *)button {
     if (button.selected == NO) {
         button.selected = YES;
-        if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxChangeTextColor)]) {
-            [self.delegate thn_writeInputBoxChangeTextColor];
+        if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxBeginChangeTextColor)]) {
+            [self.delegate thn_writeInputBoxBeginChangeTextColor];
         }
         
     } else {
         button.selected = NO;
-        
+        if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxEndChangeTextColor)]) {
+            [self.delegate thn_writeInputBoxEndChangeTextColor];
+        }
     }
-    
 }
 
+//  关闭键盘
 - (void)closeKeybordClick:(UIButton *)button {
     if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxResignFirstResponder)]) {
         [self.delegate thn_writeInputBoxResignFirstResponder];
+    }
+    
+    if (self.changeTextColor.selected == YES) {
+        self.changeTextColor.selected = NO;
     }
 }
 

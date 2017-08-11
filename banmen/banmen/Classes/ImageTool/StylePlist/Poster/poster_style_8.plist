@@ -7,7 +7,7 @@
 		<key>background_color</key>
 		<string>#FFFFFF</string>
 		<key>idField</key>
-		<string>1006</string>
+		<string>1008</string>
 		<key>size</key>
 		<dict>
 			<key>height</key>
@@ -29,9 +29,9 @@
 				<key>name</key>
 				<string>photo</string>
 				<key>width</key>
-				<string>750</string>
+				<string>410</string>
 				<key>height</key>
-				<string>1334</string>
+				<string>440</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
@@ -41,7 +41,7 @@
 					<key>bottom</key>
 					<string>0</string>
 					<key>top</key>
-					<string>0</string>
+					<string>342</string>
 				</dict>
 			</dict>
 			<dict>
@@ -56,19 +56,19 @@
 				<key>name</key>
 				<string>photo</string>
 				<key>width</key>
-				<string>626</string>
+				<string>220</string>
 				<key>height</key>
-				<string>840</string>
+				<string>150</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-62</string>
+					<string>0</string>
 					<key>left</key>
-					<string>62</string>
+					<string>420</string>
 					<key>bottom</key>
-					<string>-340</string>
+					<string>0</string>
 					<key>top</key>
-					<string>154</string>
+					<string>270</string>
 				</dict>
 			</dict>
 			<dict>
@@ -83,19 +83,73 @@
 				<key>name</key>
 				<string>photo</string>
 				<key>width</key>
-				<string>626</string>
+				<string>290</string>
 				<key>height</key>
-				<string>340</string>
+				<string>460</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-62</string>
+					<string>0</string>
 					<key>left</key>
-					<string>62</string>
+					<string>420</string>
 					<key>bottom</key>
 					<string>0</string>
 					<key>top</key>
-					<string>994</string>
+					<string>430</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>editType</key>
+				<string>1</string>
+				<key>imageUrl</key>
+				<string>photo</string>
+				<key>zindex</key>
+				<string>10</string>
+				<key>type</key>
+				<string>1</string>
+				<key>name</key>
+				<string>photo</string>
+				<key>width</key>
+				<string>330</string>
+				<key>height</key>
+				<string>240</string>
+				<key>position</key>
+				<dict>
+					<key>right</key>
+					<string>0</string>
+					<key>left</key>
+					<string>420</string>
+					<key>bottom</key>
+					<string>0</string>
+					<key>top</key>
+					<string>900</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>editType</key>
+				<string>1</string>
+				<key>imageUrl</key>
+				<string>photo</string>
+				<key>zindex</key>
+				<string>10</string>
+				<key>type</key>
+				<string>1</string>
+				<key>name</key>
+				<string>photo</string>
+				<key>width</key>
+				<string>300</string>
+				<key>height</key>
+				<string>440</string>
+				<key>position</key>
+				<dict>
+					<key>right</key>
+					<string>0</string>
+					<key>left</key>
+					<string>110</string>
+					<key>bottom</key>
+					<string>0</string>
+					<key>top</key>
+					<string>792</string>
 				</dict>
 			</dict>
 			<dict>
@@ -110,19 +164,19 @@
 				<key>name</key>
 				<string>logo</string>
 				<key>width</key>
-				<string>150</string>
+				<string>200</string>
 				<key>height</key>
-				<string>150</string>
+				<string>200</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-538</string>
-					<key>left</key>
-					<string>62</string>
-					<key>bottom</key>
-					<string>-1184</string>
-					<key>top</key>
 					<string>0</string>
+					<key>left</key>
+					<string>530</string>
+					<key>bottom</key>
+					<string>0</string>
+					<key>top</key>
+					<string>20</string>
 				</dict>
 			</dict>
 			<dict>
@@ -143,13 +197,13 @@
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-90</string>
+					<string>0</string>
 					<key>left</key>
-					<string>510</string>
+					<string>60</string>
 					<key>bottom</key>
 					<string>0</string>
 					<key>top</key>
-					<string>1184</string>
+					<string>1142</string>
 				</dict>
 			</dict>
 		</array>
@@ -163,29 +217,29 @@
 				<key>lineHeight</key>
 				<string>10</string>
 				<key>weight</key>
-				<string>0</string>
+				<string>4</string>
 				<key>align</key>
 				<string>0</string>
 				<key>fontSize</key>
-				<string>30</string>
+				<string>90</string>
 				<key>color</key>
-				<string>#FFFFFF</string>
+				<string>#E43012</string>
 				<key>content</key>
-				<string>从        此        改        变</string>
+				<string>相约里约</string>
 				<key>width</key>
-				<string>470</string>
+				<string>473</string>
 				<key>height</key>
-				<string>52</string>
+				<string>126</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-140</string>
+					<string>0</string>
 					<key>left</key>
-					<string>140</string>
+					<string>60</string>
 					<key>bottom</key>
-					<string>-606</string>
+					<string>0</string>
 					<key>top</key>
-					<string>686</string>
+					<string>114</string>
 				</dict>
 			</dict>
 			<dict>
@@ -196,29 +250,62 @@
 				<key>lineHeight</key>
 				<string>10</string>
 				<key>weight</key>
-				<string>0</string>
+				<string>4</string>
 				<key>align</key>
 				<string>0</string>
 				<key>fontSize</key>
-				<string>30</string>
+				<string>26</string>
 				<key>color</key>
-				<string>#FFFFFF</string>
+				<string>#E43012</string>
 				<key>content</key>
-				<string>你        的        测        量        方        式</string>
+				<string>2016 里约奥运会 中国代表团制定装备</string>
 				<key>width</key>
-				<string>470</string>
+				<string>473</string>
 				<key>height</key>
-				<string>52</string>
+				<string>50</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-140</string>
+					<string>0</string>
 					<key>left</key>
-					<string>140</string>
+					<string>60</string>
 					<key>bottom</key>
-					<string>-562</string>
+					<string>0</string>
 					<key>top</key>
-					<string>730</string>
+					<string>224</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>zindex</key>
+				<string>1</string>
+				<key>background</key>
+				<string>#E43012</string>
+				<key>lineHeight</key>
+				<string>10</string>
+				<key>weight</key>
+				<string>4</string>
+				<key>align</key>
+				<string>1</string>
+				<key>fontSize</key>
+				<string>34</string>
+				<key>color</key>
+				<string>#FFFFFF</string>
+				<key>content</key>
+				<string>Just Real 不插电冰箱</string>
+				<key>width</key>
+				<string>350</string>
+				<key>height</key>
+				<string>58</string>
+				<key>position</key>
+				<dict>
+					<key>right</key>
+					<string>0</string>
+					<key>left</key>
+					<string>60</string>
+					<key>bottom</key>
+					<string>0</string>
+					<key>top</key>
+					<string>270</string>
 				</dict>
 			</dict>
 			<dict>
@@ -229,29 +316,29 @@
 				<key>lineHeight</key>
 				<string>10</string>
 				<key>weight</key>
-				<string>0</string>
+				<string>4</string>
 				<key>align</key>
-				<string>2</string>
+				<string>0</string>
 				<key>fontSize</key>
-				<string>30</string>
+				<string>40</string>
 				<key>color</key>
 				<string>#FFFFFF</string>
 				<key>content</key>
-				<string>INSTRU ENTS</string>
+				<string>众筹突破200万</string>
 				<key>width</key>
-				<string>470</string>
+				<string>300</string>
 				<key>height</key>
-				<string>52</string>
+				<string>66</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-90</string>
+					<string>0</string>
 					<key>left</key>
-					<string>190</string>
+					<string>90</string>
 					<key>bottom</key>
-					<string>-232</string>
+					<string>0</string>
 					<key>top</key>
-					<string>1060</string>
+					<string>364</string>
 				</dict>
 			</dict>
 			<dict>
@@ -262,29 +349,62 @@
 				<key>lineHeight</key>
 				<string>10</string>
 				<key>weight</key>
-				<string>0</string>
+				<string>4</string>
 				<key>align</key>
-				<string>2</string>
+				<string>0</string>
 				<key>fontSize</key>
-				<string>24</string>
+				<string>120</string>
 				<key>color</key>
 				<string>#FFFFFF</string>
 				<key>content</key>
-				<string>智能测距笔</string>
+				<string>2,011,189</string>
 				<key>width</key>
-				<string>470</string>
+				<string>600</string>
 				<key>height</key>
-				<string>45</string>
+				<string>168</string>
 				<key>position</key>
 				<dict>
 					<key>right</key>
-					<string>-90</string>
+					<string>0</string>
 					<key>left</key>
-					<string>190</string>
+					<string>83</string>
 					<key>bottom</key>
-					<string>-97</string>
+					<string>0</string>
 					<key>top</key>
-					<string>1104</string>
+					<string>405</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>zindex</key>
+				<string>1</string>
+				<key>background</key>
+				<string>#E43012</string>
+				<key>lineHeight</key>
+				<string>10</string>
+				<key>weight</key>
+				<string>4</string>
+				<key>align</key>
+				<string>1</string>
+				<key>fontSize</key>
+				<string>26</string>
+				<key>color</key>
+				<string>#FFFFFF</string>
+				<key>content</key>
+				<string>Just Real 不插电冰箱</string>
+				<key>width</key>
+				<string>290</string>
+				<key>height</key>
+				<string>48</string>
+				<key>position</key>
+				<dict>
+					<key>right</key>
+					<string>0</string>
+					<key>left</key>
+					<string>420</string>
+					<key>bottom</key>
+					<string>0</string>
+					<key>top</key>
+					<string>1150</string>
 				</dict>
 			</dict>
 		</array>

@@ -15,8 +15,8 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.clipsToBounds = NO;
-        self.layer.masksToBounds = NO;
+        self.clipsToBounds = YES;
+        self.layer.masksToBounds = YES;
         [self thn_setViewUI];
     }
     return self;
