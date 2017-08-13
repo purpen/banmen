@@ -24,6 +24,7 @@
 @property (strong,nonatomic) UIButton *dateSelectBtn;
 @property (strong,nonatomic) UILabel *tipLabel;
 @property (strong,nonatomic) NSArray *timeAry;
+@property (assign,nonatomic) NSInteger *numFlag;
 
 @end
 
@@ -41,6 +42,8 @@
     NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*30*12 sinceDate:[NSDate date]];
     NSString *the_date_str = [date_formatter stringFromDate:theDate];
     [self.a orderAreaModel:the_date_str andEndTime:current_date_str];
+    
+    self.numFlag = 1;
 }
 
 -(PYEchartsView *)mapView{
@@ -159,19 +162,25 @@
             THNOrderAreaModel *model = self.modelAry[i];
             NSString *str = model.buyer_province;
             CGFloat ahpa = [model.proportion floatValue];
-            NSString *str2 = [NSString stringWithFormat:@"{\"name\":\"%@\",\"selected\":true,\"value\":\"10\",\"itemStyle\":{\"emphasis\":{\"areaStyle\":{\"color\":\"rgba(255,59,107,%f)\"}},\"normal\":{\"borderColor\":\"rgba(100,149,237,1)\",\"borderWidth\":0.5,\"areaStyle\":{\"color\":\"#1b1b1b\"}},\"emphasis\":{\"label\":{\"show\":false}}}}]}", str, ahpa];
+            NSString *strValue = model.sum_money;
+            NSString *str2 = [NSString stringWithFormat:@"{\"name\":\"%@\",\"value\":%@,\"itemStyle\":{\"normal\":{\"color\":\"rgba(255,59,107,%f)\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"#fff\",\"fontSize\":15}}},\"emphasis\":{\"borderWidth\":5,\"borderColor\":\"yellow\",\"color\":\"#cd5c5c\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"blue\"}}}}}", str, strValue, ahpa];
             [strAry addObject:str2];
         }
         
         NSString *str3 = [strAry componentsJoinedByString:@","];
         NSString *str4 = [str3 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
-        NSLog(@"sadasdsadsadsaddsa   %@", str4);
-        NSString *jsonStr = [NSString stringWithFormat:@"{\"backgroundColor\":\"#f7f7f9\",\"color\":[\"gold\",\"aqua\",\"lime\"],\"tooltip\":{\"trigger\":\"item\"},\"visualMap\":{\"textStyle\":{\"color\":\"#fff\"}},\"series\":[{\"name\":\"中国\",\"type\":\"map\",\"mapType\":\"china\",\"selectedMode\":\"multiple\",\"itemStyle\":{\"emphasis\":{\"areaStyle\":{\"color\":\"rgba(255,59,107,1)\"}},\"normal\":{\"borderColor\":\"#c19798\",\"borderWidth\":0.5,\"areaStyle\":{\"color\":\"#cccccc\"}},\"emphasis\":{\"label\":{\"show\":false}}},\"data\":[{\"name\":\"云南\",\"selected\":true,\"value\":\"10\",\"itemStyle\":{\"emphasis\":{\"areaStyle\":{\"color\":\"rgba(255,59,107,1.0600)\"}},\"normal\":{\"borderColor\":\"rgba(100,149,237,1)\",\"borderWidth\":0.5,\"areaStyle\":{\"color\":\"#1b1b1b\"}},\"emphasis\":{\"label\":{\"show\":false}}}}]}]}"];
+        NSLog(@"%@", str4);
+        NSString *jsonStr = [NSString stringWithFormat:@"{\"tooltip\":{\"trigger\":\"item\",\"formatter\":\"{b}\"},\"series\":[{\"name\":\"Map\",\"type\":\"map\",\"mapLocation\":{\"x\":\"center\",\"y\":\"top\",\"height\":220},\"selectedMode\":\"multiple\",\"itemStyle\":{\"normal\":{\"borderWidth\":2,\"borderColor\":\"lightgreen\",\"color\":\"orange\",\"label\":{\"show\":false}},\"emphasis\":{\"borderWidth\":2,\"borderColor\":\"#fff\",\"color\":\"#32cd32\",\"label\":{\"show\":true,\"textStyle\":{\"color\":\"#fff\"}}}},\"data\":[%@],\"\":{\"itemStyle\":{\"normal\":{\"color\":\"skyblue\"}},\"data\":[{\"name\":\"天津\",\"value\":350},{\"name\":\"上海\",\"value\":103},{\"name\":\"echarts\",\"symbolSize\":21,\"x\":150,\"y\":50}]},\"geoCoord\":{\"上海\":[121.4648,31.2891],\"天津\":[117.4219,39.4189]}}]}", @"{\"name\":\"内蒙古\",\"value\":831,\"itemStyle\":{\"normal\":{\"color\":\"rgba(255,59,107,12.190000)\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"#fff\",\"fontSize\":15}}},\"emphasis\":{\"borderWidth\":5,\"borderColor\":\"yellow\",\"color\":\"#cd5c5c\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"blue\"}}}}}"];
         NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
         PYOption *option = [RMMapper objectWithClass:[PYOption class] fromDictionary:jsonDic];
         [self.mapView setOption:option];
         [self.mapView loadEcharts];
+        __weak typeof(self) weakSelf = self;
+        [self.mapView addHandlerForAction:PYEchartActionClick withBlock:^(NSDictionary *params) {
+            NSLog(@"asdsada  %@", params);
+            
+        }];
         
         
         [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", self.timeAry[0], self.timeAry[1]] forState:(UIControlStateNormal)];
