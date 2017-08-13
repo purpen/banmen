@@ -646,7 +646,6 @@
 		F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailModel.m; sourceTree = "<group>"; };
 		F5CE62031F32C6EC0049AA9E /* AreaTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AreaTableViewCell.h; sourceTree = "<group>"; };
 		F5CE62041F32C6EC0049AA9E /* AreaTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AreaTableViewCell.m; sourceTree = "<group>"; };
-		F5E2CD201F39A65C009C8B77 /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		F5E2CD241F39A848009C8B77 /* banmen-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "banmen-Bridging-Header.h"; sourceTree = "<group>"; };
 		F5E2CD2A1F3C7578009C8B77 /* THNCustomLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNCustomLabel.h; sourceTree = "<group>"; };
 		F5E2CD2B1F3C7578009C8B77 /* THNCustomLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNCustomLabel.m; sourceTree = "<group>"; };
@@ -1533,7 +1532,6 @@
 		F52AD5C01F3023CA0098282A /* SalesCell */ = {
 			isa = PBXGroup;
 			children = (
-				F5E2CD201F39A65C009C8B77 /* BalloonMarker.swift */,
 				F52AD5B71F3023610098282A /* THNSalesOrderTableViewCell.h */,
 				F52AD5B81F3023610098282A /* THNSalesOrderTableViewCell.m */,
 				F55DD8101F04AE92004915E3 /* SaleTableViewCell.h */,

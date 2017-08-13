@@ -84,14 +84,8 @@
         _dateSelectBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _dateSelectBtn.layer.borderColor = [UIColor colorWithHexString:@"#e9e9e9"].CGColor;
         _dateSelectBtn.layer.borderWidth = 1;
-        NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
-        [date_formatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
-        NSTimeInterval  oneDay = 24*60*60*1;
-        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
-        NSString *the_date_str = [date_formatter stringFromDate:theDate];
         
-        _dateSelectBtn.font = [UIFont systemFontOfSize:10];
+        _dateSelectBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         [_dateSelectBtn setTitleColor:[UIColor colorWithHexString:@"#7d7d7d"] forState:(UIControlStateNormal)];
     }
     return _dateSelectBtn;
@@ -179,7 +173,8 @@
         set1.circleRadius = 3.0;
         set1.drawCircleHoleEnabled = YES;
         set1.drawCirclesEnabled = NO;//是否绘制拐点
-        set1.drawFilledEnabled = NO;//是否填充颜色
+        set1.drawFilledEnabled = YES;//是否填充颜色
+        set1.fillColor = [UIColor colorWithHexString:kColorDefalut];
         set1.valueFont = [UIFont systemFontOfSize:9.f];
         set1.formLineDashLengths = @[@5.f, @2.5f];
         set1.formLineWidth = 1.0;
@@ -239,9 +234,20 @@
         leftAxis.drawZeroLineEnabled = NO;
         leftAxis.drawLimitLinesBehindDataEnabled = YES;
         
+        
+        
         _lineChartView.rightAxis.enabled = NO;
         
         _lineChartView.legend.enabled = NO;
+        
+        ChartMarkerView *marker = [[ChartMarkerView alloc] init];
+        marker.backgroundColor = [UIColor blackColor];
+        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PlayButton"]];
+        image.frame = CGRectMake(0, 0, 10, 10);
+        image.center = marker.center;
+        [marker addSubview:image];
+        //        marker.size = CGSizeMake(80.f, 40.f);
+        _lineChartView.marker = marker;
         
         [_lineChartView animateWithXAxisDuration:2.5];
         
