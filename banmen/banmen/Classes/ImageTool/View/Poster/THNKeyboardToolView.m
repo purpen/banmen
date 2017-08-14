@@ -12,6 +12,7 @@
 #import "THNColorCollectionViewCell.h"
 
 static NSString *const colorCellId = @"THNColorCollectionViewCellId";
+static NSInteger const alignButtonTag = 1245;
 
 @interface THNKeyboardToolView () <UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -166,7 +167,7 @@ static NSString *const colorCellId = @"THNColorCollectionViewCellId";
     return _fontSizeView;
 }
 
-- (void)creatFontSizeButton:(NSArray *)fontArray {
+- (void)creatFontSizeButton:(NSArray *)alignArray {
     UILabel *fontLabel = [[UILabel alloc] init];
     fontLabel.font = [UIFont systemFontOfSize:12];
     fontLabel.textColor = [UIColor colorWithHexString:@"#999999"];
@@ -178,16 +179,25 @@ static NSString *const colorCellId = @"THNColorCollectionViewCellId";
         make.top.equalTo(_fontSizeView.mas_top).with.offset(110);
     }];
     
-    for (NSInteger idx = 0; idx < fontArray.count; ++ idx) {
-        UIButton *sizeButton = [[UIButton alloc] init];
-        [sizeButton setImage:[UIImage imageNamed:fontArray[idx]] forState:(UIControlStateNormal)];
+    for (NSInteger idx = 0; idx < alignArray.count; ++ idx) {
+        UIButton *alignButton = [[UIButton alloc] init];
+        [alignButton setImage:[UIImage imageNamed:alignArray[idx]] forState:(UIControlStateNormal)];
+        [alignButton addTarget:self action:@selector(alignButtonAction:) forControlEvents:(UIControlEventTouchUpInside)];
+        alignButton.tag = alignButtonTag + idx;
+        alignButton.selected = NO;
         
-        [_fontSizeView addSubview:sizeButton];
-        [sizeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_fontSizeView addSubview:alignButton];
+        [alignButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(50, 50));
             make.left.equalTo(_fontSizeView.mas_left).with.offset(15 + ((SCREEN_WIDTH - 80) / 2) * idx);
             make.top.equalTo(_fontSizeView.mas_top).with.offset(140);
         }];
+    }
+}
+
+- (void)alignButtonAction:(UIButton *)button {
+    if ([self.delegate respondsToSelector:@selector(thn_selectAlignForChangeTextAlign:)]) {
+        [self.delegate thn_selectAlignForChangeTextAlign:(NSTextAlignment)button.tag - alignButtonTag];
     }
 }
 
@@ -273,7 +283,5 @@ static NSString *const colorCellId = @"THNColorCollectionViewCellId";
         self.changeTextColor.selected = NO;
     }
 }
-
-
 
 @end

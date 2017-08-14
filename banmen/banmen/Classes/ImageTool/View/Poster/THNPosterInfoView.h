@@ -29,7 +29,11 @@
 
 - (void)thn_allTextViewBecomeFirstResponder;
 
+- (void)thn_showPosterTextViewBorder:(BOOL)show;
+
 - (void)thn_changeTextColor:(NSString *)color;
+
+- (void)thn_changeTextAlignment:(NSTextAlignment)align;
 
 - (void)thn_setPosterStyleInfoData:(THNPosterModelData *)data;
 

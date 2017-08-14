@@ -429,6 +429,10 @@
     [self.posterView thn_changeTextColor:color];
 }
 
+- (void)thn_selectAlignForChangeTextAlign:(NSTextAlignment)align {
+    [self.posterView thn_changeTextAlignment:align];
+}
+
 #pragma mark - 添加键盘检测
 - (void)thn_registerForKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -446,7 +450,6 @@
 
 //  键盘将出现
 - (void)keyboardWillShow:(NSNotification *)aNotification {
-    self.navRightItem.hidden = YES;
     NSDictionary *info = [aNotification userInfo];
     CGFloat keyboardHeight = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     [self thn_changeKeyboardToolViewHeight:keyboardHeight];
@@ -464,7 +467,6 @@
 //  键盘消失
 - (void)keyboardHidden:(NSNotification *)aNotification {
     if (self.keyboardView.changeTextColor.selected == NO && self.keyboardView.fontSize.selected == NO) {
-        self.navRightItem.hidden = NO;
         [self thn_changeKeyboardToolViewHeight:0.0f];
         [self thn_changeContentViewHeight:30.0f];
         [self thn_changeContentViewOffset:0.0f];
@@ -473,15 +475,15 @@
 
 //  改变键盘工具的高度
 - (void)thn_changeKeyboardToolViewHeight:(CGFloat)height {
-    if (self.keyboardView.changeTextColor.selected == YES) {
-        self.keyboardView.changeTextColor.selected = NO;
-    }
+    self.navRightItem.hidden = height == 0 ? NO : YES;
+    [self.posterView thn_showPosterTextViewBorder:height == 0 ? NO : YES];
+    self.keyboardView.changeTextColor.selected = NO;
+    self.keyboardView.fontSize.selected = NO;
     
     [self.keyboardView thn_refreshColorCollectionData];
     
     CGRect keyboardViewRect = self.keyboardView.frame;
     keyboardViewRect = CGRectMake(0, SCREEN_HEIGHT - (height), SCREEN_WIDTH, (height));
-    
     [UIView animateWithDuration:0.2 animations:^{
         self.keyboardView.frame = keyboardViewRect;
     }];

@@ -15,6 +15,7 @@
 - (void)thn_writeInputBoxBeginEditTextTool;
 - (void)thn_writeInputBoxEndEditTextTool;
 - (void)thn_selectColorForChangeTextColor:(NSString *)color;
+- (void)thn_selectAlignForChangeTextAlign:(NSTextAlignment)align;
 
 @end
 

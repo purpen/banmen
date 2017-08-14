@@ -12,6 +12,8 @@
 
 @interface THNPosterTextView () <UITextViewDelegate>
 
+@property (nonatomic, strong) UIView *layerView;
+
 @end
 
 @implementation THNPosterTextView
@@ -19,6 +21,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        [self addSubview:self.layerView];
         [self addSubview:self.posterTextView];
     }
     return self;
@@ -70,9 +73,31 @@
 }
 
 - (void)thn_showPosterTextViewBorder:(BOOL)show {
-    CGFloat colorAlpha = show ? 1 : 0;
-    self.layer.borderColor = [UIColor colorWithHexString:kColorRed alpha:colorAlpha].CGColor;
-    self.layer.borderWidth = 3.0f;
+    CGFloat layerAlpha = show ? 1 : 0;
+    self.layerView.alpha = layerAlpha;
+}
+
+#pragma mark - 边框
+- (UIView *)layerView {
+    if (!_layerView) {
+        _layerView = [[UIView alloc] initWithFrame:self.bounds];
+        _layerView.alpha = 0;
+        
+        [self drawLayerView:_layerView];
+    }
+    return _layerView;
+}
+
+- (void)drawLayerView:(UIView *)view {
+    CAShapeLayer *borderLayer = [CAShapeLayer layer];
+    borderLayer.bounds = view.bounds;
+    borderLayer.position = CGPointMake(CGRectGetMidX(view.bounds), CGRectGetMidY(view.bounds));
+    borderLayer.path = [UIBezierPath bezierPathWithRoundedRect:borderLayer.bounds cornerRadius:0].CGPath;
+    borderLayer.lineWidth = 3;
+    borderLayer.lineDashPattern = @[@10, @10];
+    borderLayer.fillColor = [UIColor colorWithHexString:kColorRed alpha:0].CGColor;
+    borderLayer.strokeColor = [UIColor colorWithHexString:kColorRed alpha:1].CGColor;
+    [view.layer addSublayer:borderLayer];
 }
 
 #pragma mark - 输入框
@@ -101,14 +126,14 @@
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    [self thn_showPosterTextViewBorder:YES];
+//    [self thn_showPosterTextViewBorder:YES];
     if ([self.delegate respondsToSelector:@selector(thn_textViewDidBeginEditing:)]) {
         [self.delegate thn_textViewDidBeginEditing:self];
     }
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
-    [self thn_showPosterTextViewBorder:NO];
+//    [self thn_showPosterTextViewBorder:NO];
     if ([self.delegate respondsToSelector:@selector(thn_textViewDidBeginEditing:)]) {
         [self.delegate thn_textViewDidBeginEditing:self];
     }
