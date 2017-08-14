@@ -200,9 +200,11 @@
         
         __weak typeof(self) weakSelf = self;
         [self.mapView addHandlerForAction:PYEchartActionClick withBlock:^(NSDictionary *params) {
+            NSLog(@"dsasdasd  %@", params);
+            
             [weakSelf.mapTapView removeFromSuperview];
-            CGFloat x = [params[@"event"][@"changedTouches"][@"0"][@"screenX"] floatValue];
-            CGFloat y = [params[@"event"][@"changedTouches"][@"0"][@"screenY"] floatValue];
+            CGFloat x = [params[@"event"][@"zrenderX"] floatValue];
+            CGFloat y = [params[@"event"][@"zrenderY"] floatValue];
             weakSelf.mapTapView.width = 60;
             weakSelf.mapTapView.height = 64;
             weakSelf.mapTapView.x = x-10/667.0*SCREEN_HEIGHT;
