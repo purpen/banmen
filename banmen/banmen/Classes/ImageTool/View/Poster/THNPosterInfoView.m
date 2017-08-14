@@ -63,6 +63,14 @@ static NSInteger const imageViewTag = 3821;
     self.tempTextView.posterTextView.textColor = [UIColor colorWithHexString:color];
 }
 
+- (void)thn_changeTextAlignment:(NSTextAlignment)align {
+    self.tempTextView.posterTextView.textAlignment = align;
+}
+
+- (void)thn_showPosterTextViewBorder:(BOOL)show {
+    [self.tempTextView thn_showPosterTextViewBorder:show];
+}
+
 #pragma mark - 添加海报默认信息
 - (UIView *)controlView {
     if (!_controlView) {

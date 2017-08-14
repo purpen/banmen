@@ -34,4 +34,6 @@
 
 - (void)thn_becomeFirstResponder;
 
+- (void)thn_showPosterTextViewBorder:(BOOL)show;
+
 @end
