@@ -172,7 +172,8 @@
         set1.drawCircleHoleEnabled = YES;
         set1.drawCirclesEnabled = NO;//是否绘制拐点
         set1.drawFilledEnabled = YES;//是否填充颜色
-        set1.fill = [ChartFill fillWithColor:[UIColor colorWithHexString:kColorDefalut]];
+        set1.fillColor = [UIColor colorWithHexString:kColorDefalut];
+//        set1.fill = [ChartFill fillWithColor:[UIColor colorWithHexString:kColorDefalut]];
         set1.valueFont = [UIFont systemFontOfSize:9.f];
         set1.formLineDashLengths = @[@5.f, @2.5f];
         set1.formLineWidth = 1.0;
@@ -237,7 +238,7 @@
         
         ChartMarkerView *marker = [[ChartMarkerView alloc] init];
         marker.backgroundColor = [UIColor blackColor];
-        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PlayButton"]];
+        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Dot"]];
         image.frame = CGRectMake(0, 0, 10, 10);
         image.center = marker.center;
         [marker addSubview:image];

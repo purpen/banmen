@@ -238,7 +238,7 @@
         
         ChartMarkerView *marker = [[ChartMarkerView alloc] init];
         marker.backgroundColor = [UIColor blackColor];
-        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PlayButton"]];
+        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Dot"]];
         image.frame = CGRectMake(0, 0, 10, 10);
         image.center = marker.center;
         [marker addSubview:image];
