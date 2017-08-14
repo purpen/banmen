@@ -214,6 +214,7 @@
 		F595FE2A1F1E144A006F4E46 /* SalesChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE291F1E144A006F4E46 /* SalesChannelsView.m */; };
 		F5A42CDC1F207E51006687D8 /* EditUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A42CDB1F207E51006687D8 /* EditUserInfoViewController.m */; };
 		F5A42CDF1F207F4F006687D8 /* EditUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A42CDE1F207F4F006687D8 /* EditUserView.m */; };
+		F5AC62341F418DD00053EC0C /* THNMapTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AC62331F418DD00053EC0C /* THNMapTapView.m */; };
 		F5ADCD931F1F077C001FC5DD /* ChannelsItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */; };
 		F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */; };
 		F5B30B6D1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */; };
@@ -633,6 +634,8 @@
 		F5A42CDB1F207E51006687D8 /* EditUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserInfoViewController.m; sourceTree = "<group>"; };
 		F5A42CDD1F207F4F006687D8 /* EditUserView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserView.h; sourceTree = "<group>"; };
 		F5A42CDE1F207F4F006687D8 /* EditUserView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserView.m; sourceTree = "<group>"; };
+		F5AC62321F418DD00053EC0C /* THNMapTapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNMapTapView.h; sourceTree = "<group>"; };
+		F5AC62331F418DD00053EC0C /* THNMapTapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNMapTapView.m; sourceTree = "<group>"; };
 		F5ADCD911F1F077C001FC5DD /* ChannelsItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChannelsItemTableViewCell.h; sourceTree = "<group>"; };
 		F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChannelsItemTableViewCell.m; sourceTree = "<group>"; };
 		F5ADCD941F1F3882001FC5DD /* UnitPriceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitPriceModel.h; sourceTree = "<group>"; };
@@ -847,6 +850,8 @@
 				F57139EB1F2840A800C1A62B /* THNPictureCollectionViewCell.h */,
 				F57139EC1F2840A800C1A62B /* THNPictureCollectionViewCell.m */,
 				F5E2CD241F39A848009C8B77 /* banmen-Bridging-Header.h */,
+				F5AC62321F418DD00053EC0C /* THNMapTapView.h */,
+				F5AC62331F418DD00053EC0C /* THNMapTapView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2056,6 +2061,7 @@
 				F595FE2A1F1E144A006F4E46 /* SalesChannelsView.m in Sources */,
 				F58DE8EE1F20B05800C80ECF /* THNJointChildView.m in Sources */,
 				D8ED5D901EF906060046642C /* UIImage+Helper.m in Sources */,
+				F5AC62341F418DD00053EC0C /* THNMapTapView.m in Sources */,
 				D8E957F51F288F3E003F9A29 /* THNPosterModelImage.m in Sources */,
 				F52AD5D21F305F770098282A /* THNListTableViewCell.m in Sources */,
 				F595FE141F1DAB0D006F4E46 /* SalesTrendsModel.m in Sources */,
