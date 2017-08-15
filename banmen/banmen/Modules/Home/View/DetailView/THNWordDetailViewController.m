@@ -58,6 +58,15 @@
     self.wordView.layer.masksToBounds = YES;
     self.wordView.layer.cornerRadius = 5;
     self.textView.text = self.word;
+    
+    NSString *labelText = self.textView.text;
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:labelText];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:5];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [labelText length])];
+    self.textView.attributedText = attributedString;
+    [self.textView sizeToFit];
+    
     CGSize sizeToFit = [self.textView sizeThatFits:CGSizeMake(SCREEN_WIDTH-40, MAXFLOAT)];
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.wordView.mas_bottom).offset(-5);
