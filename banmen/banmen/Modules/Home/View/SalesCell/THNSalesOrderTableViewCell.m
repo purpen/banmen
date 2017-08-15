@@ -163,7 +163,9 @@
         set1.drawIconsEnabled = NO;
         set1.drawValuesEnabled = NO;
         
-        set1.lineDashLengths = @[@5.f, @2.5f];
+        set1.mode = LineChartModeHorizontalBezier;
+        
+        set1.lineDashLengths = @[@5.f, @0.f];
         set1.highlightLineDashLengths = @[@5.f, @2.5f];
         [set1 setColor:UIColor.blackColor];
         [set1 setCircleColor:UIColor.blackColor];
@@ -171,7 +173,7 @@
         set1.circleRadius = 3.0;
         set1.drawCircleHoleEnabled = YES;
         set1.drawCirclesEnabled = NO;//是否绘制拐点
-        set1.drawFilledEnabled = YES;//是否填充颜色
+        set1.drawFilledEnabled = NO;//是否填充颜色
         set1.fill = [ChartFill fillWithColor:[UIColor colorWithHexString:kColorDefalut]];
         set1.valueFont = [UIFont systemFontOfSize:9.f];
         set1.formLineDashLengths = @[@5.f, @2.5f];
