@@ -14,6 +14,7 @@
 #import "ChartsSwift.h"
 #import "UnitPriceModel.h"
 #import "DateValueFormatter.h"
+#import "ColorMacro.h"
 
 @interface UnitPriceTableViewCell() <ChartViewDelegate>
 
@@ -22,7 +23,6 @@
 @property (strong,nonatomic)NSMutableArray *x_names;
 @property (strong,nonatomic)NSMutableArray *targets;
 @property (strong,nonatomic)UIView *lineview;
-@property (strong,nonatomic) BarChartView *barChartView;
 
 @end
 
@@ -44,8 +44,8 @@
             make.top.mas_equalTo(self.salesLabel.mas_bottom).mas_offset(10);
         }];
         
-        [self.contentView addSubview:self.barChartView];
-        [_barChartView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.contentView addSubview:self.lineChartView];
+        [_lineChartView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.salesLabel.mas_left).mas_offset(0);
             make.top.mas_equalTo(self.topLeftTwoLabel.mas_bottom).mas_offset(5);
             make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-15);
@@ -75,51 +75,97 @@
 
 -(void)setModelAry:(NSArray *)modelAry{
     _modelAry = modelAry;
-    UnitPriceModel *model0 = modelAry[0];
-    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"客单价%@：%@%%", model0.range, model0.proportion];
+    UnitPriceModel *model = modelAry[0];
+    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"客单价%@：%@%%", model.range, model.proportion];
     
-    //X轴上面需要显示的数据
-    NSMutableArray *xVals = [[NSMutableArray alloc] init];
+    CGFloat maxMoney = [model.count floatValue];
+    CGFloat minMoney = [model.count floatValue];
     for (int i = 0; i < modelAry.count; i++) {
         UnitPriceModel *model = modelAry[i];
-        [xVals addObject:model.range];
+        if ([model.count floatValue] > maxMoney) {
+            maxMoney = [model.count floatValue];
+        }
+        if ([model.count floatValue] < minMoney) {
+            minMoney = [model.count floatValue];
+        }
     }
-    _barChartView.xAxis.valueFormatter = [[DateValueFormatter alloc] initWithArr:xVals];
+    ChartYAxis *leftAxis = self.lineChartView.leftAxis;
+    leftAxis.axisMaximum = maxMoney;
+    leftAxis.axisMinimum = minMoney;
     
-    NSMutableArray *yVals = [[NSMutableArray alloc] init];
+    
+    NSMutableArray *values = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < modelAry.count; i++)
     {
         UnitPriceModel *model = modelAry[i];
-        CGFloat val = [model.proportion floatValue];
-        [yVals addObject:[[BarChartDataEntry alloc] initWithX:i y:val]];
+        CGFloat val = [model.count floatValue];
+        [values addObject:[[ChartDataEntry alloc] initWithX:i y:val icon: [UIImage imageNamed:@"icon"]]];
     }
     
-    BarChartDataSet *set1 = nil;
-    if (_barChartView.data.dataSetCount > 0)
+    NSInteger xVals_count = modelAry.count;//X轴上要显示多少条数据
+    //X轴上面需要显示的数据
+    NSMutableArray *xVals = [[NSMutableArray alloc] init];
+    for (int i = 0; i < xVals_count; i++) {
+        UnitPriceModel *model = modelAry[i];
+        [xVals addObject:model.range];
+    }
+    self.lineChartView.xAxis.valueFormatter = [[DateValueFormatter alloc] initWithArr:xVals];
+    
+    LineChartDataSet *set1 = nil;
+    if (_lineChartView.data.dataSetCount > 0)
     {
-        set1 = (BarChartDataSet *)_barChartView.data.dataSets[0];
-        set1.values = yVals;
-        [_barChartView.data notifyDataChanged];
-        [_barChartView notifyDataSetChanged];
+        set1 = (LineChartDataSet *)_lineChartView.data.dataSets[0];
+        set1.values = values;
+        self.lineChartView.maxVisibleCount = 6;
+        [_lineChartView.data notifyDataChanged];
+        [_lineChartView notifyDataSetChanged];
     }
     else
     {
-        set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@"The year 2017"];
-        set1.highlightEnabled = YES;//点击选中柱形图是否有高亮效果，（双击空白处取消选中）
-        [set1 setColors:ChartColorTemplates.material];
+        set1 = [[LineChartDataSet alloc] initWithValues:values label:nil];
+        
+        
         set1.drawIconsEnabled = NO;
-        [set1 setColor:[UIColor colorWithHexString:@"#ff3266"]];//设置柱形图颜色
+        set1.drawValuesEnabled = NO;
+        
+        
+        set1.mode = LineChartModeHorizontalBezier;
+        
+        set1.lineDashLengths = @[@100.f, @0.f];
+        set1.highlightLineDashLengths = @[@5.f, @2.5f];
+        [set1 setColor:UIColor.blackColor];
+        [set1 setCircleColor:UIColor.blackColor];
+        set1.lineWidth = 1.0;
+        set1.circleRadius = 3.0;
+        set1.drawCircleHoleEnabled = YES;
+        set1.drawCirclesEnabled = NO;//是否绘制拐点
+        set1.drawFilledEnabled = NO;//是否填充颜色
+        set1.fillColor = [UIColor colorWithHexString:kColorDefalut];
+        set1.valueFont = [UIFont systemFontOfSize:9.f];
+        set1.formLineDashLengths = @[@5.f, @2.5f];
+        set1.formLineWidth = 1.0;
+        set1.formSize = 15.0;
+        [set1 setColor:[UIColor colorWithHexString:kColorDefalut]];//折线颜色
+        
+        NSArray *gradientColors = @[
+                                    (id)[ChartColorTemplates colorFromString:@"#00ff0000"].CGColor,
+                                    (id)[ChartColorTemplates colorFromString:@"#ffff0000"].CGColor
+                                    ];
+        CGGradientRef gradient = CGGradientCreateWithColors(nil, (CFArrayRef)gradientColors, nil);
+        
+        set1.fillAlpha = 1.f;
+        set1.fill = [ChartFill fillWithLinearGradient:gradient angle:90.f];
+        
+        CGGradientRelease(gradient);
         
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
         [dataSets addObject:set1];
         
-        BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
-        [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.f]];
+        LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
         
-        data.barWidth = 0.9f;
-        
-        _barChartView.data = data;
+        _lineChartView.data = data;
+        self.lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
     }
 }
 
@@ -137,50 +183,53 @@
     }
 }
 
--(BarChartView *)barChartView{
-    if (!_barChartView) {
-        _barChartView = [[BarChartView alloc] init];
-        _barChartView.delegate = self;
-        _barChartView.noDataText = @"暂无数据";
-        _barChartView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
+-(LineChartView *)lineChartView{
+    if (!_lineChartView) {
+        _lineChartView = [[LineChartView alloc] init];
+        _lineChartView.noDataText = @"暂无数据";
+        _lineChartView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
+        _lineChartView.delegate = self;
+        _lineChartView.chartDescription.enabled = NO;
+        _lineChartView.dragEnabled = YES;
+        [_lineChartView setScaleEnabled:NO];
+        _lineChartView.pinchZoomEnabled = NO;
+        _lineChartView.drawGridBackgroundEnabled = NO;
         
-        _barChartView.descriptionText = @"";//不显示，就设为空字符串即可
+        _lineChartView.xAxis.gridLineDashLengths = @[@10.0, @10.0];
+        _lineChartView.xAxis.gridLineDashPhase = 0.f;
+        _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
+        _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
+        _lineChartView.xAxis.labelFont = [UIFont systemFontOfSize:7];
+        _lineChartView.xAxis.gridColor = [UIColor colorWithHexString:@"#E7E7E7"];
         
-        _barChartView.drawBarShadowEnabled = NO;
-        _barChartView.drawValueAboveBarEnabled = YES;
-        _barChartView.scaleYEnabled = NO;//取消Y轴缩放
-        _barChartView.doubleTapToZoomEnabled = NO;//取消双击缩放
+        ChartYAxis *leftAxis = _lineChartView.leftAxis;
+        [leftAxis removeAllLimitLines];
+        leftAxis.gridLineDashLengths = @[@1.f, @1.f];
+        leftAxis.gridColor = [UIColor colorWithHexString:@"#E7E7E7"];
+        leftAxis.drawZeroLineEnabled = NO;
+        leftAxis.drawLimitLinesBehindDataEnabled = YES;
         
-        _barChartView.maxVisibleCount = 60;
         
-        ChartXAxis *xAxis = _barChartView.xAxis;
-        xAxis.labelPosition = XAxisLabelPositionBottom;
-        xAxis.labelFont = [UIFont systemFontOfSize:5.f];
-        xAxis.drawGridLinesEnabled = NO;
-        xAxis.granularity = 1.0; // only intervals of 1 day
-        xAxis.labelCount = 7;
-        xAxis.axisLineWidth = 1;//设置X轴线宽
-        xAxis.gridAntialiasEnabled = YES;//开启抗锯齿
         
-        NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
-        leftAxisFormatter.minimumFractionDigits = 0;
-        leftAxisFormatter.maximumFractionDigits = 1;
+        _lineChartView.rightAxis.enabled = NO;
         
-        _barChartView.rightAxis.enabled = NO;//不绘制右边轴
+        _lineChartView.legend.enabled = NO;
         
-        ChartYAxis *leftAxis = _barChartView.leftAxis;
-        leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
-        leftAxis.labelCount = 8;
-        leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:leftAxisFormatter];
-        leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
-        leftAxis.spaceTop = 0.15;
-        leftAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
-        leftAxis.drawGridLinesEnabled = NO;
+        ChartMarkerView *marker = [[ChartMarkerView alloc] init];
+        marker.backgroundColor = [UIColor blackColor];
+        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Dot"]];
+        image.frame = CGRectMake(0, 0, 10, 10);
+        image.center = marker.center;
+        [marker addSubview:image];
+        //        marker.size = CGSizeMake(80.f, 40.f);
+        _lineChartView.marker = marker;
         
-        _barChartView.legend.enabled = NO;//不显示图例说明
+        [_lineChartView animateWithXAxisDuration:2.5];
+        
     }
-    return _barChartView;
+    return _lineChartView;
 }
+
 
 -(UIButton *)dateSelectBtn{
     if (!_dateSelectBtn) {

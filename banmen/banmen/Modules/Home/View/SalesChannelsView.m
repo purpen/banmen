@@ -99,9 +99,18 @@
     for (int i = 0; i < modelAry.count; i++) {
         SalesChannelsModel *model = modelAry[i];
         if ([model.proportion intValue] != 0) {
-            [values addObject:[[PieChartDataEntry alloc] initWithValue:[model.proportion doubleValue] label:model.name]];
+            [values addObject:[[PieChartDataEntry alloc] initWithValue:[model.proportion doubleValue] label:[NSString stringWithFormat:@"%@%@%%", model.name, model.proportion]]];
         }
     }
+    
+    _pieChartView.legend.maxSizePercent = 1;//图例在饼状图中的大小占比, 这会影响图例的宽高
+    _pieChartView.legend.formToTextSpace = 5;//文本间隔
+    _pieChartView.legend.font = [UIFont systemFontOfSize:10];//字体大小
+    _pieChartView.legend.textColor = [UIColor grayColor];//字体颜色
+    _pieChartView.legend.position = ChartLegendPositionBelowChartCenter;//图例在饼状图中的位置
+    _pieChartView.legend.form = ChartLegendFormSquare;//图示样式: 方形、线条、圆形
+    _pieChartView.legend.formSize = 12;//图示大小
+    
     if (values.count > 0) {
         //dataSet
         PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@""];
@@ -168,13 +177,7 @@
         _pieChartView.holeColor = [UIColor clearColor];//空心颜色
         _pieChartView.transparentCircleRadiusPercent = 0.52;//半透明空心半径占比
         _pieChartView.transparentCircleColor = [UIColor colorWithRed:210/255.0 green:145/255.0 blue:165/255.0 alpha:0.3];//半透明空心的颜色
-        _pieChartView.legend.maxSizePercent = 1;//图例在饼状图中的大小占比, 这会影响图例的宽高
-        _pieChartView.legend.formToTextSpace = 5;//文本间隔
-        _pieChartView.legend.font = [UIFont systemFontOfSize:10];//字体大小
-        _pieChartView.legend.textColor = [UIColor grayColor];//字体颜色
-        _pieChartView.legend.position = ChartLegendPositionBelowChartCenter;//图例在饼状图中的位置
-        _pieChartView.legend.form = ChartLegendFormSquare;//图示样式: 方形、线条、圆形
-        _pieChartView.legend.formSize = 12;//图示大小
+        
         _pieChartView.descriptionText = @"";
     }
     return _pieChartView;
