@@ -21,7 +21,7 @@
         [self.contentView addSubview:self.imageView];
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).mas_offset(15);
-            make.centerY.mas_equalTo(self.contentView.centerY).mas_offset(0);
+            make.centerY.mas_equalTo(self.contentView.centerY).mas_offset(-5);
             make.width.mas_equalTo(100);
             make.height.mas_equalTo(142/2);
         }];
