@@ -137,7 +137,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return 245+50;
+        return 245+50+35;
     }
     return (self.modelAry.count*30+50);
 }
@@ -145,6 +145,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+        
         [cell.contentView addSubview:self.mapView];
         [_mapView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(cell.contentView.mas_left).mas_offset(15);
@@ -181,9 +182,9 @@
             THNOrderAreaModel *model = self.modelAry[i];
             NSString *str = model.buyer_province;
             CGFloat ahpa = [model.sum_money floatValue]/maxNum;
-            if (ahpa < 0.1) {
-                ahpa = 0.1;
-            }
+//            if (ahpa < 0.1) {
+//                ahpa = 0.1;
+//            }
             NSString *strValue = model.sum_money;
             NSString *str2 = [NSString stringWithFormat:@"{\"z\":\"%f\",\"name\":\"%@\",\"value\":%@,\"itemStyle\":{\"normal\":{\"color\":\"rgba(240,180,0,%f)\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"#fff\",\"fontSize\":15}}},\"emphasis\":{\"borderWidth\":1,\"borderColor\":\"#B48212\",\"color\":\"#F7A113\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"blue\"}}}}}", ahpa, str, strValue, ahpa];
             [strAry addObject:str2];
@@ -191,7 +192,7 @@
         
         NSString *str3 = [strAry componentsJoinedByString:@","];
 //        NSString *str4 = [str3 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
-        NSString *jsonStr = [NSString stringWithFormat:@"{\"series\":[{\"name\":\"\",\"type\":\"map\",\"mapLocation\":{\"x\":\"center\",\"y\":\"top\",\"height\":220},\"selectedMode\":\"linkEdit\",\"itemStyle\":{\"normal\":{\"borderWidth\":1,\"borderColor\":\"#DDA10D\",\"color\":\"rgba(240,180,0,0.1)\",\"label\":{\"show\":false}},\"\":{\"borderWidth\":1,\"borderColor\":\"#fff\",\"color\":\"#32cd32\",\"label\":{\"show\":true,\"textStyle\":{\"color\":\"#B48212\"}}}},\"data\":[%@],\"\":{\"itemStyle\":{\"normal\":{\"color\":\"skyblue\"}},\"data\":[{\"name\":\"天津\",\"value\":350},{\"name\":\"上海\",\"value\":103},{\"name\":\"echarts\",\"symbolSize\":21,\"x\":150,\"y\":50}]},\"geoCoord\":{\"上海\":[121.4648,31.2891],\"天津\":[117.4219,39.4189]}}]}", str3];
+        NSString *jsonStr = [NSString stringWithFormat:@"{\"series\":[{\"name\":\"\",\"type\":\"map\",\"mapLocation\":{\"x\":\"center\",\"y\":\"top\",\"height\":300},\"selectedMode\":\"linkEdit\",\"itemStyle\":{\"normal\":{\"borderWidth\":1,\"borderColor\":\"#DDA10D\",\"color\":\"rgba(240,180,0,0)\",\"label\":{\"show\":false}},\"\":{\"borderWidth\":1,\"borderColor\":\"#fff\",\"color\":\"#32cd32\",\"label\":{\"show\":true,\"textStyle\":{\"color\":\"#B48212\"}}}},\"data\":[%@],\"\":{\"itemStyle\":{\"normal\":{\"color\":\"skyblue\"}},\"data\":[{\"name\":\"天津\",\"value\":350},{\"name\":\"上海\",\"value\":103},{\"name\":\"echarts\",\"symbolSize\":21,\"x\":150,\"y\":50}]},\"geoCoord\":{\"上海\":[121.4648,31.2891],\"天津\":[117.4219,39.4189]}}]}", str3];
         NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
         NSError *error;
         NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
