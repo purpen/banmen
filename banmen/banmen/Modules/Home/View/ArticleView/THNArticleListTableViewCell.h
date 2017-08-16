@@ -13,7 +13,10 @@
 
 @property (nonatomic, strong) UILabel *wordLabel;
 @property (nonatomic, strong) UILabel *fromLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIImageView *bgImageView;
 @property (nonatomic, strong) THNGoodsArticleModel *goodsArticleModel;
 
 @end

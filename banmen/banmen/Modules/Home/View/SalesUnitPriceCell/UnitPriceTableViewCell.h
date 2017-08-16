@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChartsSwift.h"
 
 @interface UnitPriceTableViewCell : UITableViewCell
 
@@ -14,5 +15,6 @@
 @property (strong,nonatomic) NSArray *modelAry;
 @property (strong,nonatomic) UILabel *timeLabel;
 @property (strong,nonatomic) NSArray *timeAry;
+@property (strong,nonatomic) LineChartView *lineChartView;
 
 @end

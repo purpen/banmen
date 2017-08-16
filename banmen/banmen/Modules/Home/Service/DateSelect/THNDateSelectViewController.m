@@ -75,12 +75,16 @@
 
 - (NSDate *)minimumDateForCalendar:(FSCalendar *)calendar
 {
-    return [self.dateFormatter dateFromString:@"2016-07-08"];
+//    return [self.dateFormatter dateFromString:@"2016-07-08"];
+    NSTimeInterval  oneDay = 24*60*60*1;
+    NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*30*12 sinceDate:[NSDate date]];
+    return theDate;
 }
 
 - (NSDate *)maximumDateForCalendar:(FSCalendar *)calendar
 {
-    return [self.gregorian dateByAddingUnit:NSCalendarUnitMonth value:10 toDate:[NSDate date] options:0];
+//    return [self.gregorian dateByAddingUnit:NSCalendarUnitMonth value:10 toDate:[NSDate date] options:0];
+    return [NSDate date];
 }
 
 - (NSString *)calendar:(FSCalendar *)calendar titleForDate:(NSDate *)date

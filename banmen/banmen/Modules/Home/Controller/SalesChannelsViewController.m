@@ -30,8 +30,9 @@
     [date_formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
     NSTimeInterval  oneDay = 24*60*60*1;
-    NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
+    NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*30 sinceDate:[NSDate date]];
     NSString *the_date_str = [date_formatter stringFromDate:theDate];
+    self.timeAry = @[the_date_str, current_date_str];
     self.s.sDelegate = self;
     [self.s getSalesChannelsModelItem:current_date_str andEndTime:the_date_str];
 }

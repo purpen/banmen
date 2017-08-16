@@ -188,6 +188,7 @@
 		F57139ED1F2840A800C1A62B /* THNPictureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F57139EC1F2840A800C1A62B /* THNPictureCollectionViewCell.m */; };
 		F57139F01F28490500C1A62B /* THNVideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F57139EF1F28490500C1A62B /* THNVideoCollectionViewCell.m */; };
 		F576F7121F330EB0000DEE58 /* RTagCloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5107D461F330D2E00B81111 /* RTagCloudView.m */; };
+		F5811C631F42854200B9085D /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = F5811C621F42854200B9085D /* UILabel+ChangeLineSpaceAndWordSpace.m */; };
 		F58DE8BD1F20A25800C80ECF /* ChangPsdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8BB1F20A25800C80ECF /* ChangPsdViewController.m */; };
 		F58DE8BE1F20A25800C80ECF /* ChangPsdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58DE8BC1F20A25800C80ECF /* ChangPsdViewController.xib */; };
 		F58DE8C11F20AD2100C80ECF /* GoodDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DE8C01F20AD2100C80ECF /* GoodDetailsViewController.m */; };
@@ -214,6 +215,7 @@
 		F595FE2A1F1E144A006F4E46 /* SalesChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F595FE291F1E144A006F4E46 /* SalesChannelsView.m */; };
 		F5A42CDC1F207E51006687D8 /* EditUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A42CDB1F207E51006687D8 /* EditUserInfoViewController.m */; };
 		F5A42CDF1F207F4F006687D8 /* EditUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A42CDE1F207F4F006687D8 /* EditUserView.m */; };
+		F5AC62341F418DD00053EC0C /* THNMapTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AC62331F418DD00053EC0C /* THNMapTapView.m */; };
 		F5ADCD931F1F077C001FC5DD /* ChannelsItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */; };
 		F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */; };
 		F5B30B6D1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */; };
@@ -581,6 +583,8 @@
 		F57139EC1F2840A800C1A62B /* THNPictureCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPictureCollectionViewCell.m; sourceTree = "<group>"; };
 		F57139EE1F28490500C1A62B /* THNVideoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNVideoCollectionViewCell.h; sourceTree = "<group>"; };
 		F57139EF1F28490500C1A62B /* THNVideoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNVideoCollectionViewCell.m; sourceTree = "<group>"; };
+		F5811C611F42854200B9085D /* UILabel+ChangeLineSpaceAndWordSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ChangeLineSpaceAndWordSpace.h"; sourceTree = "<group>"; };
+		F5811C621F42854200B9085D /* UILabel+ChangeLineSpaceAndWordSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ChangeLineSpaceAndWordSpace.m"; sourceTree = "<group>"; };
 		F58DE8BA1F20A25800C80ECF /* ChangPsdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangPsdViewController.h; sourceTree = "<group>"; };
 		F58DE8BB1F20A25800C80ECF /* ChangPsdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangPsdViewController.m; sourceTree = "<group>"; };
 		F58DE8BC1F20A25800C80ECF /* ChangPsdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangPsdViewController.xib; sourceTree = "<group>"; };
@@ -633,6 +637,8 @@
 		F5A42CDB1F207E51006687D8 /* EditUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserInfoViewController.m; sourceTree = "<group>"; };
 		F5A42CDD1F207F4F006687D8 /* EditUserView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserView.h; sourceTree = "<group>"; };
 		F5A42CDE1F207F4F006687D8 /* EditUserView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserView.m; sourceTree = "<group>"; };
+		F5AC62321F418DD00053EC0C /* THNMapTapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNMapTapView.h; sourceTree = "<group>"; };
+		F5AC62331F418DD00053EC0C /* THNMapTapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNMapTapView.m; sourceTree = "<group>"; };
 		F5ADCD911F1F077C001FC5DD /* ChannelsItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChannelsItemTableViewCell.h; sourceTree = "<group>"; };
 		F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChannelsItemTableViewCell.m; sourceTree = "<group>"; };
 		F5ADCD941F1F3882001FC5DD /* UnitPriceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitPriceModel.h; sourceTree = "<group>"; };
@@ -847,6 +853,8 @@
 				F57139EB1F2840A800C1A62B /* THNPictureCollectionViewCell.h */,
 				F57139EC1F2840A800C1A62B /* THNPictureCollectionViewCell.m */,
 				F5E2CD241F39A848009C8B77 /* banmen-Bridging-Header.h */,
+				F5AC62321F418DD00053EC0C /* THNMapTapView.h */,
+				F5AC62331F418DD00053EC0C /* THNMapTapView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1232,6 +1240,8 @@
 				D86074141EF9026A00AB6F53 /* UIView+FSExtension.m */,
 				D860740D1EF9026A00AB6F53 /* UIView+Size.h */,
 				D860740C1EF9026A00AB6F53 /* UIView+Size.m */,
+				F5811C611F42854200B9085D /* UILabel+ChangeLineSpaceAndWordSpace.h */,
+				F5811C621F42854200B9085D /* UILabel+ChangeLineSpaceAndWordSpace.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -2056,6 +2066,7 @@
 				F595FE2A1F1E144A006F4E46 /* SalesChannelsView.m in Sources */,
 				F58DE8EE1F20B05800C80ECF /* THNJointChildView.m in Sources */,
 				D8ED5D901EF906060046642C /* UIImage+Helper.m in Sources */,
+				F5AC62341F418DD00053EC0C /* THNMapTapView.m in Sources */,
 				D8E957F51F288F3E003F9A29 /* THNPosterModelImage.m in Sources */,
 				F52AD5D21F305F770098282A /* THNListTableViewCell.m in Sources */,
 				F595FE141F1DAB0D006F4E46 /* SalesTrendsModel.m in Sources */,
@@ -2064,6 +2075,7 @@
 				F52AD5CD1F3052F60098282A /* THNSalesListModel.m in Sources */,
 				D8ED5D941EF906060046642C /* UIImageView+SDWedImage.m in Sources */,
 				F55DD7FC1F03B2B7004915E3 /* BaseViewController.m in Sources */,
+				F5811C631F42854200B9085D /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */,
 				D847DE6F1F00C1DA007E301E /* PostersViewController.m in Sources */,
 				D8ED5D961EF906060046642C /* UILable+Frame.m in Sources */,
 				F57139F01F28490500C1A62B /* THNVideoCollectionViewCell.m in Sources */,

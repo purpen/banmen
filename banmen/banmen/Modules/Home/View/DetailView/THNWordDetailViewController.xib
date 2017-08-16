@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="17A264c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,7 +26,7 @@
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48q-YF-hUy">
                     <rect key="frame" x="15" y="228.5" width="345" height="210"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" text="撒的撒的撒旦萨达是的撒的撒大三大四打算的萨达是哒是哒是的撒大三大四打算的萨顶顶撒打算" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uRb-vP-xD6">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" text="撒的撒的撒旦萨达是的撒的撒大三大四打算的萨达是哒是哒是的撒大三大四打算的萨顶顶撒打算" translatesAutoresizingMaskIntoConstraints="NO" id="uRb-vP-xD6">
                             <rect key="frame" x="5" y="5" width="335" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,7 +62,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ptp-9A-7I1" firstAttribute="centerY" secondItem="w8J-el-Tmz" secondAttribute="centerY" id="DL1-zh-XTM"/>
                 <constraint firstItem="48q-YF-hUy" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="VNX-o6-70N"/>

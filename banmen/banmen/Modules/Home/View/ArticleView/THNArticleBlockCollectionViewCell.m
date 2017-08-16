@@ -12,6 +12,7 @@
 #import "OtherMacro.h"
 #import "UIImageView+WebCache.h"
 #import "UIView+FSExtension.h"
+#import "UILabel+ChangeLineSpaceAndWordSpace.h"
 
 @implementation THNArticleBlockCollectionViewCell
 
@@ -21,7 +22,7 @@
         [self.contentView addSubview:self.imageView];
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).mas_offset(15);
-            make.centerY.mas_equalTo(self.contentView.centerY).mas_offset(0);
+            make.centerY.mas_equalTo(self.contentView.centerY).mas_offset(-5);
             make.width.mas_equalTo(100);
             make.height.mas_equalTo(142/2);
         }];
@@ -38,25 +39,25 @@
         [_wordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.imageView.mas_right).mas_offset(10);
             make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-15);
-            make.top.mas_equalTo(self.imageView.mas_top).mas_offset(3);
+            make.top.mas_equalTo(self.imageView.mas_top).mas_offset(2);
         }];
         
         [self.contentView addSubview:self.fromLabel];
         [_fromLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.wordLabel.mas_left).mas_offset(0);
-            make.top.mas_equalTo(self.wordLabel.mas_bottom).mas_offset(5);
+            make.top.mas_equalTo(self.wordLabel.mas_bottom).mas_offset(3);
         }];
         
         [self.contentView addSubview:self.timeLabel];
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.wordLabel.mas_left).mas_offset(0);
-            make.top.mas_equalTo(self.fromLabel.mas_bottom).mas_offset(5);
+            make.top.mas_equalTo(self.fromLabel.mas_bottom).mas_offset(3);
         }];
         
         [self.contentView addSubview:self.contentLabel];
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.wordLabel.mas_left).mas_offset(0);
-            make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(5);
+            make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(3);
             make.bottom.mas_equalTo(self.imageView.mas_bottom).mas_offset(0);
             make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-10);
         }];
@@ -70,17 +71,43 @@
     self.fromLabel.text = [NSString stringWithFormat:@"来源：%@", goodsArticleModel.site_from];
     self.timeLabel.text = goodsArticleModel.article_time;
     self.contentLabel.text = goodsArticleModel.article_describe;
+    [UILabel changeLineSpaceForLabel:self.contentLabel WithSpace:5];
     self.wordLabel.text = goodsArticleModel.title;
     if (goodsArticleModel.cover_srcfile.length == 0) {
         self.imageView.hidden = YES;
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(0);
         }];
+        
+        [_wordLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(15);
+            make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-15);
+            make.top.mas_equalTo(self.contentView.mas_top).mas_offset(5);
+        }];
+        
+        [_contentLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.wordLabel.mas_left).mas_offset(0);
+            make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(3);
+            make.bottom.mas_equalTo(self.contentView.mas_bottom).mas_offset(-3);
+            make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-10);
+        }];
         [self.contentView layoutIfNeeded];
     } else {
         self.imageView.hidden = NO;
         [_imageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(100);
+        }];
+        [_wordLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.imageView.mas_right).mas_offset(10);
+            make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-15);
+            make.top.mas_equalTo(self.imageView.mas_top).mas_offset(2);
+        }];
+        
+        [_contentLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.wordLabel.mas_left).mas_offset(0);
+            make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(3);
+            make.bottom.mas_equalTo(self.imageView.mas_bottom).mas_offset(0);
+            make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-10);
         }];
     }
 }

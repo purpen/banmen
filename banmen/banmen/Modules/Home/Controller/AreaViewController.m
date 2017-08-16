@@ -14,6 +14,7 @@
 #import "RMMapper.h"
 #import "HotelCalendarViewController.h"
 #import "THNDateSelectViewController.h"
+#import "THNMapTapView.h"
 
 @interface AreaViewController ()<UITableViewDelegate,UITableViewDataSource, THNOrderAreaModelDelegate, THNDateSelectViewControllerDelegate>
 
@@ -25,6 +26,8 @@
 @property (strong,nonatomic) UILabel *tipLabel;
 @property (strong,nonatomic) NSArray *timeAry;
 @property (assign,nonatomic) NSInteger *numFlag;
+@property (strong,nonatomic) THNMapTapView *mapTapView;
+@property (assign,nonatomic) CGFloat contentoffsetY;
 
 @end
 
@@ -53,6 +56,13 @@
         _mapView.userInteractionEnabled = YES;
     }
     return _mapView;
+}
+
+-(THNMapTapView *)mapTapView{
+    if (!_mapTapView) {
+        _mapTapView = [[THNMapTapView alloc] init];
+    }
+    return _mapTapView;
 }
 
 -(UILabel *)tipLabel{
@@ -127,7 +137,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return 245+50;
+        return 245+50+35;
     }
     return (self.modelAry.count*30+50);
 }
@@ -135,6 +145,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+        
         [cell.contentView addSubview:self.mapView];
         [_mapView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(cell.contentView.mas_left).mas_offset(15);
@@ -157,29 +168,51 @@
             make.top.mas_equalTo(cell.contentView.mas_top).mas_offset(10);
         }];
         
+        CGFloat maxNum = 0;
+        
+        for (int i = 0; i<self.modelAry.count; i++) {
+            THNOrderAreaModel *model = self.modelAry[i];
+            if ([model.sum_money floatValue] > maxNum) {
+                maxNum = [model.sum_money floatValue];
+            }
+        }
+        
         NSMutableArray *strAry = [NSMutableArray array];
         for (int i = 0; i<self.modelAry.count; i++) {
             THNOrderAreaModel *model = self.modelAry[i];
             NSString *str = model.buyer_province;
-            CGFloat ahpa = [model.proportion floatValue];
+            CGFloat ahpa = [model.sum_money floatValue]/maxNum;
+//            if (ahpa < 0.1) {
+//                ahpa = 0.1;
+//            }
             NSString *strValue = model.sum_money;
-            NSString *str2 = [NSString stringWithFormat:@"{\"name\":\"%@\",\"value\":%@,\"itemStyle\":{\"normal\":{\"color\":\"rgba(255,59,107,%f)\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"#fff\",\"fontSize\":15}}},\"emphasis\":{\"borderWidth\":5,\"borderColor\":\"yellow\",\"color\":\"#cd5c5c\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"blue\"}}}}}", str, strValue, ahpa];
+            NSString *str2 = [NSString stringWithFormat:@"{\"z\":\"%f\",\"name\":\"%@\",\"value\":%@,\"itemStyle\":{\"normal\":{\"color\":\"rgba(240,180,0,%f)\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"#fff\",\"fontSize\":15}}},\"emphasis\":{\"borderWidth\":1,\"borderColor\":\"#B48212\",\"color\":\"#F7A113\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"blue\"}}}}}", ahpa, str, strValue, ahpa];
             [strAry addObject:str2];
         }
         
         NSString *str3 = [strAry componentsJoinedByString:@","];
-        NSString *str4 = [str3 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
-        NSLog(@"%@", str4);
-        NSString *jsonStr = [NSString stringWithFormat:@"{\"tooltip\":{\"trigger\":\"item\",\"formatter\":\"{b}\"},\"series\":[{\"name\":\"Map\",\"type\":\"map\",\"mapLocation\":{\"x\":\"center\",\"y\":\"top\",\"height\":220},\"selectedMode\":\"multiple\",\"itemStyle\":{\"normal\":{\"borderWidth\":2,\"borderColor\":\"lightgreen\",\"color\":\"orange\",\"label\":{\"show\":false}},\"emphasis\":{\"borderWidth\":2,\"borderColor\":\"#fff\",\"color\":\"#32cd32\",\"label\":{\"show\":true,\"textStyle\":{\"color\":\"#fff\"}}}},\"data\":[%@],\"\":{\"itemStyle\":{\"normal\":{\"color\":\"skyblue\"}},\"data\":[{\"name\":\"天津\",\"value\":350},{\"name\":\"上海\",\"value\":103},{\"name\":\"echarts\",\"symbolSize\":21,\"x\":150,\"y\":50}]},\"geoCoord\":{\"上海\":[121.4648,31.2891],\"天津\":[117.4219,39.4189]}}]}", @"{\"name\":\"内蒙古\",\"value\":831,\"itemStyle\":{\"normal\":{\"color\":\"rgba(255,59,107,12.190000)\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"#fff\",\"fontSize\":15}}},\"emphasis\":{\"borderWidth\":5,\"borderColor\":\"yellow\",\"color\":\"#cd5c5c\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"blue\"}}}}}"];
+//        NSString *str4 = [str3 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+        NSString *jsonStr = [NSString stringWithFormat:@"{\"series\":[{\"name\":\"\",\"type\":\"map\",\"mapLocation\":{\"x\":\"center\",\"y\":\"top\",\"height\":300},\"selectedMode\":\"linkEdit\",\"itemStyle\":{\"normal\":{\"borderWidth\":1,\"borderColor\":\"#DDA10D\",\"color\":\"rgba(240,180,0,0)\",\"label\":{\"show\":false}},\"\":{\"borderWidth\":1,\"borderColor\":\"#fff\",\"color\":\"#32cd32\",\"label\":{\"show\":true,\"textStyle\":{\"color\":\"#B48212\"}}}},\"data\":[%@],\"\":{\"itemStyle\":{\"normal\":{\"color\":\"skyblue\"}},\"data\":[{\"name\":\"天津\",\"value\":350},{\"name\":\"上海\",\"value\":103},{\"name\":\"echarts\",\"symbolSize\":21,\"x\":150,\"y\":50}]},\"geoCoord\":{\"上海\":[121.4648,31.2891],\"天津\":[117.4219,39.4189]}}]}", str3];
         NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+        NSError *error;
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
         PYOption *option = [RMMapper objectWithClass:[PYOption class] fromDictionary:jsonDic];
         [self.mapView setOption:option];
         [self.mapView loadEcharts];
+        
         __weak typeof(self) weakSelf = self;
         [self.mapView addHandlerForAction:PYEchartActionClick withBlock:^(NSDictionary *params) {
-            NSLog(@"asdsada  %@", params);
-            
+            [weakSelf.mapTapView removeFromSuperview];
+            CGFloat x = [params[@"event"][@"zrenderX"] floatValue];
+            CGFloat y = [params[@"event"][@"zrenderY"] floatValue];
+            weakSelf.mapTapView.width = 60;
+            weakSelf.mapTapView.height = 64;
+            weakSelf.mapTapView.x = x-10/667.0*SCREEN_HEIGHT;
+            weakSelf.mapTapView.y = y-10/667.0*SCREEN_HEIGHT - weakSelf.contentoffsetY;
+            weakSelf.mapTapView.areaNameLabel.text = params[@"data"][@"name"];
+            weakSelf.mapTapView.salesLabel.text = [NSString stringWithFormat:@"销售额:\n%@", params[@"value"]];
+            weakSelf.mapTapView.accountedLabel.text = [NSString stringWithFormat:@"占比:%.2f%%", [params[@"data"][@"z"] floatValue]*100];
+            [weakSelf.view addSubview:weakSelf.mapTapView];
         }];
         
         
@@ -202,6 +235,11 @@
         cell.modelAry = self.modelAry;
         return cell;
     }
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.mapTapView removeFromSuperview];
+    self.contentoffsetY = scrollView.contentOffset.y - 30;
 }
 
 @end
