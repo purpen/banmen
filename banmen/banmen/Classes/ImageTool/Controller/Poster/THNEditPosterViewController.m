@@ -139,8 +139,9 @@
     return _posterView;
 }
 
-- (void)thn_getEditingTextViewFrameMaxY:(CGFloat)maxY {
+- (void)thn_getEditingTextViewFrameMaxY:(CGFloat)maxY fontSize:(CGFloat)fontSize {
     _textViewMaxY = maxY + 100;
+    [self.keyboardView thn_setChnageFontMaxSize:fontSize];
 }
     
 //  点击选择照片
@@ -433,6 +434,10 @@
     [self.posterView thn_changeTextAlignment:align];
 }
 
+- (void)thn_changeTextFontSize:(CGFloat)fontSize {
+    [self.posterView thn_changeTextFontSize:fontSize];
+}
+
 #pragma mark - 添加键盘检测
 - (void)thn_registerForKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -476,7 +481,6 @@
 //  改变键盘工具的高度
 - (void)thn_changeKeyboardToolViewHeight:(CGFloat)height {
     self.navRightItem.hidden = height == 0 ? NO : YES;
-    [self.posterView thn_showPosterTextViewBorder:height == 0 ? NO : YES];
     self.keyboardView.changeTextColor.selected = NO;
     self.keyboardView.fontSize.selected = NO;
     

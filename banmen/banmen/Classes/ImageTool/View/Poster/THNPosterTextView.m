@@ -10,7 +10,9 @@
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
 
-@interface THNPosterTextView () <UITextViewDelegate>
+@interface THNPosterTextView () <UITextViewDelegate> {
+    NSInteger _fontWeight;
+}
 
 @property (nonatomic, strong) UIView *layerView;
 
@@ -27,8 +29,26 @@
     return self;
 }
 
+- (void)thn_changeTextViewFontSize:(CGFloat)fontSize {
+    self.posterTextView.font = [UIFont systemFontOfSize:fontSize weight:[self thn_getTextViewFontWeight:_fontWeight]];
+    [self thn_textViewContentSizeCenter];
+}
+
+- (void)thn_textViewContentSizeCenter {
+    CGFloat height = self.posterTextView.bounds.size.height - self.posterTextView.contentSize.height;
+    
+    if (height <= 0) {
+        return;
+    }
+    
+    self.posterTextView.contentOffset = CGPointMake(0, -(height / 2));
+}
+
 #pragma mark - 设置文本的内容
 - (void)thn_setPosterTextViewModel:(THNPosterModelText *)model {
+    self.fontSize = model.fontSize;
+    _fontWeight = model.weight;
+    
     self.posterTextView.textColor = [UIColor colorWithHexString:model.color];
     self.posterTextView.font = [UIFont systemFontOfSize:model.fontSize weight:[self thn_getTextViewFontWeight:model.weight]];
     self.posterTextView.textAlignment =  (NSTextAlignment)model.align;
@@ -106,7 +126,6 @@
         _posterTextView = [[UITextView alloc] initWithFrame:self.bounds];
         _posterTextView.returnKeyType = UIReturnKeyDone;
         _posterTextView.delegate = self;
-        
         UIView *keyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
         keyView.userInteractionEnabled = NO;
         _posterTextView.inputAccessoryView = keyView;
@@ -126,16 +145,16 @@
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-//    [self thn_showPosterTextViewBorder:YES];
+    [self thn_showPosterTextViewBorder:YES];
     if ([self.delegate respondsToSelector:@selector(thn_textViewDidBeginEditing:)]) {
         [self.delegate thn_textViewDidBeginEditing:self];
     }
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
-//    [self thn_showPosterTextViewBorder:NO];
-    if ([self.delegate respondsToSelector:@selector(thn_textViewDidBeginEditing:)]) {
-        [self.delegate thn_textViewDidBeginEditing:self];
+    [self thn_showPosterTextViewBorder:NO];
+    if ([self.delegate respondsToSelector:@selector(thn_textViewDidEndEditing:)]) {
+        [self.delegate thn_textViewDidEndEditing:self];
     }
 }
 

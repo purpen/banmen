@@ -67,8 +67,8 @@ static NSInteger const imageViewTag = 3821;
     self.tempTextView.posterTextView.textAlignment = align;
 }
 
-- (void)thn_showPosterTextViewBorder:(BOOL)show {
-    [self.tempTextView thn_showPosterTextViewBorder:show];
+- (void)thn_changeTextFontSize:(CGFloat)fontSize {
+    [self.tempTextView thn_changeTextViewFontSize:fontSize];
 }
 
 #pragma mark - 添加海报默认信息
@@ -125,12 +125,12 @@ static NSInteger const imageViewTag = 3821;
 //  开始编辑文字
 - (void)thn_textViewDidBeginEditing:(THNPosterTextView *)textView {
     self.tempTextView = textView;
-    
+
     CGFloat frameScale = (SCREEN_HEIGHT - 94) / _frameHeight;
     CGFloat textViewMaxY = CGRectGetMaxY(textView.frame) * frameScale;
-    
-    if ([self.tap_delegate respondsToSelector:@selector(thn_getEditingTextViewFrameMaxY:)]) {
-        [self.tap_delegate thn_getEditingTextViewFrameMaxY:textViewMaxY];
+
+    if ([self.tap_delegate respondsToSelector:@selector(thn_getEditingTextViewFrameMaxY: fontSize:)]) {
+        [self.tap_delegate thn_getEditingTextViewFrameMaxY:textViewMaxY fontSize:textView.fontSize];
     }
 }
 

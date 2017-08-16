@@ -16,6 +16,7 @@
 - (void)thn_writeInputBoxEndEditTextTool;
 - (void)thn_selectColorForChangeTextColor:(NSString *)color;
 - (void)thn_selectAlignForChangeTextAlign:(NSTextAlignment)align;
+- (void)thn_changeTextFontSize:(CGFloat)fontSize;
 
 @end
 
@@ -51,5 +52,7 @@
 - (void)thn_setHiddenExtendingFunction:(BOOL)hidden;
 
 - (void)thn_refreshColorCollectionData;
+
+- (void)thn_setChnageFontMaxSize:(CGFloat)fontSize;
 
 @end

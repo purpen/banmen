@@ -22,7 +22,7 @@
 @interface THNPosterTextView : UIView
 
 @property (nonatomic, strong) UITextView *posterTextView;
-@property (nonatomic, strong) UIFont *font;
+@property (nonatomic, assign) CGFloat fontSize;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic) NSTextAlignment textAlignment;
 @property (nonatomic, strong) NSAttributedString *attributedText;
@@ -35,5 +35,7 @@
 - (void)thn_becomeFirstResponder;
 
 - (void)thn_showPosterTextViewBorder:(BOOL)show;
+
+- (void)thn_changeTextViewFontSize:(CGFloat)fontSize;
 
 @end

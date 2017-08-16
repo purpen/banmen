@@ -20,6 +20,8 @@ static NSInteger const alignButtonTag = 1245;
 @property (nonatomic, strong) UICollectionView *colorCollection;
 @property (nonatomic, strong) NSArray *colorArray;
 @property (nonatomic, strong) UIView *fontSizeView;
+@property (nonatomic, strong) UISlider *sizeSlider;
+@property (nonatomic, strong) UILabel *showSizeLabel;
 
 @end
 
@@ -50,6 +52,13 @@ static NSInteger const alignButtonTag = 1245;
     [self.colorCollection reloadData];
 }
 
+- (void)thn_setChnageFontMaxSize:(CGFloat)fontSize {
+    self.sizeSlider.maximumValue = fontSize;
+    self.sizeSlider.value = fontSize;
+    self.showSizeLabel.text = [NSString stringWithFormat:@"%.0f", fontSize];
+}
+
+#pragma mark - 设置视图UI
 - (void)setViewUI {
     [self addSubview:self.changeTextColor];
     [_changeTextColor mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -96,6 +105,7 @@ static NSInteger const alignButtonTag = 1245;
         _contentView.showsVerticalScrollIndicator = NO;
         _contentView.pagingEnabled = YES;
         _contentView.contentSize = CGSizeMake(SCREEN_WIDTH * 2, 0);
+        _contentView.scrollEnabled = NO;
     }
     return _contentView;
 }
@@ -162,12 +172,74 @@ static NSInteger const alignButtonTag = 1245;
         _fontSizeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
         _fontSizeView.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0];
         
-        [self creatFontSizeButton:@[@"icon_align_0", @"icon_align_1", @"icon_align_2"]];
+        [self creatFontSizeSlider];
+        [self creatFontAlignButton:@[@"icon_align_0", @"icon_align_1", @"icon_align_2"]];
     }
     return _fontSizeView;
 }
 
-- (void)creatFontSizeButton:(NSArray *)alignArray {
+//  字号大小
+- (void)creatFontSizeSlider {
+    UILabel *sizeLabel = [[UILabel alloc] init];
+    sizeLabel.font = [UIFont systemFontOfSize:12];
+    sizeLabel.textColor = [UIColor colorWithHexString:@"#999999"];
+    sizeLabel.text = @"字号";
+    [_fontSizeView addSubview:sizeLabel];
+    [sizeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(60, 15));
+        make.left.equalTo(_fontSizeView.mas_left).with.offset(15);
+        make.top.equalTo(_fontSizeView.mas_top).with.offset(0);
+    }];
+    
+    UISlider *slider = [[UISlider alloc] init];
+    slider.minimumTrackTintColor = [UIColor colorWithHexString:kColorRed alpha:1];
+    slider.minimumValue = 10;
+    [slider setThumbImage:[UIImage imageNamed:@"icon_slider"] forState:(UIControlStateNormal)];
+//    slider.continuous = NO;
+    [slider addTarget:self action:@selector(changeFontSize:) forControlEvents:(UIControlEventValueChanged)];
+    
+    [_fontSizeView addSubview:slider];
+    [slider mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 80, 20));
+        make.left.equalTo(_fontSizeView.mas_left).with.offset(15);
+        make.top.equalTo(_fontSizeView.mas_top).with.offset(25);
+    }];
+    
+    self.sizeSlider = slider;
+    
+    [_fontSizeView addSubview:self.showSizeLabel];
+    [_showSizeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(42, 20));
+        make.left.equalTo(slider.mas_right).with.offset(10);
+        make.top.equalTo(_fontSizeView.mas_top).with.offset(26);
+    }];
+}
+
+- (void)changeFontSize:(UISlider *)slider {
+    self.showSizeLabel.text = [NSString stringWithFormat:@"%.0f", slider.value];
+    if ([self.delegate respondsToSelector:@selector(thn_changeTextFontSize:)]) {
+        [self.delegate thn_changeTextFontSize:slider.value];
+    }
+}
+
+//  字号显示
+- (UILabel *)showSizeLabel {
+    if (!_showSizeLabel) {
+        _showSizeLabel = [[UILabel alloc] init];
+        _showSizeLabel.font = [UIFont systemFontOfSize:12];
+        _showSizeLabel.textColor = [UIColor whiteColor];
+        _showSizeLabel.textAlignment = NSTextAlignmentCenter;
+        _showSizeLabel.layer.borderColor = [UIColor colorWithHexString:kColorRed alpha:1].CGColor;
+        _showSizeLabel.layer.borderWidth = 1.0f;
+        _showSizeLabel.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0.7];
+        _showSizeLabel.layer.cornerRadius = 10;
+        _showSizeLabel.layer.masksToBounds = YES;
+    }
+    return _showSizeLabel;
+}
+
+//  对齐方式
+- (void)creatFontAlignButton:(NSArray *)alignArray {
     UILabel *fontLabel = [[UILabel alloc] init];
     fontLabel.font = [UIFont systemFontOfSize:12];
     fontLabel.textColor = [UIColor colorWithHexString:@"#999999"];
@@ -176,7 +248,7 @@ static NSInteger const alignButtonTag = 1245;
     [fontLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(60, 15));
         make.left.equalTo(_fontSizeView.mas_left).with.offset(15);
-        make.top.equalTo(_fontSizeView.mas_top).with.offset(110);
+        make.top.equalTo(_fontSizeView.mas_top).with.offset(80);
     }];
     
     for (NSInteger idx = 0; idx < alignArray.count; ++ idx) {
@@ -189,8 +261,8 @@ static NSInteger const alignButtonTag = 1245;
         [_fontSizeView addSubview:alignButton];
         [alignButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(50, 50));
-            make.left.equalTo(_fontSizeView.mas_left).with.offset(15 + ((SCREEN_WIDTH - 80) / 2) * idx);
-            make.top.equalTo(_fontSizeView.mas_top).with.offset(140);
+            make.left.equalTo(_fontSizeView.mas_left).with.offset(15 + 100 * idx);
+            make.top.equalTo(_fontSizeView.mas_top).with.offset(110);
         }];
     }
 }
