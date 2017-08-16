@@ -68,6 +68,7 @@ static NSInteger const imageViewTag = 3821;
 }
 
 - (void)thn_changeTextFontSize:(CGFloat)fontSize {
+    self.tempTextView.fontSize = fontSize;
     [self.tempTextView thn_changeTextViewFontSize:fontSize];
 }
 
@@ -129,8 +130,8 @@ static NSInteger const imageViewTag = 3821;
     CGFloat frameScale = (SCREEN_HEIGHT - 94) / _frameHeight;
     CGFloat textViewMaxY = CGRectGetMaxY(textView.frame) * frameScale;
 
-    if ([self.tap_delegate respondsToSelector:@selector(thn_getEditingTextViewFrameMaxY: fontSize:)]) {
-        [self.tap_delegate thn_getEditingTextViewFrameMaxY:textViewMaxY fontSize:textView.fontSize];
+    if ([self.tap_delegate respondsToSelector:@selector(thn_getEditingTextViewFrameMaxY: fontSize: maxFontSize:)]) {
+        [self.tap_delegate thn_getEditingTextViewFrameMaxY:textViewMaxY fontSize:textView.fontSize maxFontSize:textView.maxFontSize];
     }
 }
 

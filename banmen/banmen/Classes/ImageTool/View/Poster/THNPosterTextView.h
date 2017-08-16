@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) UITextView *posterTextView;
 @property (nonatomic, assign) CGFloat fontSize;
+@property (nonatomic, assign) CGFloat maxFontSize;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic) NSTextAlignment textAlignment;
 @property (nonatomic, strong) NSAttributedString *attributedText;

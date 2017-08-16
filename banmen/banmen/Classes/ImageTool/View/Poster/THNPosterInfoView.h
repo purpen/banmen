@@ -16,7 +16,7 @@
 @optional
 - (void)thn_tapWithImageViewAndSelectPhoto:(NSInteger)tag;
 - (void)thn_didBeginEditingTextView:(THNPosterTextView *)textView;
-- (void)thn_getEditingTextViewFrameMaxY:(CGFloat)maxY fontSize:(CGFloat)fontSize;
+- (void)thn_getEditingTextViewFrameMaxY:(CGFloat)maxY fontSize:(CGFloat)fontSize maxFontSize:(CGFloat)maxSize;
 
 @end
 

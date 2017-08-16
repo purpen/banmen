@@ -53,6 +53,6 @@
 
 - (void)thn_refreshColorCollectionData;
 
-- (void)thn_setChnageFontMaxSize:(CGFloat)fontSize;
+- (void)thn_setChnageFontMaxSize:(CGFloat)fontSize maxFontSize:(CGFloat)maxSize;
 
 @end

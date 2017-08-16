@@ -47,6 +47,7 @@
 #pragma mark - 设置文本的内容
 - (void)thn_setPosterTextViewModel:(THNPosterModelText *)model {
     self.fontSize = model.fontSize;
+    self.maxFontSize = model.fontSize;
     _fontWeight = model.weight;
     
     self.posterTextView.textColor = [UIColor colorWithHexString:model.color];

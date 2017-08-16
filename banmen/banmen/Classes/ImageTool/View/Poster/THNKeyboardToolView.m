@@ -52,8 +52,8 @@ static NSInteger const alignButtonTag = 1245;
     [self.colorCollection reloadData];
 }
 
-- (void)thn_setChnageFontMaxSize:(CGFloat)fontSize {
-    self.sizeSlider.maximumValue = fontSize;
+- (void)thn_setChnageFontMaxSize:(CGFloat)fontSize maxFontSize:(CGFloat)maxSize {
+    self.sizeSlider.maximumValue = maxSize;
     self.sizeSlider.value = fontSize;
     self.showSizeLabel.text = [NSString stringWithFormat:@"%.0f", fontSize];
 }

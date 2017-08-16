@@ -139,9 +139,9 @@
     return _posterView;
 }
 
-- (void)thn_getEditingTextViewFrameMaxY:(CGFloat)maxY fontSize:(CGFloat)fontSize {
+- (void)thn_getEditingTextViewFrameMaxY:(CGFloat)maxY fontSize:(CGFloat)fontSize maxFontSize:(CGFloat)maxSize {
     _textViewMaxY = maxY + 100;
-    [self.keyboardView thn_setChnageFontMaxSize:fontSize];
+    [self.keyboardView thn_setChnageFontMaxSize:fontSize maxFontSize:maxSize];
 }
     
 //  点击选择照片
