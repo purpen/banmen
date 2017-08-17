@@ -80,6 +80,7 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.scrollEnabled = NO;
         _tableView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f9"];
         [_tableView registerClass:[THNListTableViewCell class] forCellReuseIdentifier:@"THNListTableViewCell"];
         [_tableView registerClass:[THNListTopTableViewCell class] forCellReuseIdentifier:@"THNListTopTableViewCell"];

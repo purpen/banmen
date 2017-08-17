@@ -78,19 +78,19 @@
     UnitPriceModel *model = modelAry[0];
     self.topLeftTwoLabel.text = [NSString stringWithFormat:@"客单价%@：%@%%", model.range, model.proportion];
     
-    CGFloat maxMoney = [model.count floatValue];
-    CGFloat minMoney = [model.count floatValue];
+    CGFloat maxMoney = [model.proportion floatValue];
+    CGFloat minMoney = [model.proportion floatValue];
     for (int i = 0; i < modelAry.count; i++) {
         UnitPriceModel *model = modelAry[i];
-        if ([model.count floatValue] > maxMoney) {
-            maxMoney = [model.count floatValue];
+        if ([model.proportion floatValue] > maxMoney) {
+            maxMoney = [model.proportion floatValue];
         }
-        if ([model.count floatValue] < minMoney) {
-            minMoney = [model.count floatValue];
+        if ([model.proportion floatValue] < minMoney) {
+            minMoney = [model.proportion floatValue];
         }
     }
     ChartYAxis *leftAxis = self.lineChartView.leftAxis;
-    leftAxis.axisMaximum = maxMoney;
+    leftAxis.axisMaximum = maxMoney*1.2;
     leftAxis.axisMinimum = minMoney;
     
     
@@ -99,7 +99,7 @@
     for (int i = 0; i < modelAry.count; i++)
     {
         UnitPriceModel *model = modelAry[i];
-        CGFloat val = [model.count floatValue];
+        CGFloat val = [model.proportion floatValue];
         [values addObject:[[ChartDataEntry alloc] initWithX:i y:val icon: [UIImage imageNamed:@"icon"]]];
     }
     
@@ -196,6 +196,7 @@
         _lineChartView.drawGridBackgroundEnabled = NO;
         
         _lineChartView.xAxis.gridLineDashLengths = @[@10.0, @10.0];
+        _lineChartView.xAxis.drawGridLinesEnabled = NO;
         _lineChartView.xAxis.gridLineDashPhase = 0.f;
         _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
         _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
@@ -208,7 +209,8 @@
         leftAxis.gridColor = [UIColor colorWithHexString:@"#E7E7E7"];
         leftAxis.drawZeroLineEnabled = NO;
         leftAxis.drawLimitLinesBehindDataEnabled = YES;
-        
+        leftAxis.axisLineDashLengths = @[@0.f, @0.0f];
+        leftAxis.spaceTop = 0.0;
         
         
         _lineChartView.rightAxis.enabled = NO;
@@ -224,7 +226,7 @@
         //        marker.size = CGSizeMake(80.f, 40.f);
         _lineChartView.marker = marker;
         
-        [_lineChartView animateWithXAxisDuration:2.5];
+        [_lineChartView animateWithXAxisDuration:1.5];
         
     }
     return _lineChartView;

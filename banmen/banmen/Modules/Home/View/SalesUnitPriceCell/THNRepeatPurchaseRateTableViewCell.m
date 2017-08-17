@@ -173,14 +173,16 @@
         
         ChartYAxis *leftAxis = _barChartView.leftAxis;
         leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
-        leftAxis.labelCount = 10;
+        leftAxis.labelCount = 5;
         leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:leftAxisFormatter];
         leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
         leftAxis.spaceTop = 0.15;
         leftAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
         leftAxis.drawGridLinesEnabled = NO;
+        leftAxis.axisLineDashPhase = 20;
         
         _barChartView.legend.enabled = NO;//不显示图例说明
+        [_barChartView animateWithXAxisDuration:1.5];
     }
     return _barChartView;
 }
@@ -197,7 +199,7 @@
         NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
         NSString *the_date_str = [date_formatter stringFromDate:theDate];
         [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
-        _dateSelectBtn.font = [UIFont systemFontOfSize:10];
+        _dateSelectBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         [_dateSelectBtn setTitleColor:[UIColor colorWithHexString:@"#7d7d7d"] forState:(UIControlStateNormal)];
     }
     return _dateSelectBtn;

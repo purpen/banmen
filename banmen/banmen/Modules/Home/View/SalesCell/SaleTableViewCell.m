@@ -224,9 +224,11 @@
         _lineChartView.drawGridBackgroundEnabled = NO;
         
         _lineChartView.xAxis.gridLineDashLengths = @[@10.0, @10.0];
+        _lineChartView.xAxis.drawGridLinesEnabled = NO;
         _lineChartView.xAxis.gridLineDashPhase = 0.f;
         _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
         _lineChartView.maxVisibleCount = 6;//设置能够显示的数据数量
+        _lineChartView.xAxis.labelCount = 5;
         _lineChartView.xAxis.labelFont = [UIFont systemFontOfSize:7];
         _lineChartView.xAxis.gridColor = [UIColor colorWithHexString:@"#E7E7E7"];
         

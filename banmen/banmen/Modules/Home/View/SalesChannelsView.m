@@ -99,7 +99,7 @@
     for (int i = 0; i < modelAry.count; i++) {
         SalesChannelsModel *model = modelAry[i];
         if ([model.proportion intValue] != 0) {
-            [values addObject:[[PieChartDataEntry alloc] initWithValue:[model.proportion doubleValue] label:[NSString stringWithFormat:@"%@%@%%", model.name, model.proportion]]];
+            [values addObject:[[PieChartDataEntry alloc] initWithValue:[model.proportion doubleValue] label:[NSString stringWithFormat:@"%@", model.name]]];
         }
     }
     
@@ -124,7 +124,7 @@
         [colors addObject:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
         dataSet.colors = colors;//区块颜色
         dataSet.sliceSpace = 0;//相邻区块之间的间距
-        dataSet.selectionShift = 8;//选中区块时, 放大的半径
+        dataSet.selectionShift = 5;//选中区块时, 放大的半径
         dataSet.xValuePosition = PieChartValuePositionInsideSlice;//名称位置
         dataSet.yValuePosition = PieChartValuePositionOutsideSlice;//数据位置
         //数据与区块之间的用于指示的折线样式
@@ -139,14 +139,15 @@
         formatter.numberStyle = NSNumberFormatterPercentStyle;
         formatter.maximumFractionDigits = 0;//小数位数
         formatter.multiplier = @1.f;
+        formatter.percentSymbol = @" %";
         [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:formatter]];//设置显示数据格式
         [data setValueTextColor:[UIColor whiteColor]];
         [data setValueFont:[UIFont systemFontOfSize:10]];
-        self.pieChartView.data = data;
-        //设置动画效果
-        [self.pieChartView animateWithXAxisDuration:1.0f easingOption:ChartEasingOptionEaseOutExpo];
-    }
     
+        
+        self.pieChartView.data = data;
+    }
+    [_pieChartView setNeedsDisplay];
 }
 
 -(void)setTimeAry:(NSArray *)timeAry{
@@ -157,7 +158,7 @@
         [date_formatter setDateFormat:@"yyyy-MM-dd"];
         NSString *current_date_str = [date_formatter stringFromDate:[NSDate date]];
         NSTimeInterval  oneDay = 24*60*60*1;
-        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*365 sinceDate:[NSDate date]];
+        NSDate *theDate = [NSDate dateWithTimeInterval:-oneDay*30 sinceDate:[NSDate date]];
         NSString *the_date_str = [date_formatter stringFromDate:theDate];
         [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", the_date_str, current_date_str] forState:(UIControlStateNormal)];
     }
@@ -179,6 +180,9 @@
         _pieChartView.transparentCircleColor = [UIColor colorWithRed:210/255.0 green:145/255.0 blue:165/255.0 alpha:0.3];//半透明空心的颜色
         
         _pieChartView.descriptionText = @"";
+        
+        //设置动画效果
+        [self.pieChartView animateWithXAxisDuration:1.0f easingOption:ChartEasingOptionEaseOutExpo];
     }
     return _pieChartView;
 }

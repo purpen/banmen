@@ -35,7 +35,7 @@
         
         [self.contentView addSubview:self.salesNumLabel];
         [_salesNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(180*SCREEN_HEIGHT/667.0);
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(160*SCREEN_HEIGHT/667.0);
             make.centerY.mas_equalTo(self.contentView.centerY).mas_offset(0);
         }];
         

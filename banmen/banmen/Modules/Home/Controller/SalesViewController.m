@@ -111,13 +111,20 @@
         _contenTableView.delegate = self;
         _contenTableView.dataSource = self;
         _contenTableView.contentInset = UIEdgeInsetsMake(-30, 0, 0, 0);
-        _contenTableView.rowHeight = 245;
         [_contenTableView registerClass:[SaleTableViewCell class] forCellReuseIdentifier:@"SaleTableViewCell"];
         [_contenTableView registerClass:[THNSalesOrderTableViewCell class] forCellReuseIdentifier:@"THNSalesOrderTableViewCell"];
         [_contenTableView registerClass:[THNSuccessfulOrderHoursAdayTableViewCell class] forCellReuseIdentifier:@"THNSuccessfulOrderHoursAdayTableViewCell"];
         [_contenTableView registerClass:[THNSalesListTableViewCell class] forCellReuseIdentifier:@"THNSalesListTableViewCell"];
     }
     return _contenTableView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 3) {
+        return 33 + 30 + _listModelAry.count * 30;
+    } else {
+        return 245;
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
