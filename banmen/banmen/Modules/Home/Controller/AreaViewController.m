@@ -25,9 +25,10 @@
 @property (strong,nonatomic) UIButton *dateSelectBtn;
 @property (strong,nonatomic) UILabel *tipLabel;
 @property (strong,nonatomic) NSArray *timeAry;
-@property (assign,nonatomic) NSInteger *numFlag;
+@property (assign,nonatomic) NSInteger numFlag;
 @property (strong,nonatomic) THNMapTapView *mapTapView;
 @property (assign,nonatomic) CGFloat contentoffsetY;
+@property (assign,nonatomic) BOOL secondFlag;
 
 @end
 
@@ -47,6 +48,8 @@
     [self.a orderAreaModel:the_date_str andEndTime:current_date_str];
     
     self.numFlag = 1;
+    
+    self.secondFlag = NO;
 }
 
 -(PYEchartsView *)mapView{
@@ -202,6 +205,35 @@
         
         __weak typeof(self) weakSelf = self;
         [self.mapView addHandlerForAction:PYEchartActionClick withBlock:^(NSDictionary *params) {
+            
+            NSString *name = params[@"name"];
+            NSMutableArray *strAry = [NSMutableArray array];
+            for (int i = 0; i<weakSelf.modelAry.count; i++) {
+                THNOrderAreaModel *model = weakSelf.modelAry[i];
+                NSString *str = model.buyer_province;
+                CGFloat ahpa = [model.sum_money floatValue]/maxNum;
+                //            if (ahpa < 0.1) {
+                //                ahpa = 0.1;
+                //            }
+                NSString *strValue = model.sum_money;
+                NSString *str2;
+                if ([model.buyer_province isEqualToString:name]) {
+                    str2 = [NSString stringWithFormat:@"{\"z\":\"%f\",\"name\":\"%@\",\"value\":%@,\"itemStyle\":{\"normal\":{\"color\":\"rgba(240,180,0,%f)\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"#fff\",\"fontSize\":15}}},\"emphasis\":{\"borderWidth\":1,\"borderColor\":\"#B48212\",\"color\":\"#F7A113\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"blue\"}}}}}", ahpa, str, strValue, ahpa];
+                } else {
+                    str2 = [NSString stringWithFormat:@"{\"z\":\"%f\",\"name\":\"%@\",\"value\":%@,\"itemStyle\":{\"normal\":{\"color\":\"rgba(240,180,0,%f)\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"#fff\",\"fontSize\":15}}},\"emphasis\":{\"borderWidth\":1,\"borderColor\":\"#DDA10D\",\"color\":\"rgba(240,180,0,%f)\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"blue\"}}}}}", ahpa, str, strValue, ahpa, ahpa];
+                }
+                [strAry addObject:str2];
+            }
+            
+            NSString *str3 = [strAry componentsJoinedByString:@","];
+            NSString *jsonStr = [NSString stringWithFormat:@"{\"series\":[{\"name\":\"\",\"type\":\"map\",\"mapLocation\":{\"x\":\"center\",\"y\":\"top\",\"height\":300},\"selectedMode\":\"linkEdit\",\"itemStyle\":{\"normal\":{\"borderWidth\":1,\"borderColor\":\"#DDA10D\",\"color\":\"rgba(240,180,0,0)\",\"label\":{\"show\":false}},\"emphasis\":{\"borderWidth\":1,\"borderColor\":\"#DDA10D\",\"color\":\"rgba(240,180,0,0)\",\"label\":{\"show\":false,\"textStyle\":{\"color\":\"#B48212\"}}}},\"data\":[%@],\"\":{\"itemStyle\":{\"normal\":{\"color\":\"skyblue\"}},\"data\":[{\"name\":\"天津\",\"value\":350},{\"name\":\"上海\",\"value\":103},{\"name\":\"echarts\",\"symbolSize\":21,\"x\":150,\"y\":50}]},\"geoCoord\":{\"上海\":[121.4648,31.2891],\"天津\":[117.4219,39.4189]}}]}", str3];
+            NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *error;
+            NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
+            PYOption *option = [RMMapper objectWithClass:[PYOption class] fromDictionary:jsonDic];
+            [weakSelf.mapView refreshEchartsWithOption:option];
+            
+            
             [weakSelf.mapTapView removeFromSuperview];
             CGFloat x = [params[@"event"][@"zrenderX"] floatValue];
             CGFloat y = [params[@"event"][@"zrenderY"] floatValue];
@@ -213,6 +245,7 @@
             weakSelf.mapTapView.salesLabel.text = [NSString stringWithFormat:@"销售额:\n%@", params[@"value"]];
             weakSelf.mapTapView.accountedLabel.text = [NSString stringWithFormat:@"占比:%.2f%%", [params[@"data"][@"z"] floatValue]*100];
             [weakSelf.view addSubview:weakSelf.mapTapView];
+            
         }];
         
         
