@@ -14,6 +14,7 @@
 #import "UIView+FSExtension.h"
 #import "DateValueFormatter.h"
 #import "ColorMacro.h"
+#import "THNValueFormatter.h"
 
 @interface SaleTableViewCell()
 
@@ -114,15 +115,15 @@
         self.timeLabel.text = model.time;
     }
     
-    CGFloat maxMoney = [model.sum_money floatValue];
-    CGFloat minMoney = [model.sum_money floatValue];
+    CGFloat maxMoney = [model.sum_money floatValue]/10000;
+    CGFloat minMoney = [model.sum_money floatValue]/10000;
     for (int i = 0; i < modelAry.count; i++) {
         SalesTrendsModel *model = modelAry[i];
-        if ([model.sum_money floatValue] > maxMoney) {
-            maxMoney = [model.sum_money floatValue];
+        if ([model.sum_money floatValue]/10000 > maxMoney) {
+            maxMoney = [model.sum_money floatValue]/10000;
         }
-        if ([model.sum_money floatValue] < minMoney) {
-            minMoney = [model.sum_money floatValue];
+        if ([model.sum_money floatValue]/10000 < minMoney) {
+            minMoney = [model.sum_money floatValue]/10000;
         }
     }
     ChartYAxis *leftAxis = self.lineChartView.leftAxis;
@@ -135,9 +136,10 @@
     for (int i = 0; i < modelAry.count; i++)
     {
         SalesTrendsModel *model = modelAry[i];
-        CGFloat val = [model.sum_money floatValue];
+        CGFloat val = [model.sum_money floatValue]/10000;
         [values addObject:[[ChartDataEntry alloc] initWithX:i y:val icon: [UIImage imageNamed:@"icon"]]];
     }
+    
     
     NSInteger xVals_count = modelAry.count;//X轴上要显示多少条数据
     //X轴上面需要显示的数据
@@ -238,7 +240,7 @@
         leftAxis.gridColor = [UIColor colorWithHexString:@"#E7E7E7"];
         leftAxis.drawZeroLineEnabled = NO;
         leftAxis.drawLimitLinesBehindDataEnabled = YES;
-        
+        leftAxis.valueFormatter = [[THNValueFormatter alloc] init];
         
         
         _lineChartView.rightAxis.enabled = NO;
