@@ -142,7 +142,7 @@
     if (indexPath.row == 0) {
         return (245+50+35)/667.0*SCREEN_HEIGHT;
     }
-    return (self.modelAry.count*30+50);
+    return (self.modelAry.count*30+80);
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
