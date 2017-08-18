@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Cooperation.h"
+#import "RecommendedModel.h"
 
 @interface CooperationCollectionViewCell : UICollectionViewCell
 
@@ -17,5 +18,7 @@
 @property(nonatomic, strong) UILabel *priceLabel;
 @property(nonatomic, strong) UILabel *inventoryLabel;
 @property(nonatomic, strong) Cooperation *model;
+@property(nonatomic, strong) UIImageView *cooperationIconImageView;
+@property(nonatomic, strong) RecommendedModel *recommendedModel;
 
 @end

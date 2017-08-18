@@ -11,6 +11,7 @@
 #import "CooperationCollectionViewCell.h"
 #import "OtherMacro.h"
 #import "GoodDetailsViewController.h"
+#import "UIView+FSExtension.h"
 
 @interface CooperationView () <UICollectionViewDelegate, UICollectionViewDataSource>
 @end
@@ -27,8 +28,9 @@
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.sectionInset = UIEdgeInsetsMake(15, 15, 0, 15);
+        layout.sectionInset = UIEdgeInsetsMake(15, 15, 10, 15);
         _collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
+        _collectionView.height -= 160;
         _collectionView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.delegate = self;

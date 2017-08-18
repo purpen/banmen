@@ -29,7 +29,7 @@
     params[@"page"] = @(self.current_page);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     params[@"token"] = [defaults objectForKey:@"token"];
-    [manager GET:[kDomainBaseUrl stringByAppendingString:@"product/recommendList"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:[kDomainBaseUrl stringByAppendingString:@"product/lists"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.current_page = [responseObject[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_pages = [responseObject[@"meta"][@"pagination"][@"total_pages"] integerValue];
         NSArray *rows = responseObject[@"data"];
@@ -50,13 +50,13 @@
     params[@"page"] = @(++ self.current_page);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     params[@"token"] = [defaults objectForKey:@"token"];
-    [manager GET:[kDomainBaseUrl stringByAppendingString:@"product/recommendList"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:[kDomainBaseUrl stringByAppendingString:@"product/lists"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.current_page = [responseObject[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_pages = [responseObject[@"meta"][@"pagination"][@"total_pages"] integerValue];
         NSArray *rows = responseObject[@"data"];
         NSArray *ary = [RecommendedModel mj_objectArrayWithKeyValuesArray:rows];
         if ([self.rDelegate respondsToSelector:@selector(getMore:andC:andT:)]) {
-            [self.rDelegate getMore:self.modelAry andC:self.current_page andT:self.total_pages];
+            [self.rDelegate getMore:ary andC:self.current_page andT:self.total_pages];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

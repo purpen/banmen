@@ -11,6 +11,7 @@
 #import "UIColor+Extension.h"
 #import "SalesChannelsModel.h"
 #import "SalesChannelsTableViewCell.h"
+#import "OtherMacro.h"
 
 @interface SalesChannelsView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -74,9 +75,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return 490/2;
+        return 490/2/667.0*SCREEN_HEIGHT;
     } else {
-        return (60/2) * (self.modelAry.count + 1)+15;
+        return ((60/2) * (self.modelAry.count + 1)+15)/667.0*SCREEN_HEIGHT;
     }
 }
 

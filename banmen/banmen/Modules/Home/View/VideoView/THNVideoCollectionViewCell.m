@@ -168,7 +168,7 @@
 -(UILabel *)wordLabel{
     if (!_wordLabel) {
         _wordLabel = [[UILabel alloc] init];
-        _wordLabel.numberOfLines = 0;
+        _wordLabel.numberOfLines = 2;
         _wordLabel.textColor = [UIColor colorWithHexString:@"#313131"];
         _wordLabel.font = [UIFont systemFontOfSize:12];
     }

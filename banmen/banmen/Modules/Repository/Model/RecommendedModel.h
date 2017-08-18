@@ -23,6 +23,7 @@
 @property(nonatomic, copy) NSString *price;
 @property(nonatomic, copy) NSString *inventory;
 @property(nonatomic, copy) NSString *image;
+@property(nonatomic, copy) NSString *status;
 @property(nonatomic,assign) NSInteger current_page;
 @property(nonatomic,assign) NSInteger total_pages;
 @property(nonatomic,strong) NSMutableArray *modelAry;

@@ -31,6 +31,7 @@
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.sectionInset = UIEdgeInsetsMake(15, 15, 0, 15);
         _collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
+        _collectionView.height -= 80;
         _collectionView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.delegate = self;
@@ -58,7 +59,7 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CooperationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CooperationCollectionViewCell" forIndexPath:indexPath];
-    cell.model = self.modelAry[indexPath.row];
+    cell.recommendedModel = self.modelAry[indexPath.row];
     return cell;
 }
 

@@ -225,6 +225,8 @@
         _lineChartView.pinchZoomEnabled = NO;
         _lineChartView.drawGridBackgroundEnabled = NO;
         
+        [_lineChartView setExtraOffsetsWithLeft:0 top:0 right:0 bottom:10];
+        
         _lineChartView.xAxis.gridLineDashLengths = @[@10.0, @10.0];
         _lineChartView.xAxis.drawGridLinesEnabled = NO;
         _lineChartView.xAxis.gridLineDashPhase = 0.f;
@@ -233,6 +235,7 @@
         _lineChartView.xAxis.labelCount = 4;
         _lineChartView.xAxis.labelFont = [UIFont systemFontOfSize:7];
         _lineChartView.xAxis.gridColor = [UIColor colorWithHexString:@"#E7E7E7"];
+        
         
         ChartYAxis *leftAxis = _lineChartView.leftAxis;
         [leftAxis removeAllLimitLines];

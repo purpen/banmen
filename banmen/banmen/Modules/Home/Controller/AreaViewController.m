@@ -140,7 +140,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return 245+50+35;
+        return (245+50+35)/667.0*SCREEN_HEIGHT;
     }
     return (self.modelAry.count*30+50);
 }

@@ -9,6 +9,7 @@
 #import "THNDateSelectViewController.h"
 #import "FSCalendar.h"
 #import "RangePickerCell.h"
+#import "SVProgressHUD.h"
 
 @interface THNDateSelectViewController () <FSCalendarDataSource, FSCalendarDelegate>
 
@@ -23,6 +24,7 @@
 @end
 
 @implementation THNDateSelectViewController
+
 
 - (instancetype)init
 {
@@ -69,6 +71,13 @@
     self.dateFormatter.dateFormat = @"yyyy-MM-dd";
     
     self.calendar.accessibilityIdentifier = @"calendar";
+    
+    UIBarButtonItem *btnItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
+    self.navigationItem.rightBarButtonItem = btnItem;
+}
+
+-(void)done{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - FSCalendarDataSource
@@ -145,6 +154,13 @@
     }
     
     if (self.date2 != NULL && self.date1 != NULL) {
+        
+        NSTimeInterval interval = [self.date1 timeIntervalSinceDate:self.date2];
+        if (interval > 0) {
+            [SVProgressHUD showErrorWithStatus:@"起始日期要先于截止日期"];
+            return;
+        }
+        
         if ([self.delegate respondsToSelector:@selector(getDate:andEnd:)]) {
             [self.delegate getDate:self.date1 andEnd:self.date2];
         }

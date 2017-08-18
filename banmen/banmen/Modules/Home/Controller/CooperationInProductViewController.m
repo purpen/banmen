@@ -10,6 +10,7 @@
 #import "CooperationView.h"
 #import "MJRefresh.h"
 #import "Cooperation.h"
+#import "UIView+FSExtension.h"
 
 @interface CooperationInProductViewController ()<CooperationDelegate>
 @property(nonatomic, strong) CooperationView *cView;

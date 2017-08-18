@@ -82,7 +82,7 @@
         _contenTableView.delegate = self;
         _contenTableView.dataSource = self;
         _contenTableView.contentInset = UIEdgeInsetsMake(-30, 0, 0, 0);
-        _contenTableView.rowHeight = 245;
+        _contenTableView.rowHeight = 245/667.0*SCREEN_HEIGHT;
         [_contenTableView registerClass:[UnitPriceTableViewCell class] forCellReuseIdentifier:@"UnitPriceTableViewCell"];
         [_contenTableView registerClass:[THNRepeatPurchaseRateTableViewCell class] forCellReuseIdentifier:@"THNRepeatPurchaseRateTableViewCell"];
         _contenTableView.separatorStyle = UITableViewCellSeparatorStyleNone;

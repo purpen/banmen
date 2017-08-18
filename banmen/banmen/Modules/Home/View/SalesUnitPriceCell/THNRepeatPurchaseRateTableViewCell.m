@@ -50,7 +50,7 @@
             make.left.mas_equalTo(self.salesLabel.mas_left).mas_offset(0);
             make.top.mas_equalTo(self.topLeftTwoLabel.mas_bottom).mas_offset(5);
             make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-15);
-            make.height.mas_equalTo(340/2);
+            make.bottom.mas_equalTo(self.contentView.mas_bottom).mas_offset(-15);
         }];
         
         [self.contentView addSubview:self.lineview];
@@ -155,6 +155,8 @@
         _barChartView.dragEnabled = NO;//启用拖拽图表
         
         _barChartView.maxVisibleCount = 60;
+        
+        [_barChartView setExtraOffsetsWithLeft:0 top:0 right:0 bottom:10];
         
         ChartXAxis *xAxis = _barChartView.xAxis;
         xAxis.labelPosition = XAxisLabelPositionBottom;

@@ -36,6 +36,7 @@
         [_goodLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).mas_offset(5);
             make.top.mas_equalTo(self.lineView.mas_bottom).mas_offset(5);
+            make.right.mas_lessThanOrEqualTo(self.contentView.mas_right).mas_offset(-5);
         }];
         
         [self.contentView addSubview:self.priceLabel];
@@ -48,6 +49,12 @@
         [_inventoryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-5);
             make.centerY.mas_equalTo(self.priceLabel.mas_centerY).mas_offset(0);
+        }];
+        
+        [self.contentView addSubview:self.cooperationIconImageView];
+        [_cooperationIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.contentView.mas_left).mas_offset(5);
+            make.top.mas_equalTo(self.contentView.mas_top).mas_offset(10);
         }];
     }
     return self;
@@ -88,6 +95,13 @@
     return _lineView;
 }
 
+-(UIImageView *)cooperationIconImageView{
+    if (!_cooperationIconImageView) {
+        _cooperationIconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cooperated"]];
+    }
+    return _cooperationIconImageView;
+}
+
 -(UIImageView *)goodImageView{
     if (!_goodImageView) {
         _goodImageView = [[UIImageView alloc] init];
@@ -100,6 +114,14 @@
     self.goodLabel.text = model.name;
     self.priceLabel.text = [NSString stringWithFormat:@"￥%@",model.price];
     self.inventoryLabel.text = [NSString stringWithFormat:@"库存：%@", model.inventory];
+}
+
+-(void)setRecommendedModel:(RecommendedModel *)recommendedModel{
+    [self.goodImageView sd_setImageWithURL:[NSURL URLWithString:recommendedModel.image] placeholderImage:nil];
+    self.goodLabel.text = recommendedModel.name;
+    self.priceLabel.text = [NSString stringWithFormat:@"￥%@",recommendedModel.price];
+    self.inventoryLabel.text = [NSString stringWithFormat:@"库存：%@", recommendedModel.inventory];
+    self.cooperationIconImageView.hidden = ![recommendedModel.status integerValue];
 }
 
 @end
