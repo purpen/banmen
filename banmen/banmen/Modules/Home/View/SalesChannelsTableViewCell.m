@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "ChannelsItemTableViewCell.h"
 #import "UIColor+Extension.h"
+#import "OtherMacro.h"
 
 @interface SalesChannelsTableViewCell () <UITableViewDelegate, UITableViewDataSource>
 
@@ -74,7 +75,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 30;
+    return 30/667.0*SCREEN_HEIGHT;
 }
 
 @end

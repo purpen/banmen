@@ -87,6 +87,7 @@
             [SVProgressHUD showErrorWithStatus:@"分享失败"];
         }else{
             [SVProgressHUD showSuccessWithStatus:@"分享成功"];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
 }

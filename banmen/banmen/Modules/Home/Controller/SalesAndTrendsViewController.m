@@ -87,7 +87,7 @@
     [titlesView addSubview:lineView2];
     [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(titlesView).mas_offset(0);
-        make.height.mas_equalTo(2);
+        make.height.mas_equalTo(1);
     }];
     titlesView.width = self.view.width;
     titlesView.height = 35+2;
