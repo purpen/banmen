@@ -76,7 +76,12 @@
 -(void)setModelAry:(NSArray *)modelAry{
     _modelAry = modelAry;
     UnitPriceModel *model = modelAry[0];
-    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"客单价%@：%@%%", model.range, model.proportion];
+    if (model.range == NULL) {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"客单价0：0%%"];
+    } else {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"客单价%@：%@%%", model.range, model.proportion];
+    }
+    
     
     CGFloat maxMoney = [model.proportion floatValue];
     CGFloat minMoney = [model.proportion floatValue];

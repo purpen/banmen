@@ -91,7 +91,12 @@
 -(void)setModelAry:(NSArray *)modelAry{
     _modelAry = modelAry;
     THNRepeatBuyModel *model0 = modelAry[0];
-    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"重复购买%.@次：%@%%", model0.count, model0.proportion];
+    if (model0.count == NULL) {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"重复购买0次：0%%"];
+    } else {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"重复购买%@次：%@%%", model0.count, model0.proportion];
+    }
+    
     
     //X轴上面需要显示的数据
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
