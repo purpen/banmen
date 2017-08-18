@@ -14,6 +14,7 @@
 #import "UIView+FSExtension.h"
 #import "DateValueFormatter.h"
 #import "ColorMacro.h"
+#import "THNValueFormatter.h"
 
 @interface THNSuccessfulOrderHoursAdayTableViewCell() <ChartViewDelegate>
 
@@ -113,19 +114,19 @@
         self.timeLabel.text = model.time;
     }
     
-    CGFloat maxMoney = [model.sum_money floatValue];
-    CGFloat minMoney = [model.sum_money floatValue];
+    CGFloat maxMoney = [model.sum_money floatValue]/10000;
+    CGFloat minMoney = [model.sum_money floatValue]/10000;
     for (int i = 0; i < modelAry.count; i++) {
         THNHourOrderModel *model = modelAry[i];
-        if ([model.sum_money floatValue] > maxMoney) {
-            maxMoney = [model.sum_money floatValue];
+        if ([model.sum_money floatValue]/10000 > maxMoney) {
+            maxMoney = [model.sum_money floatValue]/10000;
         }
-        if ([model.sum_money floatValue] < minMoney) {
-            minMoney = [model.sum_money floatValue];
+        if ([model.sum_money floatValue]/10000 < minMoney) {
+            minMoney = [model.sum_money floatValue]/10000;
         }
     }
     ChartYAxis *leftAxis = self.lineChartView.leftAxis;
-    leftAxis.axisMaximum = maxMoney;
+    leftAxis.axisMaximum = maxMoney*1.2;
     leftAxis.axisMinimum = minMoney;
     
     
@@ -134,7 +135,7 @@
     for (int i = 0; i < modelAry.count; i++)
     {
         THNHourOrderModel *model = modelAry[i];
-        CGFloat val = [model.sum_money floatValue];
+        CGFloat val = [model.sum_money floatValue]/10000;
         [values addObject:[[ChartDataEntry alloc] initWithX:i y:val icon: [UIImage imageNamed:@"icon"]]];
     }
     
@@ -236,6 +237,7 @@
         leftAxis.drawLimitLinesBehindDataEnabled = YES;
         leftAxis.gridColor = [UIColor colorWithHexString:@"#e7e7e7"];
         leftAxis.labelCount = 3;
+        leftAxis.valueFormatter = [[THNValueFormatter alloc]init];//设置y轴的数据格式
         
         _lineChartView.rightAxis.enabled = NO;
         
