@@ -176,6 +176,7 @@
 		F55DD8181F04D55C004915E3 /* BezierCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F55DD8161F04D55C004915E3 /* BezierCurveView.xib */; };
 		F55DD81B1F04DDBE004915E3 /* UnitPriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */; };
 		F56BBBC11F4A804500D57806 /* THNPieChartValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F56BBBC01F4A804500D57806 /* THNPieChartValueFormatter.m */; };
+		F56BBBC91F4ABFC000D57806 /* THNUnitPriceValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F56BBBC81F4ABFC000D57806 /* THNUnitPriceValueFormatter.m */; };
 		F57139CF1F25BAFF00C1A62B /* MaterialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F57139CE1F25BAFF00C1A62B /* MaterialTableViewCell.m */; };
 		F57139D21F25DFC100C1A62B /* THNGoodsWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = F57139D11F25DFC100C1A62B /* THNGoodsWorld.m */; };
 		F57139D51F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F57139D41F26F32A00C1A62B /* THNGoodsWordCollectionViewCell.m */; };
@@ -563,6 +564,8 @@
 		F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitPriceTableViewCell.m; sourceTree = "<group>"; };
 		F56BBBBF1F4A804500D57806 /* THNPieChartValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPieChartValueFormatter.h; sourceTree = "<group>"; };
 		F56BBBC01F4A804500D57806 /* THNPieChartValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPieChartValueFormatter.m; sourceTree = "<group>"; };
+		F56BBBC71F4ABFC000D57806 /* THNUnitPriceValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNUnitPriceValueFormatter.h; sourceTree = "<group>"; };
+		F56BBBC81F4ABFC000D57806 /* THNUnitPriceValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNUnitPriceValueFormatter.m; sourceTree = "<group>"; };
 		F57139CD1F25BAFF00C1A62B /* MaterialTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialTableViewCell.h; sourceTree = "<group>"; };
 		F57139CE1F25BAFF00C1A62B /* MaterialTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaterialTableViewCell.m; sourceTree = "<group>"; };
 		F57139D01F25DFC100C1A62B /* THNGoodsWorld.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNGoodsWorld.h; sourceTree = "<group>"; };
@@ -823,6 +826,8 @@
 				F58B20671F45AD27005CAFA0 /* THNValueFormatter.m */,
 				F56BBBBF1F4A804500D57806 /* THNPieChartValueFormatter.h */,
 				F56BBBC01F4A804500D57806 /* THNPieChartValueFormatter.m */,
+				F56BBBC71F4ABFC000D57806 /* THNUnitPriceValueFormatter.h */,
+				F56BBBC81F4ABFC000D57806 /* THNUnitPriceValueFormatter.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -2063,6 +2068,7 @@
 				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
 				F57139E11F2724D600C1A62B /* THNGoodsPictureCollectionViewCell.m in Sources */,
 				F5E2CD2C1F3C7578009C8B77 /* THNCustomLabel.m in Sources */,
+				F56BBBC91F4ABFC000D57806 /* THNUnitPriceValueFormatter.m in Sources */,
 				F55DD8061F049B13004915E3 /* SalesViewController.m in Sources */,
 				F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */,
 				F55DD8011F03C161004915E3 /* THNPuzzleCollectionViewCell.m in Sources */,

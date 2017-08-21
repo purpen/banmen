@@ -15,6 +15,7 @@
 #import "UnitPriceModel.h"
 #import "DateValueFormatter.h"
 #import "ColorMacro.h"
+#import "THNUnitPriceValueFormatter.h"
 
 @interface UnitPriceTableViewCell() <ChartViewDelegate>
 
@@ -218,6 +219,7 @@
         leftAxis.drawLimitLinesBehindDataEnabled = YES;
         leftAxis.axisLineDashLengths = @[@0.f, @0.0f];
         leftAxis.spaceTop = 0.0;
+        leftAxis.valueFormatter = [[THNUnitPriceValueFormatter alloc] init];
         
         
         _lineChartView.rightAxis.enabled = NO;

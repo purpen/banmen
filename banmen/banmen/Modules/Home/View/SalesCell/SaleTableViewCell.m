@@ -25,6 +25,7 @@
 @property (strong,nonatomic)UIView *lineview;
 @property (assign,nonatomic) CGFloat sliderXValue;
 @property (assign,nonatomic) CGFloat sliderYValue;
+@property (assign,nonatomic) BOOL unitFlag;
 
 @end
 
@@ -104,10 +105,30 @@
     _modelAry = modelAry;
     
     SalesTrendsModel *model = modelAry[0];
+    
+    CGFloat maxMoney = [model.sum_money floatValue];
+    CGFloat minMoney = [model.sum_money floatValue];
+    for (int i = 0; i < modelAry.count; i++) {
+        SalesTrendsModel *model = modelAry[i];
+        if ([model.sum_money floatValue] > maxMoney) {
+            maxMoney = [model.sum_money floatValue];
+        }
+        if ([model.sum_money floatValue] < minMoney) {
+            minMoney = [model.sum_money floatValue];
+        }
+    }
+    
+    self.unitFlag = maxMoney > 100000;
+    
     if (model.sum_money == NULL) {
         self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：0"];
     } else {
-        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%@", model.sum_money];
+        if (_unitFlag) {
+            self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%.2f万", [model.sum_money floatValue]/10000];
+            self.lineChartView.leftAxis.valueFormatter = [[THNValueFormatter alloc] init];
+        } else {
+            self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%@", model.sum_money];
+        }
     }
     if (model.time == NULL) {
         self.timeLabel.text = @"0";
@@ -115,20 +136,14 @@
         self.timeLabel.text = model.time;
     }
     
-    CGFloat maxMoney = [model.sum_money floatValue]/10000;
-    CGFloat minMoney = [model.sum_money floatValue]/10000;
-    for (int i = 0; i < modelAry.count; i++) {
-        SalesTrendsModel *model = modelAry[i];
-        if ([model.sum_money floatValue]/10000 > maxMoney) {
-            maxMoney = [model.sum_money floatValue]/10000;
-        }
-        if ([model.sum_money floatValue]/10000 < minMoney) {
-            minMoney = [model.sum_money floatValue]/10000;
-        }
+    NSInteger propotion = 1;
+    if (_unitFlag) {
+        propotion = 10000;
     }
+    
     ChartYAxis *leftAxis = self.lineChartView.leftAxis;
-    leftAxis.axisMaximum = maxMoney;
-    leftAxis.axisMinimum = minMoney;
+    leftAxis.axisMaximum = maxMoney/propotion;
+    leftAxis.axisMinimum = minMoney/propotion;
     
     
     NSMutableArray *values = [[NSMutableArray alloc] init];
@@ -136,7 +151,7 @@
     for (int i = 0; i < modelAry.count; i++)
     {
         SalesTrendsModel *model = modelAry[i];
-        CGFloat val = [model.sum_money floatValue]/10000;
+        CGFloat val = [model.sum_money floatValue]/propotion;
         [values addObject:[[ChartDataEntry alloc] initWithX:i y:val icon: [UIImage imageNamed:@"icon"]]];
     }
     
@@ -243,7 +258,7 @@
         leftAxis.gridColor = [UIColor colorWithHexString:@"#E7E7E7"];
         leftAxis.drawZeroLineEnabled = NO;
         leftAxis.drawLimitLinesBehindDataEnabled = YES;
-        leftAxis.valueFormatter = [[THNValueFormatter alloc] init];
+        
         
         
         _lineChartView.rightAxis.enabled = NO;
@@ -297,7 +312,12 @@
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
-    self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%.2f", entry.y];
+    if (_unitFlag) {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%.2f万", entry.y];
+    } else {
+        self.topLeftTwoLabel.text = [NSString stringWithFormat:@"销售额：%.2f", entry.y];
+    }
+    
     SalesTrendsModel *model = self.modelAry[(NSInteger)entry.x];
     self.timeLabel.text = model.time;
     [self.lineChartView centerViewToAnimatedWithXValue:entry.x yValue:entry.y axis:[self.lineChartView.data getDataSetByIndex:highlight.dataSetIndex].axisDependency duration:1.0];
