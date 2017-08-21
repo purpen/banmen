@@ -15,6 +15,7 @@
 #import "DateValueFormatter.h"
 #import "THNRepeatBuyModel.h"
 #import "ColorMacro.h"
+#import "THNUnitPriceValueFormatter.h"
 
 @interface THNRepeatPurchaseRateTableViewCell() <ChartViewDelegate>
 
@@ -172,21 +173,22 @@
         xAxis.axisLineWidth = 1;//设置X轴线宽
         xAxis.gridAntialiasEnabled = YES;//开启抗锯齿
         
-        NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
-        leftAxisFormatter.minimumFractionDigits = 0;
-        leftAxisFormatter.maximumFractionDigits = 1;
+//        NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
+//        leftAxisFormatter.minimumFractionDigits = 0;
+//        leftAxisFormatter.maximumFractionDigits = 1;
         
         _barChartView.rightAxis.enabled = NO;//不绘制右边轴
         
         ChartYAxis *leftAxis = _barChartView.leftAxis;
         leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
         leftAxis.labelCount = 5;
-        leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:leftAxisFormatter];
+//        leftAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:leftAxisFormatter];
         leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
         leftAxis.spaceTop = 0.15;
         leftAxis.axisMinimum = 0.0; // this replaces startAtZero = YES
         leftAxis.drawGridLinesEnabled = NO;
         leftAxis.axisLineDashPhase = 20;
+        leftAxis.valueFormatter = [[THNUnitPriceValueFormatter alloc] init];
         
         _barChartView.legend.enabled = NO;//不显示图例说明
         [_barChartView animateWithXAxisDuration:1.5];

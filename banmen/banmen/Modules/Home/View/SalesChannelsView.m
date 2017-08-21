@@ -184,6 +184,11 @@
         _pieChartView.holeColor = [UIColor clearColor];//空心颜色
         _pieChartView.transparentCircleRadiusPercent = 0.52;//半透明空心半径占比
         _pieChartView.transparentCircleColor = [UIColor colorWithRed:210/255.0 green:145/255.0 blue:165/255.0 alpha:0.3];//半透明空心的颜色
+        [_pieChartView setEntryLabelFont:[UIFont systemFontOfSize:0]];
+        [_pieChartView setUsePercentValuesEnabled:YES];
+        [_pieChartView setDrawCenterTextEnabled:NO];
+        [_pieChartView setRotationAngle:0];
+        [_pieChartView setHighlightPerTapEnabled:YES];
         
         _pieChartView.descriptionText = @"";
         
