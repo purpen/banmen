@@ -38,7 +38,7 @@
             make.left.mas_equalTo(self.contentView.mas_left).mas_offset(10);
             make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-10);
             make.top.mas_equalTo(self.imageView.mas_bottom).mas_offset(5);
-            make.bottom.mas_equalTo(self.fromLabel.mas_top).mas_offset(-5);
+            make.bottom.mas_lessThanOrEqualTo(self.fromLabel.mas_top).mas_offset(-5);
         }];
         
         [self.contentView addSubview:self.bgImageView];

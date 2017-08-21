@@ -12,6 +12,7 @@
 #import "SalesChannelsModel.h"
 #import "SalesChannelsTableViewCell.h"
 #import "OtherMacro.h"
+#import "THNPieChartValueFormatter.h"
 
 @interface SalesChannelsView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -132,16 +133,20 @@
         dataSet.valueLinePart1OffsetPercentage = 0.85;//折线中第一段起始位置相对于区块的偏移量, 数值越大, 折线距离区块越远
         dataSet.valueLinePart1Length = 0.5;//折线中第一段长度占比
         dataSet.valueLinePart2Length = 0.4;//折线中第二段长度最大占比
-        dataSet.valueLineWidth = 0;//折线的粗细
+        dataSet.valueLineWidth = 1;//折线的粗细
         dataSet.valueLineColor = [UIColor brownColor];//折线颜色
         //data
         PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        formatter.numberStyle = NSNumberFormatterPercentStyle;
-        formatter.maximumFractionDigits = 0;//小数位数
-        formatter.multiplier = @1.f;
-        formatter.percentSymbol = @" %";
-        [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:formatter]];//设置显示数据格式
+//        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+//        formatter.numberStyle = NSNumberFormatterPercentStyle;
+//        formatter.maximumFractionDigits = 0;//小数位数
+//        formatter.multiplier = @1.f;
+//        formatter.percentSymbol = @" %";
+        
+        [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithBlock:^NSString * _Nonnull(double value, ChartDataEntry * _Nonnull entry,  NSInteger dataSetIndex, ChartViewPortHandler * _Nullable viewPortHandler) {
+            return [NSString stringWithFormat:@"%.1f%%", value*100];
+        }]];
+        //设置显示数据格式
         [data setValueTextColor:[UIColor whiteColor]];
         [data setValueFont:[UIFont systemFontOfSize:10]];
     

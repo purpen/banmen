@@ -17,28 +17,30 @@
 -(void)setModel:(GoodsDetailModel *)model{
     _model = model;
     [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:[UIImage imageNamed:@"goodsImagDefault"]];
-    self.goodsNumLabel.text = [NSString stringWithFormat:@"货号：%@", model.number];
-    self.categoryLabel.text = [NSString stringWithFormat:@"类别：%@", model.category];
-    self.shortNameLabel.text = [NSString stringWithFormat:@"商品简称：%@", model.short_name];
-    self.pleasedToLabel.text = [NSString stringWithFormat:@"进货价(元)：￥%@", model.price];
-    self.weightLabel.text = [NSString stringWithFormat:@"重量(kg)：%@kg", model.weight];
-    NSString *str = @"SKU：";
-    for (int i = 0; i<model.skus.count; i++) {
-        NSDictionary *dict = model.skus[i];
-        NSString *str1 = dict[@"mode"];
-        NSString *str2;
-        if (i == 0) {
-            str2 = [NSString stringWithFormat:@"%@", str1];
-        } else {
-            str2 = [NSString stringWithFormat:@"/%@", str1];
+    if (model.number != NULL) {
+        self.goodsNumLabel.text = [NSString stringWithFormat:@"货号：%@", model.number];
+        self.categoryLabel.text = [NSString stringWithFormat:@"类别：%@", model.category];
+        self.shortNameLabel.text = [NSString stringWithFormat:@"商品简称：%@", model.short_name];
+        self.pleasedToLabel.text = [NSString stringWithFormat:@"进货价(元)：￥%@", model.price];
+        self.weightLabel.text = [NSString stringWithFormat:@"重量(kg)：%@kg", model.weight];
+        NSString *str = @"SKU：";
+        for (int i = 0; i<model.skus.count; i++) {
+            NSDictionary *dict = model.skus[i];
+            NSString *str1 = dict[@"mode"];
+            NSString *str2;
+            if (i == 0) {
+                str2 = [NSString stringWithFormat:@"%@", str1];
+            } else {
+                str2 = [NSString stringWithFormat:@"/%@", str1];
+            }
+            str = [str stringByAppendingString:str2];
         }
-        str = [str stringByAppendingString:str2];
-    }
-    self.skuLabel.text = str;
-    if (model.status == 1) {
-        self.relationshipBtn.selected = YES;
-    } else {
-        self.relationshipBtn.selected = NO;
+        self.skuLabel.text = str;
+        if (model.status == 1) {
+            self.relationshipBtn.selected = YES;
+        } else {
+            self.relationshipBtn.selected = NO;
+        }
     }
 }
 
