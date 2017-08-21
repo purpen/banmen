@@ -116,7 +116,7 @@ static NSInteger const imageViewTag = 3821;
         [textView thn_setPosterTextViewModel:model];
         textView.delegate = self;
         textView.tag = textViewTag + idx;
-        
+                
         [self.controlView addSubview:textView];
         [self thn_loadFlashingAnimationOfView:textView background:model.background flash:YES];
         [self.textViewArray addObject:textView];
@@ -126,7 +126,7 @@ static NSInteger const imageViewTag = 3821;
 //  开始编辑文字
 - (void)thn_textViewDidBeginEditing:(THNPosterTextView *)textView {
     self.tempTextView = textView;
-
+    
     CGFloat frameScale = (SCREEN_HEIGHT - 94) / _frameHeight;
     CGFloat textViewMaxY = CGRectGetMaxY(textView.frame) * frameScale;
 

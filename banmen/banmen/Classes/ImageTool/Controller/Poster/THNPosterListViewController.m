@@ -144,7 +144,7 @@ static NSString *const PosterListCollectionViewCellId = @"THNPosterListCollectio
 }
 
 - (void)segmentedPager:(MXSegmentedPager *)segmentedPager didSelectViewWithTitle:(NSString *)title {
-    NSLog(@"%@", title);
+//    NSLog(@"%@", title);
 }
 
 - (void)segmentedPager:(MXSegmentedPager *)segmentedPager didSelectViewWithIndex:(NSInteger)index {

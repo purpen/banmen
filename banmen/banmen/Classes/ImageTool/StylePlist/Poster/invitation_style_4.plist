@@ -46,6 +46,35 @@
 			</dict>
 			<dict>
 				<key>radius</key>
+				<string>100</string>
+				<key>editType</key>
+				<string>1</string>
+				<key>imageUrl</key>
+				<string>picture</string>
+				<key>zindex</key>
+				<string>8</string>
+				<key>type</key>
+				<string>3</string>
+				<key>name</key>
+				<string>picture</string>
+				<key>width</key>
+				<string>200</string>
+				<key>height</key>
+				<string>200</string>
+				<key>position</key>
+				<dict>
+					<key>right</key>
+					<string>0</string>
+					<key>left</key>
+					<string>276</string>
+					<key>bottom</key>
+					<string>0</string>
+					<key>top</key>
+					<string>518</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>radius</key>
 				<string>0</string>
 				<key>editType</key>
 				<string>0</string>
@@ -56,9 +85,9 @@
 				<key>type</key>
 				<string>3</string>
 				<key>name</key>
-				<string>picture</string>
+				<string>border</string>
 				<key>width</key>
-				<string>331</string>
+				<string>403</string>
 				<key>height</key>
 				<string>863</string>
 				<key>position</key>
@@ -66,7 +95,7 @@
 					<key>right</key>
 					<string>0</string>
 					<key>left</key>
-					<string>214</string>
+					<string>174</string>
 					<key>bottom</key>
 					<string>0</string>
 					<key>top</key>

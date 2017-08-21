@@ -159,10 +159,6 @@
     }
 }
 
-- (void)textViewDidChangeSelection:(UITextView *)textView {
-    self.posterTextView.selectedRange = NSMakeRange(textView.text.length, 0);
-}
-
 - (void)thn_resignFirstResponder {
     [self.posterTextView resignFirstResponder];
 }
