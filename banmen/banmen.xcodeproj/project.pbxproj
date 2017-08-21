@@ -17,6 +17,9 @@
 		D822BA711F3C5126009A6FE3 /* invitation_style_1.plist in Resources */ = {isa = PBXBuildFile; fileRef = D822BA701F3C5126009A6FE3 /* invitation_style_1.plist */; };
 		D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */; };
 		D83689ED1EFA6900005B0709 /* THNPhotoCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */; };
+		D838AFA71F4AB2A700F2A29C /* invitation_style_2.plist in Resources */ = {isa = PBXBuildFile; fileRef = D838AFA61F4AB2A700F2A29C /* invitation_style_2.plist */; };
+		D838AFAE1F4AB2AC00F2A29C /* invitation_style_3.plist in Resources */ = {isa = PBXBuildFile; fileRef = D838AFAD1F4AB2AC00F2A29C /* invitation_style_3.plist */; };
+		D838AFB01F4AB2B100F2A29C /* invitation_style_4.plist in Resources */ = {isa = PBXBuildFile; fileRef = D838AFAF1F4AB2B100F2A29C /* invitation_style_4.plist */; };
 		D840C6BF1EFB54A00021B83E /* THNOpenAlbumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D840C6BE1EFB54A00021B83E /* THNOpenAlbumButton.m */; };
 		D840C6C21EFB99320021B83E /* THNPreviewPuzzleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D840C6C11EFB99320021B83E /* THNPreviewPuzzleView.m */; };
 		D847DE401EFBDE95007E301E /* THNHintInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D847DE3F1EFBDE95007E301E /* THNHintInfoView.m */; };
@@ -300,6 +303,9 @@
 		D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoTableViewModel.m; sourceTree = "<group>"; };
 		D83689EB1EFA6900005B0709 /* THNPhotoCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPhotoCellViewModel.h; sourceTree = "<group>"; };
 		D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPhotoCellViewModel.m; sourceTree = "<group>"; };
+		D838AFA61F4AB2A700F2A29C /* invitation_style_2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = invitation_style_2.plist; sourceTree = "<group>"; };
+		D838AFAD1F4AB2AC00F2A29C /* invitation_style_3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = invitation_style_3.plist; sourceTree = "<group>"; };
+		D838AFAF1F4AB2B100F2A29C /* invitation_style_4.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = invitation_style_4.plist; sourceTree = "<group>"; };
 		D840C6BA1EFA85250021B83E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D840C6BD1EFB54A00021B83E /* THNOpenAlbumButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNOpenAlbumButton.h; sourceTree = "<group>"; };
 		D840C6BE1EFB54A00021B83E /* THNOpenAlbumButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNOpenAlbumButton.m; sourceTree = "<group>"; };
@@ -1488,6 +1494,9 @@
 			children = (
 				D8E957E41F287387003F9A29 /* invitation_style_0.plist */,
 				D822BA701F3C5126009A6FE3 /* invitation_style_1.plist */,
+				D838AFA61F4AB2A700F2A29C /* invitation_style_2.plist */,
+				D838AFAD1F4AB2AC00F2A29C /* invitation_style_3.plist */,
+				D838AFAF1F4AB2B100F2A29C /* invitation_style_4.plist */,
 				D805C5D21F3168BD00354A47 /* poster_style_1.plist */,
 				D805C5D91F3168C800354A47 /* poster_style_2.plist */,
 				D805C5DB1F3168CD00354A47 /* poster_style_3.plist */,
@@ -1894,9 +1903,12 @@
 				D8736A701F04890500BF9F33 /* five_style_118.plist in Resources */,
 				D8736A711F04890500BF9F33 /* five_style_119.plist in Resources */,
 				D8736A721F04890500BF9F33 /* five_style_120.plist in Resources */,
+				D838AFA71F4AB2A700F2A29C /* invitation_style_2.plist in Resources */,
 				D8736A731F04890500BF9F33 /* five_style_121.plist in Resources */,
 				D8736A741F04890500BF9F33 /* four_style_104.plist in Resources */,
+				D838AFAE1F4AB2AC00F2A29C /* invitation_style_3.plist in Resources */,
 				D8736A751F04890500BF9F33 /* four_style_109.plist in Resources */,
+				D838AFB01F4AB2B100F2A29C /* invitation_style_4.plist in Resources */,
 				D8736A761F04890500BF9F33 /* four_style_110.plist in Resources */,
 				D8736A771F04890500BF9F33 /* four_style_111.plist in Resources */,
 				D8736A781F04890500BF9F33 /* four_style_112.plist in Resources */,
