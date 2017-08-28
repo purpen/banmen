@@ -19,7 +19,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
         
         [self addSubview:self.collectionView];
     }
@@ -29,9 +29,9 @@
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.sectionInset = UIEdgeInsetsMake(15, 15, 0, 15);
+        layout.sectionInset = UIEdgeInsetsMake(15, 15, 70, 15);
         _collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
-        _collectionView.height -= 80;
+//        _collectionView.height -= 118/667.0*SCREEN_HEIGHT;
         _collectionView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.delegate = self;
