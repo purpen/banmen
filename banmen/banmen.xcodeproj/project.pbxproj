@@ -34,6 +34,8 @@
 		D85DE6811F341EB700A0E480 /* poster_style_4.plist in Resources */ = {isa = PBXBuildFile; fileRef = D85DE6801F341EB700A0E480 /* poster_style_4.plist */; };
 		D85DE6881F3446A800A0E480 /* poster_style_5.plist in Resources */ = {isa = PBXBuildFile; fileRef = D85DE6871F3446A800A0E480 /* poster_style_5.plist */; };
 		D85DE68A1F344EDE00A0E480 /* poster_style_6.plist in Resources */ = {isa = PBXBuildFile; fileRef = D85DE6891F344EDE00A0E480 /* poster_style_6.plist */; };
+		D863512B1F4D645C002764A4 /* THNFontStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D863512A1F4D645C002764A4 /* THNFontStyleTableViewCell.m */; };
+		D863513A1F4D7D5F002764A4 /* THNDownloadFontTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D86351391F4D7D5F002764A4 /* THNDownloadFontTool.m */; };
 		D869B3F61F26FFE10074C37B /* THNPosterListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D869B3F51F26FFE10074C37B /* THNPosterListCollectionViewCell.m */; };
 		D8736A671F04890500BF9F33 /* eight_style_135.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A2A1F0488E800BF9F33 /* eight_style_135.plist */; };
 		D8736A681F04890500BF9F33 /* eight_style_136.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A2B1F0488E800BF9F33 /* eight_style_136.plist */; };
@@ -359,6 +361,11 @@
 		D86074201EF9026A00AB6F53 /* UIColor+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
 		D86074211EF9026A00AB6F53 /* NSString+JSON.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSON.m"; sourceTree = "<group>"; };
 		D86074221EF9026A00AB6F53 /* NSString+TimeDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeDate.h"; sourceTree = "<group>"; };
+		D86351291F4D645C002764A4 /* THNFontStyleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNFontStyleTableViewCell.h; sourceTree = "<group>"; };
+		D863512A1F4D645C002764A4 /* THNFontStyleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNFontStyleTableViewCell.m; sourceTree = "<group>"; };
+		D86351341F4D7CAE002764A4 /* FontMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FontMacro.h; sourceTree = "<group>"; };
+		D86351381F4D7D5F002764A4 /* THNDownloadFontTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNDownloadFontTool.h; sourceTree = "<group>"; };
+		D86351391F4D7D5F002764A4 /* THNDownloadFontTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNDownloadFontTool.m; sourceTree = "<group>"; };
 		D869B3F41F26FFE10074C37B /* THNPosterListCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNPosterListCollectionViewCell.h; sourceTree = "<group>"; };
 		D869B3F51F26FFE10074C37B /* THNPosterListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNPosterListCollectionViewCell.m; sourceTree = "<group>"; };
 		D8736A2A1F0488E800BF9F33 /* eight_style_135.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = eight_style_135.plist; sourceTree = "<group>"; };
@@ -1228,6 +1235,7 @@
 				D8B071151EF8F43D005CC051 /* ColorMacro.h */,
 				D8B071161EF8F462005CC051 /* MainMacro.h */,
 				D8B071191EF8F493005CC051 /* OtherMacro.h */,
+				D86351341F4D7CAE002764A4 /* FontMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -1297,11 +1305,11 @@
 		D8B071111EF8F415005CC051 /* ImageTool */ = {
 			isa = PBXGroup;
 			children = (
-				D8736A281F0488E800BF9F33 /* StylePlist */,
 				D8B0711A1EF8F8DD005CC051 /* Base */,
+				D8736A281F0488E800BF9F33 /* StylePlist */,
 				D8B071121EF8F415005CC051 /* Controller */,
-				D8ED5D9E1EFA0D660046642C /* Model */,
 				D8B071141EF8F415005CC051 /* View */,
+				D8ED5D9E1EFA0D660046642C /* Model */,
 				D8B071131EF8F415005CC051 /* Other */,
 			);
 			path = ImageTool;
@@ -1327,6 +1335,8 @@
 				D83689E91EFA68DB005B0709 /* THNPhotoTableViewModel.m */,
 				D83689EB1EFA6900005B0709 /* THNPhotoCellViewModel.h */,
 				D83689EC1EFA6900005B0709 /* THNPhotoCellViewModel.m */,
+				D86351381F4D7D5F002764A4 /* THNDownloadFontTool.h */,
+				D86351391F4D7D5F002764A4 /* THNDownloadFontTool.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -1490,6 +1500,8 @@
 				D805C5DF1F317DD200354A47 /* THNKeyboardToolView.m */,
 				D899A2CA1F3D516D00D79243 /* THNColorCollectionViewCell.h */,
 				D899A2CB1F3D516D00D79243 /* THNColorCollectionViewCell.m */,
+				D86351291F4D645C002764A4 /* THNFontStyleTableViewCell.h */,
+				D863512A1F4D645C002764A4 /* THNFontStyleTableViewCell.m */,
 			);
 			path = Poster;
 			sourceTree = "<group>";
@@ -2080,6 +2092,7 @@
 				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
 				F57139E11F2724D600C1A62B /* THNGoodsPictureCollectionViewCell.m in Sources */,
 				F5E2CD2C1F3C7578009C8B77 /* THNCustomLabel.m in Sources */,
+				D863512B1F4D645C002764A4 /* THNFontStyleTableViewCell.m in Sources */,
 				F56BBBC91F4ABFC000D57806 /* THNUnitPriceValueFormatter.m in Sources */,
 				F55DD8061F049B13004915E3 /* SalesViewController.m in Sources */,
 				F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */,
@@ -2163,6 +2176,7 @@
 				D805C5E01F317DD200354A47 /* THNKeyboardToolView.m in Sources */,
 				F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */,
 				D8E957E21F2724A7003F9A29 /* THNPosterInfoView.m in Sources */,
+				D863513A1F4D7D5F002764A4 /* THNDownloadFontTool.m in Sources */,
 				D8906CAA1F3C320E00482962 /* THNPosterTextView.m in Sources */,
 				D8D9C2471EF278C5000688C6 /* main.m in Sources */,
 				D8B071231EF8FB80005CC051 /* THNLayoutViewController.m in Sources */,

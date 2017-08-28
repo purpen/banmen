@@ -39,4 +39,6 @@
 
 - (void)thn_changeTextViewFontSize:(CGFloat)fontSize;
 
+- (void)thn_changeTextViewFontName:(NSString *)fontName;
+
 @end

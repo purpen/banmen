@@ -17,25 +17,31 @@
 - (void)thn_selectColorForChangeTextColor:(NSString *)color;
 - (void)thn_selectAlignForChangeTextAlign:(NSTextAlignment)align;
 - (void)thn_changeTextFontSize:(CGFloat)fontSize;
+- (void)thn_changeTextFontStyleName:(NSString *)fontName;
 
 @end
 
 @interface THNKeyboardToolView : UIView
 
 /**
- 改变字体颜色
+ 键盘工具菜单按钮
  */
-@property (nonatomic, strong) UIButton *changeTextColor;
+@property (nonatomic, strong) UIButton *selectButton;
 
-/**
- 字体样式
- */
-@property (nonatomic, strong) UIButton *fontStyle;
-
-/**
- 字体样式
- */
-@property (nonatomic, strong) UIButton *fontSize;
+///**
+// 改变字体颜色
+// */
+//@property (nonatomic, strong) UIButton *changeTextColor;
+//
+///**
+// 字体样式
+// */
+//@property (nonatomic, strong) UIButton *fontStyle;
+//
+///**
+// 字体样式
+// */
+//@property (nonatomic, strong) UIButton *fontSize;
 
 /**
  关闭键盘
@@ -43,13 +49,6 @@
 @property (nonatomic, strong) UIButton *closeKeybord;
 
 @property (nonatomic, weak) id <THNKeyboardToolViewDelegate> delegate;
-
-/**
- 开启键盘拓展功能
- 
- @param hidden 开启
- */
-- (void)thn_setHiddenExtendingFunction:(BOOL)hidden;
 
 - (void)thn_refreshColorCollectionData;
 

@@ -10,11 +10,29 @@
 #import "MainMacro.h"
 #import "UIColor+Extension.h"
 #import "THNColorCollectionViewCell.h"
+#import "THNFontStyleTableViewCell.h"
+#import "FontMacro.h"
+#import "THNDownloadFontTool.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 static NSString *const colorCellId = @"THNColorCollectionViewCellId";
+static NSString *const styleCellId = @"THNFontStyleTableViewCellId";
 static NSInteger const alignButtonTag = 1245;
+static NSInteger const toolMenuButtonTag = 1345;
 
-@interface THNKeyboardToolView () <UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface THNKeyboardToolView () <
+    UIScrollViewDelegate,
+    UICollectionViewDelegate,
+    UICollectionViewDataSource,
+    UICollectionViewDelegateFlowLayout,
+    UITableViewDelegate,
+    UITableViewDataSource
+>
+{
+    NSInteger _selectIndex;
+    CGFloat _downloadProgress;
+    THNFontStyleDownloadStatus _downloadStatus;
+}
 
 @property (nonatomic, strong) UIScrollView *contentView;
 @property (nonatomic, strong) UICollectionView *colorCollection;
@@ -22,6 +40,8 @@ static NSInteger const alignButtonTag = 1245;
 @property (nonatomic, strong) UIView *fontSizeView;
 @property (nonatomic, strong) UISlider *sizeSlider;
 @property (nonatomic, strong) UILabel *showSizeLabel;
+@property (nonatomic, strong) UITableView *styleTable;
+@property (nonatomic, strong) NSArray *fontNameArray;
 
 @end
 
@@ -42,12 +62,6 @@ static NSInteger const alignButtonTag = 1245;
     return self;
 }
 
-- (void)thn_setHiddenExtendingFunction:(BOOL)hidden {
-    self.changeTextColor.hidden = hidden;
-    self.fontStyle.hidden = hidden;
-    self.fontSize.hidden = hidden;
-}
-
 - (void)thn_refreshColorCollectionData {
     [self.colorCollection reloadData];
 }
@@ -60,20 +74,51 @@ static NSInteger const alignButtonTag = 1245;
 
 #pragma mark - 设置视图UI
 - (void)setViewUI {
-    [self addSubview:self.changeTextColor];
-    [_changeTextColor mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).with.offset(0);
-        make.right.equalTo(self.mas_right).with.offset(-5);
-        make.size.mas_equalTo(CGSizeMake(44, 44));
+    NSArray *icon = @[@"icon_change_color", @"icon_change_style", @"icon_change_font"];
+    NSArray *clickIcon = @[@"icon_change_colorClick", @"icon_change_styleClick", @"icon_change_fontClick"];
+    [self creatKeyboardToolMenuButton:icon clickIcon:clickIcon];
+    
+    [self addSubview:self.contentView];
+    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(44);
+        make.left.right.bottom.mas_equalTo(0);
     }];
     
-    [self addSubview:self.fontSize];
-    [_fontSize mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).with.offset(0);
-        make.right.equalTo(_changeTextColor.mas_left).with.offset(0);
-        make.size.mas_equalTo(CGSizeMake(44, 44));
+    [self thn_generateContent];
+    
+    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(15, 44, self.bounds.size.width - 30, 0.5)];
+    line.backgroundColor = [UIColor colorWithHexString:@"#979797" alpha:1];
+    [self addSubview:line];
+}
+
+#pragma mark 滚动视图
+- (void)thn_generateContent {
+    self.contentView.contentSize = CGSizeMake(SCREEN_WIDTH * 3, 0);
+
+    [self.contentView addSubview:self.colorCollection];
+    [_colorCollection mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(300, 200));
+        make.left.mas_equalTo((SCREEN_WIDTH - 300) / 2);
+        make.top.mas_equalTo(40);
     }];
     
+    [self.contentView addSubview:self.fontSizeView];
+    [_fontSizeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 200));
+        make.left.mas_equalTo(SCREEN_WIDTH * 2);
+        make.top.mas_equalTo(40);
+    }];
+    
+    [self addSubview:self.styleTable];
+    [_styleTable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(44);
+        make.bottom.left.right.mas_equalTo(0);
+    }];
+}
+
+
+#pragma mark - 创建功能按钮
+- (void)creatKeyboardToolMenuButton:(NSArray *)iconArray clickIcon:(NSArray *)clckIcon {
     [self addSubview:self.closeKeybord];
     [_closeKeybord mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_top).with.offset(0);
@@ -81,30 +126,79 @@ static NSInteger const alignButtonTag = 1245;
         make.size.mas_equalTo(CGSizeMake(44, 44));
     }];
     
-    [self.contentView addSubview:self.fontSizeView];
-    [self.contentView addSubview:self.colorCollection];
+    for (NSInteger idx = 0 ; idx < iconArray.count; ++ idx) {
+        UIButton *menuButton = [[UIButton alloc] init];
+        [menuButton setImage:[UIImage imageNamed:iconArray[idx]] forState:(UIControlStateNormal)];
+        [menuButton setImage:[UIImage imageNamed:clckIcon[idx]] forState:(UIControlStateSelected)];
+        [menuButton addTarget:self action:@selector(keyBoardToolMenuButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+        menuButton.selected = NO;
+        menuButton.tag = toolMenuButtonTag + idx;
+        
+        [self addSubview:menuButton];
+        [menuButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(44, 44));
+            make.right.equalTo(self.mas_right).with.offset(-(5 + 44 * idx));
+            make.top.equalTo(self).with.offset(0);
+        }];
+    }
+}
+
+- (void)keyBoardToolMenuButtonClick:(UIButton *)button {
+    if (button.tag - toolMenuButtonTag == 1) {
+        self.styleTable.hidden = NO;
+        self.contentView.hidden = YES;
+        
+    } else {
+        self.styleTable.hidden = YES;
+        self.contentView.hidden = NO;
+        [self thn_changeContentViewOffset:button.tag - toolMenuButtonTag];
+    }
+
+    if (button.selected == NO) {
+        self.selectButton.selected = NO;
+        button.selected = YES;
+        self.selectButton = button;
+        if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxBeginEditTextTool)]) {
+            [self.delegate thn_writeInputBoxBeginEditTextTool];
+        }
+        
+    } else {
+        button.selected = NO;
+        if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxEndEditTextTool)]) {
+            [self.delegate thn_writeInputBoxEndEditTextTool];
+        }
+    }
+}
+
+#pragma mark 关闭键盘
+- (UIButton *)closeKeybord {
+    if (!_closeKeybord) {
+        _closeKeybord = [[UIButton alloc] init];
+        [_closeKeybord setImage:[UIImage imageNamed:@"icon_keyboard_gray"] forState:(UIControlStateNormal)];
+        [_closeKeybord addTarget:self action:@selector(closeKeybordClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    return _closeKeybord;
+}
+
+//  关闭键盘
+- (void)closeKeybordClick:(UIButton *)button {
+    if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxResignFirstResponder)]) {
+        [self.delegate thn_writeInputBoxResignFirstResponder];
+    }
     
-    [self addSubview:self.contentView];
-    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_top).with.offset(90);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 200));
-        make.centerX.equalTo(self);
-    }];
-    
-    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(15, 44, self.bounds.size.width - 30, 0.5)];
-    line.backgroundColor = [UIColor colorWithHexString:@"#979797" alpha:1];
-    [self addSubview:line];
+    if (self.selectButton.selected == YES) {
+        self.selectButton.selected = NO;
+    }
 }
 
 #pragma mark - 功能面板
 - (UIScrollView *)contentView {
     if (!_contentView) {
-        _contentView = [[UIScrollView alloc] initWithFrame:CGRectInset(self.bounds, 0, 0)];
+        _contentView = [[UIScrollView alloc] init];
         _contentView.delegate = self;
         _contentView.showsHorizontalScrollIndicator = NO;
         _contentView.showsVerticalScrollIndicator = NO;
         _contentView.pagingEnabled = YES;
-        _contentView.contentSize = CGSizeMake(SCREEN_WIDTH * 2, 0);
         _contentView.scrollEnabled = NO;
     }
     return _contentView;
@@ -125,12 +219,13 @@ static NSInteger const alignButtonTag = 1245;
         flowLayout.minimumLineSpacing = 15.0f;
         flowLayout.minimumInteritemSpacing = 15.0f;
         
-        _colorCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH + ((SCREEN_WIDTH - 300) / 2), 0, 300, 160)
+        _colorCollection = [[UICollectionView alloc] initWithFrame:CGRectZero
                                               collectionViewLayout:flowLayout];
         _colorCollection.showsVerticalScrollIndicator = NO;
         _colorCollection.showsHorizontalScrollIndicator = NO;
         _colorCollection.delegate = self;
         _colorCollection.dataSource = self;
+        _colorCollection.bounces = NO;
         _colorCollection.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0];
         [_colorCollection registerClass:[THNColorCollectionViewCell class] forCellWithReuseIdentifier:colorCellId];
     }
@@ -166,10 +261,117 @@ static NSInteger const alignButtonTag = 1245;
     }
 }
 
-#pragma mark - 字体字号面板
+#pragma mark 字体样式面板
+- (UITableView *)styleTable {
+    if (!_styleTable) {
+        _styleTable = [[UITableView alloc] initWithFrame:CGRectZero style:(UITableViewStylePlain)];
+        _styleTable.delegate = self;
+        _styleTable.dataSource = self;
+        _styleTable.tableFooterView = [UIView new];
+        _styleTable.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
+        _styleTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _styleTable.hidden = YES;
+    }
+    return _styleTable;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.fontNameArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    THNFontStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:styleCellId];
+    if (!cell) {
+        cell = [[THNFontStyleTableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:styleCellId];
+    }
+
+    NSString *fontName = self.fontNameArray[indexPath.row];
+    BOOL exist = [THNDownloadFontTool thn_isDownloadedFont:fontName];
+    
+    if (_downloadStatus == THNFontStyleDownloadStatusLoading) {
+        if (_selectIndex == indexPath.row) {
+            [cell thn_setFontStyleCellFontName:fontName downloadStatus:_downloadStatus progress:_downloadProgress];
+        }
+        
+    } else {
+        if (exist) {
+            _downloadStatus = THNFontStyleDownloadStatusDone;
+        } else {
+            _downloadStatus = THNFontStyleDownloadStatusNone;
+        }
+        
+        [cell thn_setFontStyleCellFontName:fontName downloadStatus:_downloadStatus progress:0.];
+    }
+
+    if (_selectIndex == indexPath.row) {
+        [cell thn_hiddenSelectStyleRow:NO];
+    } else {
+        [cell thn_hiddenSelectStyleRow:YES];
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    _selectIndex = indexPath.row;
+    
+    NSString *fontName = self.fontNameArray[indexPath.row];
+    
+    switch (_downloadStatus) {
+        case THNFontStyleDownloadStatusDone:
+            NSLog(@"================================ 存在字体 %@",fontName);
+            _downloadStatus = THNFontStyleDownloadStatusDone;
+            if ([self.delegate respondsToSelector:@selector(thn_changeTextFontStyleName:)]) {
+                [self.delegate thn_changeTextFontStyleName:fontName];
+            }
+            
+            [self.styleTable reloadData];
+            break;
+            
+        case THNFontStyleDownloadStatusNone:
+            NSLog(@"================================ 不存在字体 %@", fontName);
+            [self thn_downloadSelectFont:fontName];
+            break;
+            
+        case THNFontStyleDownloadStatusLoading:
+            NSLog(@"================================ 停止下载字体 %@", fontName);
+            break;
+    }
+    
+}
+
+//  下载字体
+- (void)thn_downloadSelectFont:(NSString *)fontName {
+    [THNDownloadFontTool thn_downLoadFontWithFontName:fontName progress:^(CGFloat pro) {
+        NSLog(@"================ 下载进度：%.2f", pro);
+        _downloadProgress = pro;
+        _downloadStatus = THNFontStyleDownloadStatusLoading;
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_selectIndex inSection:0];
+        [self.styleTable reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationNone)];
+        
+    } complete:^{
+        NSLog(@"**************** 下载完成  %@", fontName);
+        _downloadStatus = THNFontStyleDownloadStatusDone;
+        
+        if ([self.delegate respondsToSelector:@selector(thn_changeTextFontStyleName:)]) {
+            [self.delegate thn_changeTextFontStyleName:fontName];
+        }
+
+        [self.styleTable reloadData];
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_selectIndex inSection:0];
+//        [self.styleTable reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationNone)];
+     
+    } errorMsg:^(NSString *message) {
+        _downloadStatus = THNFontStyleDownloadStatusNone;
+        [SVProgressHUD showErrorWithStatus:@"下载字体失败"];
+    }];
+}
+
+#pragma mark 字体字号面板
 - (UIView *)fontSizeView {
     if (!_fontSizeView) {
-        _fontSizeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+        _fontSizeView = [[UIView alloc] initWithFrame:CGRectZero];
         _fontSizeView.backgroundColor = [UIColor colorWithHexString:kColorRed alpha:0];
         
         [self creatFontSizeSlider];
@@ -195,7 +397,6 @@ static NSInteger const alignButtonTag = 1245;
     slider.minimumTrackTintColor = [UIColor colorWithHexString:kColorRed alpha:1];
     slider.minimumValue = 10;
     [slider setThumbImage:[UIImage imageNamed:@"icon_slider"] forState:(UIControlStateNormal)];
-//    slider.continuous = NO;
     [slider addTarget:self action:@selector(changeFontSize:) forControlEvents:(UIControlEventValueChanged)];
     
     [_fontSizeView addSubview:slider];
@@ -273,87 +474,51 @@ static NSInteger const alignButtonTag = 1245;
     }
 }
 
-#pragma mark - 改变颜色
-- (UIButton *)changeTextColor {
-    if (!_changeTextColor) {
-        _changeTextColor = [[UIButton alloc] init];
-        [_changeTextColor setImage:[UIImage imageNamed:@"icon_change_color"] forState:(UIControlStateNormal)];
-        [_changeTextColor setImage:[UIImage imageNamed:@"icon_change_colorClick"] forState:(UIControlStateSelected)];
-        [_changeTextColor addTarget:self action:@selector(changeTextColorClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        _changeTextColor.selected = NO;
+#pragma mark 字体名称
+- (NSArray *)fontNameArray {
+    if (!_fontNameArray) {
+        _fontNameArray = @[
+                           @"PingFangSC-Regular",      //苹方-简 常规体
+                           @"PingFangSC-Ultralight",   //苹方-简 极细体
+                           @"PingFangSC-Light",        //苹方-简 细体
+                           @"PingFangSC-Thin",         //苹方-简 纤细体
+                           @"PingFangSC-Medium",       //苹方-简 中黑体
+                           @"PingFangSC-Semibold",     //苹方-简 中粗体
+                           @"STBaoli-SC-Regular",      //报隶-简 常规体
+                           @"HiraginoSansGB-W3",       //冬青黑体简体中文 W3
+                           @"HiraginoSansGB-W6",       //冬青黑体简体中文 W6
+                           @"STHeitiSC-Light",         //黑体-简 细体
+                           @"STHeitiSC-Medium",        //黑体-简 中等
+                           @"STFangsong",              //华文仿宋 常规体
+                           @"STXihei",                 //华文黑体 细体
+                           @"STHeiti",                 //华文黑体 常规体
+                           @"STSong",                  //华文宋体 常规体
+                           @"STKaiti-SC-Regular",      //楷体-简 常规体
+                           @"STKaiti-SC-Bold",         //楷体-简 粗体
+                           @"STKaiti-SC-Black",        //楷体-简 黑体
+                           @"FZLTXHK--GBK1-0",         //兰亭黑-简 纤黑
+                           @"FZLTTHK--GBK1-0",         //兰亭黑-简 特黑
+                           @"FZLTZHK--GBK1-0",         //兰亭黑-简 中黑
+                           @"STLibian-SC-Regular",     //隶变-简 常规体
+                           @"HanziPenSC-W3",           //翩翩体-简 常规体
+                           @"HanziPenSC-W5",           //翩翩体-简 粗体
+                           @"HannotateSC-W5",          //手札体-简 常规体
+                           @"HannotateSC-W7",          //手札体-简 粗体
+                           @"STSongti-SC-Regular",     //宋体-简 常规体
+                           @"STSongti-SC-Light",       //宋体-简 细体
+                           @"STSongti-SC-Bold",        //宋体-简 粗体
+                           @"STSongti-SC-Black",       //宋体-简 黑体
+                           @"DFWaWaSC-W5",             //娃娃体-简 常规体
+                           @"Weibei-SC-Bold",          //魏碑-简 粗体
+                           @"STXingkai-SC-Light",      //行楷-简 细体
+                           @"STXingkai-SC-Bold",       //行楷-简 粗体
+                           @"YuppySC-Regular",         //雅痞-简 常规体
+                           @"STYuanti-SC-Regular",     //圆体-简 常规体
+                           @"STYuanti-SC-Light",       //圆体-简 细体
+                           @"STYuanti-SC-Bold"         //圆体-简 粗体
+                           ];
     }
-    return _changeTextColor;
-}
-
-//  显示颜色色板视图
-- (void)changeTextColorClick:(UIButton *)button {
-    [self thn_changeContentViewOffset:1];
-    
-    if (button.selected == NO) {
-        button.selected = YES;
-        self.fontSize.selected = NO;
-        if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxBeginEditTextTool)]) {
-            [self.delegate thn_writeInputBoxBeginEditTextTool];
-        }
-        
-    } else {
-        button.selected = NO;
-        if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxEndEditTextTool)]) {
-            [self.delegate thn_writeInputBoxEndEditTextTool];
-        }
-    }
-}
-
-#pragma mark - 改变字号
-- (UIButton *)fontSize {
-    if (!_fontSize) {
-        _fontSize = [[UIButton alloc] init];
-        [_fontSize setImage:[UIImage imageNamed:@"icon_change_font"] forState:(UIControlStateNormal)];
-        [_fontSize setImage:[UIImage imageNamed:@"icon_change_fontClick"] forState:(UIControlStateSelected)];
-        [_fontSize addTarget:self action:@selector(changeFontSizeClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        _fontSize.selected = NO;
-    }
-    return _fontSize;
-}
-
-//  改变字号
-- (void)changeFontSizeClick:(UIButton *)button {
-    [self thn_changeContentViewOffset:0];
-    
-    if (button.selected == NO) {
-        button.selected = YES;
-        self.changeTextColor.selected = NO;
-        if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxBeginEditTextTool)]) {
-            [self.delegate thn_writeInputBoxBeginEditTextTool];
-        }
-        
-    } else {
-        button.selected = NO;
-        if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxEndEditTextTool)]) {
-            [self.delegate thn_writeInputBoxEndEditTextTool];
-        }
-    }
-}
-
-#pragma mark - 关闭键盘
-- (UIButton *)closeKeybord {
-    if (!_closeKeybord) {
-        _closeKeybord = [[UIButton alloc] init];
-        [_closeKeybord setImage:[UIImage imageNamed:@"icon_keyboard_gray"] forState:(UIControlStateNormal)];
-        [_closeKeybord addTarget:self action:@selector(closeKeybordClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    }
-    return _closeKeybord;
-}
-
-//  关闭键盘
-- (void)closeKeybordClick:(UIButton *)button {
-    if ([self.delegate respondsToSelector:@selector(thn_writeInputBoxResignFirstResponder)]) {
-        [self.delegate thn_writeInputBoxResignFirstResponder];
-    }
-    
-    if (self.changeTextColor.selected == YES) {
-        self.changeTextColor.selected = NO;
-    }
+    return _fontNameArray;
 }
 
 @end
