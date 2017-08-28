@@ -58,6 +58,7 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CooperationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CooperationCollectionViewCell" forIndexPath:indexPath];
+    cell.cooperationIconImageView.hidden = YES;
     cell.model = self.modelAry[indexPath.row];
     return cell;
 }
@@ -69,7 +70,7 @@
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((SCREEN_WIDTH-15*3)/2, 347.0/2);
+    return CGSizeMake((SCREEN_WIDTH-15*3)/2, (347.0/2+41.5)/667.0*SCREEN_HEIGHT);
 }
 
 @end

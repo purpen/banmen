@@ -97,7 +97,7 @@
                 //文章
             {
                 if (self.sender_selected) {
-                    return 190/2+(112+15)*(self.articleModelAry.count)+50;
+                    return 190/2+((142/2+7)/667.0*SCREEN_HEIGHT)*(self.articleModelAry.count)+60;
                 } else {
                     if (self.articleModelAry.count % 2 == 0) {
                         return 190/2+(361/2+15)*(self.articleModelAry.count/2)+50;

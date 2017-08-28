@@ -155,14 +155,19 @@
     
     if (self.date2 != NULL && self.date1 != NULL) {
         
-        NSTimeInterval interval = [self.date1 timeIntervalSinceDate:self.date2];
-        if (interval > 0) {
-            [SVProgressHUD showErrorWithStatus:@"起始日期要先于截止日期"];
-            return;
-        }
+//        NSTimeInterval interval = [self.date1 timeIntervalSinceDate:self.date2];
+//        if (interval > 0) {
+//            [SVProgressHUD showErrorWithStatus:@"起始日期要先于截止日期"];
+//            return;
+//        }
         
         if ([self.delegate respondsToSelector:@selector(getDate:andEnd:)]) {
-            [self.delegate getDate:self.date1 andEnd:self.date2];
+            NSTimeInterval interval = [self.date1 timeIntervalSinceDate:self.date2];
+            if (interval > 0) {
+                [self.delegate getDate:self.date2 andEnd:self.date1];
+            } else {
+                [self.delegate getDate:self.date1 andEnd:self.date2];
+            }
         }
     }
     

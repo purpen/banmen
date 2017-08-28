@@ -49,8 +49,12 @@
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         if (self.sender_selected) {
             layout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
+            layout.minimumLineSpacing = 0;
+            layout.minimumInteritemSpacing = 0;
         } else {
             layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
+            layout.minimumLineSpacing = 0;
+            layout.minimumInteritemSpacing = 0;
         }
         _collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
@@ -79,7 +83,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.sender_selected) {
-        return CGSizeMake(SCREEN_WIDTH, 142/2+27);
+        return CGSizeMake(SCREEN_WIDTH, (142/2+7)/667.0*SCREEN_HEIGHT);
     } else {
         return CGSizeMake((SCREEN_WIDTH-45)/2+2.5, 361/2);
     }

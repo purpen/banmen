@@ -22,7 +22,7 @@
         [_goodImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.mas_equalTo(self.contentView).mas_offset(0);
             make.top.mas_equalTo(self.contentView.mas_top).mas_offset(0);
-            make.bottom.mas_equalTo(self.contentView.mas_bottom).mas_offset(-50);
+            make.height.mas_equalTo(_goodImageView.mas_width).mas_offset(0);
         }];
         
         [self.contentView addSubview:self.lineView];
