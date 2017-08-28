@@ -41,7 +41,7 @@
     view.backgroundColor = [UIColor whiteColor];
     self.view = view;
     
-    FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
+    FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height-64)];
     calendar.dataSource = self;
     calendar.delegate = self;
     calendar.pagingEnabled = NO;
