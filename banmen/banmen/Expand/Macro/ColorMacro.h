@@ -20,7 +20,7 @@
 #define kColorBlack           @"#000000"
 #define kColorMenuText        @"#222222"
 #define kColorGreen           @"#1B9A53"
-#define kColorYellow          @"#BE8914"
+#define kColorYellow          @"#B48212"
 #define kColorRed             @"#FF5A5F"
 
 #define kColorDefalut             @"#BE8914"

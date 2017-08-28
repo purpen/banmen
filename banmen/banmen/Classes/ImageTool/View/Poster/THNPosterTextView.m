@@ -12,6 +12,7 @@
 
 @interface THNPosterTextView () <UITextViewDelegate> {
     NSInteger _fontWeight;
+    NSString *_fontName;
 }
 
 @property (nonatomic, strong) UIView *layerView;
@@ -30,8 +31,18 @@
 }
 
 - (void)thn_changeTextViewFontSize:(CGFloat)fontSize {
-    self.posterTextView.font = [UIFont systemFontOfSize:fontSize weight:[self thn_getTextViewFontWeight:_fontWeight]];
+    if (_fontName.length > 0) {
+        self.posterTextView.font = [UIFont fontWithName:_fontName size:fontSize];
+    } else {
+        self.posterTextView.font = [UIFont systemFontOfSize:fontSize weight:[self thn_getTextViewFontWeight:_fontWeight]];
+    }
+    
     [self thn_textViewContentSizeCenter];
+}
+
+- (void)thn_changeTextViewFontName:(NSString *)fontName {
+    _fontName = fontName;
+    self.posterTextView.font = [UIFont fontWithName:fontName size:self.fontSize];
 }
 
 - (void)thn_textViewContentSizeCenter {

@@ -72,6 +72,10 @@ static NSInteger const imageViewTag = 3821;
     [self.tempTextView thn_changeTextViewFontSize:fontSize];
 }
 
+- (void)thn_changeTextFontName:(NSString *)fontName {
+    [self.tempTextView thn_changeTextViewFontName:fontName];
+}
+
 #pragma mark - 添加海报默认信息
 - (UIView *)controlView {
     if (!_controlView) {
@@ -190,11 +194,7 @@ static NSInteger const imageViewTag = 3821;
             imageView.layer.cornerRadius = model.radius;
         }
         
-        if (model.editType == 1) {
-            imageView.userInteractionEnabled = YES;
-        } else if (model.editType == 0) {
-            imageView.userInteractionEnabled = NO;
-        }
+        imageView.userInteractionEnabled = model.editType == 0 ? NO : YES;
         
         [self thn_imageViewAddTapGestureRecognizer:imageView];
         

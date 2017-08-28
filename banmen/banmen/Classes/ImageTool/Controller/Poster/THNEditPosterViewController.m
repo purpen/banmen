@@ -406,7 +406,6 @@
     if (!_keyboardView) {
         _keyboardView = [[THNKeyboardToolView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 44)];
         _keyboardView.delegate = self;
-        [_keyboardView thn_setHiddenExtendingFunction:NO];
     }
     return _keyboardView;
 }
@@ -438,6 +437,10 @@
     [self.posterView thn_changeTextFontSize:fontSize];
 }
 
+- (void)thn_changeTextFontStyleName:(NSString *)fontName {
+    [self.posterView thn_changeTextFontName:fontName];
+}
+
 #pragma mark - 添加键盘检测
 - (void)thn_registerForKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -458,7 +461,6 @@
     NSDictionary *info = [aNotification userInfo];
     CGFloat keyboardHeight = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     [self thn_changeKeyboardToolViewHeight:keyboardHeight];
-    
     [self thn_changeContentViewHeight:keyboardHeight];
 }
 
@@ -471,7 +473,7 @@
 
 //  键盘消失
 - (void)keyboardHidden:(NSNotification *)aNotification {
-    if (self.keyboardView.changeTextColor.selected == NO && self.keyboardView.fontSize.selected == NO) {
+    if (self.keyboardView.selectButton.selected == NO) {
         [self thn_changeKeyboardToolViewHeight:0.0f];
         [self thn_changeContentViewHeight:30.0f];
         [self thn_changeContentViewOffset:0.0f];
@@ -481,8 +483,7 @@
 //  改变键盘工具的高度
 - (void)thn_changeKeyboardToolViewHeight:(CGFloat)height {
     self.navRightItem.hidden = height == 0 ? NO : YES;
-    self.keyboardView.changeTextColor.selected = NO;
-    self.keyboardView.fontSize.selected = NO;
+    self.keyboardView.selectButton.selected = NO;
     
     [self.keyboardView thn_refreshColorCollectionData];
     

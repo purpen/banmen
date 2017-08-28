@@ -35,6 +35,8 @@
 
 - (void)thn_changeTextFontSize:(CGFloat)fontSize;
 
+- (void)thn_changeTextFontName:(NSString *)fontName;
+
 - (void)thn_setPosterStyleInfoData:(THNPosterModelData *)data;
 
 - (void)thn_setPosterPhotoSelectImage:(UIImage *)image withTag:(NSInteger)tag;

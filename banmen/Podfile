@@ -19,4 +19,5 @@ target "banmen" do
  pod 'JPush'
  pod 'iOS-Echarts'
  pod 'FSCalendar'
+ pod 'M13ProgressSuite', '~> 1.2.9'
 end
