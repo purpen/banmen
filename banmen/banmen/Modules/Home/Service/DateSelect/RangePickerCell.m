@@ -8,6 +8,8 @@
 
 #import "RangePickerCell.h"
 #import "FSCalendarExtensions.h"
+#import "UIColor+Extension.h"
+#import "UIView+FSExtension.h"
 
 @implementation RangePickerCell
 
@@ -17,13 +19,15 @@
     if (self) {
         
         CALayer *selectionLayer = [[CALayer alloc] init];
-        selectionLayer.backgroundColor = [UIColor orangeColor].CGColor;
+        selectionLayer.backgroundColor = [UIColor colorWithHexString:@"#F9E082"].CGColor;
         selectionLayer.actions = @{@"hidden":[NSNull null]}; // Remove hiding animation
         [self.contentView.layer insertSublayer:selectionLayer below:self.titleLabel.layer];
         self.selectionLayer = selectionLayer;
+        self.selectionLayer.masksToBounds = YES;
+        self.selectionLayer.cornerRadius = 53.5/2;
         
         CALayer *middleLayer = [[CALayer alloc] init];
-        middleLayer.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.3].CGColor;
+        middleLayer.backgroundColor = [UIColor colorWithHexString:@"#F9E082"alpha:0.3].CGColor;
         middleLayer.actions = @{@"hidden":[NSNull null]}; // Remove hiding animation
         [self.contentView.layer insertSublayer:middleLayer below:self.titleLabel.layer];
         self.middleLayer = middleLayer;
@@ -44,8 +48,8 @@
 - (void)layoutSublayersOfLayer:(CALayer *)layer
 {
     [super layoutSublayersOfLayer:layer];
-    self.selectionLayer.frame = self.contentView.bounds;
-    self.middleLayer.frame = self.contentView.bounds;
+    self.selectionLayer.frame = CGRectMake(0, (60-53.5)/2, 53.5, 53.5);
+    self.middleLayer.frame = CGRectMake(0, (60-53.5)/2, 53.5, 53.5);
 }
 
 @end

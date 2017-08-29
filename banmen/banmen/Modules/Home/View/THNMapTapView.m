@@ -15,6 +15,7 @@
 -(instancetype)init{
     if (self = [super init]) {
         self.backgroundColor = [UIColor clearColor];
+        self.userInteractionEnabled = NO;
         
         [self addSubview:self.imageView];
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
