@@ -10,6 +10,10 @@
 #import "FSCalendar.h"
 #import "RangePickerCell.h"
 #import "SVProgressHUD.h"
+#import "UIColor+Extension.h"
+#import "ColorMacro.h"
+#import "Masonry.h"
+#import "UIView+FSExtension.h"
 
 @interface THNDateSelectViewController () <FSCalendarDataSource, FSCalendarDelegate>
 
@@ -41,7 +45,13 @@
     view.backgroundColor = [UIColor whiteColor];
     self.view = view;
     
-    FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height-64)];
+    UIImageView *weekImag = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"week"]];
+    [self.view addSubview:weekImag];
+    [weekImag mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.mas_equalTo(self.view).mas_offset(0);
+    }];
+    
+    FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, weekImag.height, view.frame.size.width, view.frame.size.height-95)];
     calendar.dataSource = self;
     calendar.delegate = self;
     calendar.pagingEnabled = NO;
@@ -60,7 +70,6 @@
     
     calendar.today = nil; // Hide the today circle
     [calendar registerClass:[RangePickerCell class] forCellReuseIdentifier:@"cell"];
-    
 }
 
 - (void)viewDidLoad {
@@ -73,6 +82,7 @@
     self.calendar.accessibilityIdentifier = @"calendar";
     
     UIBarButtonItem *btnItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
+    [btnItem setTintColor:[UIColor colorWithHexString:kColorDefalut]];
     self.navigationItem.rightBarButtonItem = btnItem;
 }
 
@@ -154,13 +164,6 @@
     }
     
     if (self.date2 != NULL && self.date1 != NULL) {
-        
-//        NSTimeInterval interval = [self.date1 timeIntervalSinceDate:self.date2];
-//        if (interval > 0) {
-//            [SVProgressHUD showErrorWithStatus:@"起始日期要先于截止日期"];
-//            return;
-//        }
-        
         if ([self.delegate respondsToSelector:@selector(getDate:andEnd:)]) {
             NSTimeInterval interval = [self.date1 timeIntervalSinceDate:self.date2];
             if (interval > 0) {
