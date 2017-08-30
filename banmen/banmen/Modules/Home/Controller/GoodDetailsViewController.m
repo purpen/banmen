@@ -15,6 +15,10 @@
 #import "THNGoodsPictureModel.h"
 #import "THNGoodsVideoModel.h"
 
+#import "THNLayoutViewController.h"
+#import "THNImageToolNavigationController.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+
 @interface GoodDetailsViewController () <GoodsDetailModelDelegate, THNGoodsWorldDelegate, GoodDetailsViewDelegate, THNGoodsArticleModelDelegate, THNGoodsPictureModelDelegate, THNGoodsVideoModelDelegate>
 
 @property(nonatomic, strong) GoodDetailsView *goodDetailsView;
@@ -57,7 +61,17 @@
 }
 
 -(void)editPictures{
-    NSLog(@"图片编辑");
+    [self.goodsPictureModel thn_requestProductImageWithProductId:self.model.product_id count:10 completion:^(NSArray *imageUrlArray) {
+        NSLog(@"------------ 图片链接地址：%@", imageUrlArray);
+        if (imageUrlArray.count == 0) {
+            [SVProgressHUD showInfoWithStatus:@"暂无可用的图片素材"];
+            return ;
+        }
+        
+        THNLayoutViewController *imageLayoutController = [[THNLayoutViewController alloc] init];
+        THNImageToolNavigationController *imageToolNavController = [[THNImageToolNavigationController alloc] initWithRootViewController:imageLayoutController];
+        [self presentViewController:imageToolNavController animated:YES completion:nil];
+    }];
 }
 
 -(void)loadNew{

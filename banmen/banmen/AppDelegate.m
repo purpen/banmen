@@ -111,7 +111,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
  设置 SVProgressHUD 的相关参数
  */
 - (void)thn_initSVProgressHUDArgument {
-    [SVProgressHUD setDefaultStyle:(SVProgressHUDStyleLight)];
+    [SVProgressHUD setDefaultStyle:(SVProgressHUDStyleDark)];
     [SVProgressHUD setMaximumDismissTimeInterval:MAX_DISMISSTIME];
     [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
     [SVProgressHUD setCornerRadius:10];

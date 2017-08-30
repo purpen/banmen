@@ -10,4 +10,11 @@
 
 @interface THNLayoutViewController : THNImageToolViewController
 
+/**
+ 图片链接加载拼图
+ 
+ @param imageUrlArray 图片链接
+ */
+- (void)thn_loadProductImageUrlForLayout:(NSArray *)imageUrlArray;
+
 @end
