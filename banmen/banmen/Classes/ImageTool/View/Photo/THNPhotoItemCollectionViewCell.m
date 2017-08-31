@@ -21,7 +21,12 @@
 
 #pragma mark - 绑定图片数据
 - (void)thn_setPhotoAssetItemImageData:(THNAssetItem *)assetItem {
-    [self thn_getPhotoAsset:assetItem.asset];
+    if (assetItem.image != nil) {
+        self.photoImageView.image = assetItem.image;
+    } else {
+        [self thn_getPhotoAsset:assetItem.asset];
+    }
+    
     [self setSelected:assetItem.selected];
 }
 
@@ -31,7 +36,7 @@
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
     
-    CGSize imageSize = CGSizeMake(150, 150);
+    CGSize imageSize = CGSizeMake(300, 300);
     [imageManager requestImageForAsset:asset
                             targetSize:imageSize
                            contentMode:PHImageContentModeAspectFill

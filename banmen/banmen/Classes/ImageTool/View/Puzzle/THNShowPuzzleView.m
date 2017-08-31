@@ -120,9 +120,8 @@
 
 #pragma mark - 设置布局样式
 - (void)thn_resetStyle {
-//    NSLog(@"========================== 样式的配置信息：%@", _styleDict);
     if(_styleDict) {
-        PHImageRequestOptions * requestOption = [[PHImageRequestOptions alloc] init];
+        PHImageRequestOptions *requestOption = [[PHImageRequestOptions alloc] init];
         requestOption.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
         
         CGSize superSize = CGSizeFromString([[_styleDict objectForKey:@"SuperViewInfo"] objectForKey:@"size"]);
@@ -175,10 +174,14 @@
             if (j < _imageViewArray.count) {
                 UIImageView *imageView = (UIImageView *)[_imageViewArray objectAtIndex:j];
                 imageView.frame = rect;
-                imageView.backgroundColor = [UIColor clearColor];
-                [[PHImageManager defaultManager] requestImageForAsset:item.asset targetSize:CGSizeMake(150, 150) contentMode:PHImageContentModeAspectFill options:requestOption resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                    imageView.image = result;
-                }];
+                imageView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
+                if (item.image != nil) {
+                    imageView.image = item.image;
+                } else {
+                    [[PHImageManager defaultManager] requestImageForAsset:item.asset targetSize:CGSizeMake(150, 150) contentMode:PHImageContentModeAspectFill options:requestOption resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                        imageView.image = result;
+                    }];
+                }
             }
         }
     }

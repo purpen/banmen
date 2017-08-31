@@ -15,6 +15,6 @@
  
  @param imageUrlArray 图片链接
  */
-- (void)thn_loadProductImageUrlForLayout:(NSArray *)imageUrlArray;
+- (void)thn_loadProductImageUrlForLayout:(NSArray *)imageUrlArray goodsTitle:(NSString *)title;
 
 @end

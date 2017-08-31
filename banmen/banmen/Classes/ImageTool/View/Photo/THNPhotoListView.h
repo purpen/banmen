@@ -47,6 +47,8 @@
  */
 @property (nonatomic, strong) THNOpenAlbumButton *openAlbum;
 
+- (void)thn_setOpenAlbumButtonTitle:(NSString *)title;
+
 /**
  获取相册列表的数据
 

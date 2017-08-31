@@ -25,11 +25,23 @@
  相册的封面图
  */
 @property (nonatomic, strong) PHAsset *coverPhoto;
+@property (nonatomic, strong) UIImage *coverImage;
+
+/**
+ 相册的封面图链接
+ */
+@property (nonatomic, strong) NSString *coverPhotoUrl;
 
 /**
  相册下的照片集合
  */
-@property (nonatomic, strong) PHAssetCollection *assetCOllection;
+@property (nonatomic, strong) PHAssetCollection *assetCollection;
+
+/**
+ 商品相册下的照片集合
+ */
+@property (nonatomic, strong) NSArray *imageArray;
+@property (nonatomic, strong) NSArray *imageurlArray;
 
 @end
 

@@ -23,6 +23,8 @@ static NSInteger const kMaxSelectPhotoItem = 6;
 
 @property (nonatomic, strong) NSMutableArray<THNPhotoAlbumList *> *photoAlbumArray;
 @property (nonatomic, strong) NSMutableArray *photoAssetArray;
+@property (nonatomic, strong) NSMutableArray *selectAssetArray;
+@property (nonatomic, strong) NSMutableArray *selectedIdentifierArray;
 
 @end
 
@@ -66,6 +68,10 @@ static NSInteger const kMaxSelectPhotoItem = 6;
     [self.layer addSublayer:topBorder];
 }
 
+- (void)thn_setOpenAlbumButtonTitle:(NSString *)title {
+     [self.openAlbum thn_setButtonTitleText:title iconImage:@"icon_down_main"];
+}
+
 #pragma mark - 展开相册列表的按钮
 - (THNOpenAlbumButton *)openAlbum {
     if (!_openAlbum) {
@@ -91,6 +97,12 @@ static NSInteger const kMaxSelectPhotoItem = 6;
         _visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     }
     return _visualEffectView;
+}
+
+#pragma mark - 加载相册列表的数据
+- (void)thn_getPhotoAlbumListData:(NSMutableArray<THNPhotoAlbumList *> *)albumArray {
+    self.photoAlbumArray = albumArray;
+    [self.photoAlbumTable reloadData];
 }
 
 #pragma mark - 相册列表
@@ -128,39 +140,59 @@ static NSInteger const kMaxSelectPhotoItem = 6;
     [self.openAlbum thn_setButtonTitleText:self.photoAlbumArray[indexPath.row].title iconImage:@"icon_down_main"];
     [self thn_showPhotoAlbumTableView:NO];
     [self.openAlbum thn_rotateButtonIcon:NO];
-    [self thn_refreshThePhotoListData:self.photoAlbumArray[indexPath.row].assetCOllection];
+    [self thn_refreshThePhotoListData:self.photoAlbumArray[indexPath.row]];
 }
 
 #pragma mark - 重新获取指定相册内的所有照片
-- (void)thn_refreshThePhotoListData:(PHAssetCollection *)assetCollection {
-    //  获取选中相册内容
-    NSArray *selectedPhotoArray = [[THNPhotoTool sharePhotoTool] thn_getAssetOfAssetCollection:assetCollection ascending:NO];
+- (void)thn_refreshThePhotoListData:(THNPhotoAlbumList *)albumList {
+    [self.photoAssetArray removeAllObjects];
+    [self.selectedIdentifierArray removeAllObjects];
     
-    //  保持选中的照片还是选中状态
-    NSMutableArray *selectedArray = [NSMutableArray array];
-    NSMutableArray *selectedIdentifierArray = [NSMutableArray array];
-    for (THNAssetItem *item in self.photoAssetArray) {
-        if (item.selected) {
-            [selectedArray addObject:item];
-            [selectedIdentifierArray addObject:item.asset.localIdentifier];
+    //  保存已选择图片的数组数量
+    _selectPhotoItem = self.selectAssetArray.count;
+    
+    for (THNAssetItem *item in self.selectAssetArray) {
+        if (item.imageUrl == nil) {
+            [self.selectedIdentifierArray addObject:item.asset.localIdentifier];
+        } else {
+            [self.selectedIdentifierArray addObject:item.imageUrl];
         }
     }
     
-    [self.photoAssetArray removeAllObjects];
-    
-    _selectPhotoItem = selectedArray.count;
-    
-    __block NSInteger index = 0;
-    [selectedPhotoArray enumerateObjectsUsingBlock:^(PHAsset *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (![selectedIdentifierArray containsObject:obj.localIdentifier]) {
-            THNAssetItem *item = [THNAssetItem assetItemWithPHAsset:obj];
-            [self.photoAssetArray addObject:item];
-        } else {
-            [self.photoAssetArray addObject:selectedArray[index ++]];
+    //  商品链接图片相册
+    if (albumList.imageurlArray.count) {
+        for (NSInteger idx = 0; idx < albumList.imageurlArray.count; ++ idx) {
+            BOOL exist = [self.selectedIdentifierArray containsObject:albumList.imageurlArray[idx]];
+            if (exist) {
+                NSInteger index = [self.selectedIdentifierArray indexOfObject:albumList.imageurlArray[idx]];
+                [self.photoAssetArray addObject:self.selectAssetArray[index]];
+                
+            } else {
+                THNAssetItem *item = [THNAssetItem assetItemWithImage:albumList.imageArray[idx]];
+                item.imageUrl = albumList.imageurlArray[idx];
+                [self.photoAssetArray addObject:item];
+            }
         }
-    }];
     
-    [self.photoColleciton reloadData];
+    } else {
+        //  设备本地相册
+        PHAssetCollection *assetCollection = albumList.assetCollection;
+        NSArray *selectedPhotoArray = [[THNPhotoTool sharePhotoTool] thn_getAssetOfAssetCollection:assetCollection ascending:NO];
+        
+        [selectedPhotoArray enumerateObjectsUsingBlock:^(PHAsset *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            BOOL exist = [self.selectedIdentifierArray containsObject:obj.localIdentifier];
+            if (exist) {
+                NSInteger index = [self.selectedIdentifierArray indexOfObject:obj.localIdentifier];
+                [self.photoAssetArray addObject:self.selectAssetArray[index]];
+                
+            } else {
+                THNAssetItem *item = [THNAssetItem assetItemWithPHAsset:obj];
+                [self.photoAssetArray addObject:item];
+            }
+        }];
+    }
+
+     [self.photoColleciton reloadData];
 }
 
 #pragma mark 展开／关闭相册列表
@@ -180,16 +212,10 @@ static NSInteger const kMaxSelectPhotoItem = 6;
     }];
 }
 
-#pragma mark - 加载相册列表的数据
-- (void)thn_getPhotoAlbumListData:(NSMutableArray<THNPhotoAlbumList *> *)albumArray {
-    self.photoAlbumArray = albumArray;
-    [self.photoAlbumTable reloadData];
-}
-
 #pragma mark - 加载相簿内所有的照片数据
 - (void)thn_getPhotoAssetInAlbumData:(NSMutableArray<THNAssetItem *> *)assetArray isReplace:(BOOL)replace {
     _isReplace = replace;
-    self.photoAssetArray = assetArray;
+    self.photoAssetArray = [NSMutableArray arrayWithArray:assetArray];
     [self.photoColleciton reloadData];
 }
 
@@ -226,7 +252,7 @@ static NSInteger const kMaxSelectPhotoItem = 6;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_isReplace == YES) {
-        [self thn_thn_didSelectPhotoItemOfReplace:self.photoAssetArray[indexPath.row]];
+        [self thn_didSelectPhotoItemOfReplace:self.photoAssetArray[indexPath.row]];
         
     } else {
         THNAssetItem *item = self.photoAssetArray[indexPath.row];
@@ -256,22 +282,48 @@ static NSInteger const kMaxSelectPhotoItem = 6;
     if ([self.delegate respondsToSelector:@selector(thn_didSelectItemAtPhotoList:)]) {
         [self.delegate thn_didSelectItemAtPhotoList:item];
     }
+    
+    [self.selectAssetArray addObject:item];
 }
 
 #pragma mark - 取消选择照片
 - (void)thn_didDeselectPhotoItem:(THNAssetItem *)item {
     _selectPhotoItem -= 1;
-
+    
     if ([self.delegate respondsToSelector:@selector(thn_didDeselectItemAtPhotoList:)]) {
         [self.delegate thn_didDeselectItemAtPhotoList:item];
     }
+    
+    [self.selectAssetArray removeObject:item];
 }
 
 #pragma mark - 替换照片的选择
-- (void)thn_thn_didSelectPhotoItemOfReplace:(THNAssetItem *)item {
+- (void)thn_didSelectPhotoItemOfReplace:(THNAssetItem *)item {
     if ([self.delegate respondsToSelector:@selector(thn_didSelectItemAtPhotoListOfReplace:)]) {
         [self.delegate thn_didSelectItemAtPhotoListOfReplace:item];
     }
+}
+
+#pragma mark - initArray
+- (NSMutableArray *)photoAssetArray {
+    if (!_photoAssetArray) {
+        _photoAssetArray = [NSMutableArray array];
+    }
+    return _photoAssetArray;
+}
+
+- (NSMutableArray *)selectedIdentifierArray {
+    if (!_selectedIdentifierArray) {
+        _selectedIdentifierArray = [NSMutableArray array];
+    }
+    return _selectedIdentifierArray;
+}
+
+- (NSMutableArray *)selectAssetArray {
+    if (!_selectAssetArray) {
+        _selectAssetArray = [NSMutableArray array];
+    }
+    return _selectAssetArray;
 }
 
 @end

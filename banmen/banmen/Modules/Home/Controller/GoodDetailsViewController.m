@@ -62,13 +62,13 @@
 
 -(void)editPictures{
     [self.goodsPictureModel thn_requestProductImageWithProductId:self.model.product_id count:10 completion:^(NSArray *imageUrlArray) {
-        NSLog(@"------------ 图片链接地址：%@", imageUrlArray);
         if (imageUrlArray.count == 0) {
             [SVProgressHUD showInfoWithStatus:@"暂无可用的图片素材"];
             return ;
         }
         
         THNLayoutViewController *imageLayoutController = [[THNLayoutViewController alloc] init];
+        [imageLayoutController thn_loadProductImageUrlForLayout:imageUrlArray goodsTitle:self.model.name];
         THNImageToolNavigationController *imageToolNavController = [[THNImageToolNavigationController alloc] initWithRootViewController:imageLayoutController];
         [self presentViewController:imageToolNavController animated:YES completion:nil];
     }];

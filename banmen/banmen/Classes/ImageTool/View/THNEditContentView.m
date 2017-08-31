@@ -186,13 +186,17 @@ static const CGFloat kMinHeight = 48;
                 childEditView.bottomArray = [[[subDict objectForKey:@"Bottom"] componentsSeparatedByString:@","] mutableCopy];
                 childEditView.rightArray = [[[subDict objectForKey:@"Right"] componentsSeparatedByString:@","] mutableCopy];
                 childEditView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
-                [[PHImageManager defaultManager] requestImageForAsset:assetItem.asset
-                                                           targetSize:CGSizeMake(assetItem.asset.pixelWidth, assetItem.asset.pixelHeight)
-                                                          contentMode:PHImageContentModeAspectFill
-                                                              options:requestOption
-                                                        resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                                                            [childEditView thn_setImageViewData:result rect:rect];
-                                                        }];
+                if (assetItem.image != nil) {
+                    [childEditView thn_setImageViewData:assetItem.image rect:rect];
+                } else {
+                    [[PHImageManager defaultManager] requestImageForAsset:assetItem.asset
+                                                               targetSize:CGSizeMake(assetItem.asset.pixelWidth, assetItem.asset.pixelHeight)
+                                                              contentMode:PHImageContentModeAspectFill
+                                                                  options:requestOption
+                                                            resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                                                                [childEditView thn_setImageViewData:result rect:rect];
+                                                            }];
+                }
                 childEditView.oldRect = rect;
             }
         }
