@@ -82,13 +82,18 @@ const NSInteger kJointImageViewTag = 4641;
         if (idx < self.photoAsset.count) {
             THNJointChildView *childView = (THNJointChildView *)[self.contentViewArray objectAtIndex:idx];
             
-            [[PHImageManager defaultManager] requestImageForAsset:assetItem.asset
-                                                       targetSize:CGSizeMake(assetItem.asset.pixelWidth, assetItem.asset.pixelHeight)
-                                                      contentMode:PHImageContentModeAspectFill
-                                                          options:requestOption
-                                                    resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                                                        [weakSelf thn_setJointChildViewImage:childView image:result];
-                                                    }];
+            if (assetItem.imageUrl != nil) {
+                [weakSelf thn_setJointChildViewImage:childView image:assetItem.image];
+            } else {
+                [[PHImageManager defaultManager] requestImageForAsset:assetItem.asset
+                                                           targetSize:CGSizeMake(assetItem.asset.pixelWidth, assetItem.asset.pixelHeight)
+                                                          contentMode:PHImageContentModeAspectFill
+                                                              options:requestOption
+                                                        resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                                                            [weakSelf thn_setJointChildViewImage:childView image:result];
+                                                        }];
+            }
+            
         }
     }
 }
