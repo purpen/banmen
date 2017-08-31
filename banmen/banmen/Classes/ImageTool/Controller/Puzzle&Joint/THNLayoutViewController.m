@@ -25,6 +25,10 @@
     THNPhotoListViewDelegate
 >
 
+{
+    THNLayoutViewControllerType _controllerType;
+}
+
 @property (nonatomic, strong) NSMutableArray<THNAssetItem *> *assets;
 @property (nonatomic, retain) NSMutableArray<THNPhotoAlbumList *> *photoAblumTitle;
 @property (nonatomic, strong) NSMutableArray *selectPhotoItemArray;
@@ -53,7 +57,9 @@
     [self thn_getPhotoAlbumPermissions];
 }
 
-- (void)thn_loadProductImageUrlForLayout:(NSArray *)imageUrlArray goodsTitle:(NSString *)title {
+- (void)thn_loadProductImageUrlForLayout:(NSArray *)imageUrlArray goodsTitle:(NSString *)title type:(THNLayoutViewControllerType)type {
+    _controllerType = type;
+    
     NSMutableArray<THNAssetItem *> *urlAssets = [NSMutableArray array];
     NSMutableArray<UIImage *> *ablumImage = [NSMutableArray array];
 
@@ -133,11 +139,14 @@
         }
     });
     
-//    dispatch_barrier_async(myQueue, ^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self thn_setControllerViewUI];
-//        });
-//    });
+    if (_controllerType == THNLayoutViewControllerTypeNetwork) {
+        return;
+    }
+    dispatch_barrier_async(myQueue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self thn_setControllerViewUI];
+        });
+    });
 }
 
 #pragma mark - 加载视图控件

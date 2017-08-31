@@ -68,7 +68,7 @@
         }
         
         THNLayoutViewController *imageLayoutController = [[THNLayoutViewController alloc] init];
-        [imageLayoutController thn_loadProductImageUrlForLayout:imageUrlArray goodsTitle:self.model.name];
+        [imageLayoutController thn_loadProductImageUrlForLayout:imageUrlArray goodsTitle:self.model.name type:(THNLayoutViewControllerTypeNetwork)];
         THNImageToolNavigationController *imageToolNavController = [[THNImageToolNavigationController alloc] initWithRootViewController:imageLayoutController];
         [self presentViewController:imageToolNavController animated:YES completion:nil];
     }];
