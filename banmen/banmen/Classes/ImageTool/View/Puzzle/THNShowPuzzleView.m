@@ -42,6 +42,9 @@
     [self.imageViewArray addObject:self.fourthView];
     [self.imageViewArray addObject:self.fifthView];
     [self.imageViewArray addObject:self.sixthView];
+    [self.imageViewArray addObject:self.sevenView];
+    [self.imageViewArray addObject:self.eightView];
+    [self.imageViewArray addObject:self.nineView];
     
     [self thn_resetAllImageView];
     
@@ -56,6 +59,9 @@
     [self thn_setImageViewStyle:self.fourthView];
     [self thn_setImageViewStyle:self.fifthView];
     [self thn_setImageViewStyle:self.sixthView];
+    [self thn_setImageViewStyle:self.sevenView];
+    [self thn_setImageViewStyle:self.eightView];
+    [self thn_setImageViewStyle:self.nineView];
 }
 
 - (void)thn_setImageViewStyle:(UIImageView *)imageView {
@@ -75,6 +81,9 @@
     [self addSubview:self.fourthView];
     [self addSubview:self.fifthView];
     [self addSubview:self.sixthView];
+    [self addSubview:self.sevenView];
+    [self addSubview:self.eightView];
+    [self addSubview:self.nineView];
 }
 
 #pragma mark - 设置样式
@@ -102,6 +111,15 @@
             break;
         case 6:
             picCountFlag = @"six";
+            break;
+        case 7:
+            picCountFlag = @"seven";
+            break;
+        case 8:
+            picCountFlag = @"eight";
+            break;
+        case 9:
+            picCountFlag = @"nine";
             break;
         default:
             break;
@@ -302,6 +320,27 @@
         _sixthView = [[UIImageView alloc] initWithFrame:CGRectZero];
     }
     return _sixthView;
+}
+
+- (UIImageView *)sevenView {
+    if (!_sevenView) {
+        _sevenView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _sevenView;
+}
+
+- (UIImageView *)eightView {
+    if (!_eightView) {
+        _eightView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _eightView;
+}
+
+- (UIImageView *)nineView {
+    if (!_nineView) {
+        _nineView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _nineView;
 }
 
 @end

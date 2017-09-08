@@ -43,6 +43,9 @@ const NSInteger kJointImageViewTag = 4641;
     [self addSubview:self.fourthView];
     [self addSubview:self.fifthView];
     [self addSubview:self.sixthView];
+    [self addSubview:self.sevenView];
+    [self addSubview:self.eightView];
+    [self addSubview:self.nineView];
 }
 
 - (void)resetAllView {
@@ -52,6 +55,9 @@ const NSInteger kJointImageViewTag = 4641;
     [self styleSettingWithView:self.fourthView];
     [self styleSettingWithView:self.fifthView];
     [self styleSettingWithView:self.sixthView];
+    [self styleSettingWithView:self.sevenView];
+    [self styleSettingWithView:self.eightView];
+    [self styleSettingWithView:self.nineView];
     
     [self thn_saveImageViewArray];
 }
@@ -122,6 +128,9 @@ const NSInteger kJointImageViewTag = 4641;
     [self.contentViewArray addObject:self.fourthView];
     [self.contentViewArray addObject:self.fifthView];
     [self.contentViewArray addObject:self.sixthView];
+    [self.contentViewArray addObject:self.sevenView];
+    [self.contentViewArray addObject:self.eightView];
+    [self.contentViewArray addObject:self.nineView];
 }
 
 - (THNJointChildView *)firstView {
@@ -170,6 +179,30 @@ const NSInteger kJointImageViewTag = 4641;
         _sixthView.tag = kJointImageViewTag + 5;
     }
     return _sixthView;
+}
+
+- (THNJointChildView *)sevenView {
+    if (!_sevenView) {
+        _sevenView = [[THNJointChildView alloc] initWithFrame:CGRectZero];
+        _sevenView.tag = kJointImageViewTag + 6;
+    }
+    return _sevenView;
+}
+
+- (THNJointChildView *)eightView {
+    if (!_eightView) {
+        _eightView = [[THNJointChildView alloc] initWithFrame:CGRectZero];
+        _eightView.tag = kJointImageViewTag + 7;
+    }
+    return _eightView;
+}
+
+- (THNJointChildView *)nineView {
+    if (!_nineView) {
+        _nineView = [[THNJointChildView alloc] initWithFrame:CGRectZero];
+        _nineView.tag = kJointImageViewTag + 8;
+    }
+    return _nineView;
 }
 
 - (NSMutableArray *)contentViewArray {

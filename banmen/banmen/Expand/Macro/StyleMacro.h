@@ -20,26 +20,32 @@
 #define threeDownViewTag                107
 #define threeRightViewTag               108
 
-#define fourVerticalViewTag             109
-#define fourHorizontalViewTag           110
-#define fourTopViewTag                  111
-#define fourLeftViewTag                 112
-#define fourDownViewTag                 113
-#define fourRightViewTag                114
+#define fourVerticalViewTag             141
+#define fourHorizontalViewTag           142
+#define fourTopViewTag                  143
+#define fourLeftViewTag                 144
+#define fourDownViewTag                 145
+#define fourRightViewTag                146
 
-#define fiveTopTwoDownThreeViewTag      115
-#define fiveLeftThreeRightTwoViewTag    116
-#define fiveVerticalViewTag             117
-#define fiveLeftViewTag                 118
-#define fiveDownViewTag                 119
-#define fiveVerticalThreePartViewTag    120
-#define fiveHorizontalViewTag           121
+#define fiveTopTwoDownThreeViewTag      151
+#define fiveLeftThreeRightTwoViewTag    152
+#define fiveVerticalViewTag             153
+#define fiveLeftViewTag                 154
+#define fiveDownViewTag                 155
+#define fiveVerticalThreePartViewTag    156
+#define fiveHorizontalViewTag           157
 
-#define sixTwoTimesThreeViewTag         122
-#define sixThreeTimesTwoViewTag         123
-#define sixTwoFourViewTag               124
-#define sixOneFiveViewTag               125
-#define sixOneThreeTwoViewTag           126
-#define sixLeftTopSurroundViewTag       127
+#define sixTwoTimesThreeViewTag         161
+#define sixThreeTimesTwoViewTag         162
+#define sixTwoFourViewTag               163
+#define sixOneFiveViewTag               164
+#define sixOneThreeTwoViewTag           165
+#define sixLeftTopSurroundViewTag       166
+
+#define sevenTopThreeDownFourViewTag    171
+
+#define eightTopFourDownFourViewTag     181
+
+#define nineBlockBoxViewTag             191
 
 #endif /* StyleMacro_h */

@@ -13,7 +13,7 @@
 
 static NSString *const PhotoAlbumTableCellId = @"THNPhotoAlbumTableViewCellId";
 static NSString *const PhotoItemCollectionCellId = @"THNPhotoItemCollectionViewCellId";
-static NSInteger const kMaxSelectPhotoItem = 6;
+static NSInteger const kMaxSelectPhotoItem = 9;
 
 @interface THNPhotoListView () <THNOpenAlbumButtonClickDelegate> {
     NSInteger _selectPhotoItem;
@@ -261,7 +261,7 @@ static NSInteger const kMaxSelectPhotoItem = 6;
         if (item.selected) {
             if (_selectPhotoItem == kMaxSelectPhotoItem) {
                 item.selected = !item.selected;
-                [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"最多选择 %zi 张照片", _selectPhotoItem]];
+                [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"最多选择 %zi 张照片", kMaxSelectPhotoItem]];
                 [collectionView reloadItemsAtIndexPaths:@[indexPath]];
                 return;
             }

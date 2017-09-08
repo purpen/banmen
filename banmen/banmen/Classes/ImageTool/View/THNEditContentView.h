@@ -28,6 +28,9 @@
 @property (nonatomic, strong) THNEditChildView *fourthView;
 @property (nonatomic, strong) THNEditChildView *fifthView;
 @property (nonatomic, strong) THNEditChildView *sixthView;
+@property (nonatomic, strong) THNEditChildView *sevenView;
+@property (nonatomic, strong) THNEditChildView *eightView;
+@property (nonatomic, strong) THNEditChildView *nineView;
 
 /**
  图片资源

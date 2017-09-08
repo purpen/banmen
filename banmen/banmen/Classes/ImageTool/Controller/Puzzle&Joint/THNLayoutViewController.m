@@ -19,6 +19,8 @@
 #import "THNPreviewPuzzleView.h"
 #import <SDWebImage/UIImage+MultiFormat.h>
 
+static const NSInteger kMaxSelectPhotoCount = 9;
+
 @interface THNLayoutViewController () <
     UIImagePickerControllerDelegate,
     THNImageToolNavigationBarItemsDelegate,
@@ -187,8 +189,8 @@
  选择了图片
  */
 - (void)thn_didSelectItemAtPhotoList:(THNAssetItem *)item {
-    if ([self mutableArrayValueForKey:@"selectPhotoItemArray"].count == 6) {
-        [SVProgressHUD showInfoWithStatus:@"最多选择 6 张照片"];
+    if ([self mutableArrayValueForKey:@"selectPhotoItemArray"].count == kMaxSelectPhotoCount) {
+        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"最多选择 %zi 张照片", kMaxSelectPhotoCount]];
         return;
     }
     [[self mutableArrayValueForKey:@"selectPhotoItemArray"] addObject:item];
@@ -260,7 +262,6 @@
 
 - (void)thn_hiddenNavTitle:(BOOL)hidden {
     [UIView animateWithDuration:.3 animations:^{
-//        self.changeFrameButton.alpha = hidden ? 0 : 1;
         self.navRightItem.alpha = hidden ? 0 : 1;
     }];
 }
