@@ -226,6 +226,7 @@
     } else {
         [self.dateSelectBtn setTitle:[NSString stringWithFormat:@"%@ 至 %@", model.time, modelLast.time] forState:(UIControlStateNormal)];
     }
+    self.lineChartView.noDataText = @"暂无数据";
 }
 
 -(LineChartView *)lineChartView{
