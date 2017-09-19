@@ -32,7 +32,6 @@
     self.submitBtn.layer.cornerRadius = 3;
 }
 
-
 - (IBAction)clickSubmitBtn:(UIButton *)sender {
     if (self.optionTFV.text.length > 200) {
         [SVProgressHUD showInfoWithStatus:@"不能多于200个字"];
@@ -47,19 +46,10 @@
                              @"contact":self.phoneTF.text,
                              @"token" : [defaults objectForKey:@"token"]
                              };
-    [manager POST:[kDomainBaseUrl stringByAppendingString:@"/feedback/store"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        //根据返回信息判断是否反馈成功
-        NSNumber *successStr = [responseObject objectForKey:@"success"];
-        //反馈成功
-        if ([successStr isEqualToNumber:@1]) {
-            [SVProgressHUD showSuccessWithStatus:@"反馈成功"];
-            [self.navigationController popViewControllerAnimated:YES];
-            return ;
-        }
-        //反馈失败
-        else{
-            [SVProgressHUD showErrorWithStatus:@"反馈失败"];
-        }
+    [manager POST:[kDomainBaseUrl stringByAppendingString:@"feedback/store"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"反馈成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+        return ;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
