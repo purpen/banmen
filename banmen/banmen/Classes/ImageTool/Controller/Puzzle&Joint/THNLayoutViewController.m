@@ -17,12 +17,19 @@
 #import "THNHintInfoView.h"
 #import "THNPhotoListView.h"
 #import "THNPreviewPuzzleView.h"
+#import <SDWebImage/UIImage+MultiFormat.h>
+
+static const NSInteger kMaxSelectPhotoCount = 9;
 
 @interface THNLayoutViewController () <
     UIImagePickerControllerDelegate,
     THNImageToolNavigationBarItemsDelegate,
     THNPhotoListViewDelegate
 >
+
+{
+    THNLayoutViewControllerType _controllerType;
+}
 
 @property (nonatomic, strong) NSMutableArray<THNAssetItem *> *assets;
 @property (nonatomic, retain) NSMutableArray<THNPhotoAlbumList *> *photoAblumTitle;
@@ -31,7 +38,6 @@
 @property (nonatomic, strong) THNPhotoListView *photoListView;
 @property (nonatomic, strong) THNPreviewPuzzleView *previewPuzzleView;
 @property (nonatomic, strong) THNHintInfoView *hintInfoView;
-@property (nonatomic, strong) UIButton *changeFrameButton;
 
 @end
 
@@ -51,6 +57,45 @@
     
     [self thn_hiddenNavTitle:YES];
     [self thn_getPhotoAlbumPermissions];
+}
+
+- (void)thn_loadProductImageUrlForLayout:(NSArray *)imageUrlArray goodsTitle:(NSString *)title type:(THNLayoutViewControllerType)type {
+    _controllerType = type;
+    
+    NSMutableArray<THNAssetItem *> *urlAssets = [NSMutableArray array];
+    NSMutableArray<UIImage *> *ablumImage = [NSMutableArray array];
+
+    dispatch_queue_t queue = dispatch_queue_create("queue", NULL);
+    dispatch_async(queue, ^{
+        [SVProgressHUD showWithStatus:@"正在加载图片..."];
+        for (NSString *imageUrl in imageUrlArray) {
+            THNAssetItem *urlItem = [THNAssetItem assetItemWithImageUrl:imageUrl];
+            urlItem.imageUrl = imageUrl;
+            [urlAssets addObject:urlItem];
+            [ablumImage addObject:urlItem.image];
+        }
+        
+        THNPhotoAlbumList *ablumList = [[THNPhotoAlbumList alloc] init];
+        ablumList.title = title;
+        ablumList.count = imageUrlArray.count;
+        ablumList.coverImage = [UIImage sd_imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrlArray.firstObject]]];
+        ablumList.imageArray = ablumImage;
+        ablumList.imageurlArray = imageUrlArray;
+        
+        if (self.photoAblumTitle.count) {
+            [self.photoAblumTitle insertObject:ablumList atIndex:0];
+        } 
+        
+        self.assets = urlAssets;
+    });
+    
+    dispatch_barrier_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+            [self.photoListView thn_setOpenAlbumButtonTitle:title];
+            [self thn_setControllerViewUI];
+        });
+    });
 }
 
 #pragma mark - 检查相册权限
@@ -83,35 +128,27 @@
     dispatch_async(myQueue, ^{
         for (THNPhotoAlbumList *photoAlbum in self.photoAblumTitle) {
             if ([photoAlbum.title isEqualToString:@"相机胶卷"]) {
-                NSArray<PHAsset *> *result = [[THNPhotoTool sharePhotoTool] thn_getAssetOfAssetCollection:photoAlbum.assetCOllection ascending:NO];
+                NSArray<PHAsset *> *result = [[THNPhotoTool sharePhotoTool] thn_getAssetOfAssetCollection:photoAlbum.assetCollection ascending:NO];
                 [result enumerateObjectsUsingBlock:^(PHAsset * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     THNAssetItem *assetItem = [THNAssetItem assetItemWithPHAsset:obj];
                     [assets addObject:assetItem];
                 }];
             }
         }
-        self.assets = assets;
+        
+        if (self.assets.count == 0) {
+            self.assets = assets;
+        }
     });
     
+    if (_controllerType == THNLayoutViewControllerTypeNetwork) {
+        return;
+    }
     dispatch_barrier_async(myQueue, ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self thn_setControllerViewUI];
         });
     });
-}
-
-#pragma mark - KVO监测选中照片之后的变化
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"selectPhotoItemArray"]) {
-        if ([self mutableArrayValueForKey:@"selectPhotoItemArray"].count != 0) {
-            [self thn_hiddenPreviewPuzzleView:NO];
-        } else {
-            [self thn_hiddenPreviewPuzzleView:YES];
-        }
-        
-        NSMutableArray *itemArray = [self mutableArrayValueForKey:@"selectPhotoItemArray"];
-        [self.previewPuzzleView thn_setPreviewPuzzlePhotoData:itemArray];
-    }
 }
 
 #pragma mark - 加载视图控件
@@ -132,14 +169,6 @@
         make.top.equalTo(self.view.mas_top).with.offset(74);
     }];
     
-    //  改变视图大小按钮
-//    [self.view addSubview:self.changeFrameButton];
-//    [_changeFrameButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.size.mas_equalTo(CGSizeMake(100, 20));
-//        make.top.equalTo(_previewPuzzleView.mas_bottom).with.offset(10);
-//        make.centerX.equalTo(self.view);
-//    }];
-    
     //  图片列表
     [self.view addSubview:self.photoListView];
     [self.photoListView thn_getPhotoAlbumListData:self.photoAblumTitle];
@@ -155,10 +184,15 @@
     return _photoListView;
 }
 
+#pragma mark - KVO监测选中照片之后的变化
 /**
  选择了图片
  */
 - (void)thn_didSelectItemAtPhotoList:(THNAssetItem *)item {
+    if ([self mutableArrayValueForKey:@"selectPhotoItemArray"].count == kMaxSelectPhotoCount) {
+        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"最多选择 %zi 张照片", kMaxSelectPhotoCount]];
+        return;
+    }
     [[self mutableArrayValueForKey:@"selectPhotoItemArray"] addObject:item];
 }
 
@@ -168,6 +202,19 @@
 - (void)thn_didDeselectItemAtPhotoList:(THNAssetItem *)item {
     NSInteger index = [[self mutableArrayValueForKey:@"selectPhotoItemArray"] indexOfObject:item];
     [[self mutableArrayValueForKey:@"selectPhotoItemArray"] removeObjectAtIndex:index];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"selectPhotoItemArray"]) {
+        if ([self mutableArrayValueForKey:@"selectPhotoItemArray"].count != 0) {
+            [self thn_hiddenPreviewPuzzleView:NO];
+        } else {
+            [self thn_hiddenPreviewPuzzleView:YES];
+        }
+        
+        NSMutableArray *itemArray = [self mutableArrayValueForKey:@"selectPhotoItemArray"];
+        [self.previewPuzzleView thn_setPreviewPuzzlePhotoData:itemArray];
+    }
 }
 
 #pragma mark - 拼图预览视图
@@ -198,42 +245,6 @@
     return _hintInfoView;
 }
 
-#pragma mark - 改变视图大小
-- (UIButton *)changeFrameButton {
-    if (!_changeFrameButton) {
-        _changeFrameButton = [[UIButton alloc] init];
-        [_changeFrameButton setImage:[UIImage imageNamed:@"icon_indicate"] forState:(UIControlStateNormal)];
-        
-        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizerAction:)];
-        [_changeFrameButton addGestureRecognizer:panGesture];
-    }
-    return _changeFrameButton;
-}
-
-- (void)panGestureRecognizerAction:(UIPanGestureRecognizer *)panGesture {
-    switch (panGesture.state) {
-        case UIGestureRecognizerStateEnded:
-        case UIGestureRecognizerStateCancelled:
-        case UIGestureRecognizerStateFailed: {
-            NSLog(@"000");
-            break;
-        }
-            
-        case UIGestureRecognizerStateBegan: {
-            NSLog(@"111");
-            break;
-        }
-            
-        case UIGestureRecognizerStateChanged: {
-            NSLog(@"222");
-            break;
-        }
-            
-        default:
-            break;
-    }
-}
-
 #pragma mark - 设置Nav
 - (void)thn_setNavViewUI {
     self.navTitle.text = @"选择布局";
@@ -251,7 +262,6 @@
 
 - (void)thn_hiddenNavTitle:(BOOL)hidden {
     [UIView animateWithDuration:.3 animations:^{
-//        self.changeFrameButton.alpha = hidden ? 0 : 1;
         self.navRightItem.alpha = hidden ? 0 : 1;
     }];
 }

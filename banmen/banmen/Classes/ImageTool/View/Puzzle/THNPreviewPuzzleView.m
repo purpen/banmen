@@ -28,6 +28,9 @@ static NSString *const PreviewItemCollectionCellId = @"THNPuzzleCollectionViewCe
 @property (nonatomic, strong) NSArray *fourthStyleTagArray;
 @property (nonatomic, strong) NSArray *fifthStyleTagArray;
 @property (nonatomic, strong) NSArray *sixthStyleTagArray;
+@property (nonatomic, strong) NSArray *sevenStyleTagArray;
+@property (nonatomic, strong) NSArray *eightStyleTagArray;
+@property (nonatomic, strong) NSArray *nineStyleTagArray;
 
 @end
 
@@ -97,6 +100,12 @@ static NSString *const PreviewItemCollectionCellId = @"THNPuzzleCollectionViewCe
                                 @(sixOneFiveViewTag),
                                 @(sixOneThreeTwoViewTag),
                                 @(sixLeftTopSurroundViewTag)];
+    
+    self.sevenStyleTagArray = @[@(sevenTopThreeDownFourViewTag)];
+    
+    self.eightStyleTagArray = @[@(eightTopFourDownFourViewTag)];
+    
+    self.nineStyleTagArray = @[@(nineBlockBoxViewTag)];
 }
 
 #pragma mark - 所有的相片列表
@@ -139,6 +148,15 @@ static NSString *const PreviewItemCollectionCellId = @"THNPuzzleCollectionViewCe
         case 6:
             return 6;
             break;
+        case 7:
+            return 1;
+            break;
+        case 8:
+            return 1;
+            break;
+        case 9:
+            return 1;
+            break;
     }
     return 0;
 }
@@ -166,6 +184,15 @@ static NSString *const PreviewItemCollectionCellId = @"THNPuzzleCollectionViewCe
                 break;
             case 6:
                 [cell thn_setPreviewWithPhotoAssetArray:self.photoArray styleTag:[self.sixthStyleTagArray[indexPath.row] integerValue]];
+                break;
+            case 7:
+                [cell thn_setPreviewWithPhotoAssetArray:self.photoArray styleTag:[self.sevenStyleTagArray[indexPath.row] integerValue]];
+                break;
+            case 8:
+                [cell thn_setPreviewWithPhotoAssetArray:self.photoArray styleTag:[self.eightStyleTagArray[indexPath.row] integerValue]];
+                break;
+            case 9:
+                [cell thn_setPreviewWithPhotoAssetArray:self.photoArray styleTag:[self.nineStyleTagArray[indexPath.row] integerValue]];
                 break;
         }
     }
@@ -199,6 +226,15 @@ static NSString *const PreviewItemCollectionCellId = @"THNPuzzleCollectionViewCe
             break;
         case 6:
             styleTag = [self.sixthStyleTagArray[index] integerValue];
+            break;
+        case 7:
+            styleTag = [self.sevenStyleTagArray[index] integerValue];
+            break;
+        case 8:
+            styleTag = [self.eightStyleTagArray[index] integerValue];
+            break;
+        case 9:
+            styleTag = [self.nineStyleTagArray[index] integerValue];
             break;
     }
     return styleTag;

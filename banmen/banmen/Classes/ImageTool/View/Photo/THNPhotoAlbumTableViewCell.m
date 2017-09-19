@@ -21,7 +21,8 @@
 }
 
 - (void)thn_setPhotoAlbumInfoData:(THNPhotoAlbumList *)albumInfo {
-    [self thn_getPhotoAsset:albumInfo.coverPhoto];
+//    [self thn_getPhotoAsset:albumInfo.coverPhoto];
+    self.coverImageView.image = albumInfo.coverImage;
     self.titleLabel.text = albumInfo.title;
     self.countLabel.text = [NSString stringWithFormat:@"%zi", albumInfo.count];
 }
@@ -78,7 +79,7 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = [UIColor colorWithHexString:kColorWhite];
         _titleLabel.font = [UIFont systemFontOfSize:14];
-        _titleLabel.text = @"相机胶卷";
+//        _titleLabel.text = @"相机胶卷";
     }
     return _titleLabel;
 }
@@ -89,7 +90,7 @@
         _countLabel.textColor = [UIColor colorWithHexString:@"CCCCCC"];
         _countLabel.font = [UIFont systemFontOfSize:14];
         _countLabel.textAlignment = NSTextAlignmentRight;
-        _countLabel.text = @"15";
+//        _countLabel.text = @"15";
     }
     return _countLabel;
 }

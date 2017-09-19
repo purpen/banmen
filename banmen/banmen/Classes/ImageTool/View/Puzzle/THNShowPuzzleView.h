@@ -19,6 +19,9 @@
 @property (nonatomic, strong) UIImageView *fourthView;
 @property (nonatomic, strong) UIImageView *fifthView;
 @property (nonatomic, strong) UIImageView *sixthView;
+@property (nonatomic, strong) UIImageView *sevenView;
+@property (nonatomic, strong) UIImageView *eightView;
+@property (nonatomic, strong) UIImageView *nineView;
 
 /**
  保存AssetItem的数据

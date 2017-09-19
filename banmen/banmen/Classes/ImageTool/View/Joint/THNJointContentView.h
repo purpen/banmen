@@ -20,6 +20,9 @@
 @property (nonatomic, strong) THNJointChildView *fourthView;
 @property (nonatomic, strong) THNJointChildView *fifthView;
 @property (nonatomic, strong) THNJointChildView *sixthView;
+@property (nonatomic, strong) THNJointChildView *sevenView;
+@property (nonatomic, strong) THNJointChildView *eightView;
+@property (nonatomic, strong) THNJointChildView *nineView;
 
 /**
  图片资源

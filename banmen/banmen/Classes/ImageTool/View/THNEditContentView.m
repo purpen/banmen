@@ -86,6 +86,15 @@ static const CGFloat kMinHeight = 48;
         case 6:
             picCountFlag = @"six";
             break;
+        case 7:
+            picCountFlag = @"seven";
+            break;
+        case 8:
+            picCountFlag = @"eight";
+            break;
+        case 9:
+            picCountFlag = @"nine";
+            break;
         default:
             break;
     }
@@ -109,6 +118,9 @@ static const CGFloat kMinHeight = 48;
     [self styleSettingWithView:self.fourthView];
     [self styleSettingWithView:self.fifthView];
     [self styleSettingWithView:self.sixthView];
+    [self styleSettingWithView:self.sevenView];
+    [self styleSettingWithView:self.eightView];
+    [self styleSettingWithView:self.nineView];
     
     [self thn_arrayAddViewObject];
 }
@@ -186,13 +198,17 @@ static const CGFloat kMinHeight = 48;
                 childEditView.bottomArray = [[[subDict objectForKey:@"Bottom"] componentsSeparatedByString:@","] mutableCopy];
                 childEditView.rightArray = [[[subDict objectForKey:@"Right"] componentsSeparatedByString:@","] mutableCopy];
                 childEditView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
-                [[PHImageManager defaultManager] requestImageForAsset:assetItem.asset
-                                                           targetSize:CGSizeMake(assetItem.asset.pixelWidth, assetItem.asset.pixelHeight)
-                                                          contentMode:PHImageContentModeAspectFill
-                                                              options:requestOption
-                                                        resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                                                            [childEditView thn_setImageViewData:result rect:rect];
-                                                        }];
+                if (assetItem.image != nil) {
+                    [childEditView thn_setImageViewData:assetItem.image rect:rect];
+                } else {
+                    [[PHImageManager defaultManager] requestImageForAsset:assetItem.asset
+                                                               targetSize:CGSizeMake(assetItem.asset.pixelWidth, assetItem.asset.pixelHeight)
+                                                              contentMode:PHImageContentModeAspectFill
+                                                                  options:requestOption
+                                                            resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                                                                [childEditView thn_setImageViewData:result rect:rect];
+                                                            }];
+                }
                 childEditView.oldRect = rect;
             }
         }
@@ -207,6 +223,9 @@ static const CGFloat kMinHeight = 48;
     [self thn_imageViewAddTapGestureRecognizer:self.fourthView];
     [self thn_imageViewAddTapGestureRecognizer:self.fifthView];
     [self thn_imageViewAddTapGestureRecognizer:self.sixthView];
+    [self thn_imageViewAddTapGestureRecognizer:self.sevenView];
+    [self thn_imageViewAddTapGestureRecognizer:self.eightView];
+    [self thn_imageViewAddTapGestureRecognizer:self.nineView];
 }
 
 - (void)thn_imageViewAddTapGestureRecognizer:(THNEditChildView *)childEditView {
@@ -225,6 +244,9 @@ static const CGFloat kMinHeight = 48;
     [self.fourthView clearInnerBoarder];
     [self.fifthView clearInnerBoarder];
     [self.sixthView clearInnerBoarder];
+    [self.sevenView clearInnerBoarder];
+    [self.eightView clearInnerBoarder];
+    [self.nineView clearInnerBoarder];
     
     THNEditChildView *childEditView = (THNEditChildView *)gesture.view;
     [childEditView drawInnerBoarder];
@@ -236,6 +258,9 @@ static const CGFloat kMinHeight = 48;
     [self removeBoarderMiddleView:self.fourthView];
     [self removeBoarderMiddleView:self.fifthView];
     [self removeBoarderMiddleView:self.sixthView];
+    [self removeBoarderMiddleView:self.sevenView];
+    [self removeBoarderMiddleView:self.eightView];
+    [self removeBoarderMiddleView:self.nineView];
     
     //  加入拖动边框
     [self drawBoarderMiddleView:childEditView];
@@ -346,6 +371,9 @@ static const CGFloat kMinHeight = 48;
     [self.fourthView clearInnerBoarder];
     [self.fifthView clearInnerBoarder];
     [self.sixthView clearInnerBoarder];
+    [self.sevenView clearInnerBoarder];
+    [self.eightView clearInnerBoarder];
+    [self.nineView clearInnerBoarder];
     
     THNEditChildView *childEditView = (THNEditChildView *)gesture.view;
     [childEditView drawInnerBoarder];
@@ -357,6 +385,9 @@ static const CGFloat kMinHeight = 48;
     [self removeBoarderMiddleView:self.fourthView];
     [self removeBoarderMiddleView:self.fifthView];
     [self removeBoarderMiddleView:self.sixthView];
+    [self removeBoarderMiddleView:self.sevenView];
+    [self removeBoarderMiddleView:self.eightView];
+    [self removeBoarderMiddleView:self.nineView];
     
     //  加入粗提示拖动边框
     [self drawBoarderMiddleView:childEditView];
@@ -477,7 +508,7 @@ static const CGFloat kMinHeight = 48;
         return;
         
     } else {
-        for (NSString * neighbor in childView.rightArray) {
+        for (NSString *neighbor in childView.rightArray) {
             if ([neighbor isEqualToString:@"0"]) {
                 break;
             }
@@ -655,7 +686,6 @@ static const CGFloat kMinHeight = 48;
             return;
         }
     }
-    
     
     currentOldRect = CGRectMake(CGRectGetMinX(childView.frame) + offset_X, CGRectGetMinY(childView.frame), CGRectGetWidth(childView.frame) - offset_X, CGRectGetHeight(childView.frame));
     
@@ -1019,6 +1049,9 @@ static const CGFloat kMinHeight = 48;
     self.fourthView = self.contentViewArray[3];
     self.fifthView = self.contentViewArray[4];
     self.sixthView = self.contentViewArray[5];
+    self.sevenView = self.contentViewArray[6];
+    self.eightView = self.contentViewArray[7];
+    self.nineView = self.contentViewArray[8];
     
     switch (tag) {
         case 51:
@@ -1038,6 +1071,15 @@ static const CGFloat kMinHeight = 48;
             break;
         case 56:
             return self.sixthView;
+            break;
+        case 57:
+            return self.sevenView;
+            break;
+        case 58:
+            return self.eightView;
+            break;
+        case 59:
+            return self.nineView;
             break;
         default:
             return nil;
@@ -1119,6 +1161,9 @@ static const CGFloat kMinHeight = 48;
     [self addSubview:self.fourthView];
     [self addSubview:self.fifthView];
     [self addSubview:self.sixthView];
+    [self addSubview:self.sevenView];
+    [self addSubview:self.eightView];
+    [self addSubview:self.nineView];
 }
 
 - (THNEditChildView *)firstView {
@@ -1169,6 +1214,30 @@ static const CGFloat kMinHeight = 48;
     return _sixthView;
 }
 
+- (THNEditChildView *)sevenView {
+    if (!_sevenView) {
+        _sevenView = [[THNEditChildView alloc] initWithFrame:CGRectZero];
+        _sevenView.tag = kChildViewInitTag + 6;
+    }
+    return _sevenView;
+}
+
+- (THNEditChildView *)eightView {
+    if (!_eightView) {
+        _eightView = [[THNEditChildView alloc] initWithFrame:CGRectZero];
+        _eightView.tag = kChildViewInitTag + 7;
+    }
+    return _eightView;
+}
+
+- (THNEditChildView *)nineView {
+    if (!_nineView) {
+        _nineView = [[THNEditChildView alloc] initWithFrame:CGRectZero];
+        _nineView.tag = kChildViewInitTag + 8;
+    }
+    return _nineView;
+}
+
 #pragma mark - Array
 - (void)thn_arrayAddViewObject {
     if (self.contentViewArray.count) {
@@ -1180,6 +1249,9 @@ static const CGFloat kMinHeight = 48;
     [self.contentViewArray addObject:self.fourthView];
     [self.contentViewArray addObject:self.fifthView];
     [self.contentViewArray addObject:self.sixthView];
+    [self.contentViewArray addObject:self.sevenView];
+    [self.contentViewArray addObject:self.eightView];
+    [self.contentViewArray addObject:self.nineView];
 }
 
 - (NSMutableArray *)contentViewArray {

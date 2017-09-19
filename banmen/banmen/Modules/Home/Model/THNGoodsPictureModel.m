@@ -11,6 +11,10 @@
 #import "OtherMacro.h"
 #import "MJExtension.h"
 
+NSString *const kProductPictureModelData = @"data";
+NSString *const kProductPictureModelDataImage = @"image";
+NSString *const kProductPictureModelDataImageP = @"p800";
+
 @implementation THNGoodsPictureModel
 
 +(NSDictionary *)mj_replacedKeyFromPropertyName{
@@ -61,6 +65,33 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
+    }];
+}
+
+- (void)thn_requestProductImageWithProductId:(NSString *)productId count:(NSInteger)count completion:(void (^)(NSArray *))completion {
+    NSMutableArray<NSString *> *imageUrlArray = [NSMutableArray array];
+    
+    NSDictionary *params = @{@"product_id":productId,
+                               @"per_page":@(count),
+                                   @"page":@1,
+                                  @"token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    [manager GET:[kDomainBaseUrl stringByAppendingString:@"product/imageLists"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        if (![responseObject[kProductPictureModelData] isKindOfClass:[NSNull class]]) {
+            NSArray *dataArray = responseObject[kProductPictureModelData];
+            for (NSDictionary *dataDict in dataArray) {
+                NSString *imageUrl = dataDict[kProductPictureModelDataImage][kProductPictureModelDataImageP];
+                [imageUrlArray addObject:imageUrl];
+            }
+            
+            completion(imageUrlArray);
+        }
+            
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"--- 加载错误：%@ ---", [error localizedFailureReason]);
     }];
 }
 

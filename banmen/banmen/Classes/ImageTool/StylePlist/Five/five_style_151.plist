@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Tag</key>
-	<string>122</string>
+	<string>151</string>
 	<key>SuperViewInfo</key>
 	<dict>
 		<key>size</key>
@@ -19,14 +19,14 @@
 			<key>Left</key>
 			<string>0</string>
 			<key>Bottom</key>
-			<string>52.3,53.3,54.1,55.1,56.1</string>
+			<string>52.3,53.1,54.1,55.1</string>
 			<key>Right</key>
-			<string>52.2,54.4,55.2</string>
+			<string>52.2</string>
 			<key>pointArray</key>
 			<array>
 				<string>{0,0}</string>
-				<string>{200,0}</string>
-				<string>{200,300}</string>
+				<string>{300,0}</string>
+				<string>{300,300}</string>
 				<string>{0,300}</string>
 			</array>
 		</dict>
@@ -36,49 +36,30 @@
 			<key>Top</key>
 			<string>0</string>
 			<key>Left</key>
-			<string>51.4,54.4,55.2</string>
+			<string>51.4</string>
 			<key>Bottom</key>
-			<string>51.3,53.3,54.1,55.1,56.1</string>
+			<string>51.3,53.1,54.1,55.1</string>
 			<key>Right</key>
-			<string>53.2,55.4,56.2</string>
+			<string>0</string>
 			<key>pointArray</key>
 			<array>
-				<string>{200,0}</string>
-				<string>{400,0}</string>
-				<string>{400,300}</string>
-				<string>{200,300}</string>
+				<string>{300,0}</string>
+				<string>{600,0}</string>
+				<string>{600,300}</string>
+				<string>{300,300}</string>
 			</array>
 		</dict>
 		<dict>
 			<key>ViewTag</key>
 			<string>53</string>
 			<key>Top</key>
-			<string>0</string>
-			<key>Left</key>
-			<string>52.4,55.4,56.2</string>
-			<key>Bottom</key>
-			<string>51.3,52.3,54.1,55.1,56.1</string>
-			<key>Right</key>
-			<string>0</string>
-			<key>pointArray</key>
-			<array>
-				<string>{400,0}</string>
-				<string>{600,0}</string>
-				<string>{600,300}</string>
-				<string>{400,300}</string>
-			</array>
-		</dict>
-		<dict>
-			<key>ViewTag</key>
-			<string>54</string>
-			<key>Top</key>
-			<string>51.3,52.3,53.3,55.1,56.1</string>
+			<string>51.3,52.3,54.1,55.1</string>
 			<key>Left</key>
 			<string>0</string>
 			<key>Bottom</key>
 			<string>0</string>
 			<key>Right</key>
-			<string>51.4,52.2,55.2</string>
+			<string>54.2</string>
 			<key>pointArray</key>
 			<array>
 				<string>{0,300}</string>
@@ -89,15 +70,15 @@
 		</dict>
 		<dict>
 			<key>ViewTag</key>
-			<string>55</string>
+			<string>54</string>
 			<key>Top</key>
-			<string>51.3,52.3,53.3,54.1,56.1</string>
+			<string>51.3,52.3,53.1,55.1</string>
 			<key>Left</key>
-			<string>51.4,52.2,54.4</string>
+			<string>53.4</string>
 			<key>Bottom</key>
 			<string>0</string>
 			<key>Right</key>
-			<string>52.4,53.2,56.2</string>
+			<string>55.2</string>
 			<key>pointArray</key>
 			<array>
 				<string>{200,300}</string>
@@ -108,11 +89,11 @@
 		</dict>
 		<dict>
 			<key>ViewTag</key>
-			<string>56</string>
+			<string>55</string>
 			<key>Top</key>
-			<string>51.3,52.3,53.3,54.1,55.1</string>
+			<string>51.3,52.3,53.1,54.1</string>
 			<key>Left</key>
-			<string>52.4,53.2,55.4</string>
+			<string>54.4</string>
 			<key>Bottom</key>
 			<string>0</string>
 			<key>Right</key>

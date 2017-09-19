@@ -42,6 +42,9 @@
     [self.imageViewArray addObject:self.fourthView];
     [self.imageViewArray addObject:self.fifthView];
     [self.imageViewArray addObject:self.sixthView];
+    [self.imageViewArray addObject:self.sevenView];
+    [self.imageViewArray addObject:self.eightView];
+    [self.imageViewArray addObject:self.nineView];
     
     [self thn_resetAllImageView];
     
@@ -56,6 +59,9 @@
     [self thn_setImageViewStyle:self.fourthView];
     [self thn_setImageViewStyle:self.fifthView];
     [self thn_setImageViewStyle:self.sixthView];
+    [self thn_setImageViewStyle:self.sevenView];
+    [self thn_setImageViewStyle:self.eightView];
+    [self thn_setImageViewStyle:self.nineView];
 }
 
 - (void)thn_setImageViewStyle:(UIImageView *)imageView {
@@ -75,6 +81,9 @@
     [self addSubview:self.fourthView];
     [self addSubview:self.fifthView];
     [self addSubview:self.sixthView];
+    [self addSubview:self.sevenView];
+    [self addSubview:self.eightView];
+    [self addSubview:self.nineView];
 }
 
 #pragma mark - 设置样式
@@ -103,6 +112,15 @@
         case 6:
             picCountFlag = @"six";
             break;
+        case 7:
+            picCountFlag = @"seven";
+            break;
+        case 8:
+            picCountFlag = @"eight";
+            break;
+        case 9:
+            picCountFlag = @"nine";
+            break;
         default:
             break;
     }
@@ -120,9 +138,8 @@
 
 #pragma mark - 设置布局样式
 - (void)thn_resetStyle {
-//    NSLog(@"========================== 样式的配置信息：%@", _styleDict);
     if(_styleDict) {
-        PHImageRequestOptions * requestOption = [[PHImageRequestOptions alloc] init];
+        PHImageRequestOptions *requestOption = [[PHImageRequestOptions alloc] init];
         requestOption.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
         
         CGSize superSize = CGSizeFromString([[_styleDict objectForKey:@"SuperViewInfo"] objectForKey:@"size"]);
@@ -175,10 +192,14 @@
             if (j < _imageViewArray.count) {
                 UIImageView *imageView = (UIImageView *)[_imageViewArray objectAtIndex:j];
                 imageView.frame = rect;
-                imageView.backgroundColor = [UIColor clearColor];
-                [[PHImageManager defaultManager] requestImageForAsset:item.asset targetSize:CGSizeMake(150, 150) contentMode:PHImageContentModeAspectFill options:requestOption resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                    imageView.image = result;
-                }];
+                imageView.backgroundColor = [UIColor colorWithHexString:kColorBackground alpha:0];
+                if (item.image != nil) {
+                    imageView.image = item.image;
+                } else {
+                    [[PHImageManager defaultManager] requestImageForAsset:item.asset targetSize:CGSizeMake(150, 150) contentMode:PHImageContentModeAspectFill options:requestOption resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                        imageView.image = result;
+                    }];
+                }
             }
         }
     }
@@ -299,6 +320,27 @@
         _sixthView = [[UIImageView alloc] initWithFrame:CGRectZero];
     }
     return _sixthView;
+}
+
+- (UIImageView *)sevenView {
+    if (!_sevenView) {
+        _sevenView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _sevenView;
+}
+
+- (UIImageView *)eightView {
+    if (!_eightView) {
+        _eightView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _eightView;
+}
+
+- (UIImageView *)nineView {
+    if (!_nineView) {
+        _nineView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _nineView;
 }
 
 @end

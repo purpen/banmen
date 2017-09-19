@@ -46,6 +46,9 @@ static THNPhotoTool *_sharePhotoTool = nil;
 - (NSArray<THNPhotoAlbumList *> *)thn_getPhotoAlbumList {
     NSMutableArray<THNPhotoAlbumList *> *photoAblumList = [NSMutableArray array];
     
+    PHImageRequestOptions *requestOption = [[PHImageRequestOptions alloc] init];
+    requestOption.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
+    
     //  获取智能相册
     PHFetchResult *smartAblums = [PHAssetCollection fetchAssetCollectionsWithType:(PHAssetCollectionTypeSmartAlbum) subtype:(PHAssetCollectionSubtypeAlbumRegular) options:nil];
     [smartAblums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -56,8 +59,11 @@ static THNPhotoTool *_sharePhotoTool = nil;
                 THNPhotoAlbumList *ablumList = [[THNPhotoAlbumList alloc] init];
                 ablumList.title = collection.localizedTitle;
                 ablumList.count = assets.count;
-                ablumList.coverPhoto = assets.firstObject;
-                ablumList.assetCOllection = collection;
+//                ablumList.coverPhoto = assets.firstObject;
+                [[PHImageManager defaultManager] requestImageForAsset:assets.firstObject targetSize:CGSizeMake(150, 150) contentMode:PHImageContentModeAspectFill options:requestOption resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                    ablumList.coverImage = result;
+                }];
+                ablumList.assetCollection = collection;
                 [photoAblumList addObject:ablumList];
             }
         }
@@ -71,8 +77,11 @@ static THNPhotoTool *_sharePhotoTool = nil;
             THNPhotoAlbumList *ablumList = [[THNPhotoAlbumList alloc] init];
             ablumList.title = collection.localizedTitle;
             ablumList.count = assets.count;
-            ablumList.coverPhoto = assets.firstObject;
-            ablumList.assetCOllection = collection;
+//            ablumList.coverPhoto = assets.firstObject;
+            [[PHImageManager defaultManager] requestImageForAsset:assets.firstObject targetSize:CGSizeMake(150, 150) contentMode:PHImageContentModeAspectFill options:requestOption resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                ablumList.coverImage = result;
+            }];
+            ablumList.assetCollection = collection;
             [photoAblumList addObject:ablumList];
         }
     }];

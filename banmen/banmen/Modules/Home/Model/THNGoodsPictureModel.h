@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @protocol THNGoodsPictureModelDelegate <NSObject>
 
@@ -27,5 +28,14 @@
 
 -(void)netGetpicture:(NSString*)productId;
 -(void)netGetMoreGoodsPicture:(NSString*)productId andCurrent_page:(NSInteger)current_page;
+
+/**
+ 获取商品中的的图片信息
+ 
+ @param productId 商品id
+ @param count 需要的图片数量
+ @param completion 获取完成的回调
+ */
+- (void)thn_requestProductImageWithProductId:(NSString *)productId count:(NSInteger)count completion:(void (^)(NSArray *imageUrlArray))completion;
 
 @end
