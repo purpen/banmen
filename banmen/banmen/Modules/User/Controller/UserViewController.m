@@ -13,6 +13,7 @@
 #import "BaseTarBarViewController.h"
 #import "OptionViewController.h"
 #import "THNAboutViewController.h"
+#import "GuidePageViewController.h"
 
 @interface UserViewController () <UserModelDelegate>
 
@@ -49,7 +50,10 @@
 }
 
 -(void)welcom{
-    
+    NSArray *arr = [NSArray arrayWithObjects:@"01",@"02",@"03",@"04", nil];
+    GuidePageViewController *vc = [[GuidePageViewController alloc] initWithPicArr:arr andRootVC:self];
+    vc.flag = welcomePage;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 -(void)adjust{

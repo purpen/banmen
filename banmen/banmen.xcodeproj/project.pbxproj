@@ -150,6 +150,7 @@
 		F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D91F1867CB004DB319 /* LogInView.m */; };
 		F53C28DD1F18BA31004DB319 /* LogUpview.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28DC1F18BA31004DB319 /* LogUpview.m */; };
 		F53C28E31F1C8C7C004DB319 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28E21F1C8C7C004DB319 /* UserModel.m */; };
+		F554FBCA1F78DD260011C653 /* GuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F554FBC81F78DB940011C653 /* GuidePageViewController.m */; };
 		F55DD7F31F039EFB004915E3 /* AppDelegate+Guide.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F21F039EFB004915E3 /* AppDelegate+Guide.m */; };
 		F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F51F039FA6004915E3 /* CooperationInProductViewController.m */; };
 		F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F81F039FC2004915E3 /* SalesAndTrendsViewController.m */; };
@@ -520,6 +521,8 @@
 		F53C28DC1F18BA31004DB319 /* LogUpview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogUpview.m; sourceTree = "<group>"; };
 		F53C28E11F1C8C7C004DB319 /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		F53C28E21F1C8C7C004DB319 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		F554FBC81F78DB940011C653 /* GuidePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuidePageViewController.m; sourceTree = "<group>"; };
+		F554FBC91F78DB940011C653 /* GuidePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuidePageViewController.h; sourceTree = "<group>"; };
 		F55DD7F11F039EFB004915E3 /* AppDelegate+Guide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Guide.h"; sourceTree = "<group>"; };
 		F55DD7F21F039EFB004915E3 /* AppDelegate+Guide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Guide.m"; sourceTree = "<group>"; };
 		F55DD7F41F039FA6004915E3 /* CooperationInProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CooperationInProductViewController.h; sourceTree = "<group>"; };
@@ -957,6 +960,7 @@
 		D847DE641F00C1DA007E301E /* User */ = {
 			isa = PBXGroup;
 			children = (
+				F554FBC21F78DB8C0011C653 /* Guide */,
 				D847DE651F00C1DA007E301E /* Controller */,
 				D847DE681F00C1DA007E301E /* Model */,
 				D847DE691F00C1DA007E301E /* Service */,
@@ -1656,6 +1660,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F554FBC21F78DB8C0011C653 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				F554FBC91F78DB940011C653 /* GuidePageViewController.h */,
+				F554FBC81F78DB940011C653 /* GuidePageViewController.m */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
 		F55DD7F01F039EFB004915E3 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -1994,6 +2007,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F554FBCA1F78DD260011C653 /* GuidePageViewController.m in Sources */,
 				F58EBD7C1F3955BA00146754 /* RangePickerCell.m in Sources */,
 				F58EBD7B1F39556400146754 /* THNDateSelectViewController.m in Sources */,
 				F58EBD3F1F38118A00146754 /* EZImageBrowserLoading.m in Sources */,

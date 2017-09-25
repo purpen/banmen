@@ -8,6 +8,7 @@
 
 #import "AppDelegate+Guide.h"
 #import "BaseTarBarViewController.h"
+#import "GuidePageViewController.h"
 
 @implementation AppDelegate (Guide)
 
@@ -22,18 +23,19 @@
     // 获得沙盒中存储的版本号
     NSString *sanboxVersion = [[NSUserDefaults standardUserDefaults] stringForKey:key];
     
-    NSArray *arr = [NSArray arrayWithObjects:@"guide_one",@"guide_two",@"guide_three", nil];
+    NSArray *arr = [NSArray arrayWithObjects:@"01",@"02",@"03",@"04", nil];
     
-    //    if (![currentVersion isEqualToString:sanboxVersion]) {
-    //
-    //        self.window.rootViewController = [[GuidePageViewController alloc] initWithPicArr:arr andRootVC:[[FSTabBarController alloc] init]];
-    //
-    //        // 存储版本号
-    //        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
-    //        [[NSUserDefaults standardUserDefaults] synchronize];
-    //    }else{
-    self.window.rootViewController = [BaseTarBarViewController sharedManager];
-    //    }
+    if (![currentVersion isEqualToString:sanboxVersion]) {
+        GuidePageViewController *vc = [[GuidePageViewController alloc] initWithPicArr:arr andRootVC:[BaseTarBarViewController sharedManager]];
+        vc.flag = shouYe;
+        self.window.rootViewController = vc;
+
+        // 存储版本号
+        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }else{
+        self.window.rootViewController = [BaseTarBarViewController sharedManager];
+    }
     [self.window makeKeyAndVisible];
 }
 
