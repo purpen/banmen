@@ -144,6 +144,7 @@ static const NSInteger kMaxSelectPhotoCount = 9;
     if (_controllerType == THNLayoutViewControllerTypeNetwork) {
         return;
     }
+    
     dispatch_barrier_async(myQueue, ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self thn_setControllerViewUI];

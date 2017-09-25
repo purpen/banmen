@@ -116,7 +116,7 @@ static NSString *const editToolCollectionViewCellId = @"THNEditToolCollectionVie
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
-        _editToolCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, SCREEN_WIDTH + 64, SCREEN_WIDTH, SCREEN_HEIGHT - SCREEN_WIDTH - 64)
+        _editToolCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, SCREEN_WIDTH + 64, SCREEN_WIDTH, 228)
                                                  collectionViewLayout:flowLayout];
         _editToolCollection.backgroundColor = [UIColor colorWithHexString:kColorBackground];
         _editToolCollection.delegate = self;
