@@ -19,6 +19,7 @@
 @property (nonatomic, assign) NSInteger weight;
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
+@property (nonatomic, assign) CGFloat lineHeight;
 @property (nonatomic, strong) NSString *background;
 @property (nonatomic, strong) THNPosterModelTextPosition *position;
 

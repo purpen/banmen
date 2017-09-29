@@ -61,10 +61,18 @@
     self.maxFontSize = model.fontSize;
     _fontWeight = model.weight;
     
-    self.posterTextView.textColor = [UIColor colorWithHexString:model.color];
-    self.posterTextView.font = [UIFont systemFontOfSize:model.fontSize weight:[self thn_getTextViewFontWeight:model.weight]];
-    self.posterTextView.textAlignment =  (NSTextAlignment)model.align;
-    self.posterTextView.text = model.content;
+    NSMutableAttributedString *mAttributedString = [[NSMutableAttributedString alloc] initWithString:model.content];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = model.lineHeight;
+    paragraphStyle.alignment = (NSTextAlignment)model.align;
+    
+    [mAttributedString addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:model.fontSize
+                                                                              weight:[self thn_getTextViewFontWeight:model.weight]],
+                            NSForegroundColorAttributeName: [UIColor colorWithHexString:model.color],
+                             NSParagraphStyleAttributeName: paragraphStyle,
+                          NSVerticalGlyphFormAttributeName: @(0)} range:(NSMakeRange(0, model.content.length))];
+    
+    self.posterTextView.attributedText = mAttributedString;   
 }
 
 //  获取字体的粗细等样式

@@ -46,13 +46,15 @@ static NSString *const PosterListCollectionViewCellId = @"THNPosterListCollectio
                                                          @"poster_style_6",
                                                          @"poster_style_7",
                                                          @"poster_style_8",
-                                                         @"poster_style_9"]
+                                                         @"poster_style_9",
+                                                         @"poster_style_10"]
                                                        ,
                                                        @[@"invitation_style_0",
                                                          @"invitation_style_1",
                                                          @"invitation_style_2",
                                                          @"invitation_style_3",
-                                                         @"invitation_style_4"]]];
+                                                         @"invitation_style_4",
+                                                         @"invitation_style_5"]]];
     self.titleArray = [NSMutableArray arrayWithArray:@[@"活动", @"邀请函"]];
     
     [self thn_setControllerViewUI];

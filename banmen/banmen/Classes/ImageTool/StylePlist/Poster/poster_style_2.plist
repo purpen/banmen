@@ -229,7 +229,7 @@
 			</dict>
 			<dict>
 				<key>lineHeight</key>
-				<string>20</string>
+				<string>40</string>
 				<key>weight</key>
 				<string>4</string>
 				<key>background</key>
@@ -255,11 +255,8 @@
 				</dict>
 				<key>content</key>
 				<string>温度可视，为了让你远离人肉试温
-
 7小时保温，为了给你持久的温暖
-
 320g轻量杯身，为了你品味慢生活
-
 为了你，我们无限可能</string>
 				<key>fontSize</key>
 				<string>30</string>
