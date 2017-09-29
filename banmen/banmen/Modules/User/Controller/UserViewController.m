@@ -11,6 +11,9 @@
 #import "UserModel.h"
 #import "EditUserInfoViewController.h"
 #import "BaseTarBarViewController.h"
+#import "OptionViewController.h"
+#import "THNAboutViewController.h"
+#import "GuidePageViewController.h"
 
 @interface UserViewController () <UserModelDelegate>
 
@@ -31,7 +34,6 @@
     [super viewDidLoad];
     [self.view addSubview:self.userView];
     [self.userView.updatePersonalInformationBtn addTarget:self action:@selector(updateUserInfo) forControlEvents:(UIControlEventTouchUpInside)];
-    [self.userView.updatePersonalInformationBtn addTarget:self action:@selector(updateUserInfo) forControlEvents:(UIControlEventTouchUpInside)];
     [self.userView.aboutBtn addTarget:self action:@selector(about) forControlEvents:(UIControlEventTouchUpInside)];
     [self.userView.adjustBtn addTarget:self action:@selector(adjust) forControlEvents:(UIControlEventTouchUpInside)];
     [self.userView.welcomeBtn addTarget:self action:@selector(welcom) forControlEvents:(UIControlEventTouchUpInside)];
@@ -39,6 +41,7 @@
 }
 
 -(void)logOut{
+    self.userView.userModel = nil;
     [UserModel clearTable];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"" forKey:@"token"];
@@ -47,15 +50,20 @@
 }
 
 -(void)welcom{
-    
+    NSArray *arr = [NSArray arrayWithObjects:@"01",@"02",@"03",@"04", nil];
+    GuidePageViewController *vc = [[GuidePageViewController alloc] initWithPicArr:arr andRootVC:self];
+    vc.flag = welcomePage;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 -(void)adjust{
-    
+    OptionViewController *vc = [OptionViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)about{
-    
+    THNAboutViewController *vc = [THNAboutViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)updateUserInfo{

@@ -147,10 +147,12 @@
 		F52AD5E81F31A9E20098282A /* THNRepeatBuyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5E71F31A9E20098282A /* THNRepeatBuyModel.m */; };
 		F52AD5EC1F31C3410098282A /* THNOrderAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5EB1F31C3410098282A /* THNOrderAreaModel.m */; };
 		F52AD5FE1F31D94E0098282A /* RMMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F52AD5FB1F31D7C20098282A /* RMMapper.m */; };
+		F52CED081F6632950099E8EC /* THNTipLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = F52CED071F6632950099E8EC /* THNTipLoginView.m */; };
 		F53C28D71F18673E004DB319 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D61F18673E004DB319 /* LogInViewController.m */; };
 		F53C28DA1F1867CB004DB319 /* LogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28D91F1867CB004DB319 /* LogInView.m */; };
 		F53C28DD1F18BA31004DB319 /* LogUpview.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28DC1F18BA31004DB319 /* LogUpview.m */; };
 		F53C28E31F1C8C7C004DB319 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F53C28E21F1C8C7C004DB319 /* UserModel.m */; };
+		F554FBCA1F78DD260011C653 /* GuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F554FBC81F78DB940011C653 /* GuidePageViewController.m */; };
 		F55DD7F31F039EFB004915E3 /* AppDelegate+Guide.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F21F039EFB004915E3 /* AppDelegate+Guide.m */; };
 		F55DD7F61F039FA6004915E3 /* CooperationInProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F51F039FA6004915E3 /* CooperationInProductViewController.m */; };
 		F55DD7F91F039FC2004915E3 /* SalesAndTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD7F81F039FC2004915E3 /* SalesAndTrendsViewController.m */; };
@@ -165,6 +167,10 @@
 		F55DD8171F04D55C004915E3 /* BezierCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD8151F04D55C004915E3 /* BezierCurveView.m */; };
 		F55DD8181F04D55C004915E3 /* BezierCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F55DD8161F04D55C004915E3 /* BezierCurveView.xib */; };
 		F55DD81B1F04DDBE004915E3 /* UnitPriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */; };
+		F56B4B921F70C03E003B9E73 /* OptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56B4B901F70C03E003B9E73 /* OptionViewController.m */; };
+		F56B4B931F70C03E003B9E73 /* OptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56B4B911F70C03E003B9E73 /* OptionViewController.xib */; };
+		F56B4B971F70C489003B9E73 /* THNAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56B4B951F70C489003B9E73 /* THNAboutViewController.m */; };
+		F56B4B981F70C489003B9E73 /* THNAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56B4B961F70C489003B9E73 /* THNAboutViewController.xib */; };
 		F56BBBC11F4A804500D57806 /* THNPieChartValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F56BBBC01F4A804500D57806 /* THNPieChartValueFormatter.m */; };
 		F56BBBC91F4ABFC000D57806 /* THNUnitPriceValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F56BBBC81F4ABFC000D57806 /* THNUnitPriceValueFormatter.m */; };
 		F57139CF1F25BAFF00C1A62B /* MaterialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F57139CE1F25BAFF00C1A62B /* MaterialTableViewCell.m */; };
@@ -509,6 +515,8 @@
 		F52AD5F91F31D7C20098282A /* NSUserDefaults+RMSaveCustomObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+RMSaveCustomObject.m"; sourceTree = "<group>"; };
 		F52AD5FA1F31D7C20098282A /* RMMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMapper.h; sourceTree = "<group>"; };
 		F52AD5FB1F31D7C20098282A /* RMMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMMapper.m; sourceTree = "<group>"; };
+		F52CED061F6632950099E8EC /* THNTipLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNTipLoginView.h; sourceTree = "<group>"; };
+		F52CED071F6632950099E8EC /* THNTipLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNTipLoginView.m; sourceTree = "<group>"; };
 		F53C28D51F18673E004DB319 /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		F53C28D61F18673E004DB319 /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		F53C28D81F1867CB004DB319 /* LogInView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInView.h; sourceTree = "<group>"; };
@@ -517,6 +525,8 @@
 		F53C28DC1F18BA31004DB319 /* LogUpview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogUpview.m; sourceTree = "<group>"; };
 		F53C28E11F1C8C7C004DB319 /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		F53C28E21F1C8C7C004DB319 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		F554FBC81F78DB940011C653 /* GuidePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuidePageViewController.m; sourceTree = "<group>"; };
+		F554FBC91F78DB940011C653 /* GuidePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuidePageViewController.h; sourceTree = "<group>"; };
 		F55DD7F11F039EFB004915E3 /* AppDelegate+Guide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Guide.h"; sourceTree = "<group>"; };
 		F55DD7F21F039EFB004915E3 /* AppDelegate+Guide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Guide.m"; sourceTree = "<group>"; };
 		F55DD7F41F039FA6004915E3 /* CooperationInProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CooperationInProductViewController.h; sourceTree = "<group>"; };
@@ -545,6 +555,12 @@
 		F55DD8161F04D55C004915E3 /* BezierCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BezierCurveView.xib; sourceTree = "<group>"; };
 		F55DD8191F04DDBE004915E3 /* UnitPriceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitPriceTableViewCell.h; sourceTree = "<group>"; };
 		F55DD81A1F04DDBE004915E3 /* UnitPriceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitPriceTableViewCell.m; sourceTree = "<group>"; };
+		F56B4B8F1F70C03E003B9E73 /* OptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionViewController.h; sourceTree = "<group>"; };
+		F56B4B901F70C03E003B9E73 /* OptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionViewController.m; sourceTree = "<group>"; };
+		F56B4B911F70C03E003B9E73 /* OptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionViewController.xib; sourceTree = "<group>"; };
+		F56B4B941F70C489003B9E73 /* THNAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNAboutViewController.h; sourceTree = "<group>"; };
+		F56B4B951F70C489003B9E73 /* THNAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNAboutViewController.m; sourceTree = "<group>"; };
+		F56B4B961F70C489003B9E73 /* THNAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THNAboutViewController.xib; sourceTree = "<group>"; };
 		F56BBBBF1F4A804500D57806 /* THNPieChartValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNPieChartValueFormatter.h; sourceTree = "<group>"; };
 		F56BBBC01F4A804500D57806 /* THNPieChartValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNPieChartValueFormatter.m; sourceTree = "<group>"; };
 		F56BBBC71F4ABFC000D57806 /* THNUnitPriceValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNUnitPriceValueFormatter.h; sourceTree = "<group>"; };
@@ -853,6 +869,8 @@
 				F5E2CD241F39A848009C8B77 /* banmen-Bridging-Header.h */,
 				F5AC62321F418DD00053EC0C /* THNMapTapView.h */,
 				F5AC62331F418DD00053EC0C /* THNMapTapView.m */,
+				F52CED061F6632950099E8EC /* THNTipLoginView.h */,
+				F52CED071F6632950099E8EC /* THNTipLoginView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -946,6 +964,7 @@
 		D847DE641F00C1DA007E301E /* User */ = {
 			isa = PBXGroup;
 			children = (
+				F554FBC21F78DB8C0011C653 /* Guide */,
 				D847DE651F00C1DA007E301E /* Controller */,
 				D847DE681F00C1DA007E301E /* Model */,
 				D847DE691F00C1DA007E301E /* Service */,
@@ -957,6 +976,9 @@
 		D847DE651F00C1DA007E301E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F56B4B8F1F70C03E003B9E73 /* OptionViewController.h */,
+				F56B4B901F70C03E003B9E73 /* OptionViewController.m */,
+				F56B4B911F70C03E003B9E73 /* OptionViewController.xib */,
 				D847DE661F00C1DA007E301E /* UserViewController.h */,
 				D847DE671F00C1DA007E301E /* UserViewController.m */,
 				F5A42CDA1F207E51006687D8 /* EditUserInfoViewController.h */,
@@ -964,6 +986,9 @@
 				F58DE8BA1F20A25800C80ECF /* ChangPsdViewController.h */,
 				F58DE8BB1F20A25800C80ECF /* ChangPsdViewController.m */,
 				F58DE8BC1F20A25800C80ECF /* ChangPsdViewController.xib */,
+				F56B4B941F70C489003B9E73 /* THNAboutViewController.h */,
+				F56B4B951F70C489003B9E73 /* THNAboutViewController.m */,
+				F56B4B961F70C489003B9E73 /* THNAboutViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1641,6 +1666,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F554FBC21F78DB8C0011C653 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				F554FBC91F78DB940011C653 /* GuidePageViewController.h */,
+				F554FBC81F78DB940011C653 /* GuidePageViewController.m */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
 		F55DD7F01F039EFB004915E3 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -1911,11 +1945,13 @@
 				D8736A941F04890500BF9F33 /* three_style_103.plist in Resources */,
 				D8736A951F04890500BF9F33 /* three_style_105.plist in Resources */,
 				D8736A961F04890500BF9F33 /* three_style_106.plist in Resources */,
+				F56B4B931F70C03E003B9E73 /* OptionViewController.xib in Resources */,
 				D8736A971F04890500BF9F33 /* three_style_107.plist in Resources */,
 				D8736A981F04890500BF9F33 /* three_style_108.plist in Resources */,
 				F5E5FBDD1F29F9D000F66BC9 /* THNArticleDetailViewController.xib in Resources */,
 				D8736A991F04890500BF9F33 /* two_style_100.plist in Resources */,
 				D8736A9A1F04890500BF9F33 /* two_style_101.plist in Resources */,
+				F56B4B981F70C489003B9E73 /* THNAboutViewController.xib in Resources */,
 				D8736A9B1F04890500BF9F33 /* two_style_104.plist in Resources */,
 				D8D9C2551EF278C5000688C6 /* LaunchScreen.storyboard in Resources */,
 				F55DD8181F04D55C004915E3 /* BezierCurveView.xib in Resources */,
@@ -1979,6 +2015,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F554FBCA1F78DD260011C653 /* GuidePageViewController.m in Sources */,
 				F58EBD7C1F3955BA00146754 /* RangePickerCell.m in Sources */,
 				F58EBD7B1F39556400146754 /* THNDateSelectViewController.m in Sources */,
 				F58EBD3F1F38118A00146754 /* EZImageBrowserLoading.m in Sources */,
@@ -2020,7 +2057,9 @@
 				F53C28DD1F18BA31004DB319 /* LogUpview.m in Sources */,
 				D8ED5D841EF906060046642C /* NSString+Helper.m in Sources */,
 				D847DE401EFBDE95007E301E /* THNHintInfoView.m in Sources */,
+				F56B4B921F70C03E003B9E73 /* OptionViewController.m in Sources */,
 				D8ED5D861EF906060046642C /* NSString+JSON.m in Sources */,
+				F52CED081F6632950099E8EC /* THNTipLoginView.m in Sources */,
 				F55DD8021F03C161004915E3 /* THNShowPuzzleView.m in Sources */,
 				F55DD8121F04AE92004915E3 /* SaleTableViewCell.m in Sources */,
 				F58EBD231F3412F600146754 /* THNArticleBlockCollectionViewCell.m in Sources */,
@@ -2078,6 +2117,7 @@
 				F53C28E31F1C8C7C004DB319 /* UserModel.m in Sources */,
 				D899A2CC1F3D516D00D79243 /* THNColorCollectionViewCell.m in Sources */,
 				D869B3F61F26FFE10074C37B /* THNPosterListCollectionViewCell.m in Sources */,
+				F56B4B971F70C489003B9E73 /* THNAboutViewController.m in Sources */,
 				F58DE8C11F20AD2100C80ECF /* GoodDetailsViewController.m in Sources */,
 				D8B369461EFA5DB50088A517 /* THNPhotoItemCollectionViewCell.m in Sources */,
 				F55DD80C1F04A43A004915E3 /* AreaViewController.m in Sources */,

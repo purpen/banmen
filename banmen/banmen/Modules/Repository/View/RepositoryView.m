@@ -22,6 +22,8 @@
         self.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
         
         [self addSubview:self.collectionView];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addGoods:) name:@"addGoods" object:nil];
     }
     return self;
 }
@@ -71,6 +73,23 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake((SCREEN_WIDTH-15*3)/2, (347.0/2+41.5)/667.0*SCREEN_HEIGHT);
+}
+
+-(void)addGoods:(NSNotification*)notification{
+    NSDictionary *dict = notification.userInfo;
+    NSString *idStr = dict[@"id"];
+    NSString *status = dict[@"status"];
+    for (int i = 0; i<self.modelAry.count; i++) {
+        RecommendedModel *model = self.modelAry[i];
+        if ([model.product_id isEqualToString:idStr]) {
+            model.status = status;
+            [_collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
+        }
+    }
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"addGoods" object:nil];
 }
 
 @end

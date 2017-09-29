@@ -9,6 +9,9 @@
 #import "HomeViewController.h"
 #import "CooperationInProductViewController.h"
 #import "SalesAndTrendsViewController.h"
+#import "UserModel.h"
+#import "SVProgressHUD.h"
+#import "THNTipLoginView.h"
 
 @interface HomeViewController ()<UIScrollViewDelegate>
 /** 顶部的所有标签 */
@@ -19,14 +22,36 @@
 @property (nonatomic, weak) UIButton *selectedButton;
 /** 底部的所有内容 */
 @property (nonatomic, weak) UIScrollView *contentView;
+@property (nonatomic, strong) THNTipLoginView *tipView;
 @end
 
 @implementation HomeViewController
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.view addSubview:self.tipView];
+    
+    UserModel *userModel = [[UserModel findAll] lastObject];
+    if (!userModel.isLogin) {
+        self.tipView.hidden = NO;
+    } else {
+        self.tipView.hidden = YES;
+    }
+}
+
+-(THNTipLoginView *)tipView{
+    if (!_tipView) {
+        _tipView = [[THNTipLoginView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49)];
+    }
+    return _tipView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.titleView.backgroundColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor banmenColorWithRed:248 green:248 blue:248 alpha:1];
+    
     // 初始化子控制器
     [self setupChildVces];
     // 设置顶部的标签栏

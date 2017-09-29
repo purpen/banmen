@@ -200,6 +200,10 @@
     params[@"token"] = [defaults objectForKey:@"token"];
     params[@"product_id"] = self.model.product_id;
     [manager POST:[kDomainBaseUrl stringByAppendingString:@"product/trueCooperate"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:self.model.product_id, @"id", status, @"status" , nil];
+        NSNotification *notification =[NSNotification notificationWithName:@"addGoods" object:nil userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        
         self.model.status = [status integerValue];
         if ([self.delegate respondsToSelector:@selector(uploadModel:)]) {
             [self.delegate uploadModel:[status integerValue]];
