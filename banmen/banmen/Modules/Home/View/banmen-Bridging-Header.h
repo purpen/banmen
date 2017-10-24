@@ -9,6 +9,5 @@
 #ifndef banmen_Bridging_Header_h
 #define banmen_Bridging_Header_h
 
-@import BalloonMarker
 
 #endif /* banmen_Bridging_Header_h */

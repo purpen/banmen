@@ -216,6 +216,14 @@
 		F5ADCD931F1F077C001FC5DD /* ChannelsItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD921F1F077C001FC5DD /* ChannelsItemTableViewCell.m */; };
 		F5ADCD961F1F3882001FC5DD /* UnitPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCD951F1F3882001FC5DD /* UnitPriceModel.m */; };
 		F5B30B6D1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */; };
+		F5C465571F9D8DAA00FCCF96 /* THNNoCooperativeProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C465561F9D8DAA00FCCF96 /* THNNoCooperativeProductView.swift */; };
+		F5C4655E1F9D8DDC00FCCF96 /* THNNoCooperativeProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C4655D1F9D8DDC00FCCF96 /* THNNoCooperativeProductView.xib */; };
+		F5C465861F9DE0A700FCCF96 /* THNNoSaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C465851F9DE0A700FCCF96 /* THNNoSaleView.swift */; };
+		F5C465881F9DE0C000FCCF96 /* THNNoSaleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C465871F9DE0BF00FCCF96 /* THNNoSaleView.xib */; };
+		F5C4658A1F9DF74500FCCF96 /* THNNoFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C465891F9DF74500FCCF96 /* THNNoFileView.swift */; };
+		F5C4658C1F9DF75600FCCF96 /* THNNoFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C4658B1F9DF75600FCCF96 /* THNNoFileView.xib */; };
+		F5C4658E1F9EE45D00FCCF96 /* THNNoNetConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C4658D1F9EE45D00FCCF96 /* THNNoNetConnectionView.swift */; };
+		F5C465901F9EE5F000FCCF96 /* THNNoNetConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C4658F1F9EE5F000FCCF96 /* THNNoNetConnectionView.xib */; };
 		F5C8EBED1F21EB83009FC203 /* GoodsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */; };
 		F5C8EBF01F21F032009FC203 /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8EBEF1F21F032009FC203 /* GoodsDetailModel.m */; };
 		F5CE62051F32C6EC0049AA9E /* AreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CE62041F32C6EC0049AA9E /* AreaTableViewCell.m */; };
@@ -650,6 +658,14 @@
 		F5B30B641F1E20DF007D1959 /* ChartsSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartsSwift.h; sourceTree = "<group>"; };
 		F5B30B6B1F1EFD9C007D1959 /* SalesChannelsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SalesChannelsTableViewCell.h; sourceTree = "<group>"; };
 		F5B30B6C1F1EFD9C007D1959 /* SalesChannelsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalesChannelsTableViewCell.m; sourceTree = "<group>"; };
+		F5C465561F9D8DAA00FCCF96 /* THNNoCooperativeProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THNNoCooperativeProductView.swift; sourceTree = "<group>"; };
+		F5C4655D1F9D8DDC00FCCF96 /* THNNoCooperativeProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THNNoCooperativeProductView.xib; sourceTree = "<group>"; };
+		F5C465851F9DE0A700FCCF96 /* THNNoSaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THNNoSaleView.swift; sourceTree = "<group>"; };
+		F5C465871F9DE0BF00FCCF96 /* THNNoSaleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THNNoSaleView.xib; sourceTree = "<group>"; };
+		F5C465891F9DF74500FCCF96 /* THNNoFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THNNoFileView.swift; sourceTree = "<group>"; };
+		F5C4658B1F9DF75600FCCF96 /* THNNoFileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THNNoFileView.xib; sourceTree = "<group>"; };
+		F5C4658D1F9EE45D00FCCF96 /* THNNoNetConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THNNoNetConnectionView.swift; sourceTree = "<group>"; };
+		F5C4658F1F9EE5F000FCCF96 /* THNNoNetConnectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THNNoNetConnectionView.xib; sourceTree = "<group>"; };
 		F5C8EBEB1F21EB83009FC203 /* GoodsDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailTableViewCell.h; sourceTree = "<group>"; };
 		F5C8EBEC1F21EB83009FC203 /* GoodsDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailTableViewCell.m; sourceTree = "<group>"; };
 		F5C8EBEE1F21F032009FC203 /* GoodsDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailModel.h; sourceTree = "<group>"; };
@@ -867,6 +883,14 @@
 				F5AC62331F418DD00053EC0C /* THNMapTapView.m */,
 				F52CED061F6632950099E8EC /* THNTipLoginView.h */,
 				F52CED071F6632950099E8EC /* THNTipLoginView.m */,
+				F5C465561F9D8DAA00FCCF96 /* THNNoCooperativeProductView.swift */,
+				F5C4655D1F9D8DDC00FCCF96 /* THNNoCooperativeProductView.xib */,
+				F5C465851F9DE0A700FCCF96 /* THNNoSaleView.swift */,
+				F5C465871F9DE0BF00FCCF96 /* THNNoSaleView.xib */,
+				F5C465891F9DF74500FCCF96 /* THNNoFileView.swift */,
+				F5C4658B1F9DF75600FCCF96 /* THNNoFileView.xib */,
+				F5C4658D1F9EE45D00FCCF96 /* THNNoNetConnectionView.swift */,
+				F5C4658F1F9EE5F000FCCF96 /* THNNoNetConnectionView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1890,8 +1914,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8736A671F04890500BF9F33 /* eight_style_181.plist in Resources */,
+				F5C4655E1F9D8DDC00FCCF96 /* THNNoCooperativeProductView.xib in Resources */,
 				D822BA711F3C5126009A6FE3 /* invitation_style_1.plist in Resources */,
 				D8736A6D1F04890500BF9F33 /* five_style_151.plist in Resources */,
+				F5C465901F9EE5F000FCCF96 /* THNNoNetConnectionView.xib in Resources */,
 				D8736A6E1F04890500BF9F33 /* five_style_152.plist in Resources */,
 				F58DE8BE1F20A25800C80ECF /* ChangPsdViewController.xib in Resources */,
 				D8736A6F1F04890500BF9F33 /* five_style_153.plist in Resources */,
@@ -1917,6 +1943,7 @@
 				D85DE6811F341EB700A0E480 /* poster_style_4.plist in Resources */,
 				D8736A851F04890500BF9F33 /* one_style_103.plist in Resources */,
 				F51AE79B1F29D9B30093D9EB /* THNWordDetailViewController.xib in Resources */,
+				F5C4658C1F9DF75600FCCF96 /* THNNoFileView.xib in Resources */,
 				D8736A861F04890500BF9F33 /* seven_style_171.plist in Resources */,
 				D8906CA31F3C146A00482962 /* poster_style_8.plist in Resources */,
 				D8E957E51F287387003F9A29 /* invitation_style_0.plist in Resources */,
@@ -1947,6 +1974,7 @@
 				D8736A9B1F04890500BF9F33 /* two_style_104.plist in Resources */,
 				D8D9C2551EF278C5000688C6 /* LaunchScreen.storyboard in Resources */,
 				F55DD8181F04D55C004915E3 /* BezierCurveView.xib in Resources */,
+				F5C465881F9DE0C000FCCF96 /* THNNoSaleView.xib in Resources */,
 				D8D9C2521EF278C5000688C6 /* Assets.xcassets in Resources */,
 				D8D9C2501EF278C5000688C6 /* Main.storyboard in Resources */,
 			);
@@ -2057,9 +2085,11 @@
 				F58EBD231F3412F600146754 /* THNArticleBlockCollectionViewCell.m in Sources */,
 				F57139D81F270DBF00C1A62B /* THNwordCollectionViewCell.m in Sources */,
 				F57139EA1F274C7900C1A62B /* THNGoodsVideoModel.m in Sources */,
+				F5C4658E1F9EE45D00FCCF96 /* THNNoNetConnectionView.swift in Sources */,
 				D8ED5D881EF906060046642C /* NSString+TimeDate.m in Sources */,
 				F5C8EBED1F21EB83009FC203 /* GoodsDetailTableViewCell.m in Sources */,
 				D847DE431EFCDEDC007E301E /* THNDoneImageViewController.m in Sources */,
+				F5C465861F9DE0A700FCCF96 /* THNNoSaleView.swift in Sources */,
 				D8ED5DA11EFA0DB80046642C /* THNAssetItem.m in Sources */,
 				F57139E11F2724D600C1A62B /* THNGoodsPictureCollectionViewCell.m in Sources */,
 				F5E2CD2C1F3C7578009C8B77 /* THNCustomLabel.m in Sources */,
@@ -2087,6 +2117,7 @@
 				F57139DE1F27193E00C1A62B /* THNGoodsArticleModel.m in Sources */,
 				F52AD5CD1F3052F60098282A /* THNSalesListModel.m in Sources */,
 				D8ED5D941EF906060046642C /* UIImageView+SDWedImage.m in Sources */,
+				F5C4658A1F9DF74500FCCF96 /* THNNoFileView.swift in Sources */,
 				F55DD7FC1F03B2B7004915E3 /* BaseViewController.m in Sources */,
 				F5811C631F42854200B9085D /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */,
 				D847DE6F1F00C1DA007E301E /* PostersViewController.m in Sources */,
@@ -2101,6 +2132,7 @@
 				F58DE8F21F20B15400C80ECF /* GoodDetailsView.m in Sources */,
 				F58EBD201F3328DF00146754 /* THNArticleListTableViewCell.m in Sources */,
 				F58DE8C41F20AF1300C80ECF /* THNJointImageViewController.m in Sources */,
+				F5C465571F9D8DAA00FCCF96 /* THNNoCooperativeProductView.swift in Sources */,
 				D83689EA1EFA68DB005B0709 /* THNPhotoTableViewModel.m in Sources */,
 				D8DCAD3E1F135E48009A8A1F /* THNEditChildView.m in Sources */,
 				D805C5C21F30216F00354A47 /* THNShareActionView.m in Sources */,

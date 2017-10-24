@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GoodsDetailModel.h"
+#import "banmen-Swift.h"
 
 @protocol GoodDetailsViewDelegate <NSObject>
 
@@ -29,6 +30,7 @@
 @property (nonatomic, assign) NSInteger category;
 @property (nonatomic, assign) BOOL sender_selected;
 @property (nonatomic, strong) UIViewController *controller;
+@property (nonatomic, strong) THNNoFileView *nView;
 
 @end
 

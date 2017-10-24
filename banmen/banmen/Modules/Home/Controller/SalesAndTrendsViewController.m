@@ -14,6 +14,11 @@
 #import "SalesChannelsViewController.h"
 #import "UIColor+Extension.h"
 #import "Masonry.h"
+#import "AFNetworking.h"
+#import "OtherMacro.h"
+#import "MJExtension.h"
+#import "Cooperation.h"
+#import "banmen-Swift.h"
 
 @interface SalesAndTrendsViewController ()<UIScrollViewDelegate>
 /** 顶部的所有标签 */
@@ -22,9 +27,37 @@
 @property (nonatomic, weak) UIButton *selectedButton;
 /** 底部的所有内容 */
 @property (nonatomic, weak) UIScrollView *contentView;
+@property (nonatomic, strong) NSArray *ary;
+@property (nonatomic, strong) THNNoSaleView *nView;
 @end
 
 @implementation SalesAndTrendsViewController
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"per_page"] = @(10);
+    params[@"page"] = @(1);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    params[@"token"] = [defaults objectForKey:@"token"];
+    NSLog(@"asdas %@",params[@"token"]);
+    [manager GET:[kDomainBaseUrl stringByAppendingString:@"product/cooperateProductLists"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *rows = responseObject[@"data"];
+        self.ary = [Cooperation mj_objectArrayWithKeyValuesArray:rows];
+        
+        if (self.ary.count == 0) {
+            self.nView.hidden = NO;
+        } else {
+            self.nView.hidden = YES;
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +67,13 @@
     [self setupTitlesView];
     // 底部的scrollView
     [self setupContentView];
+    
+    NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"THNNoSaleView" owner:nil options:nil];
+    self.nView = views[0];
+    self.nView.frame = self.view.frame;
+    self.nView.y += 37;
+    self.nView.height -= 37;
+    [self.view addSubview:self.nView];
 }
 
 /**

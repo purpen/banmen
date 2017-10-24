@@ -181,6 +181,11 @@
 
 -(void)video:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
     self.goodDetailsView.videoModelAry = [NSMutableArray arrayWithArray:modelAry];
+    if (self.goodDetailsView.videoModelAry.count == 0) {
+        self.goodDetailsView.nView.hidden = NO;
+    } else {
+        self.goodDetailsView.nView.hidden = YES;
+    }
     self.video_current_page = current_page;
     self.video_total_pages = total_rows;
     [self.goodDetailsView.tableView.mj_header endRefreshing];
@@ -197,6 +202,11 @@
 
 -(void)picture:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
     self.goodDetailsView.pictureModelAry = [NSMutableArray arrayWithArray:modelAry];
+    if (self.goodDetailsView.pictureModelAry.count == 0) {
+        self.goodDetailsView.nView.hidden = NO;
+    } else {
+        self.goodDetailsView.nView.hidden = YES;
+    }
     [self.goodDetailsView.tableView.mj_header endRefreshing];
     self.picture_current_page = current_page;
     self.picture_total_pages = total_rows;
@@ -213,6 +223,11 @@
 
 -(void)article:(NSArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
     self.goodDetailsView.articleModelAry = [NSMutableArray arrayWithArray:modelAry];
+    if (self.goodDetailsView.articleModelAry.count == 0) {
+        self.goodDetailsView.nView.hidden = NO;
+    } else {
+        self.goodDetailsView.nView.hidden = YES;
+    }
     self.article_current_page = current_page;
     [self.goodDetailsView.tableView.mj_header endRefreshing];
     self.article_total_pages = total_rows;
@@ -233,6 +248,11 @@
     [self.goodDetailsView.tableView.mj_header endRefreshing];
     self.goodsWorldModelAry = modelAry;
     self.goodDetailsView.modelAry = [NSMutableArray arrayWithArray:modelAry];
+    if (self.goodDetailsView.modelAry.count == 0) {
+        self.goodDetailsView.nView.hidden = NO;
+    } else {
+        self.goodDetailsView.nView.hidden = YES;
+    }
     [self checkFooterState];
 }
 

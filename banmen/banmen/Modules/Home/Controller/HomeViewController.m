@@ -30,14 +30,14 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [self.view addSubview:self.tipView];
-    
-    UserModel *userModel = [[UserModel findAll] lastObject];
-    if (!userModel.isLogin) {
-        self.tipView.hidden = NO;
-    } else {
-        self.tipView.hidden = YES;
-    }
+//    [self.view addSubview:self.tipView];
+//    
+//    UserModel *userModel = [[UserModel findAll] lastObject];
+//    if (!userModel.isLogin) {
+//        self.tipView.hidden = NO;
+//    } else {
+//        self.tipView.hidden = YES;
+//    }
 }
 
 -(THNTipLoginView *)tipView{

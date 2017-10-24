@@ -17,7 +17,7 @@
 #import "UIView+FSExtension.h"
 
 @interface GoodDetailsView () <UITableViewDelegate, UITableViewDataSource>
-
+@property(nonatomic, assign) BOOL flag;
 @end
 
 @implementation GoodDetailsView
@@ -26,6 +26,7 @@
     if (self = [super initWithFrame:frame]) {
         
         [self addSubview:self.tableView];
+        self.flag = NO;
     }
     return self;
 }
@@ -33,6 +34,12 @@
 -(void)setModelAry:(NSMutableArray *)modelAry{
     _modelAry = modelAry;
     [self.tableView reloadData];
+    self.nView.x = 0;
+    self.nView.y = 80;
+    self.nView.width = SCREEN_WIDTH;
+    self.nView.height = 200;
+    MaterialTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    [cell.contentView addSubview:self.nView];
 }
 
 -(void)setArticleModelAry:(NSMutableArray *)articleModelAry{
@@ -158,6 +165,13 @@
         cell.controller = self.controller;
         return cell;
     }
+}
+
+-(THNNoFileView *)nView{
+    if (!_nView) {
+        _nView = [[NSBundle mainBundle] loadNibNamed:@"THNNoFileView" owner:nil options:nil][0];
+    }
+    return _nView;
 }
 
 -(void)switchingArrangement:(UIButton*)sender{

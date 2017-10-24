@@ -11,6 +11,8 @@
 #import "MJRefresh.h"
 #import "Cooperation.h"
 #import "UIView+FSExtension.h"
+#import "banmen-Swift.h"
+#import "AFNetworkReachabilityManager.h"
 
 @interface CooperationInProductViewController ()<CooperationDelegate>
 @property(nonatomic, strong) CooperationView *cView;
@@ -18,6 +20,8 @@
 @property(nonatomic,assign) NSInteger current_page;
 @property(nonatomic,assign) NSInteger total_rows;
 @property(nonatomic,strong) NSMutableArray *modelAry;
+@property(nonatomic, strong) THNNoCooperativeProductView *nView;
+@property (nonatomic, strong) THNNoNetConnectionView *noConnectView;
 @end
 
 @implementation CooperationInProductViewController
@@ -28,7 +32,75 @@
     self.cView.navC = self.navigationController;
     [self.view addSubview:self.cView];
     self.cView.modelAry = self.c.modelAry;
+    NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"THNNoCooperativeProductView" owner:nil options:nil];
+    self.nView = views[0];
+    self.nView.frame = self.view.frame;
+    [self.cView.collectionView addSubview:self.nView];
+    
+    NSArray *views2 = [[NSBundle mainBundle] loadNibNamed:@"THNNoNetConnectionView" owner:nil options:nil];
+    self.noConnectView = views2[0];
+    self.noConnectView.frame = self.view.frame;
+    [self.view addSubview:self.noConnectView];
+    
     [self setupRefresh];
+    
+    AFNetworkReachabilityManager *manger = [AFNetworkReachabilityManager sharedManager];
+    [manger startMonitoring];
+    [manger setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        /*
+         AFNetworkReachabilityStatusUnknown          = -1,
+         AFNetworkReachabilityStatusNotReachable     = 0,
+         AFNetworkReachabilityStatusReachableViaWWAN = 1,
+         AFNetworkReachabilityStatusReachableViaWiFi = 2,
+         */
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+                self.noConnectView.hidden = NO;
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+                self.noConnectView.hidden = NO;
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                self.noConnectView.hidden = NO;
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                self.noConnectView.hidden = YES;
+                break;
+            default:
+                break;
+        }
+    }];
+    
+    [self.noConnectView.reFreshBtn addTarget:self action:@selector(checkNetConnect) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)checkNetConnect{
+    AFNetworkReachabilityManager *manger = [AFNetworkReachabilityManager sharedManager];
+    [manger startMonitoring];
+    [manger setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        /*
+         AFNetworkReachabilityStatusUnknown          = -1,
+         AFNetworkReachabilityStatusNotReachable     = 0,
+         AFNetworkReachabilityStatusReachableViaWWAN = 1,
+         AFNetworkReachabilityStatusReachableViaWiFi = 2,
+         */
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+                self.noConnectView.hidden = NO;
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+                self.noConnectView.hidden = NO;
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                self.noConnectView.hidden = NO;
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                self.noConnectView.hidden = YES;
+                break;
+            default:
+                break;
+        }
+    }];
 }
 
 -(Cooperation *)c{
@@ -69,6 +141,11 @@
 
 -(void)getCooperation:(NSMutableArray *)modelAry andC:(NSInteger)current_page andT:(NSInteger)total_rows{
     self.modelAry = modelAry;
+    if (modelAry.count == 0) {
+        self.nView.hidden = NO;
+    } else {
+        self.nView.hidden = YES;
+    }
     self.cView.modelAry = modelAry;
     [self.cView.collectionView reloadData];
     [self.cView.collectionView.mj_header endRefreshing];
