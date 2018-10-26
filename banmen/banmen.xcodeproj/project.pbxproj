@@ -74,7 +74,7 @@
 		D8736A981F04890500BF9F33 /* three_style_108.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A621F0488E800BF9F33 /* three_style_108.plist */; };
 		D8736A991F04890500BF9F33 /* two_style_100.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A641F0488E800BF9F33 /* two_style_100.plist */; };
 		D8736A9A1F04890500BF9F33 /* two_style_101.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A651F0488E800BF9F33 /* two_style_101.plist */; };
-		D8736A9B1F04890500BF9F33 /* two_style_104.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A661F0488E800BF9F33 /* two_style_104.plist */; };
+		D8736A9B1F04890500BF9F33 /* THNBannnerCollectionViewCellTHNBannnerCollectionViewCellTHNBannnerCollectionViewCell.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8736A661F0488E800BF9F33 /* THNBannnerCollectionViewCellTHNBannnerCollectionViewCellTHNBannnerCollectionViewCell.plist */; };
 		D8736A9F1F048A0000BF9F33 /* THNToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8736A9E1F048A0000BF9F33 /* THNToolViewController.m */; };
 		D886F8411F21A102009382C3 /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D886F83A1F21A0EE009382C3 /* DayCollectionViewCell.m */; };
 		D886F8421F21A102009382C3 /* HotelCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D886F83C1F21A0EE009382C3 /* HotelCalendarViewController.m */; };
@@ -404,7 +404,7 @@
 		D8736A621F0488E800BF9F33 /* three_style_108.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = three_style_108.plist; sourceTree = "<group>"; };
 		D8736A641F0488E800BF9F33 /* two_style_100.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = two_style_100.plist; sourceTree = "<group>"; };
 		D8736A651F0488E800BF9F33 /* two_style_101.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = two_style_101.plist; sourceTree = "<group>"; };
-		D8736A661F0488E800BF9F33 /* two_style_104.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = two_style_104.plist; sourceTree = "<group>"; };
+		D8736A661F0488E800BF9F33 /* THNBannnerCollectionViewCellTHNBannnerCollectionViewCellTHNBannnerCollectionViewCell.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = THNBannnerCollectionViewCellTHNBannnerCollectionViewCellTHNBannnerCollectionViewCell.plist; sourceTree = "<group>"; };
 		D8736A9D1F048A0000BF9F33 /* THNToolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THNToolViewController.h; sourceTree = "<group>"; };
 		D8736A9E1F048A0000BF9F33 /* THNToolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THNToolViewController.m; sourceTree = "<group>"; };
 		D886F8391F21A0EE009382C3 /* DayCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1155,7 +1155,7 @@
 			children = (
 				D8736A641F0488E800BF9F33 /* two_style_100.plist */,
 				D8736A651F0488E800BF9F33 /* two_style_101.plist */,
-				D8736A661F0488E800BF9F33 /* two_style_104.plist */,
+				D8736A661F0488E800BF9F33 /* THNBannnerCollectionViewCellTHNBannnerCollectionViewCellTHNBannnerCollectionViewCell.plist */,
 			);
 			path = Two;
 			sourceTree = "<group>";
@@ -1979,7 +1979,7 @@
 				D8736A991F04890500BF9F33 /* two_style_100.plist in Resources */,
 				D8736A9A1F04890500BF9F33 /* two_style_101.plist in Resources */,
 				F56B4B981F70C489003B9E73 /* THNAboutViewController.xib in Resources */,
-				D8736A9B1F04890500BF9F33 /* two_style_104.plist in Resources */,
+				D8736A9B1F04890500BF9F33 /* THNBannnerCollectionViewCellTHNBannnerCollectionViewCellTHNBannnerCollectionViewCell.plist in Resources */,
 				D8D9C2551EF278C5000688C6 /* LaunchScreen.storyboard in Resources */,
 				F55DD8181F04D55C004915E3 /* BezierCurveView.xib in Resources */,
 				F5C465881F9DE0C000FCCF96 /* THNNoSaleView.xib in Resources */,
